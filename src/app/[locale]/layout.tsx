@@ -75,6 +75,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Clock Tani" />
         <link rel="apple-touch-icon" href="/icon-192x192.svg" />
+        <meta name="google-adsense-account" content="ca-pub-4836555208250151" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }} />
       </head>
       <body style={{ fontFamily: systemFontStack }}>
