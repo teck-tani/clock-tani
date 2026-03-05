@@ -1,0 +1,33 @@
+{
+  "name": "Clock-Tani - 온라인 시계 & 타이머",
+  "short_name": "Clock-Tani",
+  "description": "세계시계, 스톱워치, 타이머, 포모도로, 알람 등 시간 도구 모음",
+  "start_url": "/ko/clock",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#0891b2",
+  "background_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/icon-192x192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512x512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity"],
+  "lang": "ko",
+  "dir": "ltr"
+}

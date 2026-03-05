@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" rx="32" fill="#0f172a"/>
+  <circle cx="96" cy="96" r="68" fill="none" stroke="#0891b2" stroke-width="6"/>
+  <circle cx="96" cy="96" r="4" fill="#0891b2"/>
+  <!-- Hour hand -->
+  <line x1="96" y1="96" x2="96" y2="52" stroke="#0891b2" stroke-width="5" stroke-linecap="round" transform="rotate(30 96 96)"/>
+  <!-- Minute hand -->
+  <line x1="96" y1="96" x2="96" y2="40" stroke="#0891b2" stroke-width="3" stroke-linecap="round" transform="rotate(180 96 96)"/>
+  <!-- Second hand -->
+  <line x1="96" y1="96" x2="96" y2="36" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round" transform="rotate(90 96 96)"/>
+  <!-- Hour markers -->
+  <line x1="96" y1="32" x2="96" y2="38" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="96" y1="32" x2="96" y2="38" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" transform="rotate(90 96 96)"/>
+  <line x1="96" y1="32" x2="96" y2="38" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" transform="rotate(180 96 96)"/>
+  <line x1="96" y1="32" x2="96" y2="38" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" transform="rotate(270 96 96)"/>
+</svg>
