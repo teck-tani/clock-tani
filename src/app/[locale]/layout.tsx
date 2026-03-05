@@ -73,6 +73,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <link rel="preconnect" href="https://flagcdn.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="theme-color" content="#0891b2" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

@@ -32,6 +32,9 @@ export default function GoogleAdsense() {
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4836555208250151"
             crossOrigin="anonymous"
             strategy="lazyOnload"
+            onError={() => {
+                console.debug('Google Ads script load deferred');
+            }}
         />
     );
 }

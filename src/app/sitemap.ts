@@ -20,12 +20,27 @@ const tools = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const entries: MetadataRoute.Sitemap = [];
+    // 각 페이지의 실제 마지막 수정일
+    const lastModifiedDates: Record<string, Date> = {
+        '/clock': new Date('2025-02-15'),
+        '/stopwatch': new Date('2024-12-20'),
+        '/timer': new Date('2024-12-20'),
+        '/pomodoro': new Date('2024-12-20'),
+        '/interval': new Date('2024-12-20'),
+        '/multi-timer': new Date('2024-12-20'),
+        '/alarm': new Date('2024-12-20'),
+        '/server-time': new Date('2024-12-20'),
+        '/dday-counter': new Date('2024-12-20'),
+        '/privacy': new Date('2024-12-01'),
+        '/terms': new Date('2024-12-01'),
+        '/about': new Date('2024-12-01'),
+    };
 
     for (const tool of tools) {
         for (const locale of locales) {
             entries.push({
                 url: `${baseUrl}/${locale}${tool.path}`,
-                lastModified: new Date(),
+                lastModified: lastModifiedDates[tool.path] || new Date('2024-12-01'),
                 changeFrequency: tool.changeFrequency,
                 priority: tool.priority,
             });
