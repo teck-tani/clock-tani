@@ -1850,5 +1850,50 @@
       "serverTime": "Server Time / Ticketing",
       "ddayCounter": "D-day Countdown"
     }
+  },
+  "RelatedTools": {
+    "title": "Related Tools"
+  },
+  "Homepage": {
+    "title": "Tani DevTool - Online Time Tools",
+    "description": "Use free online tools for clocks, timers, stopwatches, alarms, and more.",
+    "featuresTitle": "Key Features",
+    "toolDescriptions": {
+      "clock": "Real-time clock for 70+ world cities",
+      "stopwatch": "Precise time measurement to milliseconds",
+      "timer": "Set a countdown for any duration",
+      "pomodoro": "25-min focus, 5-min break productivity technique",
+      "interval": "Repeating interval timer for workouts & study",
+      "multiTimer": "Run multiple timers simultaneously",
+      "alarm": "Set alarms for any time",
+      "serverTime": "Accurate server time for ticketing",
+      "ddayCounter": "Count days until important dates"
+    },
+    "features": {
+      "pwa": {
+        "name": "Offline Support",
+        "desc": "Install as PWA for offline use"
+      },
+      "darkMode": {
+        "name": "Dark Mode",
+        "desc": "Dark theme to reduce eye strain"
+      },
+      "responsive": {
+        "name": "Responsive Design",
+        "desc": "Optimized for mobile, tablet, and desktop"
+      },
+      "multilang": {
+        "name": "Multi-language",
+        "desc": "Korean and English interface"
+      },
+      "free": {
+        "name": "Completely Free",
+        "desc": "All features free without sign-up"
+      },
+      "fast": {
+        "name": "Fast Loading",
+        "desc": "Optimized performance for quick start"
+      }
+    }
   }
 }

@@ -1,4 +1,5 @@
 import AlarmClient from "./AlarmClient";
+import RelatedTools from "@/components/RelatedTools";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from "@/navigation";
@@ -234,6 +235,8 @@ export default async function AlarmPage(props: { params: Promise<{ locale: strin
                     <p className="seo-text">{t("seo.privacy.text")}</p>
                 </section>
             </article>
+
+            <RelatedTools currentHref="/alarm" />
         </>
     );
 }

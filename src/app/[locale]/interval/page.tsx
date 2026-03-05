@@ -145,6 +145,8 @@ const howtoStepKeys = ["step1", "step2", "step3", "step4"] as const;
 const usecaseKeys = ["tabata", "hiit", "crossfit", "running"] as const;
 const faqKeys = ["whatIsTabata", "hiitDiff", "customSettings", "pause", "mobile", "free"] as const;
 
+import RelatedTools from "@/components/RelatedTools";
+
 export default async function IntervalPage(props: { params: Promise<{ locale: string }> }) {
     const { locale } = await props.params;
     setRequestLocale(locale);
@@ -218,6 +220,8 @@ export default async function IntervalPage(props: { params: Promise<{ locale: st
                     <p className="seo-text">{t("seo.privacy.text")}</p>
                 </section>
             </article>
+
+            <RelatedTools currentHref="/interval" />
         </>
     );
 }

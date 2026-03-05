@@ -1,4 +1,5 @@
 import ServerTimeClient from "./ServerTimeClient";
+import RelatedTools from "@/components/RelatedTools";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from "@/navigation";
@@ -231,6 +232,8 @@ export default async function ServerTimePage(props: { params: Promise<{ locale: 
                     <p className="seo-text">{t("seo.privacy.text")}</p>
                 </section>
             </article>
+
+            <RelatedTools currentHref="/server-time" />
         </>
     );
 }

@@ -55,3 +55,23 @@ export function findToolByPathname(pathname: string): ToolDef | undefined {
 export function getAllToolHrefs(): string[] {
     return ['', ...ALL_TOOLS.map(t => t.href)];
 }
+
+// 각 페이지별 관련 도구 매핑
+export const RELATED_TOOLS: Record<string, string[]> = {
+    '/clock': ['/timer', '/pomodoro', '/dday-counter'],
+    '/stopwatch': ['/timer', '/pomodoro'],
+    '/timer': ['/pomodoro', '/interval', '/multi-timer'],
+    '/pomodoro': ['/timer', '/multi-timer'],
+    '/interval': ['/multi-timer', '/timer'],
+    '/multi-timer': ['/timer', '/pomodoro'],
+    '/alarm': ['/timer', '/server-time'],
+    '/server-time': ['/clock', '/alarm'],
+    '/dday-counter': ['/alarm', '/clock'],
+};
+
+export function getRelatedTools(href: string): ToolDef[] {
+    const relatedHrefs = RELATED_TOOLS[href] || [];
+    return relatedHrefs
+        .map(h => ALL_TOOLS.find(t => t.href === h))
+        .filter((t): t is ToolDef => t !== undefined);
+}

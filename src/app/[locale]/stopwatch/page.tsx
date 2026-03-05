@@ -1,4 +1,5 @@
 import StopwatchWrapper from "./StopwatchWrapper";
+import RelatedTools from "@/components/RelatedTools";
 import "./stopwatch.css";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -318,6 +319,8 @@ export default async function StopwatchPage({ params }: { params: Promise<{ loca
                         </p>
                     </section>
                 </article>
+
+                <RelatedTools currentHref="/stopwatch" />
             </div>
         </>
     );

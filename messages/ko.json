@@ -1850,5 +1850,50 @@
       "serverTime": "서버시간 / 티켓팅",
       "ddayCounter": "D-day 카운트다운"
     }
+  },
+  "RelatedTools": {
+    "title": "관련 도구"
+  },
+  "Homepage": {
+    "title": "Tani DevTool - 온라인 시간 도구 모음",
+    "description": "시계, 타이머, 스톱워치, 알람 등 다양한 시간 관련 도구를 무료로 사용하세요.",
+    "featuresTitle": "주요 특징",
+    "toolDescriptions": {
+      "clock": "세계 70개 이상 도시의 실시간 시간 확인",
+      "stopwatch": "밀리초 단위 정밀 시간 측정",
+      "timer": "원하는 시간을 설정하고 카운트다운",
+      "pomodoro": "25분 집중, 5분 휴식 생산성 기법",
+      "interval": "운동/학습용 반복 인터벌 타이머",
+      "multiTimer": "여러 타이머를 동시에 실행",
+      "alarm": "원하는 시간에 알람 설정",
+      "serverTime": "정확한 서버 시간으로 티켓팅 준비",
+      "ddayCounter": "중요한 날까지 남은 일수 카운트"
+    },
+    "features": {
+      "pwa": {
+        "name": "오프라인 지원",
+        "desc": "PWA로 설치하여 오프라인에서도 사용"
+      },
+      "darkMode": {
+        "name": "다크 모드",
+        "desc": "눈의 피로를 줄이는 다크 테마"
+      },
+      "responsive": {
+        "name": "반응형 디자인",
+        "desc": "모바일, 태블릿, PC 모두 최적화"
+      },
+      "multilang": {
+        "name": "다국어 지원",
+        "desc": "한국어와 영어 인터페이스"
+      },
+      "free": {
+        "name": "완전 무료",
+        "desc": "회원가입 없이 모든 기능 무료"
+      },
+      "fast": {
+        "name": "빠른 로딩",
+        "desc": "최적화된 성능으로 빠르게 시작"
+      }
+    }
   }
 }

@@ -1,11 +1,20 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
+import { ALL_TOOLS } from '@/config/tools';
 
 export default function Footer() {
     const t = useTranslations('Footer');
+    const tTools = useTranslations('Index.tools');
     return (
         <footer>
             <div className="container">
+                <div className="footer-tools">
+                    {ALL_TOOLS.map((tool) => (
+                        <Link key={tool.href} href={tool.href} prefetch={false}>
+                            {tTools(tool.labelKey)}
+                        </Link>
+                    ))}
+                </div>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 8, fontSize: '0.85rem' }}>
                     <Link href="/privacy" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('privacy')}</Link>
                     <span style={{ color: '#555' }}>|</span>

@@ -1,4 +1,5 @@
 import ClockView from "./ClockView";
+import RelatedTools from "@/components/RelatedTools";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from '@/navigation';
@@ -383,6 +384,8 @@ export default async function ClockPage(props: { params: Promise<{ locale: strin
                     </section>
                 </article>
             </section>
+
+            <RelatedTools currentHref="/clock" />
         </div>
     );
 }
