@@ -660,7 +660,12 @@ interface ControlButtonProps {
 
 const ControlButton: React.FC<ControlButtonProps> = ({ icon, onClick, title, theme }) => {
   return (
-    <button onClick={onClick} title={title} className={`${styles.controlBtn} ${styles[theme]}`}>
+    <button
+      onClick={onClick}
+      title={title}
+      aria-label={title}
+      className={`${styles.controlBtn} ${styles[theme]}`}
+    >
       {icon}
     </button>
   );

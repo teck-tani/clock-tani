@@ -78,13 +78,19 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <meta name="google-adsense-account" content="ca-pub-4836555208250151" />
         <meta name="google-site-verification" content="lW_RIa_R307p6URsjv8k_taWgR3nVxXrNgbQHbuGmuM" />
         <meta name="naver-site-verification" content="8efdf91d89be6f86112f5bac1d571c04fc9f9621" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <style dangerouslySetInnerHTML={{ __html: `
+          html { scroll-behavior: auto; }
+          body { font-family: ${systemFontStack}; }
+          * { scroll-behavior: auto; }
+        ` }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }} />
       </head>
       <body style={{ fontFamily: systemFontStack }}>
         <NextIntlClientProvider messages={allMessages}>
           <ThemeProvider>
               <div id="top-container"><Header /></div>
-              <main>{children}</main>
+              <main role="main">{children}</main>
               <div id="footer-container"><Footer /></div>
               <LazyFeedbackButton />
           </ThemeProvider>

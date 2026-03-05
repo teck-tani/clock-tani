@@ -2695,3 +2695,65 @@ body[data-theme="dark"] .share-btn:hover:not(:disabled) {
     }
 }
 
+/* ============================================
+   Performance Optimizations
+   ============================================ */
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Optimize transitions for performance */
+button, a, [role="button"] {
+    will-change: auto;
+}
+
+button:hover, a:hover, [role="button"]:hover {
+    will-change: transform, background-color;
+}
+
+/* Lazy load images more efficiently */
+img[loading="lazy"] {
+    content-visibility: auto;
+}
+
+/* Optimize SVG rendering */
+svg {
+    shape-rendering: crispEdges;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+}
+
+/* Optimize text rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+}
+
+/* Optimize animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Reduce shadow complexity on mobile */
+@media (max-width: 768px) {
+    *:not(button):not(a) {
+        box-shadow: none !important;
+    }
+}
+
+/* Contain paint for better performance */
+main {
+    contain: layout style paint;
+}
+
