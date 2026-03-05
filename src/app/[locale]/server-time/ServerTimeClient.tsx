@@ -40,7 +40,9 @@ export default function ServerTimeClient() {
   const [countdownTotal, setCountdownTotal] = useState<number>(0);
 
   // Sound/vibration alert state
-  const [soundEnabled, setSoundEnabled] = useState(true);
+  const [soundEnabled, setSoundEnabled] = useState(() => {
+    try { const v = localStorage.getItem("servertime_sound"); if (v !== null) return v === "true"; } catch {} return true;
+  });
   const goAlertFiredRef = useRef(false);
   const audioCtxRef = useRef<AudioContext | null>(null);
 
@@ -157,6 +159,11 @@ export default function ServerTimeClient() {
     localStorage.setItem("servertime_m", String(targetMinute));
     localStorage.setItem("servertime_s", String(targetSecond));
   }, [targetHour, targetMinute, targetSecond]);
+
+  // Save sound toggle to localStorage
+  useEffect(() => {
+    try { localStorage.setItem("servertime_sound", String(soundEnabled)); } catch {}
+  }, [soundEnabled]);
 
   // ===== Animation Loop (requestAnimationFrame) =====
   useEffect(() => {

@@ -9,6 +9,7 @@ const AMBIENT_ICONS: Record<AmbientType, string> = {
     rain: "🌧️", cafe: "☕", whiteNoise: "📻", fire: "🔥", ocean: "🌊", forest: "🌲",
 };
 const AMBIENT_TYPES: AmbientType[] = ["rain", "cafe", "whiteNoise", "fire", "ocean", "forest"];
+const AMBIENT_STORAGE_KEY = "ambient_settings";
 
 const AMBIENT_FILES: Record<AmbientType, string> = {
     rain: "/sounds/ambient/rain.mp3",
@@ -22,7 +23,12 @@ const AMBIENT_FILES: Record<AmbientType, string> = {
 export default function AmbientPlayer({ mode }: { mode: string }) {
     const t = useTranslations("Clock.Timer.ambient");
     const [active, setActive] = useState<AmbientType | null>(null);
-    const [volume, setVolume] = useState(30);
+    const [volume, setVolume] = useState(() => {
+        try { const s = localStorage.getItem(AMBIENT_STORAGE_KEY); if (s) return JSON.parse(s).volume ?? 30; } catch {} return 30;
+    });
+    const [savedType, setSavedType] = useState<AmbientType | null>(() => {
+        try { const s = localStorage.getItem(AMBIENT_STORAGE_KEY); if (s) return JSON.parse(s).type ?? null; } catch {} return null;
+    });
     const [loading, setLoading] = useState(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -58,13 +64,22 @@ export default function AmbientPlayer({ mode }: { mode: string }) {
     }, [stop, volume]);
 
     const toggle = useCallback((type: AmbientType) => {
-        if (active === type) stop(); else play(type);
-    }, [active, stop, play]);
+        if (active === type) {
+            stop();
+            setSavedType(null);
+            try { localStorage.setItem(AMBIENT_STORAGE_KEY, JSON.stringify({ volume, type: null })); } catch {}
+        } else {
+            play(type);
+            setSavedType(type);
+            try { localStorage.setItem(AMBIENT_STORAGE_KEY, JSON.stringify({ volume, type })); } catch {}
+        }
+    }, [active, stop, play, volume]);
 
-    // 볼륨 변경 시 반영
+    // 볼륨 변경 시 반영 + 저장
     useEffect(() => {
         if (audioRef.current) audioRef.current.volume = volume / 100;
-    }, [volume]);
+        try { localStorage.setItem(AMBIENT_STORAGE_KEY, JSON.stringify({ volume, type: active })); } catch {}
+    }, [volume, active]);
 
     // 탭(모드) 전환 시 배경음 정지
     const prevModeRef = useRef(mode);

@@ -187,6 +187,20 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 if (s.pomoPhase) setPomoPhase(s.pomoPhase);
                 if (s.pomoSession) setPomoSession(s.pomoSession);
                 if (s.inputValues) setInputValues(s.inputValues);
+                if (s.intervalWork) setIntervalWork(s.intervalWork);
+                if (s.intervalRest) setIntervalRest(s.intervalRest);
+                if (s.intervalRounds) setIntervalRounds(s.intervalRounds);
+                if (s.intervalCurrentRound) setIntervalCurrentRound(s.intervalCurrentRound);
+                if (s.multiTimers && Array.isArray(s.multiTimers)) {
+                    const now = Date.now();
+                    setMultiTimers(s.multiTimers.map((t: MultiTimer) => {
+                        if (t.isRunning && t.endTime) {
+                            const remaining = Math.max(0, Math.ceil((t.endTime - now) / 1000));
+                            return remaining > 0 ? { ...t, timeLeft: remaining } : { ...t, timeLeft: 0, isRunning: false };
+                        }
+                        return t;
+                    }));
+                }
 
                 // 새 포맷: modeTimers 전체 복원
                 if (s.modeTimers) {
@@ -242,6 +256,8 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 mode, selectedSound, vibrationOn, volume, voiceCountdown,
                 pomoWork, pomoBreak, pomoLongBreak, pomoAutoStart,
                 pomoPhase, pomoSession, inputValues, modeTimers: saveable,
+                intervalWork, intervalRest, intervalRounds, intervalCurrentRound,
+                multiTimers: multiTimers.map(t => ({ ...t })),
             }));
         } catch (e) {
             if (e instanceof DOMException && e.name === 'QuotaExceededError') {
@@ -249,7 +265,8 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
             }
         }
     }, [mode, selectedSound, vibrationOn, volume, voiceCountdown, pomoWork, pomoBreak, pomoLongBreak,
-        pomoAutoStart, modeTimers, pomoPhase, pomoSession, inputValues]);
+        pomoAutoStart, modeTimers, pomoPhase, pomoSession, inputValues,
+        intervalWork, intervalRest, intervalRounds, intervalCurrentRound, multiTimers]);
 
     // ===== Sound =====
     const stopSound = useCallback(() => {
