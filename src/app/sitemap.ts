@@ -43,6 +43,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 lastModified: lastModifiedDates[tool.path] || new Date('2024-12-01'),
                 changeFrequency: tool.changeFrequency,
                 priority: tool.priority,
+                alternates: {
+                    languages: {
+                        ko: `${baseUrl}/ko${tool.path}`,
+                        en: `${baseUrl}/en${tool.path}`,
+                    },
+                },
             });
         }
     }

@@ -14,13 +14,31 @@ const baseUrl = 'https://clock-tani.com';
 export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await props.params;
     const t = await getTranslations({ locale, namespace: 'Privacy.meta' });
+    const isKo = locale === 'ko';
+    const url = `${baseUrl}/${locale}/privacy`;
 
     return {
         title: t('title'),
         description: t('description'),
         alternates: {
-            canonical: `${baseUrl}/${locale}/privacy`,
-            languages: { 'ko': `${baseUrl}/ko/privacy`, 'en': `${baseUrl}/en/privacy`, 'x-default': `${baseUrl}/ko/privacy` },
+            canonical: url,
+            languages: { 'ko': `${baseUrl}/ko/privacy`, 'en': `${baseUrl}/en/privacy` },
+        },
+        openGraph: {
+            title: t('title'),
+            description: t('description'),
+            url,
+            siteName: 'Clock-Tani',
+            type: 'website',
+            locale: isKo ? 'ko_KR' : 'en_US',
+            alternateLocale: isKo ? 'en_US' : 'ko_KR',
+        },
+        twitter: {
+            card: 'summary',
+            title: t('title'),
+            description: t('description'),
+            site: '@teck_tani',
+            creator: '@teck_tani',
         },
         robots: { index: true, follow: true },
     };

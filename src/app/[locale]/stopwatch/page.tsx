@@ -33,7 +33,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
             languages: {
                 'ko': `${baseUrl}/ko/stopwatch`,
                 'en': `${baseUrl}/en/stopwatch`,
-                'x-default': `${baseUrl}/ko/stopwatch`,
             },
         },
         openGraph: {

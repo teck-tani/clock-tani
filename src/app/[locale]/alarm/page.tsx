@@ -30,7 +30,6 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             languages: {
                 ko: `${baseUrl}/ko/alarm`,
                 en: `${baseUrl}/en/alarm`,
-                "x-default": `${baseUrl}/ko/alarm`,
             },
         },
         openGraph: {
