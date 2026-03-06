@@ -4,6 +4,7 @@ const baseUrl = 'https://clock-tani.com';
 
 const locales = ['ko', 'en'];
 const tools = [
+    { path: '', priority: 1.0, changeFrequency: 'daily' as const },
     { path: '/clock', priority: 1.0, changeFrequency: 'daily' as const },
     { path: '/stopwatch', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/timer', priority: 0.8, changeFrequency: 'monthly' as const },
