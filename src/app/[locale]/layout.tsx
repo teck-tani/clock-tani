@@ -22,16 +22,34 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'Meta' });
   const baseUrl = 'https://clock-tani.com';
+  const isKo = locale === 'ko';
+  const url = `${baseUrl}/${locale}`;
   return {
     metadataBase: new URL(baseUrl),
     title: t('defaultTitle'),
     description: t('defaultDescription'),
     alternates: {
-      canonical: `${baseUrl}/${locale}`,
+      canonical: url,
       languages: {
         'ko': `${baseUrl}/ko`,
         'en': `${baseUrl}/en`,
       },
+    },
+    openGraph: {
+      title: t('defaultTitle'),
+      description: t('defaultDescription'),
+      url,
+      siteName: 'Clock-Tani',
+      type: 'website',
+      locale: isKo ? 'ko_KR' : 'en_US',
+      alternateLocale: isKo ? 'en_US' : 'ko_KR',
+    },
+    twitter: {
+      card: 'summary',
+      title: t('defaultTitle'),
+      description: t('defaultDescription'),
+      site: '@teck_tani',
+      creator: '@teck_tani',
     },
   };
 }

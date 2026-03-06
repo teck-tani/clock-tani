@@ -47,8 +47,8 @@
     },
     "Main": {
       "meta": {
-        "title": "Online Clock - Real-time World Clock & Digital Clock | Exam & Ticketing Timer",
-        "description": "Precision online clock optimized for ticketing, exams, and tests. Check time accurately to the second in real-time. Display 70+ world city times simultaneously with digital segment display.",
+        "title": "Online Clock - World Clock & Digital Clock | Clock-Tani",
+        "description": "Precision online clock for ticketing, exams, and tests. Check time to the second in real-time. Display 70+ world city times with digital segment display.",
         "keywords": "online clock, world clock, digital clock, ticketing clock, exam clock, test clock, precise clock, world time, current time, accurate time, real-time clock",
         "ogTitle": "Online Clock | Real-time World Clock - For Ticketing & Exams",
         "ogDescription": "Check 70+ world city times in real-time with a beautiful digital segment display. Dark mode supported."
@@ -210,8 +210,8 @@
     },
     "Stopwatch": {
       "meta": {
-        "title": "Online Stopwatch - Study Time & Workout Lap Time Measurement (PC/Mobile)",
-        "description": "Online stopwatch optimized for study time tracking and workout lap time recording. Millisecond precision measurement, fullscreen mode for better focus. Essential for study tracking!",
+        "title": "Online Stopwatch - Study & Workout Lap Timer",
+        "description": "Online stopwatch for study time tracking and workout lap recording. Millisecond precision, fullscreen mode for focus. Free on PC and mobile.",
         "keywords": "online stopwatch, study stopwatch, workout stopwatch, lap time measurement, timer, time tracking, interval timer, study timer",
         "ogTitle": "Online Stopwatch | Study & Workout Time Measurement",
         "ogDescription": "Study time tracking, workout lap time measurement! Start efficient time management with millisecond precision stopwatch."
@@ -888,7 +888,7 @@
     "Pomodoro": {
       "meta": {
         "title": "Pomodoro Timer - Focus & Productivity Technique | Clock-Tani",
-        "description": "Boost productivity with the Pomodoro Technique: 25 min focus + 5 min break. Auto session switching, statistics, task list, and ambient sounds. Free online Pomodoro timer.",
+        "description": "Boost productivity with Pomodoro: 25 min focus + 5 min break. Auto session switching, statistics, task list, and ambient sounds. Free online timer.",
         "keywords": "pomodoro timer, pomodoro technique, focus timer, study timer, time management, productivity, 25 minute timer",
         "ogTitle": "Pomodoro Timer | Focus & Productivity",
         "ogDescription": "Boost productivity with 25 min focus + 5 min break cycles. Auto session switching and statistics included."
@@ -1095,7 +1095,7 @@
     },
     "MultiTimer": {
       "meta": {
-        "title": "Multi Timer - Run Multiple Timers Simultaneously | Clock-Tani",
+        "title": "Multi Timer - Run Multiple Timers | Clock-Tani",
         "description": "Run up to 4 independent timers simultaneously. Manage cooking, workouts, tasks, and more with this free online multi timer.",
         "keywords": "multi timer, multiple timers, simultaneous timers, cooking timer, parallel timers",
         "ogTitle": "Multi Timer | Run Multiple Timers",
@@ -1197,7 +1197,7 @@
   "Alarm": {
     "meta": {
       "title": "Online Alarm Clock - Free Web Alarm | teck-tani",
-      "description": "Free online alarm clock that works directly in your browser. Features 5 alarm sounds, quick presets, multiple alarms, and snooze. Use on PC and mobile without installation.",
+      "description": "Free online alarm clock in your browser. 5 alarm sounds, quick presets, multiple alarms, and snooze function. Use on PC and mobile without installation.",
       "keywords": "online alarm, alarm clock, web alarm, free alarm, set alarm, timer alarm, wake up alarm, reminder clock",
       "ogTitle": "Online Alarm Clock - Free Web Alarm",
       "ogDescription": "Free online alarm clock with 5 alarm sounds, multiple alarms, and snooze. Works in your browser."
@@ -1337,8 +1337,8 @@
   },
   "ServerTime": {
     "meta": {
-      "title": "Server Time / Ticketing Countdown - Millisecond Precision Clock | teck-tani",
-      "description": "Check server-synced precise time in milliseconds. Countdown timer for ticketing, course registration, and more. Free to use on PC and mobile without installation.",
+      "title": "Server Time & Ticketing Countdown | Clock-Tani",
+      "description": "Check server-synced precise time in milliseconds. Countdown timer for ticketing and course registration. Free to use on PC and mobile.",
       "keywords": "server time, precise time, millisecond clock, ticketing timer, countdown, NTP time, accurate time, server clock",
       "ogTitle": "Server Time / Ticketing Countdown",
       "ogDescription": "Server-synced millisecond precision time with ticketing countdown. Free online tool."
@@ -1480,7 +1480,7 @@
   "DdayCounter": {
     "meta": {
       "title": "D-day Countdown | Date Calculator - Track Days Remaining",
-      "description": "Track the days remaining until important dates in real-time. Manage up to 20 events including exams, birthdays, anniversaries, travel, and work deadlines with D-day countdown.",
+      "description": "Track days remaining until important dates in real-time. Manage up to 20 events — exams, birthdays, anniversaries, travel, and deadlines with D-day countdown.",
       "keywords": "D-day calculator, countdown timer, date calculator, D-day counter, anniversary calculator, days remaining",
       "ogTitle": "D-day Countdown | Track Days Remaining",
       "ogDescription": "Track days until exams, anniversaries, and travel dates in real-time. Free D-day countdown tool."
@@ -1753,7 +1753,7 @@
   "Terms": {
     "meta": {
       "title": "Terms of Service | Clock-Tani",
-      "description": "Terms of Service for Clock-Tani online clock service. Read about service usage conditions, user rights and responsibilities, disclaimers, copyright policies, and general terms of use."
+      "description": "Terms of Service for Clock-Tani online clock service. Service usage conditions, user rights, disclaimers, and copyright policies explained."
     },
     "title": "Terms of Service",
     "lastUpdated": "Last updated: March 1, 2025",
@@ -1803,7 +1803,7 @@
   "About": {
     "meta": {
       "title": "About | Clock-Tani",
-      "description": "Clock-Tani provides free online time tools including clocks, timers, stopwatch, alarms, Pomodoro, and D-Day countdown. No installation needed — use directly in your browser on any device."
+      "description": "Clock-Tani provides free online time tools: clocks, timers, stopwatch, alarms, Pomodoro, and D-Day countdown. No installation needed — use in your browser."
     },
     "title": "About Clock-Tani",
     "description": "Clock-Tani provides a variety of free time tools in one website for your daily needs.",
