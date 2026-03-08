@@ -88,13 +88,19 @@ export default function ServerTimeClient() {
   // ===== Server Time Sync =====
   const measureOffset = useCallback(async (apiUrl: string, parseTimestamp: (data: unknown) => number) => {
     const before = Date.now();
-    const response = await fetch(apiUrl);
-    if (!response.ok) throw new Error("Sync failed");
-    const data = await response.json();
-    const after = Date.now();
-    const latency = (after - before) / 2;
-    const serverTimeMs = parseTimestamp(data);
-    return { offset: serverTimeMs + latency - after, latency };
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    try {
+      const response = await fetch(apiUrl, { signal: controller.signal });
+      if (!response.ok) throw new Error("Sync failed");
+      const data = await response.json();
+      const after = Date.now();
+      const latency = (after - before) / 2;
+      const serverTimeMs = parseTimestamp(data);
+      return { offset: serverTimeMs + latency - after, latency };
+    } finally {
+      clearTimeout(timeout);
+    }
   }, []);
 
   const syncWithServer = useCallback(async () => {
@@ -103,6 +109,7 @@ export default function ServerTimeClient() {
     const sources = [
       { url: "/api/server-time", parse: (d: { timestamp: number }) => d.timestamp },
       { url: "https://worldtimeapi.org/api/timezone/Asia/Seoul", parse: (d: { datetime: string }) => new Date(d.datetime).getTime() },
+      { url: "https://timeapi.io/api/time/current/zone?timeZone=Asia/Seoul", parse: (d: { dateTime: string }) => new Date(d.dateTime + "+09:00").getTime() },
     ];
 
     for (const source of sources) {

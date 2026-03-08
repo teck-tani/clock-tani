@@ -8,27 +8,9 @@
 
 ### A. 구글 서치콘솔 심화 세팅
 
-#### 1️⃣ 모든 페이지 수동 색인 요청
-- [ ] 총 20개 URL 모두 색인 요청 (ko/en x 10페이지)
+#### 1️⃣ 나머지 en URL 색인 요청 (7개)
 
-**수동 색인 요청할 URL 목록:**
 ```
-한국어 (ko):
-- [ ] https://clock-tani.com/ko/clock
-- [ ] https://clock-tani.com/ko/stopwatch
-- [ ] https://clock-tani.com/ko/timer
-- [ ] https://clock-tani.com/ko/pomodoro
-- [ ] https://clock-tani.com/ko/interval
-- [ ] https://clock-tani.com/ko/multi-timer
-- [ ] https://clock-tani.com/ko/alarm
-- [ ] https://clock-tani.com/ko/server-time
-- [ ] https://clock-tani.com/ko/dday-counter
-- [ ] https://clock-tani.com/ko
-
-영어 (en):
-- [ ] https://clock-tani.com/en/clock
-- [ ] https://clock-tani.com/en/stopwatch
-- [ ] https://clock-tani.com/en/timer
 - [ ] https://clock-tani.com/en/pomodoro
 - [ ] https://clock-tani.com/en/interval
 - [ ] https://clock-tani.com/en/multi-timer
@@ -45,16 +27,7 @@
 4. 위 URL 하나씩 복사 붙여넣기
 5. "색인 생성 요청" 클릭
 
-#### 2️⃣ 사이트맵 제출 확인
-- [ ] 사이트맵 이미 제출되었는지 확인
-- [ ] 미제출 시: https://clock-tani.com/sitemap.xml 제출
-
-**작업 방법:**
-1. Google Search Console → 좌측 메뉴 "사이트맵"
-2. "사이트맵 URL 입력"
-3. `https://clock-tani.com/sitemap.xml` 입력 후 제출
-
-#### 3️⃣ Core Web Vitals 보고서 확인
+#### 2️⃣ Core Web Vitals 보고서 확인
 - [ ] 모바일 Core Web Vitals 점수 확인
 - [ ] 데스크톱 Core Web Vitals 점수 확인
 - [ ] LCP, CLS, INP 오류 항목 확인
@@ -64,7 +37,7 @@
 2. 각 메트릭 확인
 3. 개선이 필요하면 메모
 
-#### 4️⃣ 모바일 사용성 오류 확인
+#### 3️⃣ 모바일 사용성 오류 확인
 - [ ] 모바일 사용성 오류 0개 목표
 - [ ] 오류가 있으면 항목 확인
 
@@ -76,19 +49,13 @@
 
 ### B. 기술 SEO 보완 확인
 
-#### 1️⃣ sitemap.ts 수정 상태 확인
-- [x] ✅ 완료: `lastModified`를 `new Date()`에서 고정 날짜로 변경
-- [x] ✅ 각 페이지별 실제 수정일로 설정
-
-**파일:** `src/app/sitemap.ts`
-
-#### 2️⃣ robots.txt 점검
+#### 1️⃣ robots.txt 점검
 - [ ] `https://clock-tani.com/robots.txt` 접속 후 확인
 - [ ] `Sitemap: https://clock-tani.com/sitemap.xml` 명시 확인
 - [ ] `User-agent: *` 아래 불필요한 차단 없는지 확인
 - [ ] `/api`, `/_next` 등 내부 경로만 차단되어 있는지 확인
 
-#### 3️⃣ 페이지별 canonical 태그 점검
+#### 2️⃣ 페이지별 canonical 태그 점검
 - [ ] `/clock` 페이지 검사
 - [ ] `/stopwatch` 페이지 검사
 - [ ] `/timer` 페이지 검사
@@ -105,7 +72,7 @@
 3. URL이 절대 경로 `https://`로 시작하는지 확인
 4. `x-default` hreflang이 `/ko/clock` 형식인지 확인
 
-#### 4️⃣ OpenGraph 이미지 존재 확인
+#### 3️⃣ OpenGraph 이미지 존재 확인
 - [ ] `/public/og/clock.png` 존재 확인 (1200x630)
 - [ ] `/public/og/stopwatch.png` 확인
 - [ ] `/public/og/timer.png` 확인
@@ -120,7 +87,7 @@
 - `public` 폴더에서 직접 파일 확인
 - 또는 브라우저 개발자도구 Network 탭에서 이미지 로드 확인
 
-#### 5️⃣ 루트 리다이렉션 확인
+#### 4️⃣ 루트 리다이렉션 확인
 - [ ] `https://clock-tani.com` 접속 → `/ko/clock` 자동 리다이렉트 확인
 - [ ] `https://clock-tani.com/ko` 접속 → `/ko/clock` 자동 리다이렉트 확인
 
@@ -263,13 +230,10 @@
 
 ### D. JSON-LD Schema 전 페이지 완성 확인
 
-✅ **이미 구현된 부분:**
 - [ ] FAQPage schema (모든 페이지)
 - [ ] HowTo schema (모든 페이지)
 - [ ] WebApplication schema (모든 페이지)
 - [ ] BreadcrumbList schema (/clock에 있음, 필요시 확산)
-
-**확인 사항:**
 - [ ] 각 페이지 Rich Results Test에서 오류 없는지 확인
 
 **Rich Results Test:** https://search.google.com/test/rich-results
@@ -369,7 +333,6 @@
 - [ ] 연락처 정보 명시
 
 #### 3️⃣ 신뢰도 신호
-- [ ] HTTPS 확인 (✅ Vercel 기본)
 - [ ] Contact 페이지 또는 피드백 폼 활성화
 - [ ] 소셜 미디어 링크 추가
 
@@ -419,18 +382,10 @@
 
 **마지막 업데이트:** 2026-03-06
 
-### 완료된 항목
-- [x] sitemap.ts lastModified 고정 날짜로 수정
-- [x] 모든 페이지 SEO 콘텐츠 확인 (이미 구현됨)
-- [x] JSON-LD schemas 확인 (이미 구현됨)
-
 ### 다음 할 일
-- [ ] A단계: 구글 서치콘솔 20개 URL 색인 요청
-- [ ] A단계: robots.txt, canonical 태그 점검
-- [ ] A단계: Core Web Vitals 확인
-
-### 주요 진행 이슈
-(완료 후 기록)
+- [ ] en 나머지 7개 URL 색인 요청 (en/pomodoro ~ en/)
+- [ ] robots.txt, canonical 태그 점검
+- [ ] Core Web Vitals 확인
 
 ---
 
