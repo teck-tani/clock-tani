@@ -1228,9 +1228,8 @@
       "sisfus": "Sisfus"
     },
     "vibration": "Vibration",
-    "vibrationOn": "On (Mobile)",
+    "vibrationOn": "On",
     "vibrationOff": "Off",
-    "vibrationUnsupported": "Not supported on this device",
     "preview": "Preview",
     "addAlarm": "Add Alarm",
     "quickPresets": "Quick Set",

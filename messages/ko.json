@@ -1228,9 +1228,8 @@
       "sisfus": "시스푸스"
     },
     "vibration": "진동",
-    "vibrationOn": "켜짐 (모바일)",
+    "vibrationOn": "켜짐",
     "vibrationOff": "꺼짐",
-    "vibrationUnsupported": "이 기기에서 지원하지 않음",
     "preview": "미리듣기",
     "addAlarm": "알람 추가",
     "quickPresets": "빠른 설정",

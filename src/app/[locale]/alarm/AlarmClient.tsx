@@ -57,6 +57,7 @@ export default function AlarmClient() {
   const [inputLabel, setInputLabel] = useState("");
   const [inputSound, setInputSound] = useState<SoundType>("soft-bells");
   const [inputVibration, setInputVibration] = useState(true);
+  const [supportsVibration, setSupportsVibration] = useState(false);
 
   // Remaining time text for the time picker
   const remainingTimeText = useMemo(() => {
@@ -118,6 +119,7 @@ export default function AlarmClient() {
       // ignore
     }
     setHydrated(true);
+    setSupportsVibration("vibrate" in navigator);
 
     if (typeof Notification !== "undefined") {
       setNotifPermission(Notification.permission);
@@ -662,29 +664,28 @@ export default function AlarmClient() {
           </div>
         </div>
 
-        {/* Vibration Toggle */}
-        <div className={styles.formRow}>
-          <div className={styles.inputGroup} style={{ flex: 1 }}>
-            <span className={styles.inputLabel}>{t("vibration")}</span>
-            <div className={styles.vibrationRow}>
-              <button
-                className={`${styles.vibrationToggle} ${inputVibration ? styles.vibrationToggleActive : ""}`}
-                onClick={() => setInputVibration(!inputVibration)}
-                role="switch"
-                aria-checked={inputVibration}
-                aria-label={t("vibration")}
-              >
-                <span className={styles.vibrationKnob} />
-              </button>
-              <span className={styles.vibrationLabel}>
-                {inputVibration ? t("vibrationOn") : t("vibrationOff")}
-              </span>
-              {!("vibrate" in navigator) && (
-                <span className={styles.vibrationUnsupported}>{t("vibrationUnsupported")}</span>
-              )}
+        {/* Vibration Toggle - only shown on devices that support vibration */}
+        {supportsVibration && (
+          <div className={styles.formRow}>
+            <div className={styles.inputGroup} style={{ flex: 1 }}>
+              <span className={styles.inputLabel}>{t("vibration")}</span>
+              <div className={styles.vibrationRow}>
+                <button
+                  className={`${styles.vibrationToggle} ${inputVibration ? styles.vibrationToggleActive : ""}`}
+                  onClick={() => setInputVibration(!inputVibration)}
+                  role="switch"
+                  aria-checked={inputVibration}
+                  aria-label={t("vibration")}
+                >
+                  <span className={styles.vibrationKnob} />
+                </button>
+                <span className={styles.vibrationLabel}>
+                  {inputVibration ? t("vibrationOn") : t("vibrationOff")}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {alarms.length >= MAX_ALARMS ? (
           <div className={styles.maxWarning}>{t("maxAlarms")}</div>
