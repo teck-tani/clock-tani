@@ -101,6 +101,9 @@ export default function SoundPicker({
       {/* Vibration Toggle - mobile only */}
       {supportsVibration && (
         <div className={styles.vibrationRow}>
+          <span className={styles.vibrationLabel}>
+            {t("vibration")}
+          </span>
           <button
             className={`${styles.vibrationToggle} ${vibration ? styles.vibrationToggleActive : ""}`}
             onClick={() => onVibrationChange(!vibration)}
@@ -110,9 +113,6 @@ export default function SoundPicker({
           >
             <span className={styles.vibrationKnob} />
           </button>
-          <span className={styles.vibrationLabel}>
-            {vibration ? t("vibrationOn") : t("vibrationOff")}
-          </span>
         </div>
       )}
     </>

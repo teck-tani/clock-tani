@@ -353,25 +353,15 @@ export default function AlarmClient() {
     setInputLabel("");
   }, [alarms.length, inputHour, inputMinute, inputLabel, inputSound, inputVibration]);
 
-  // Quick preset
-  const addPreset = useCallback(
+  // Quick preset — only updates the time picker, does not add an alarm
+  const applyPreset = useCallback(
     (minutes: number) => {
-      if (alarms.length >= MAX_ALARMS) return;
-
       const target = new Date(Date.now() + minutes * 60000);
-      const newAlarm: Alarm = {
-        id: Date.now().toString(),
-        hour: target.getHours(),
-        minute: target.getMinutes(),
-        label: minutes >= 60 ? t("hoursLater", { hour: minutes / 60 }) : t("minutesLater", { min: minutes }),
-        sound: inputSound,
-        vibration: inputVibration,
-        enabled: true,
-      };
-
-      setAlarms((prev) => [...prev, newAlarm]);
+      setInputHour(target.getHours());
+      setInputMinute(target.getMinutes());
+      setInputLabel(minutes >= 60 ? t("hoursLater", { hour: minutes / 60 }) : t("minutesLater", { min: minutes }));
     },
-    [alarms.length, inputSound, inputVibration, t]
+    [t]
   );
 
   const toggleAlarm = useCallback((id: string) => {
@@ -535,7 +525,7 @@ export default function AlarmClient() {
         <div className={styles.presetsTitle}>{t("quickPresets")}</div>
         <div className={styles.presetsGrid}>
           {PRESETS.map((min) => (
-            <button key={min} className={styles.presetBtn} onClick={() => addPreset(min)} disabled={alarms.length >= MAX_ALARMS}>
+            <button key={min} className={styles.presetBtn} onClick={() => applyPreset(min)}>
               {min >= 60 ? t("hourLater", { hour: min / 60 }) : t("minutesLater", { min })}
             </button>
           ))}
