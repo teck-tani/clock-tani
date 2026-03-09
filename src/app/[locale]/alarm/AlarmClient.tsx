@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import styles from "./alarm.module.css";
+import ScrollWheelPicker from "./ScrollWheelPicker";
+import pickerStyles from "./scrollWheelPicker.module.css";
 
 // ===== Types =====
 interface Alarm {
@@ -139,6 +141,29 @@ export default function AlarmClient() {
   const [inputMinute, setInputMinute] = useState(0);
   const [inputLabel, setInputLabel] = useState("");
   const [inputSound, setInputSound] = useState<SoundType>("classic");
+
+  // Remaining time text for the time picker
+  const remainingTimeText = useMemo(() => {
+    if (!now) return "";
+    const alarmDate = new Date(now);
+    alarmDate.setHours(inputHour, inputMinute, 0, 0);
+    if (alarmDate <= now) {
+      alarmDate.setDate(alarmDate.getDate() + 1);
+    }
+    const diffMs = alarmDate.getTime() - now.getTime();
+    const totalMin = Math.floor(diffMs / 60000);
+    const h = Math.floor(totalMin / 60);
+    const m = totalMin % 60;
+    if (locale === "ko") {
+      if (h > 0 && m > 0) return `${h}시간 ${m}분 후 울림`;
+      if (h > 0) return `${h}시간 후 울림`;
+      return `${m}분 후 울림`;
+    } else {
+      if (h > 0 && m > 0) return `Rings in ${h}h ${m}m`;
+      if (h > 0) return `Rings in ${h}h`;
+      return `Rings in ${m}m`;
+    }
+  }, [now, inputHour, inputMinute, locale]);
 
   // Alarms
   const [alarms, setAlarms] = useState<Alarm[]>([]);
@@ -350,6 +375,7 @@ export default function AlarmClient() {
       setAlarms((prev) => prev.map((a) => (a.id === ringingAlarmId ? { ...a, enabled: false } : a)));
     }
     setRingingAlarmId(null);
+    window.scrollTo(0, 0);
   }, [ringingAlarmId, stopCurrentSound]);
 
   const snoozeAlarm = useCallback(() => {
@@ -365,6 +391,7 @@ export default function AlarmClient() {
       );
     }
     setRingingAlarmId(null);
+    window.scrollTo(0, 0);
   }, [ringingAlarmId, stopCurrentSound]);
 
   // Add alarm
@@ -436,6 +463,18 @@ export default function AlarmClient() {
       setIsPreviewing(false);
     }, 3000);
   }, [isPreviewing, inputSound, playSound, stopCurrentSound]);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (ringingAlarmId) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [ringingAlarmId]);
 
   // Modal focus trap
   useEffect(() => {
@@ -547,32 +586,33 @@ export default function AlarmClient() {
           {t("setAlarm")}
         </div>
 
-        <div className={styles.formRow}>
-          <div className={styles.timeInputGroup}>
-            <div className={styles.inputGroup}>
-              <span className={styles.inputLabel}>{t("hour")}</span>
-              <input
-                type="number"
-                className={styles.timeInput}
-                min={0}
-                max={23}
-                value={inputHour}
-                onChange={(e) => setInputHour(Math.min(23, Math.max(0, parseInt(e.target.value) || 0)))}
-              />
-            </div>
-            <span className={styles.timeSeparator}>:</span>
-            <div className={styles.inputGroup}>
-              <span className={styles.inputLabel}>{t("minute")}</span>
-              <input
-                type="number"
-                className={styles.timeInput}
-                min={0}
-                max={59}
-                value={inputMinute}
-                onChange={(e) => setInputMinute(Math.min(59, Math.max(0, parseInt(e.target.value) || 0)))}
-              />
-            </div>
+        <div className={styles.timeInputGroup}>
+          <div className={pickerStyles.timePickerRow}>
+            <ScrollWheelPicker
+              value={inputHour}
+              onChange={setInputHour}
+              min={0}
+              max={23}
+              label={t("hour")}
+            />
+            <span className={pickerStyles.timePickerSeparator}>:</span>
+            <ScrollWheelPicker
+              value={inputMinute}
+              onChange={setInputMinute}
+              min={0}
+              max={59}
+              label={t("minute")}
+            />
           </div>
+          {remainingTimeText && (
+            <div className={pickerStyles.remainingTime}>
+              <span className={pickerStyles.remainingIcon}>🔔</span>
+              {remainingTimeText}
+            </div>
+          )}
+        </div>
+
+        <div className={styles.formRow}>
           <div className={styles.inputGroup} style={{ flex: 1 }}>
             <span className={styles.inputLabel}>{t("label")}</span>
             <input
