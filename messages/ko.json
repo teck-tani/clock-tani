@@ -1211,11 +1211,21 @@
     "labelPlaceholder": "알람 이름 (선택사항)",
     "sound": "알람음",
     "sounds": {
-      "classic": "클래식 벨",
-      "digital": "디지털 비프",
-      "gentle": "부드러운 차임",
-      "bird": "새소리",
-      "school": "학교 종"
+      "soft-bells": "소프트 벨",
+      "arpeggio": "아르페지오",
+      "good-morning": "굿모닝",
+      "solemn": "장엄한 종",
+      "cheerful": "경쾌한 톤",
+      "little-dwarf": "요정의 춤",
+      "discreet": "은은한 멜로디",
+      "lovingly": "사랑스럽게",
+      "rooster": "수탉 울음",
+      "early-sunrise": "아침 일출",
+      "swinging": "스윙 재즈",
+      "system-fault": "시스템 경고",
+      "martian-gun": "SF 효과음",
+      "loving-you": "달콤한 아침",
+      "sisfus": "시스푸스"
     },
     "preview": "미리듣기",
     "addAlarm": "알람 추가",
@@ -1253,8 +1263,8 @@
             "desc": "최대 10개의 알람을 동시에 설정하고 관리할 수 있습니다. 각 알람에 이름을 붙여 용도를 구분하세요."
           },
           "sounds": {
-            "title": "5종 알람음",
-            "desc": "클래식 벨, 디지털 비프, 부드러운 차임, 새소리, 학교 종 중 원하는 알람음을 선택할 수 있습니다."
+            "title": "15종 알람음",
+            "desc": "소프트 벨, 아르페지오, 굿모닝, 스윙 재즈, 수탉 울음 등 15가지 다양한 알람음 중 원하는 소리를 선택할 수 있습니다."
           },
           "presets": {
             "title": "빠른 프리셋",

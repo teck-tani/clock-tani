@@ -1211,11 +1211,21 @@
     "labelPlaceholder": "Alarm name (optional)",
     "sound": "Alarm Sound",
     "sounds": {
-      "classic": "Classic Bell",
-      "digital": "Digital Beep",
-      "gentle": "Gentle Chime",
-      "bird": "Morning Bird",
-      "school": "School Bell"
+      "soft-bells": "Soft Bells",
+      "arpeggio": "Arpeggio",
+      "good-morning": "Good Morning",
+      "solemn": "Solemn Bell",
+      "cheerful": "Cheerful",
+      "little-dwarf": "Little Dwarf",
+      "discreet": "Discreet",
+      "lovingly": "Lovingly",
+      "rooster": "Rooster",
+      "early-sunrise": "Early Sunrise",
+      "swinging": "Swinging Jazz",
+      "system-fault": "System Alert",
+      "martian-gun": "Sci-Fi Tone",
+      "loving-you": "Sweet Morning",
+      "sisfus": "Sisfus"
     },
     "preview": "Preview",
     "addAlarm": "Add Alarm",
@@ -1253,8 +1263,8 @@
             "desc": "Set and manage up to 10 alarms simultaneously. Label each alarm to distinguish its purpose."
           },
           "sounds": {
-            "title": "5 Alarm Sounds",
-            "desc": "Choose from Classic Bell, Digital Beep, Gentle Chime, Morning Bird, or School Bell for your alarm."
+            "title": "15 Alarm Sounds",
+            "desc": "Choose from 15 diverse alarm sounds including Soft Bells, Arpeggio, Swinging Jazz, Rooster, and more."
           },
           "presets": {
             "title": "Quick Presets",

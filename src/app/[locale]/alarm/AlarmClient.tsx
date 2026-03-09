@@ -16,117 +16,31 @@ interface Alarm {
   enabled: boolean;
 }
 
-type SoundType = "classic" | "digital" | "gentle" | "bird" | "school";
+// Sound types mapped to MP3 files in /sounds/
+const SOUND_LIST = [
+  "soft-bells",
+  "arpeggio",
+  "good-morning",
+  "solemn",
+  "cheerful",
+  "little-dwarf",
+  "discreet",
+  "lovingly",
+  "rooster",
+  "early-sunrise",
+  "swinging",
+  "system-fault",
+  "martian-gun",
+  "loving-you",
+  "sisfus",
+] as const;
 
-const SOUND_TYPES: SoundType[] = ["classic", "digital", "gentle", "bird", "school"];
+type SoundType = (typeof SOUND_LIST)[number];
+
 const PRESETS = [10, 30, 60, 120]; // minutes
 const MAX_ALARMS = 10;
 const STORAGE_KEY = "alarm_list";
 const SNOOZE_MINUTES = 5;
-
-// ===== Web Audio Alarm Sounds =====
-let audioCtx: AudioContext | null = null;
-
-function getAudioContext(): AudioContext {
-  if (!audioCtx) {
-    audioCtx = new AudioContext();
-  }
-  if (audioCtx.state === "suspended") {
-    audioCtx.resume();
-  }
-  return audioCtx;
-}
-
-function playDigitalBeep(ctx: AudioContext, duration: number): OscillatorNode {
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = "square";
-  osc.frequency.value = 800;
-  gain.gain.value = 0.15;
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  // Beep pattern: on/off
-  const now = ctx.currentTime;
-  for (let i = 0; i < duration * 2.5; i++) {
-    gain.gain.setValueAtTime(0.15, now + i * 0.4);
-    gain.gain.setValueAtTime(0, now + i * 0.4 + 0.2);
-  }
-
-  osc.start(now);
-  osc.stop(now + duration);
-  return osc;
-}
-
-function playGentleChime(ctx: AudioContext, duration: number): OscillatorNode {
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = "sine";
-  osc.frequency.value = 523;
-  gain.gain.value = 0.2;
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  const now = ctx.currentTime;
-  // Rising chime pattern
-  for (let i = 0; i < Math.floor(duration / 1.5); i++) {
-    const t = now + i * 1.5;
-    osc.frequency.setValueAtTime(523, t);
-    osc.frequency.linearRampToValueAtTime(784, t + 0.5);
-    gain.gain.setValueAtTime(0.2, t);
-    gain.gain.exponentialRampToValueAtTime(0.01, t + 1.3);
-    gain.gain.setValueAtTime(0.2, t + 1.5);
-  }
-
-  osc.start(now);
-  osc.stop(now + duration);
-  return osc;
-}
-
-function playBirdSound(ctx: AudioContext, duration: number): OscillatorNode {
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = "sine";
-  gain.gain.value = 0.12;
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  const now = ctx.currentTime;
-  // Bird trill pattern
-  for (let i = 0; i < duration * 3; i++) {
-    const t = now + i * 0.33;
-    osc.frequency.setValueAtTime(2000 + Math.random() * 1000, t);
-    osc.frequency.linearRampToValueAtTime(2500 + Math.random() * 500, t + 0.15);
-    gain.gain.setValueAtTime(0.12, t);
-    gain.gain.setValueAtTime(0, t + 0.2);
-    gain.gain.setValueAtTime(0.12, t + 0.25);
-  }
-
-  osc.start(now);
-  osc.stop(now + duration);
-  return osc;
-}
-
-function playSchoolBell(ctx: AudioContext, duration: number): OscillatorNode {
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = "triangle";
-  osc.frequency.value = 1200;
-  gain.gain.value = 0.18;
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-
-  const now = ctx.currentTime;
-  // Rapid bell ringing
-  for (let i = 0; i < duration * 5; i++) {
-    gain.gain.setValueAtTime(0.18, now + i * 0.2);
-    gain.gain.setValueAtTime(0.02, now + i * 0.2 + 0.1);
-  }
-
-  osc.start(now);
-  osc.stop(now + duration);
-  return osc;
-}
 
 // ===== Component =====
 export default function AlarmClient() {
@@ -140,7 +54,7 @@ export default function AlarmClient() {
   const [inputHour, setInputHour] = useState(7);
   const [inputMinute, setInputMinute] = useState(0);
   const [inputLabel, setInputLabel] = useState("");
-  const [inputSound, setInputSound] = useState<SoundType>("classic");
+  const [inputSound, setInputSound] = useState<SoundType>("soft-bells");
 
   // Remaining time text for the time picker
   const remainingTimeText = useMemo(() => {
@@ -177,12 +91,14 @@ export default function AlarmClient() {
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   // Audio refs
-  const classicAudioRef = useRef<HTMLAudioElement | null>(null);
-  const currentOscRef = useRef<OscillatorNode | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const alarmLoopRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const previewTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isPreviewing, setIsPreviewing] = useState(false);
   const firedAlarmsRef = useRef<Set<string>>(new Set());
+  const titleFlashRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const wakeLockRef = useRef<WakeLockSentinel | null>(null);
+  const originalFaviconRef = useRef<string>("");
 
   // Load alarms from localStorage
   useEffect(() => {
@@ -248,13 +164,35 @@ export default function AlarmClient() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [now, hydrated, ringingAlarmId]);
 
-  // Tab title update
+  // Tab title update with flashing when ringing
   useEffect(() => {
     if (!now) return;
 
     if (ringingAlarmId) {
+      const alarm = alarms.find((a) => a.id === ringingAlarmId);
+      const label = alarm?.label || t("alarmRinging");
+      const timeStr = alarm
+        ? `${String(alarm.hour).padStart(2, "0")}:${String(alarm.minute).padStart(2, "0")}`
+        : "";
+      let toggle = false;
+
+      // Set initial title
       document.title = `🔔 ${t("alarmRinging")}`;
-      return;
+
+      // Flash title every 500ms
+      titleFlashRef.current = setInterval(() => {
+        toggle = !toggle;
+        document.title = toggle
+          ? `🔔 ${t("alarmRinging")}`
+          : `⏰ ${timeStr} - ${label}`;
+      }, 500);
+
+      return () => {
+        if (titleFlashRef.current) {
+          clearInterval(titleFlashRef.current);
+          titleFlashRef.current = null;
+        }
+      };
     }
 
     const activeAlarms = alarms.filter((a) => a.enabled);
@@ -274,60 +212,22 @@ export default function AlarmClient() {
     document.title = t("meta.title");
   }, [now, alarms, ringingAlarmId, t]);
 
-  // Stop only audio/oscillator (not the alarm loop)
+  // Stop audio playback
   const stopAudioOnly = useCallback(() => {
-    if (classicAudioRef.current) {
-      classicAudioRef.current.pause();
-      classicAudioRef.current.currentTime = 0;
-    }
-    if (currentOscRef.current) {
-      try {
-        currentOscRef.current.stop();
-      } catch {
-        // already stopped
-      }
-      currentOscRef.current = null;
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
     }
   }, []);
 
-  // Play alarm sound
-  const playSound = useCallback((sound: SoundType, duration: number = 3) => {
+  // Play alarm sound (MP3)
+  const playSound = useCallback((sound: SoundType) => {
     stopAudioOnly();
-
-    if (sound === "classic") {
-      if (!classicAudioRef.current) {
-        classicAudioRef.current = new Audio("/alarm.mp3");
-      }
-      classicAudioRef.current.currentTime = 0;
-      classicAudioRef.current.play().catch(() => {
-        // mp3 로드 실패 시 Web Audio API fallback (gentle chime)
-        const ctx = getAudioContext();
-        currentOscRef.current = playGentleChime(ctx, duration);
-      });
-      return;
-    }
-
-    const ctx = getAudioContext();
-    let osc: OscillatorNode;
-
-    switch (sound) {
-      case "digital":
-        osc = playDigitalBeep(ctx, duration);
-        break;
-      case "gentle":
-        osc = playGentleChime(ctx, duration);
-        break;
-      case "bird":
-        osc = playBirdSound(ctx, duration);
-        break;
-      case "school":
-        osc = playSchoolBell(ctx, duration);
-        break;
-      default:
-        return;
-    }
-
-    currentOscRef.current = osc;
+    const audio = new Audio(`/sounds/${sound}.mp3`);
+    audioRef.current = audio;
+    audio.play().catch(() => {
+      // ignore autoplay block
+    });
   }, [stopAudioOnly]);
 
   // Stop all sound + alarm loop (for dismiss/snooze/cleanup)
@@ -338,6 +238,50 @@ export default function AlarmClient() {
       alarmLoopRef.current = null;
     }
   }, [stopAudioOnly]);
+
+  // Favicon helpers
+  const setAlarmFavicon = useCallback(() => {
+    // Save original favicon
+    const link = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+    if (link) originalFaviconRef.current = link.href;
+
+    // Create alarm favicon with canvas
+    const canvas = document.createElement("canvas");
+    canvas.width = 32;
+    canvas.height = 32;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    // Red circle background
+    ctx.beginPath();
+    ctx.arc(16, 16, 15, 0, Math.PI * 2);
+    ctx.fillStyle = "#ef4444";
+    ctx.fill();
+
+    // Bell icon (white)
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "20px serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("🔔", 16, 16);
+
+    const dataUrl = canvas.toDataURL("image/png");
+    if (link) {
+      link.href = dataUrl;
+    } else {
+      const newLink = document.createElement("link");
+      newLink.rel = "icon";
+      newLink.href = dataUrl;
+      document.head.appendChild(newLink);
+    }
+  }, []);
+
+  const restoreFavicon = useCallback(() => {
+    const link = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+    if (link && originalFaviconRef.current) {
+      link.href = originalFaviconRef.current;
+    }
+  }, []);
 
   const triggerAlarm = useCallback(
     (alarmId: string) => {
@@ -357,6 +301,9 @@ export default function AlarmClient() {
         navigator.vibrate([500, 200, 500, 200, 500]);
       }
 
+      // Change favicon to alarm icon
+      setAlarmFavicon();
+
       // Browser notification
       if (typeof Notification !== "undefined" && Notification.permission === "granted") {
         const label = alarm.label || t("alarmRinging");
@@ -366,20 +313,22 @@ export default function AlarmClient() {
         });
       }
     },
-    [alarms, playSound, t]
+    [alarms, playSound, setAlarmFavicon, t]
   );
 
   const dismissAlarm = useCallback(() => {
     stopCurrentSound();
+    restoreFavicon();
     if (ringingAlarmId) {
       setAlarms((prev) => prev.map((a) => (a.id === ringingAlarmId ? { ...a, enabled: false } : a)));
     }
     setRingingAlarmId(null);
     window.scrollTo(0, 0);
-  }, [ringingAlarmId, stopCurrentSound]);
+  }, [ringingAlarmId, stopCurrentSound, restoreFavicon]);
 
   const snoozeAlarm = useCallback(() => {
     stopCurrentSound();
+    restoreFavicon();
     if (ringingAlarmId) {
       const snoozeTime = new Date(Date.now() + SNOOZE_MINUTES * 60000);
       setAlarms((prev) =>
@@ -392,7 +341,7 @@ export default function AlarmClient() {
     }
     setRingingAlarmId(null);
     window.scrollTo(0, 0);
-  }, [ringingAlarmId, stopCurrentSound]);
+  }, [ringingAlarmId, stopCurrentSound, restoreFavicon]);
 
   // Add alarm
   const addAlarm = useCallback(() => {
@@ -457,11 +406,11 @@ export default function AlarmClient() {
     }
 
     setIsPreviewing(true);
-    playSound(inputSound, 3);
+    playSound(inputSound);
     previewTimeoutRef.current = setTimeout(() => {
       stopCurrentSound();
       setIsPreviewing(false);
-    }, 3000);
+    }, 5000);
   }, [isPreviewing, inputSound, playSound, stopCurrentSound]);
 
   // Lock body scroll when modal is open
@@ -505,6 +454,41 @@ export default function AlarmClient() {
     modal.addEventListener("keydown", handleKeyDown);
     return () => modal.removeEventListener("keydown", handleKeyDown);
   }, [ringingAlarmId]);
+
+  // Screen Wake Lock - prevent screen from turning off when alarms are active
+  useEffect(() => {
+    const hasActiveAlarm = alarms.some((a) => a.enabled);
+    if (!hasActiveAlarm || !("wakeLock" in navigator)) return;
+
+    let lock: WakeLockSentinel | null = null;
+
+    const requestWakeLock = async () => {
+      try {
+        lock = await navigator.wakeLock.request("screen");
+        wakeLockRef.current = lock;
+      } catch {
+        // Wake lock request failed (e.g., low battery)
+      }
+    };
+
+    requestWakeLock();
+
+    // Re-acquire wake lock when tab becomes visible again
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        requestWakeLock();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      if (lock) {
+        lock.release();
+        wakeLockRef.current = null;
+      }
+    };
+  }, [alarms]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -627,17 +611,37 @@ export default function AlarmClient() {
         </div>
 
         {/* Sound Selector */}
-        <div className={styles.soundRow}>
-          <select className={styles.soundSelect} value={inputSound} onChange={(e) => setInputSound(e.target.value as SoundType)}>
-            {SOUND_TYPES.map((s) => (
-              <option key={s} value={s}>
-                {t(`sounds.${s}`)}
-              </option>
-            ))}
-          </select>
-          <button className={`${styles.previewBtn} ${isPreviewing ? styles.previewBtnActive : ""}`} onClick={handlePreview}>
-            {isPreviewing ? "■" : "▶"} {t("preview")}
-          </button>
+        <div className={styles.formRow}>
+          <div className={styles.inputGroup} style={{ flex: 1 }}>
+            <span className={styles.inputLabel}>{t("sound")}</span>
+            <div className={styles.soundRow}>
+              <select className={styles.soundSelect} value={inputSound} onChange={(e) => {
+                const newSound = e.target.value as SoundType;
+                setInputSound(newSound);
+                if (isPreviewing) {
+                  stopCurrentSound();
+                  if (previewTimeoutRef.current) {
+                    clearTimeout(previewTimeoutRef.current);
+                    previewTimeoutRef.current = null;
+                  }
+                  setIsPreviewing(false);
+                }
+              }}>
+                {SOUND_LIST.map((s) => (
+                  <option key={s} value={s}>
+                    {t(`sounds.${s}`)}
+                  </option>
+                ))}
+              </select>
+              <button
+                className={`${styles.previewBtn} ${isPreviewing ? styles.previewBtnActive : ""}`}
+                onClick={handlePreview}
+                aria-label={t("preview")}
+              >
+                {isPreviewing ? "■" : "▶"}
+              </button>
+            </div>
+          </div>
         </div>
 
         {alarms.length >= MAX_ALARMS ? (
