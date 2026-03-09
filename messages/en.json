@@ -386,12 +386,29 @@
       },
       "sounds": {
         "title": "Alarm Sound & Settings",
-        "classic": "Classic",
-        "digital": "Digital",
-        "gentle": "Chime",
-        "bird": "Bird",
-        "school": "School Bell",
-        "vibration": "Vibration alert"
+        "picker": {
+          "sounds": {
+            "soft-bells": "Soft Bells",
+            "arpeggio": "Arpeggio",
+            "good-morning": "Good Morning",
+            "solemn": "Solemn Bell",
+            "cheerful": "Cheerful",
+            "little-dwarf": "Little Dwarf",
+            "discreet": "Discreet",
+            "lovingly": "Lovingly",
+            "rooster": "Rooster",
+            "early-sunrise": "Early Sunrise",
+            "swinging": "Swinging Jazz",
+            "system-fault": "System Alert",
+            "martian-gun": "Sci-Fi Effect",
+            "loving-you": "Sweet Morning",
+            "sisfus": "Sisyphus"
+          },
+          "preview": "Preview",
+          "vibration": "Vibration",
+          "vibrationOn": "On",
+          "vibrationOff": "Off"
+        }
       },
       "volume": {
         "label": "Volume"

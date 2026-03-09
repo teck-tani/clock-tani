@@ -5,6 +5,8 @@ import { useTranslations, useLocale } from "next-intl";
 import styles from "./alarm.module.css";
 import ScrollWheelPicker from "./ScrollWheelPicker";
 import pickerStyles from "./scrollWheelPicker.module.css";
+import { SOUND_LIST, type SoundType, playMp3, stopAudio } from "@/components/soundUtils";
+import SoundPicker from "@/components/SoundPicker";
 
 // ===== Types =====
 interface Alarm {
@@ -16,27 +18,6 @@ interface Alarm {
   vibration: boolean;
   enabled: boolean;
 }
-
-// Sound types mapped to MP3 files in /sounds/
-const SOUND_LIST = [
-  "soft-bells",
-  "arpeggio",
-  "good-morning",
-  "solemn",
-  "cheerful",
-  "little-dwarf",
-  "discreet",
-  "lovingly",
-  "rooster",
-  "early-sunrise",
-  "swinging",
-  "system-fault",
-  "martian-gun",
-  "loving-you",
-  "sisfus",
-] as const;
-
-type SoundType = (typeof SOUND_LIST)[number];
 
 const PRESETS = [10, 30, 60, 120]; // minutes
 const MAX_ALARMS = 10;
@@ -57,7 +38,6 @@ export default function AlarmClient() {
   const [inputLabel, setInputLabel] = useState("");
   const [inputSound, setInputSound] = useState<SoundType>("soft-bells");
   const [inputVibration, setInputVibration] = useState(true);
-  const [supportsVibration, setSupportsVibration] = useState(false);
 
   // Remaining time text for the time picker
   const remainingTimeText = useMemo(() => {
@@ -69,6 +49,9 @@ export default function AlarmClient() {
     }
     const diffMs = alarmDate.getTime() - now.getTime();
     const totalMin = Math.floor(diffMs / 60000);
+    if (totalMin < 1) {
+      return locale === "ko" ? "1분 이내 울림" : "Rings in less than 1m";
+    }
     const h = Math.floor(totalMin / 60);
     const m = totalMin % 60;
     if (locale === "ko") {
@@ -96,8 +79,6 @@ export default function AlarmClient() {
   // Audio refs
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const alarmLoopRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const previewTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [isPreviewing, setIsPreviewing] = useState(false);
   const vibrationLoopRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const firedAlarmsRef = useRef<Set<string>>(new Set());
   const titleFlashRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -119,7 +100,6 @@ export default function AlarmClient() {
       // ignore
     }
     setHydrated(true);
-    setSupportsVibration("vibrate" in navigator);
 
     if (typeof Notification !== "undefined") {
       setNotifPermission(Notification.permission);
@@ -222,20 +202,14 @@ export default function AlarmClient() {
 
   // Stop audio playback
   const stopAudioOnly = useCallback(() => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
+    stopAudio(audioRef.current);
+    audioRef.current = null;
   }, []);
 
   // Play alarm sound (MP3)
-  const playSound = useCallback((sound: SoundType) => {
+  const playSoundFn = useCallback((sound: SoundType) => {
     stopAudioOnly();
-    const audio = new Audio(`/sounds/${sound}.mp3`);
-    audioRef.current = audio;
-    audio.play().catch(() => {
-      // ignore autoplay block
-    });
+    audioRef.current = playMp3(sound);
   }, [stopAudioOnly]);
 
   // Stop all sound + alarm loop + vibration (for dismiss/snooze/cleanup)
@@ -306,9 +280,9 @@ export default function AlarmClient() {
       setRingingAlarmId(alarmId);
 
       // Play sound in loop
-      playSound(alarm.sound);
+      playSoundFn(alarm.sound);
       alarmLoopRef.current = setInterval(() => {
-        playSound(alarm.sound);
+        playSoundFn(alarm.sound);
       }, 4000);
 
       // Vibrate (repeating pattern on mobile)
@@ -331,7 +305,7 @@ export default function AlarmClient() {
         });
       }
     },
-    [alarms, playSound, setAlarmFavicon, t]
+    [alarms, playSoundFn, setAlarmFavicon, t]
   );
 
   const dismissAlarm = useCallback(() => {
@@ -414,25 +388,6 @@ export default function AlarmClient() {
     }
   }, []);
 
-  const handlePreview = useCallback(() => {
-    if (isPreviewing) {
-      stopCurrentSound();
-      if (previewTimeoutRef.current) {
-        clearTimeout(previewTimeoutRef.current);
-        previewTimeoutRef.current = null;
-      }
-      setIsPreviewing(false);
-      return;
-    }
-
-    setIsPreviewing(true);
-    playSound(inputSound);
-    previewTimeoutRef.current = setTimeout(() => {
-      stopCurrentSound();
-      setIsPreviewing(false);
-    }, 5000);
-  }, [isPreviewing, inputSound, playSound, stopCurrentSound]);
-
   // Lock body scroll when modal is open
   useEffect(() => {
     if (ringingAlarmId) {
@@ -480,12 +435,16 @@ export default function AlarmClient() {
     const hasActiveAlarm = alarms.some((a) => a.enabled);
     if (!hasActiveAlarm || !("wakeLock" in navigator)) return;
 
-    let lock: WakeLockSentinel | null = null;
+    let cancelled = false;
 
     const requestWakeLock = async () => {
       try {
-        lock = await navigator.wakeLock.request("screen");
-        wakeLockRef.current = lock;
+        const newLock = await navigator.wakeLock.request("screen");
+        if (cancelled) {
+          newLock.release();
+          return;
+        }
+        wakeLockRef.current = newLock;
       } catch {
         // Wake lock request failed (e.g., low battery)
       }
@@ -502,9 +461,10 @@ export default function AlarmClient() {
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
+      cancelled = true;
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      if (lock) {
-        lock.release();
+      if (wakeLockRef.current) {
+        wakeLockRef.current.release();
         wakeLockRef.current = null;
       }
     };
@@ -514,7 +474,6 @@ export default function AlarmClient() {
   useEffect(() => {
     return () => {
       stopCurrentSound();
-      if (previewTimeoutRef.current) clearTimeout(previewTimeoutRef.current);
     };
   }, [stopCurrentSound]);
 
@@ -630,62 +589,19 @@ export default function AlarmClient() {
           </div>
         </div>
 
-        {/* Sound Selector */}
+        {/* Sound Selector + Vibration Toggle */}
         <div className={styles.formRow}>
           <div className={styles.inputGroup} style={{ flex: 1 }}>
             <span className={styles.inputLabel}>{t("sound")}</span>
-            <div className={styles.soundRow}>
-              <select className={styles.soundSelect} value={inputSound} onChange={(e) => {
-                const newSound = e.target.value as SoundType;
-                setInputSound(newSound);
-                if (isPreviewing) {
-                  stopCurrentSound();
-                  if (previewTimeoutRef.current) {
-                    clearTimeout(previewTimeoutRef.current);
-                    previewTimeoutRef.current = null;
-                  }
-                  setIsPreviewing(false);
-                }
-              }}>
-                {SOUND_LIST.map((s) => (
-                  <option key={s} value={s}>
-                    {t(`sounds.${s}`)}
-                  </option>
-                ))}
-              </select>
-              <button
-                className={`${styles.previewBtn} ${isPreviewing ? styles.previewBtnActive : ""}`}
-                onClick={handlePreview}
-                aria-label={t("preview")}
-              >
-                {isPreviewing ? "■" : "▶"}
-              </button>
-            </div>
+            <SoundPicker
+              sound={inputSound}
+              onSoundChange={setInputSound}
+              vibration={inputVibration}
+              onVibrationChange={setInputVibration}
+              t={(key: string) => t(key)}
+            />
           </div>
         </div>
-
-        {/* Vibration Toggle - only shown on devices that support vibration */}
-        {supportsVibration && (
-          <div className={styles.formRow}>
-            <div className={styles.inputGroup} style={{ flex: 1 }}>
-              <span className={styles.inputLabel}>{t("vibration")}</span>
-              <div className={styles.vibrationRow}>
-                <button
-                  className={`${styles.vibrationToggle} ${inputVibration ? styles.vibrationToggleActive : ""}`}
-                  onClick={() => setInputVibration(!inputVibration)}
-                  role="switch"
-                  aria-checked={inputVibration}
-                  aria-label={t("vibration")}
-                >
-                  <span className={styles.vibrationKnob} />
-                </button>
-                <span className={styles.vibrationLabel}>
-                  {inputVibration ? t("vibrationOn") : t("vibrationOff")}
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
 
         {alarms.length >= MAX_ALARMS ? (
           <div className={styles.maxWarning}>{t("maxAlarms")}</div>

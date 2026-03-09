@@ -10,61 +10,12 @@ import { incrementTaskPomo } from "./PomodoroTasks";
 import dynamic from "next/dynamic";
 import styles from "./timer.module.css";
 import ShareButton from "@/components/ShareButton";
+import { type SoundType, migrateSoundType, playMp3, stopAudio } from "@/components/soundUtils";
+import SoundPicker from "@/components/SoundPicker";
 
 const PomodoroStats = dynamic(() => import("./PomodoroStats"), { ssr: false });
 const PomodoroTasks = dynamic(() => import("./PomodoroTasks"), { ssr: false });
 const AmbientPlayer = dynamic(() => import("./AmbientPlayer"), { ssr: false });
-
-// ===== Web Audio Sounds =====
-let audioCtx: AudioContext | null = null;
-function getAudioContext(): AudioContext {
-    if (!audioCtx) audioCtx = new AudioContext();
-    if (audioCtx.state === "suspended") audioCtx.resume();
-    return audioCtx;
-}
-
-function playDigitalBeep(ctx: AudioContext, dur: number): OscillatorNode {
-    const osc = ctx.createOscillator(); const gain = ctx.createGain();
-    osc.type = "square"; osc.frequency.value = 800; gain.gain.value = 0.15;
-    osc.connect(gain); gain.connect(ctx.destination);
-    const now = ctx.currentTime;
-    for (let i = 0; i < dur * 2.5; i++) { gain.gain.setValueAtTime(0.15, now + i * 0.4); gain.gain.setValueAtTime(0, now + i * 0.4 + 0.2); }
-    osc.start(now); osc.stop(now + dur); return osc;
-}
-function playGentleChime(ctx: AudioContext, dur: number): OscillatorNode {
-    const osc = ctx.createOscillator(); const gain = ctx.createGain();
-    osc.type = "sine"; osc.frequency.value = 523; gain.gain.value = 0.2;
-    osc.connect(gain); gain.connect(ctx.destination);
-    const now = ctx.currentTime;
-    for (let i = 0; i < Math.floor(dur / 1.5); i++) {
-        const t = now + i * 1.5;
-        osc.frequency.setValueAtTime(523, t); osc.frequency.linearRampToValueAtTime(784, t + 0.5);
-        gain.gain.setValueAtTime(0.2, t); gain.gain.exponentialRampToValueAtTime(0.01, t + 1.3); gain.gain.setValueAtTime(0.2, t + 1.5);
-    }
-    osc.start(now); osc.stop(now + dur); return osc;
-}
-function playBirdSound(ctx: AudioContext, dur: number): OscillatorNode {
-    const osc = ctx.createOscillator(); const gain = ctx.createGain();
-    osc.type = "sine"; gain.gain.value = 0.12; osc.connect(gain); gain.connect(ctx.destination);
-    const now = ctx.currentTime;
-    for (let i = 0; i < dur * 3; i++) {
-        const t = now + i * 0.33;
-        osc.frequency.setValueAtTime(2000 + Math.random() * 1000, t);
-        osc.frequency.linearRampToValueAtTime(2500 + Math.random() * 500, t + 0.15);
-        gain.gain.setValueAtTime(0.12, t); gain.gain.setValueAtTime(0, t + 0.2); gain.gain.setValueAtTime(0.12, t + 0.25);
-    }
-    osc.start(now); osc.stop(now + dur); return osc;
-}
-function playSchoolBell(ctx: AudioContext, dur: number): OscillatorNode {
-    const osc = ctx.createOscillator(); const gain = ctx.createGain();
-    osc.type = "triangle"; osc.frequency.value = 1200; gain.gain.value = 0.18;
-    osc.connect(gain); gain.connect(ctx.destination);
-    const now = ctx.currentTime;
-    for (let i = 0; i < dur * 5; i++) { gain.gain.setValueAtTime(0.18, now + i * 0.2); gain.gain.setValueAtTime(0.02, now + i * 0.2 + 0.1); }
-    osc.start(now); osc.stop(now + dur); return osc;
-}
-
-type SoundType = "classic" | "digital" | "gentle" | "bird" | "school";
 type TimerMode = "timer" | "pomodoro" | "interval" | "multi";
 type PomodoroPhase = "work" | "break" | "longBreak";
 type IntervalPhase = "work" | "rest";
@@ -73,7 +24,6 @@ const PRESETS = [
     { label: '1m', seconds: 60 }, { label: '3m', seconds: 180 }, { label: '5m', seconds: 300 },
     { label: '10m', seconds: 600 }, { label: '15m', seconds: 900 }, { label: '30m', seconds: 1800 }, { label: '1h', seconds: 3600 },
 ];
-const SOUND_LABELS: Record<SoundType, string> = { classic: "🔔", digital: "📟", gentle: "🎵", bird: "🐦", school: "🔔" };
 const POMO_DEFAULTS = { work: 25, break: 5, longBreak: 15, sessionsBeforeLong: 4 };
 const STORAGE_KEY = 'timer_state';
 const PRESETS_KEY = 'timer_user_presets';
@@ -125,14 +75,12 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     const [inputValues, setInputValues] = useState({ h: 0, m: 0, s: 0 });
 
     // Sound
-    const [selectedSound, setSelectedSound] = useState<SoundType>("classic");
+    const [selectedSound, setSelectedSound] = useState<SoundType>("soft-bells");
     const [vibrationOn, setVibrationOn] = useState(true);
     const [volume, setVolume] = useState(80);
     const [voiceCountdown, setVoiceCountdown] = useState(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
-    const oscRef = useRef<OscillatorNode | null>(null);
     const alarmIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-    const gainNodeRef = useRef<GainNode | null>(null);
 
     // Pomodoro
     const [pomoWork, setPomoWork] = useState(POMO_DEFAULTS.work);
@@ -177,7 +125,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
             if (raw) {
                 const s = JSON.parse(raw);
                 if (s.mode) setMode(s.mode);
-                if (s.selectedSound) setSelectedSound(s.selectedSound);
+                if (s.selectedSound) setSelectedSound(migrateSoundType(s.selectedSound));
                 if (s.vibrationOn !== undefined) setVibrationOn(s.vibrationOn);
                 if (s.volume !== undefined) setVolume(s.volume);
                 if (s.pomoWork) setPomoWork(s.pomoWork);
@@ -270,8 +218,8 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
 
     // ===== Sound =====
     const stopSound = useCallback(() => {
-        if (oscRef.current) { try { oscRef.current.stop(); } catch {} oscRef.current = null; }
-        if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; }
+        stopAudio(audioRef.current);
+        audioRef.current = null;
         if (alarmIntervalRef.current) { clearInterval(alarmIntervalRef.current); alarmIntervalRef.current = null; }
         if (alarmAutoStopRef.current) { clearTimeout(alarmAutoStopRef.current); alarmAutoStopRef.current = null; }
         if (alarmCountdownRef.current) { clearInterval(alarmCountdownRef.current); alarmCountdownRef.current = null; }
@@ -279,19 +227,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
 
     const playSound = useCallback(() => {
         stopSound();
-        const vol = volume / 100;
-        if (selectedSound === "classic") {
-            if (audioRef.current) { audioRef.current.volume = vol; audioRef.current.currentTime = 0; audioRef.current.play().catch(() => {}); }
-        } else {
-            const ctx = getAudioContext();
-            const gain = ctx.createGain(); gain.gain.value = vol * 0.2;
-            gainNodeRef.current = gain;
-            const players: Record<Exclude<SoundType, "classic">, (c: AudioContext, d: number) => OscillatorNode> = {
-                digital: playDigitalBeep, gentle: playGentleChime, bird: playBirdSound, school: playSchoolBell,
-            };
-            const origOsc = players[selectedSound](ctx, 3);
-            oscRef.current = origOsc;
-        }
+        audioRef.current = playMp3(selectedSound, volume / 100);
     }, [selectedSound, stopSound, volume]);
 
     const startAlarmLoop = useCallback(() => {
@@ -627,7 +563,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     // ===== RENDER =====
     return (
         <div className={styles.wrapper}>
-            <audio ref={audioRef} src="/alarm.mp3" />
 
             {/* Alarm Modal */}
             {showAlarmModal && (
@@ -862,24 +797,14 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                 {/* Sound Settings */}
                                 <div className={styles.soundCard}>
                                     <div className={styles.soundTitle}>{t('sounds.title')}</div>
-                                    <div className={styles.soundBtnRow}>
-                                        {(["classic", "digital", "gentle", "bird", "school"] as SoundType[]).map(s => (
-                                            <button key={s} onClick={() => {
-                                                setSelectedSound(s);
-                                                if (s === "classic") { if (audioRef.current) { audioRef.current.volume = volume / 100; audioRef.current.currentTime = 0; audioRef.current.play().catch(() => {}); setTimeout(() => { if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; } }, 2000); } }
-                                                else { const ctx = getAudioContext(); const p: Record<string, (c: AudioContext, d: number) => OscillatorNode> = { digital: playDigitalBeep, gentle: playGentleChime, bird: playBirdSound, school: playSchoolBell }; p[s](ctx, 2); }
-                                            }}
-                                            className={`${styles.soundBtn} ${selectedSound === s ? styles.soundActive : ''}`}
-                                            style={selectedSound === s ? { borderColor: ringColor, color: ringColor } : undefined}
-                                            aria-pressed={selectedSound === s}>
-                                                {SOUND_LABELS[s]} {t(`sounds.${s}`)}
-                                            </button>
-                                        ))}
-                                    </div>
-                                    <label className={styles.vibrationLabel}>
-                                        <input type="checkbox" checked={vibrationOn} onChange={e => setVibrationOn(e.target.checked)} style={{ accentColor: ringColor }} />
-                                        {t('sounds.vibration')}
-                                    </label>
+                                    <SoundPicker
+                                        sound={selectedSound}
+                                        onSoundChange={setSelectedSound}
+                                        vibration={vibrationOn}
+                                        onVibrationChange={setVibrationOn}
+                                        t={(key: string) => t(`sounds.picker.${key}`)}
+                                        volume={volume}
+                                    />
                                     {/* Volume slider */}
                                     <div className={styles.volumeRow}>
                                         <span className={styles.volumeLabel}>{t('volume.label')}</span>
