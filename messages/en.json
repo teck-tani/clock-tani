@@ -1227,6 +1227,10 @@
       "loving-you": "Sweet Morning",
       "sisfus": "Sisfus"
     },
+    "vibration": "Vibration",
+    "vibrationOn": "On (Mobile)",
+    "vibrationOff": "Off",
+    "vibrationUnsupported": "Not supported on this device",
     "preview": "Preview",
     "addAlarm": "Add Alarm",
     "quickPresets": "Quick Set",

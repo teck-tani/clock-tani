@@ -13,6 +13,7 @@ interface Alarm {
   minute: number;
   label: string;
   sound: SoundType;
+  vibration: boolean;
   enabled: boolean;
 }
 
@@ -55,6 +56,7 @@ export default function AlarmClient() {
   const [inputMinute, setInputMinute] = useState(0);
   const [inputLabel, setInputLabel] = useState("");
   const [inputSound, setInputSound] = useState<SoundType>("soft-bells");
+  const [inputVibration, setInputVibration] = useState(true);
 
   // Remaining time text for the time picker
   const remainingTimeText = useMemo(() => {
@@ -95,6 +97,7 @@ export default function AlarmClient() {
   const alarmLoopRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const previewTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isPreviewing, setIsPreviewing] = useState(false);
+  const vibrationLoopRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const firedAlarmsRef = useRef<Set<string>>(new Set());
   const titleFlashRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const wakeLockRef = useRef<WakeLockSentinel | null>(null);
@@ -105,7 +108,10 @@ export default function AlarmClient() {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        const parsed = JSON.parse(saved) as Alarm[];
+        const parsed = (JSON.parse(saved) as Alarm[]).map((a) => ({
+          ...a,
+          vibration: a.vibration ?? true,
+        }));
         setAlarms(parsed);
       }
     } catch {
@@ -230,12 +236,19 @@ export default function AlarmClient() {
     });
   }, [stopAudioOnly]);
 
-  // Stop all sound + alarm loop (for dismiss/snooze/cleanup)
+  // Stop all sound + alarm loop + vibration (for dismiss/snooze/cleanup)
   const stopCurrentSound = useCallback(() => {
     stopAudioOnly();
     if (alarmLoopRef.current) {
       clearInterval(alarmLoopRef.current);
       alarmLoopRef.current = null;
+    }
+    if (vibrationLoopRef.current) {
+      clearInterval(vibrationLoopRef.current);
+      vibrationLoopRef.current = null;
+    }
+    if (navigator.vibrate) {
+      navigator.vibrate(0);
     }
   }, [stopAudioOnly]);
 
@@ -296,9 +309,12 @@ export default function AlarmClient() {
         playSound(alarm.sound);
       }, 4000);
 
-      // Vibrate
-      if (navigator.vibrate) {
+      // Vibrate (repeating pattern on mobile)
+      if (alarm.vibration && navigator.vibrate) {
         navigator.vibrate([500, 200, 500, 200, 500]);
+        vibrationLoopRef.current = setInterval(() => {
+          navigator.vibrate([500, 200, 500, 200, 500]);
+        }, 3000);
       }
 
       // Change favicon to alarm icon
@@ -353,12 +369,13 @@ export default function AlarmClient() {
       minute: inputMinute,
       label: inputLabel.trim(),
       sound: inputSound,
+      vibration: inputVibration,
       enabled: true,
     };
 
     setAlarms((prev) => [...prev, newAlarm]);
     setInputLabel("");
-  }, [alarms.length, inputHour, inputMinute, inputLabel, inputSound]);
+  }, [alarms.length, inputHour, inputMinute, inputLabel, inputSound, inputVibration]);
 
   // Quick preset
   const addPreset = useCallback(
@@ -372,12 +389,13 @@ export default function AlarmClient() {
         minute: target.getMinutes(),
         label: minutes >= 60 ? t("hoursLater", { hour: minutes / 60 }) : t("minutesLater", { min: minutes }),
         sound: inputSound,
+        vibration: inputVibration,
         enabled: true,
       };
 
       setAlarms((prev) => [...prev, newAlarm]);
     },
-    [alarms.length, inputSound, t]
+    [alarms.length, inputSound, inputVibration, t]
   );
 
   const toggleAlarm = useCallback((id: string) => {
@@ -640,6 +658,30 @@ export default function AlarmClient() {
               >
                 {isPreviewing ? "■" : "▶"}
               </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Vibration Toggle */}
+        <div className={styles.formRow}>
+          <div className={styles.inputGroup} style={{ flex: 1 }}>
+            <span className={styles.inputLabel}>{t("vibration")}</span>
+            <div className={styles.vibrationRow}>
+              <button
+                className={`${styles.vibrationToggle} ${inputVibration ? styles.vibrationToggleActive : ""}`}
+                onClick={() => setInputVibration(!inputVibration)}
+                role="switch"
+                aria-checked={inputVibration}
+                aria-label={t("vibration")}
+              >
+                <span className={styles.vibrationKnob} />
+              </button>
+              <span className={styles.vibrationLabel}>
+                {inputVibration ? t("vibrationOn") : t("vibrationOff")}
+              </span>
+              {!("vibrate" in navigator) && (
+                <span className={styles.vibrationUnsupported}>{t("vibrationUnsupported")}</span>
+              )}
             </div>
           </div>
         </div>
