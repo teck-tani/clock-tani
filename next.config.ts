@@ -16,6 +16,13 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['react-icons', 'korean-lunar-calendar'],
   },
+  redirects: async () => [
+    {
+      source: '/',
+      destination: '/ko',
+      permanent: true, // 301 영구 리다이렉트 (Google canonical 충돌 해결)
+    },
+  ],
   poweredByHeader: false,
   compress: true,
   headers: async () => [
