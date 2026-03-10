@@ -805,11 +805,18 @@ export default function ClockView() {
     window.scrollTo({ top: 0 });
   }, []);
 
+  const subClocksRef = useRef<HTMLDivElement>(null);
+
   const handleAddCity = useCallback((city: City) => {
     setState(prev => ({
       ...prev,
       subClocks: [...prev.subClocks, city],
     }));
+    requestAnimationFrame(() => {
+      const grid = subClocksRef.current?.querySelector(`.${styles.subClocksGrid}`);
+      const lastCard = grid?.lastElementChild?.previousElementSibling;
+      lastCard?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
   }, []);
 
   const handleRemoveCity = useCallback((cityId: string) => {
@@ -886,7 +893,7 @@ export default function ClockView() {
         */}
 
         {/* Sub Clocks Grid - with lazy loaded DnD */}
-        <div className={styles.subClocksWrapper}>
+        <div className={styles.subClocksWrapper} ref={subClocksRef}>
           {dndReady ? (
             <Suspense fallback={
               <div className={styles.subClocksGrid}>
