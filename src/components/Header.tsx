@@ -8,7 +8,7 @@ import { getCategoriesWithTools, findToolByPathname } from "@/config/tools";
 import SettingsDropdown from "./SettingsDropdown";
 
 // 전체화면 버튼을 표시할 페이지 목록
-const FULLSCREEN_PAGES = ['/clock', '/stopwatch', '/timer', '/pomodoro', '/interval', '/multi-timer'];
+const FULLSCREEN_PAGES = ['/clock'];
 
 export default function Header() {
   const t = useTranslations('Header');
@@ -73,6 +73,8 @@ export default function Header() {
   const handleLinkClick = () => {
     setMobileMenuOpen(false);
   };
+
+  if (isFullscreen) return null;
 
   return (
     <>
