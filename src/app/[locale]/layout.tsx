@@ -5,7 +5,7 @@ import { locales } from '@/navigation';
 import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import GoogleAdsense from "@/components/GoogleAdsense";
+// import GoogleAdsense from "@/components/GoogleAdsense"; // TODO: 애드센스 승인 후 활성화
 import LazyFeedbackButton from "@/components/LazyFeedbackButton";
 import LazyGTM from "@/components/LazyGTM";
 import { ThemeProvider } from "@/contexts/ThemeContext";
@@ -117,7 +117,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
           </ThemeProvider>
         </NextIntlClientProvider>
         <LazyGTM />
-        <GoogleAdsense />
+        {/* <GoogleAdsense /> */} {/* TODO: 애드센스 승인 후 새 ca-pub ID로 교체하여 활성화 */}
         <PWARegister />
       </body>
     </html>

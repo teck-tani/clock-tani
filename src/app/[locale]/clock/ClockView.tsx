@@ -10,7 +10,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 // ============================================
 // Lazy load heavy components
 // ============================================
-const ClockAdsense = lazy(() => import('@/components/ClockAdsense'));
+// const ClockAdsense = lazy(() => import('@/components/ClockAdsense')); // TODO: 애드센스 승인 후 활성화
 const CitySearchModal = lazy(() => import('./CitySearchModal'));
 const DndWrapper = lazy(() => import('./DndWrapper'));
 
@@ -877,12 +877,13 @@ export default function ClockView() {
           </div>
         </MainClockDisplay>
 
-        {/* AdSense Banner - Between Main and Sub Clocks */}
+        {/* TODO: 애드센스 승인 후 새 ca-pub ID로 교체하여 활성화
         <div className={styles.adBanner}>
           <Suspense fallback={<div style={{ height: 90 }} />}>
             <ClockAdsense />
           </Suspense>
         </div>
+        */}
 
         {/* Sub Clocks Grid - with lazy loaded DnD */}
         <div className={styles.subClocksWrapper}>
