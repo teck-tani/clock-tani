@@ -119,6 +119,7 @@
   justify-content: center;
   overflow: visible;
   padding: 0 10px;
+  font-variant-numeric: tabular-nums;
 }
 
 .ampm {
@@ -435,6 +436,7 @@
   justify-content: center;
   gap: 2px;
   flex-wrap: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 .subClockFooter {

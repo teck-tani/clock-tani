@@ -49,20 +49,20 @@
     },
     "Main": {
       "meta": {
-        "title": "Online Clock - World Clock & Digital Clock | Clock-Tani",
-        "description": "Precision online clock for ticketing, exams, and tests. Check time to the second in real-time. Display 70+ world city times with digital segment display.",
-        "keywords": "online clock, world clock, digital clock, ticketing clock, exam clock, test clock, precise clock, world time, current time, accurate time, real-time clock",
-        "ogTitle": "Online Clock | Real-time World Clock - For Ticketing & Exams",
-        "ogDescription": "Check 70+ world city times in real-time with a beautiful digital segment display. Dark mode supported."
+        "title": "Online Clock - World Time & Real-Time Clock | Clock-Tani",
+        "description": "Check the current time in 70+ cities worldwide in real-time. Compare time zones, drag-and-drop city ordering, digital segment display. Free, no install needed!",
+        "keywords": "online clock, world time, world clock, time zone, city time, current time, real-time clock, digital clock, accurate time, time difference, international clock",
+        "ogTitle": "Online Clock - World Time & Real-Time Clock | Clock-Tani",
+        "ogDescription": "Check current time in Seoul, New York, London, Tokyo & 70+ cities at a glance. Time zone comparison, drag-and-drop, dark mode. Free online world clock."
       },
       "title": "Online Clock",
       "seo": {
-        "title": "Online Clock - Real-time World Clock & Digital Clock",
-        "desc": "Need accurate time down to the second for ticketing or exams? This online clock displays time precisely to the second and allows you to check 70+ world city times simultaneously. Optimized for concert ticketing, exam practice, and time management.",
+        "title": "Online Clock - World Time & Real-Time Clock",
+        "desc": "Check the current time in 70+ major cities worldwide in real-time. Compare time zones between Seoul, New York, London, Tokyo, and more. Drag and drop to arrange your favorite cities. A sleek online world clock with digital segment display.",
         "ariaLabel": "Page description",
         "description": {
-          "title": "When You Need Precise Time",
-          "p1": "There are moments when you need time accurate to the second - ticketing, exams, important deadlines. This online clock displays time precisely to the second in real-time. With its elegant digital segment design, you can check the time at a glance and compare times across 70+ major cities worldwide simultaneously."
+          "title": "World Time at Your Fingertips",
+          "p1": "An online world clock that displays the current time in 70+ major cities worldwide in real-time. With an elegant digital segment design, check time at a glance and compare time zones across cities. Perfect for international meetings, overseas trading, travel planning, ticketing, and any situation requiring precise timing."
         },
         "worldTime": {
           "title": "World Time at a Glance",
@@ -71,7 +71,7 @@
         "features": {
           "title": "Key Features",
           "list": {
-            "serverTime": "Second-accurate real-time display - for precise timing during ticketing",
+            "serverTime": "Second-accurate real-time display - for precise time verification",
             "exam": "Ideal for important exams like SAT, civil service tests",
             "worldCities": "View current time in 70+ major cities worldwide",
             "timeDiff": "Automatically calculates and displays time differences between cities",
@@ -83,7 +83,7 @@
         },
         "webappFeatures": {
           "serverTime": "Precise real-time clock to the second",
-          "ticketing": "Clock for ticketing/exams",
+          "ticketing": "Time zone calculation across cities",
           "worldCities": "Display world city times",
           "theme": "Dark/Light theme support",
           "dragDrop": "Drag and drop to reorder clocks",
@@ -178,9 +178,9 @@
         "faq": {
           "title": "Frequently Asked Questions (FAQ)",
           "list": {
-            "ticketing": {
-              "q": "Can I use this clock for ticketing?",
-              "a": "Yes, this online clock displays time accurately to the second. You can start booking at the exact time for concerts, musicals, sports events, and more."
+            "worldTime": {
+              "q": "Which cities can I check the time for?",
+              "a": "You can check the current time in 70+ major cities worldwide including Seoul, Tokyo, New York, London, Paris, and Sydney. Search and add any city you need."
             },
             "cityCount": {
               "q": "How many world cities can I add?",
@@ -197,6 +197,10 @@
             "accuracy": {
               "q": "Is the time accurate? Could it differ from my computer clock?",
               "a": "This clock uses your device's system time. Most devices automatically sync with internet time servers, providing high accuracy. If you need even more precise server time, please use our dedicated 'Server Time' tool."
+            },
+            "ticketing": {
+              "q": "Can I use this clock for ticketing?",
+              "a": "Yes, this online clock displays time accurately to the second. You can start booking at the exact time for concerts, musicals, sports events, and more."
             },
             "offline": {
               "q": "Does the clock work without internet?",

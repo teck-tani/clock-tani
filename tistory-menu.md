@@ -1,0 +1,854 @@
+- generic [ref=e1]:
+  - generic:
+    - link "본문 바로가기" [ref=e2] [cursor=pointer]:
+      - /url: "#kakaoBody"
+    - link "메뉴 바로가기" [ref=e3] [cursor=pointer]:
+      - /url: "#kakaoLnb"
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - heading "티스토리" [level=1] [ref=e8]:
+            - link "티스토리" [ref=e9] [cursor=pointer]:
+              - /url: /?category=travel
+              - generic [ref=e10]: 티스토리
+          - navigation [ref=e11]:
+            - heading "서비스 주요 메뉴" [level=2]
+            - list [ref=e12]:
+              - listitem [ref=e13]:
+                - link "홈" [ref=e14] [cursor=pointer]:
+                  - /url: /?category=travel
+              - listitem [ref=e15]:
+                - link "피드" [ref=e16] [cursor=pointer]:
+                  - /url: /feed
+              - listitem [ref=e17]:
+                - link "스킨" [ref=e18] [cursor=pointer]:
+                  - /url: /skin
+              - listitem [ref=e19]:
+                - link "포럼" [ref=e20] [cursor=pointer]:
+                  - /url: /community/forum
+          - generic [ref=e22]:
+            - heading "검색" [level=2]
+            - search [ref=e23]:
+              - group "티스토리 검색" [ref=e24]:
+                - generic: 티스토리 검색
+                - generic [ref=e25]:
+                  - textbox "검색" [ref=e27]:
+                    - /placeholder: 검색어 입력
+                  - button "검색" [ref=e28] [cursor=pointer]:
+                    - generic [ref=e29]: 검색
+        - generic [ref=e31]:
+          - generic [ref=e374]:
+            - heading "공지사항" [level=2]
+            - link "댓글 자동화·유사한 문구 댓글 규제 정책 도입 안내" [ref=e377] [cursor=pointer]:
+              - /url: https://notice.tistory.com/2694
+          - generic [ref=e32]:
+            - button "알림 알림 0" [ref=e378] [cursor=pointer]:
+              - generic [ref=e34]: 알림
+              - generic [ref=e35]: 알림
+              - text: "0"
+            - button "계정정보 레이어 열기" [expanded] [active] [ref=e36] [cursor=pointer]:
+              - img "계정정보 레이어 열기" [ref=e37]
+            - generic [ref=e380]:
+              - heading "개인정보" [level=2]
+              - generic [ref=e381]:
+                - link "by.타니" [ref=e383] [cursor=pointer]:
+                  - /url: /member
+                - generic [ref=e384]: kweon82@nate.com
+                - link "계정관리":
+                  - /url: /member/blog
+              - generic [ref=e386]:
+                - heading "운영중인 블로그" [level=3] [ref=e387]
+                - generic [ref=e388]:
+                  - link "테크타니" [ref=e389] [cursor=pointer]:
+                    - /url: https://dream-kwon.tistory.com
+                  - link "쓰기" [ref=e390] [cursor=pointer]:
+                    - /url: https://dream-kwon.tistory.com/manage/post
+                  - link "블로그 관리" [ref=e391] [cursor=pointer]:
+                    - /url: https://dream-kwon.tistory.com/manage
+                - generic [ref=e392]:
+                  - link "내땅" [ref=e393] [cursor=pointer]:
+                    - /url: https://luxbadminton.tistory.com
+                  - link "쓰기" [ref=e394] [cursor=pointer]:
+                    - /url: https://luxbadminton.tistory.com/manage/post
+                  - link "블로그 관리" [ref=e395] [cursor=pointer]:
+                    - /url: https://luxbadminton.tistory.com/manage
+              - button "로그아웃" [ref=e396] [cursor=pointer]
+    - main [ref=e38]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e398]:
+              - generic [ref=e424]:
+                - strong: 오늘의 티스토리
+                - heading "오늘의 티스토리" [level=2]
+                - link "경주 온천 노천탕 더 케이 호텔 스파월드 가격 바데풀 이용후기" [ref=e425] [cursor=pointer]:
+                  - /url: https://lovely-days.tistory.com/5917
+                  - generic [ref=e429]: 경주 온천 노천탕 더 케이 호텔 스파월드 가격 바데풀 이용후기
+                - link "블로그 이미지 앨리스의 여행과 일상" [ref=e431] [cursor=pointer]:
+                  - /url: https://lovely-days.tistory.com
+                  - img "블로그 이미지" [ref=e433]
+                  - generic [ref=e434]: 앨리스의 여행과 일상
+              - generic [ref=e436]:
+                - strong: 오늘의 티스토리
+                - heading "오늘의 티스토리" [level=2]
+                - link "예비 신혼가구 1인가구 성지 2026수원가구박람회" [ref=e437] [cursor=pointer]:
+                  - /url: https://mp35455.tistory.com/71
+                  - generic [ref=e441]: 예비 신혼가구 1인가구 성지 2026수원가구박람회
+                - link "블로그 이미지 실베리오" [ref=e443] [cursor=pointer]:
+                  - /url: https://mp35455.tistory.com
+                  - img "블로그 이미지" [ref=e445]
+                  - generic [ref=e446]: 실베리오
+              - generic [ref=e1105]:
+                - strong: 오늘의 티스토리
+                - heading "오늘의 티스토리" [level=2]
+                - link "한강뷰 당산 (한강뷰 파스타, 스테이크 맛집)" [ref=e1106] [cursor=pointer]:
+                  - /url: https://newmoneysm.tistory.com/10
+                  - generic [ref=e1110]: 한강뷰 당산 (한강뷰 파스타, 스테이크 맛집)
+                - link "블로그 이미지 노머의 일상 기록" [ref=e1112] [cursor=pointer]:
+                  - /url: https://newmoneysm.tistory.com
+                  - img "블로그 이미지" [ref=e1114]
+                  - generic [ref=e1115]: 노머의 일상 기록
+              - generic [ref=e1119]:
+                - strong: 오늘의 티스토리
+                - heading "오늘의 티스토리" [level=2]
+                - link "제주의 바다" [ref=e1120] [cursor=pointer]:
+                  - /url: https://dpsemf60.tistory.com/448502
+                  - generic [ref=e1124]: 제주의 바다
+                - link "블로그 이미지 라사(raxa)에 들다." [ref=e1126] [cursor=pointer]:
+                  - /url: https://dpsemf60.tistory.com
+                  - img "블로그 이미지" [ref=e1128]
+                  - generic [ref=e1129]: 라사(raxa)에 들다.
+            - generic [ref=e47]:
+              - generic [ref=e447] [cursor=pointer]: "1"
+              - generic [ref=e448] [cursor=pointer]: "2"
+              - generic [ref=e1116] [cursor=pointer]: "3"
+              - generic [ref=e1130] [cursor=pointer]: "4"
+              - emphasis [ref=e1131]:
+                - generic: "현재페이지:"
+                - text: "5"
+          - generic [ref=e48]:
+            - heading "인기글 베스트" [level=2]
+            - generic [ref=e50]:
+              - emphasis [ref=e51]: "1"
+              - link "나의여행사진수첩" [ref=e52] [cursor=pointer]:
+                - /url: https://chokil2003.tistory.com
+              - link "“미국-이란 충돌 시작… 지금 돈 몰리는 ‘4개 섹터’ 공개합니다” 컨텐츠 이미지" [ref=e53] [cursor=pointer]:
+                - /url: https://chokil2003.tistory.com/518
+                - strong [ref=e55]: “미국-이란 충돌 시작… 지금 돈 몰리는 ‘4개 섹터’ 공개합니다”
+                - img "컨텐츠 이미지" [ref=e57]
+            - generic [ref=e59]:
+              - emphasis [ref=e60]: "2"
+              - link "약초연구소" [ref=e61] [cursor=pointer]:
+                - /url: https://herbs.tistory.com
+              - link "아침마다 천근만근 피곤하다면? '천연 피로회복제' 구기자 먹는 법과 부작용 컨텐츠 이미지" [ref=e62] [cursor=pointer]:
+                - /url: https://herbs.tistory.com/entry/%EC%95%84%EC%B9%A8%EB%A7%88%EB%8B%A4-%EC%B2%9C%EA%B7%BC%EB%A7%8C%EA%B7%BC-%ED%94%BC%EA%B3%A4%ED%95%98%EB%8B%A4%EB%A9%B4-%EC%B2%9C%EC%97%B0-%ED%94%BC%EB%A1%9C%ED%9A%8C%EB%B3%B5%EC%A0%9C-%EA%B5%AC%EA%B8%B0%EC%9E%90-%EB%A8%B9%EB%8A%94-%EB%B2%95%EA%B3%BC-%EB%B6%80%EC%9E%91%EC%9A%A9
+                - strong [ref=e64]: 아침마다 천근만근 피곤하다면? '천연 피로회복제' 구기자 먹는 법과 부작용
+                - img "컨텐츠 이미지" [ref=e66]
+            - generic [ref=e68]:
+              - emphasis [ref=e69]: "3"
+              - link "요용의 마비앙호즈" [ref=e70] [cursor=pointer]:
+                - /url: https://mok0nolg0.tistory.com
+              - link "그란 카나리아로 갑니다 컨텐츠 이미지" [ref=e71] [cursor=pointer]:
+                - /url: https://mok0nolg0.tistory.com/2838
+                - strong [ref=e73]: 그란 카나리아로 갑니다
+                - img "컨텐츠 이미지" [ref=e75]
+            - generic [ref=e77]:
+              - emphasis [ref=e78]: "4"
+              - link "어제보다 가뿐한 아침" [ref=e79] [cursor=pointer]:
+                - /url: https://kkdsjeong.tistory.com
+              - link "내 몸을 서서히 죽이는 습관, 당신도 하고 있나요? 당장 멈춰야 할 5가지 행동 컨텐츠 이미지" [ref=e80] [cursor=pointer]:
+                - /url: https://kkdsjeong.tistory.com/entry/%EB%82%B4-%EB%AA%B8%EC%9D%84-%EC%84%9C%EC%84%9C%ED%9E%88-%EC%A3%BD%EC%9D%B4%EB%8A%94-%EC%8A%B5%EA%B4%80-%EB%8B%B9%EC%8B%A0%EB%8F%84-%ED%95%98%EA%B3%A0-%EC%9E%88%EB%82%98%EC%9A%94-%EB%8B%B9%EC%9E%A5-%EB%A9%88%EC%B6%B0%EC%95%BC-%ED%95%A0-5%EA%B0%80%EC%A7%80-%ED%96%89%EB%8F%99
+                - strong [ref=e82]: 내 몸을 서서히 죽이는 습관, 당신도 하고 있나요? 당장 멈춰야 할 5가지 행동
+                - img "컨텐츠 이미지" [ref=e84]
+            - generic [ref=e86]:
+              - emphasis [ref=e87]: "5"
+              - link "그루양" [ref=e88] [cursor=pointer]:
+                - /url: https://green82.tistory.com
+              - link "에그타르트 맛집이 여기 숨어 있었네요 컨텐츠 이미지" [ref=e89] [cursor=pointer]:
+                - /url: https://green82.tistory.com/810
+                - strong [ref=e91]: 에그타르트 맛집이 여기 숨어 있었네요
+                - img "컨텐츠 이미지" [ref=e93]
+          - generic [ref=e452]:
+            - generic [ref=e453]:
+              - tablist [ref=e454]:
+                - tab "여행 · 맛집" [selected] [ref=e455] [cursor=pointer]:
+                  - generic [ref=e457]:
+                    - text: 여행
+                    - generic [ref=e458]: ·
+                    - text: 맛집
+                - tab "리빙 · 스타일" [ref=e459] [cursor=pointer]:
+                  - generic [ref=e461]:
+                    - text: 리빙
+                    - generic [ref=e462]: ·
+                    - text: 스타일
+                - tab "가족 · 연애" [ref=e463] [cursor=pointer]:
+                  - generic [ref=e465]:
+                    - text: 가족
+                    - generic [ref=e466]: ·
+                    - text: 연애
+                - tab "직장 · 자기계발" [ref=e467] [cursor=pointer]:
+                  - generic [ref=e469]:
+                    - text: 직장
+                    - generic [ref=e470]: ·
+                    - text: 자기계발
+                - tab "시사 · 지식" [ref=e471] [cursor=pointer]:
+                  - generic [ref=e473]:
+                    - text: 시사
+                    - generic [ref=e474]: ·
+                    - text: 지식
+                - tab "도서 · 창작" [ref=e475] [cursor=pointer]:
+                  - generic [ref=e477]:
+                    - text: 도서
+                    - generic [ref=e478]: ·
+                    - text: 창작
+                - tab "엔터테인먼트" [ref=e479] [cursor=pointer]:
+                  - generic [ref=e481]: 엔터테인먼트
+                - tab "취미 · 건강" [ref=e482] [cursor=pointer]:
+                  - generic [ref=e484]:
+                    - text: 취미
+                    - generic [ref=e485]: ·
+                    - text: 건강
+              - button "다음 카테고리" [ref=e486] [cursor=pointer]:
+                - generic [ref=e487]: 다음 카테고리
+            - heading "여행·맛집" [level=2]
+            - generic [ref=e488]:
+              - generic [ref=e489]:
+                - link "블로그 이미지 나들이 가볼만한 곳" [ref=e491] [cursor=pointer]:
+                  - /url: https://good-point.tistory.com
+                  - img "블로그 이미지" [ref=e493]
+                  - generic [ref=e494]: 나들이 가볼만한 곳
+                - link "3월 국내 가볼만한 곳 BEST 5, 봄꽃부터 바다까지 여행지 추천 3월 국내 가볼만한 곳 BEST 5, 봄꽃부터 바다까지 여행지 추천 3월은 겨울의 끝자락과 봄의 시작이 공존하는 계절입니다. 아직은 바람이 차갑지만 낮에는 햇살이 부드러워 나들이하기에 좋은 시기입니다. 오늘은 3월에 가볼만한 곳을 지역별로 정리해 드리겠습니다. 티스토리 포스팅에 바로 복붙해도 좋도록 정보전달형으로 구성했습니다.1. 🌸 서울 – 여의도 한강공원 & 석촌호수3월 중순 이후가 되면 서울에서도 봄기운을 느낄 수 있습니다. 특히 **여의도 한강공원**은 산책과 피크닉 장소로 꾸준히 사랑받는 곳입니다. 아직 벚꽃이 만개하지 않더라도 한강을 따라 걷기만 해도 기분 전환이 됩니다. 자전거 대여도 가능해 가볍게 운동하기 좋습니다.또 다른 추천지는 **석촌호수**입니다. 호수를 따라 산책로가 잘 정비되어.. 좋아요 9 댓글 0 1일 전 게시글 이미지" [ref=e495] [cursor=pointer]:
+                  - /url: https://good-point.tistory.com/entry/3%EC%9B%94-%EA%B5%AD%EB%82%B4-%EA%B0%80%EB%B3%BC%EB%A7%8C%ED%95%9C-%EA%B3%B3-BEST-5-%EB%B4%84%EA%BD%83%EB%B6%80%ED%84%B0-%EB%B0%94%EB%8B%A4%EA%B9%8C%EC%A7%80-%EC%97%AC%ED%96%89%EC%A7%80-%EC%B6%94%EC%B2%9C
+                  - generic [ref=e496]:
+                    - strong [ref=e497]: 3월 국내 가볼만한 곳 BEST 5, 봄꽃부터 바다까지 여행지 추천
+                    - paragraph [ref=e499]: 3월 국내 가볼만한 곳 BEST 5, 봄꽃부터 바다까지 여행지 추천 3월은 겨울의 끝자락과 봄의 시작이 공존하는 계절입니다. 아직은 바람이 차갑지만 낮에는 햇살이 부드러워 나들이하기에 좋은 시기입니다. 오늘은 3월에 가볼만한 곳을 지역별로 정리해 드리겠습니다. 티스토리 포스팅에 바로 복붙해도 좋도록 정보전달형으로 구성했습니다.1. 🌸 서울 – 여의도 한강공원 & 석촌호수3월 중순 이후가 되면 서울에서도 봄기운을 느낄 수 있습니다. 특히 **여의도 한강공원**은 산책과 피크닉 장소로 꾸준히 사랑받는 곳입니다. 아직 벚꽃이 만개하지 않더라도 한강을 따라 걷기만 해도 기분 전환이 됩니다. 자전거 대여도 가능해 가볍게 운동하기 좋습니다.또 다른 추천지는 **석촌호수**입니다. 호수를 따라 산책로가 잘 정비되어..
+                    - generic [ref=e500]:
+                      - generic [ref=e501]:
+                        - generic [ref=e502]: 좋아요
+                        - generic [ref=e503]: "9"
+                      - generic [ref=e504]:
+                        - generic [ref=e505]: 댓글
+                        - generic [ref=e506]: "0"
+                      - generic [ref=e507]: 1일 전
+                  - img "게시글 이미지" [ref=e510]
+              - generic [ref=e511]:
+                - link "블로그 이미지 일상탈출" [ref=e513] [cursor=pointer]:
+                  - /url: https://todaytrip.tistory.com
+                  - img "블로그 이미지" [ref=e515]
+                  - generic [ref=e516]: 일상탈출
+                - 'link "청양 맛집 베스트10 청양 맛집 방문순위 TOP30 리스트 정리 충남 청양은 ''칠갑산''의 정기와 신선한 로컬 푸드로 가득한 미식의 도시입니다. 청양 여행을 계획 중인 분들을 위해 현지인과 관광객 모두에게 사랑받는 청양 맛집 BEST 10을 완벽하게 정리해 드립니다.1. 농부밥상농가 레스토랑으로 청양의 신선한 농산물을 한 상에 담아낸 곳입니다.주소: 충남 청양군 대치면 광대리 316-22 영업시간: 11:00 ~ 17:00 (월요일 휴무)전화번호: 041-944-0900주요메뉴: 청양구기자 한우떡갈비 정식 (22,000원), 버섯전골 정식 (18,000원)꿀팁: 1층에는 로컬푸드 직매장이 있어 식사 후 쇼핑하기 좋습니다. 창가 자리는 예약 필수!방문후기: \"정갈함의 끝판왕입니다. 조미료 맛보다는 재료 본연의 맛이 살아있어 부모님 모시고 가기에 이보다 좋은 곳이 없어요... 좋아요 14 댓글 3 1일 전 게시글 이미지" [ref=e517] [cursor=pointer]':
+                  - /url: https://todaytrip.tistory.com/356
+                  - generic [ref=e518]:
+                    - strong [ref=e519]: 청양 맛집 베스트10 청양 맛집 방문순위 TOP30 리스트 정리
+                    - paragraph [ref=e521]: "충남 청양은 '칠갑산'의 정기와 신선한 로컬 푸드로 가득한 미식의 도시입니다. 청양 여행을 계획 중인 분들을 위해 현지인과 관광객 모두에게 사랑받는 청양 맛집 BEST 10을 완벽하게 정리해 드립니다.1. 농부밥상농가 레스토랑으로 청양의 신선한 농산물을 한 상에 담아낸 곳입니다.주소: 충남 청양군 대치면 광대리 316-22 영업시간: 11:00 ~ 17:00 (월요일 휴무)전화번호: 041-944-0900주요메뉴: 청양구기자 한우떡갈비 정식 (22,000원), 버섯전골 정식 (18,000원)꿀팁: 1층에는 로컬푸드 직매장이 있어 식사 후 쇼핑하기 좋습니다. 창가 자리는 예약 필수!방문후기: \"정갈함의 끝판왕입니다. 조미료 맛보다는 재료 본연의 맛이 살아있어 부모님 모시고 가기에 이보다 좋은 곳이 없어요..."
+                    - generic [ref=e522]:
+                      - generic [ref=e523]:
+                        - generic [ref=e524]: 좋아요
+                        - generic [ref=e525]: "14"
+                      - generic [ref=e526]:
+                        - generic [ref=e527]: 댓글
+                        - generic [ref=e528]: "3"
+                      - generic [ref=e529]: 1일 전
+                  - img "게시글 이미지" [ref=e532]
+              - generic [ref=e533]:
+                - link "블로그 이미지 심플한 리뷰 세상" [ref=e535] [cursor=pointer]:
+                  - /url: https://simplewirte.tistory.com
+                  - img "블로그 이미지" [ref=e537]
+                  - generic [ref=e538]: 심플한 리뷰 세상
+                - 'link "종로 3가 노포 ''호반'' 내돈내산: 인생 순대와 우설 편육 반반, 인생 술상을 만나다 안녕하세요! 오늘은 종로 익선동 뒷골목에 숨겨진 노포의 전설, 호반에 다녀왔습니다. 이곳은 화려한 인테리어는 없지만, 오직 ''맛'' 하나로 수많은 단골을 거느린 진짜배기 맛집이죠. 📍 종로 노포의 자존심, 호반위치: 종로3가역 4번 출구 낙원상가 뒷골목 (골목 끝자락의 노포 포스를 확인하세요!)영업시간: 12시 - 22시 (일요일 정기휴무)분위기: 퇴근길 직장인부터 수십 년 단골 어르신까지 한데 어우러진 정겨운 술맛 나는 분위기입니다. 메뉴판보통 호반에 오면 메뉴 고민이 깊어지는데, 저는 오늘 가장 완벽한 조합인 모듬순대+우설 편육 반반을 선택했습니다.병어찜도 맛있다고 하고 다른 테이블을 보니 낙지볶음 꼬막무침도 많이 드시더라구요.호반의 필살기: 모듬 순대 & 우설 편육 반반1. 한 입에 녹아내리는 ''.. 좋아요 18 댓글 7 2일 전 게시글 이미지" [ref=e539] [cursor=pointer]':
+                  - /url: https://simplewirte.tistory.com/entry/%EC%A2%85%EB%A1%9C-3%EA%B0%80-%EB%85%B8%ED%8F%AC-%ED%98%B8%EB%B0%98-%EB%82%B4%EB%8F%88%EB%82%B4%EC%82%B0-%EC%9D%B8%EC%83%9D-%EC%88%9C%EB%8C%80%EC%99%80-%EC%9A%B0%EC%84%A4-%ED%8E%B8%EC%9C%A1-%EB%B0%98%EB%B0%98-%EC%9D%B8%EC%83%9D-%EC%88%A0%EC%83%81%EC%9D%84-%EB%A7%8C%EB%82%98%EB%8B%A4
+                  - generic [ref=e540]:
+                    - strong [ref=e541]: "종로 3가 노포 '호반' 내돈내산: 인생 순대와 우설 편육 반반, 인생 술상을 만나다"
+                    - paragraph [ref=e543]: "안녕하세요! 오늘은 종로 익선동 뒷골목에 숨겨진 노포의 전설, 호반에 다녀왔습니다. 이곳은 화려한 인테리어는 없지만, 오직 '맛' 하나로 수많은 단골을 거느린 진짜배기 맛집이죠. 📍 종로 노포의 자존심, 호반위치: 종로3가역 4번 출구 낙원상가 뒷골목 (골목 끝자락의 노포 포스를 확인하세요!)영업시간: 12시 - 22시 (일요일 정기휴무)분위기: 퇴근길 직장인부터 수십 년 단골 어르신까지 한데 어우러진 정겨운 술맛 나는 분위기입니다. 메뉴판보통 호반에 오면 메뉴 고민이 깊어지는데, 저는 오늘 가장 완벽한 조합인 모듬순대+우설 편육 반반을 선택했습니다.병어찜도 맛있다고 하고 다른 테이블을 보니 낙지볶음 꼬막무침도 많이 드시더라구요.호반의 필살기: 모듬 순대 & 우설 편육 반반1. 한 입에 녹아내리는 '.."
+                    - generic [ref=e544]:
+                      - generic [ref=e545]:
+                        - generic [ref=e546]: 좋아요
+                        - generic [ref=e547]: "18"
+                      - generic [ref=e548]:
+                        - generic [ref=e549]: 댓글
+                        - generic [ref=e550]: "7"
+                      - generic [ref=e551]: 2일 전
+                  - img "게시글 이미지" [ref=e554]
+              - generic [ref=e555]:
+                - link "블로그 이미지 tour of wind" [ref=e557] [cursor=pointer]:
+                  - /url: https://sunny38.tistory.com
+                  - img "블로그 이미지" [ref=e559]
+                  - generic [ref=e560]: tour of wind
+                - link "남도에서 전하는 봄소식-변산바람꽃 봄이 오려고눈이 내리고, 비가 오고, 바람이 불어 옵니다. 긴 겨울이 지나고, 입춘도 지나고, 우수도 지나고... 기어이 봄은 옵니다. 남도에서 전하는 봄소식, 변산바람꽃입니다. (2026년 2월 28일) 봄마중하러 나선 길.. 고운 바람꽃이 환히 반겨줍니다. 앞에서 보면 이런 모습.. 옆에서 보면 이런 모습이네요 해마다 봄이면 찾게 되는 곳, 올해는 그냥 지나칠까 싶었는데어느새 또 길을 나섰네요. 노란 복수초도 함께 피어 있는 곳 꽃들이 합창을 하는 듯 합니다 사람의 마음은 늘 이럴까 저럴까 하지만, 자연은.. 좋아요 109 댓글 40 1일 전 게시글 이미지" [ref=e561] [cursor=pointer]:
+                  - /url: https://sunny38.tistory.com/11778597
+                  - generic [ref=e562]:
+                    - strong [ref=e563]: 남도에서 전하는 봄소식-변산바람꽃
+                    - paragraph [ref=e565]: 봄이 오려고눈이 내리고, 비가 오고, 바람이 불어 옵니다. 긴 겨울이 지나고, 입춘도 지나고, 우수도 지나고... 기어이 봄은 옵니다. 남도에서 전하는 봄소식, 변산바람꽃입니다. (2026년 2월 28일) 봄마중하러 나선 길.. 고운 바람꽃이 환히 반겨줍니다. 앞에서 보면 이런 모습.. 옆에서 보면 이런 모습이네요 해마다 봄이면 찾게 되는 곳, 올해는 그냥 지나칠까 싶었는데어느새 또 길을 나섰네요. 노란 복수초도 함께 피어 있는 곳 꽃들이 합창을 하는 듯 합니다 사람의 마음은 늘 이럴까 저럴까 하지만, 자연은..
+                    - generic [ref=e566]:
+                      - generic [ref=e567]:
+                        - generic [ref=e568]: 좋아요
+                        - generic [ref=e569]: "109"
+                      - generic [ref=e570]:
+                        - generic [ref=e571]: 댓글
+                        - generic [ref=e572]: "40"
+                      - generic [ref=e573]: 1일 전
+                  - img "게시글 이미지" [ref=e576]
+              - generic [ref=e577]:
+                - link "블로그 이미지 은벼리파파의 얼렁뚱땅 육아일기" [ref=e579] [cursor=pointer]:
+                  - /url: https://ribi.tistory.com
+                  - img "블로그 이미지" [ref=e581]
+                  - generic [ref=e582]: 은벼리파파의 얼렁뚱땅 육아일기
+                - link "\"젓가락을 멈출 수 없는 맛!\" 비주얼 끝판왕 나가사끼 라멘부터 감칠맛이 폭발하는 야끼우동까지~ 평택역 일식 맛집, 도조스시~! \"젓가락을 멈출 수 없는 맛!\" 비주얼 끝판왕 나가사끼 라멘부터 감칠맛이 폭발하는 야끼우동까지~ 평택역 일식 맛집, 도조스시~! 3월 새 학기와 함께 기숙사 생활을 시작한 대학생 딸, 지난 3월 1일에 기숙사 입실을 위해 짐을 옮겼어요. 그리고 그다음 날, 본격적인 기숙사 생활을 위해 기숙사로 들어가는 딸을 배웅하러 나선 길, 아쉬운 마음도 잠시, 든든하게 먹여 보내고 싶은 아빠의 마음을 담아 평택역 AK플라자 7층 식당가에 위치한 '도조스시'를 방문했습니다. 기차를 타기 전이나 쇼핑 후에 들리기 딱 좋은 위치라 은벼리네처럼 특별한 날 방문하기 좋더라고요. 도조스시 AK플라자 평택점 영업시간은 AK플라자 영업시간과 동일합니다. 오전 10시 30분 오픈, 저녁 9시 마감입니다. 주차지원이 되니, 식사.. 좋아요 24 댓글 10 1일 전 게시글 이미지" [ref=e583] [cursor=pointer]:
+                  - /url: https://ribi.tistory.com/555359
+                  - generic [ref=e584]:
+                    - strong [ref=e585]: "\"젓가락을 멈출 수 없는 맛!\" 비주얼 끝판왕 나가사끼 라멘부터 감칠맛이 폭발하는 야끼우동까지~ 평택역 일식 맛집, 도조스시~!"
+                    - paragraph [ref=e587]: "\"젓가락을 멈출 수 없는 맛!\" 비주얼 끝판왕 나가사끼 라멘부터 감칠맛이 폭발하는 야끼우동까지~ 평택역 일식 맛집, 도조스시~! 3월 새 학기와 함께 기숙사 생활을 시작한 대학생 딸, 지난 3월 1일에 기숙사 입실을 위해 짐을 옮겼어요. 그리고 그다음 날, 본격적인 기숙사 생활을 위해 기숙사로 들어가는 딸을 배웅하러 나선 길, 아쉬운 마음도 잠시, 든든하게 먹여 보내고 싶은 아빠의 마음을 담아 평택역 AK플라자 7층 식당가에 위치한 '도조스시'를 방문했습니다. 기차를 타기 전이나 쇼핑 후에 들리기 딱 좋은 위치라 은벼리네처럼 특별한 날 방문하기 좋더라고요. 도조스시 AK플라자 평택점 영업시간은 AK플라자 영업시간과 동일합니다. 오전 10시 30분 오픈, 저녁 9시 마감입니다. 주차지원이 되니, 식사.."
+                    - generic [ref=e588]:
+                      - generic [ref=e589]:
+                        - generic [ref=e590]: 좋아요
+                        - generic [ref=e591]: "24"
+                      - generic [ref=e592]:
+                        - generic [ref=e593]: 댓글
+                        - generic [ref=e594]: "10"
+                      - generic [ref=e595]: 1일 전
+                  - img "게시글 이미지" [ref=e598]
+              - generic [ref=e599]:
+                - link "블로그 이미지 라일락" [ref=e601] [cursor=pointer]:
+                  - /url: https://goyouing.tistory.com
+                  - img "블로그 이미지" [ref=e603]
+                  - generic [ref=e604]: 라일락
+                - link "문경 가볼만한곳 베스트 10 문경 가볼만한곳 베스트 10 경북 북부에 자리한 문경. 소백산맥이 병풍처럼 둘러싸고 있는 이 산간 도시는 예로부터 영남과 충청을 잇는 교통 요충지였어요. 문경새재는 조선시대 한양으로 과거 보러 가던 선비들이 넘던 고갯길로, 지금도 그 역사의 흔적이 고스란히 남아 있답니다. 경북 문경 가볼만한곳으로 석탄 산업으로 번성했던 과거의 모습을 석탄박물관에서 만날 수 있고, 깊은 산속 계곡과 출렁다리에서 자연의 아름다움을 즐길 수 있죠. 문경은 과거와 현재가 공존하는 여행지로 주목받고 있어요. 고즈넉한 옛길을 걷다가 짚라인을 타고 하늘을 날고, 모노레일을 타고 산 정상에 올라 전망을 즐길 수 있답니다. 오미자 향 가득한 테마터널부터 드라마 촬영지까지, 문경 가볼만한곳 베스트 10을 지금부터 소개해드릴게요. .. 좋아요 6 댓글 0 2일 전 게시글 이미지" [ref=e605] [cursor=pointer]:
+                  - /url: https://goyouing.tistory.com/entry/%EB%AC%B8%EA%B2%BD-%EA%B0%80%EB%B3%BC%EB%A7%8C%ED%95%9C%EA%B3%B3-%EB%B2%A0%EC%8A%A4%ED%8A%B8-10
+                  - generic [ref=e606]:
+                    - strong [ref=e607]: 문경 가볼만한곳 베스트 10
+                    - paragraph [ref=e609]: 문경 가볼만한곳 베스트 10 경북 북부에 자리한 문경. 소백산맥이 병풍처럼 둘러싸고 있는 이 산간 도시는 예로부터 영남과 충청을 잇는 교통 요충지였어요. 문경새재는 조선시대 한양으로 과거 보러 가던 선비들이 넘던 고갯길로, 지금도 그 역사의 흔적이 고스란히 남아 있답니다. 경북 문경 가볼만한곳으로 석탄 산업으로 번성했던 과거의 모습을 석탄박물관에서 만날 수 있고, 깊은 산속 계곡과 출렁다리에서 자연의 아름다움을 즐길 수 있죠. 문경은 과거와 현재가 공존하는 여행지로 주목받고 있어요. 고즈넉한 옛길을 걷다가 짚라인을 타고 하늘을 날고, 모노레일을 타고 산 정상에 올라 전망을 즐길 수 있답니다. 오미자 향 가득한 테마터널부터 드라마 촬영지까지, 문경 가볼만한곳 베스트 10을 지금부터 소개해드릴게요. ..
+                    - generic [ref=e610]:
+                      - generic [ref=e611]:
+                        - generic [ref=e612]: 좋아요
+                        - generic [ref=e613]: "6"
+                      - generic [ref=e614]:
+                        - generic [ref=e615]: 댓글
+                        - generic [ref=e616]: "0"
+                      - generic [ref=e617]: 2일 전
+                  - img "게시글 이미지" [ref=e620]
+              - generic [ref=e621]:
+                - link "블로그 이미지 Photo & Movie 행복나눔터" [ref=e623] [cursor=pointer]:
+                  - /url: https://kangdante.tistory.com
+                  - img "블로그 이미지" [ref=e625]
+                  - generic [ref=e626]: Photo & Movie 행복나눔터
+                - link "변산반도의 대표적인 해안 절벽, 적벽강 전라북도 부안군 변산면 격포리에 위치한 부안 적벽강(赤壁江)은 변산반도의 해안 절벽 일대를 총칭하는 지명으로 대표적인 해안 절벽이며, 2004년에 명승 제13호로 지정된 절경이다. 적벽강 이름의 유래는 붉은 암벽과 절벽이 어우러진 모습이 중국 송(宋)의 문호 소동파(蘇東坡)가 노닐던 적벽강과 닮았다 하여 붙여진 이름이라고 한다. 적벽강의 붉은 암벽은 중생대 백악기의 퇴적암층이 해식 작용을 받아 형성되었으며, 특히 석양 무렵 햇빛을 받으면 암벽이 진홍색으로 물들어 장관을 이룬다고 한다. 적벽강은 뜨거운 용암과 굳지 않은 퇴적물이 만나 만들어진 '후추를 뿌린 듯한 모양'의 페퍼라이트(Peperite)와 주상절리 등을 관찰할 수 있는 부안 국가지질공원의 핵심 명소라 할 수 있다. 적벽강은 변산마실길 3.. 좋아요 42 댓글 54 1일 전 게시글 이미지" [ref=e627] [cursor=pointer]:
+                  - /url: https://kangdante.tistory.com/3028
+                  - generic [ref=e628]:
+                    - strong [ref=e629]: 변산반도의 대표적인 해안 절벽, 적벽강
+                    - paragraph [ref=e631]: 전라북도 부안군 변산면 격포리에 위치한 부안 적벽강(赤壁江)은 변산반도의 해안 절벽 일대를 총칭하는 지명으로 대표적인 해안 절벽이며, 2004년에 명승 제13호로 지정된 절경이다. 적벽강 이름의 유래는 붉은 암벽과 절벽이 어우러진 모습이 중국 송(宋)의 문호 소동파(蘇東坡)가 노닐던 적벽강과 닮았다 하여 붙여진 이름이라고 한다. 적벽강의 붉은 암벽은 중생대 백악기의 퇴적암층이 해식 작용을 받아 형성되었으며, 특히 석양 무렵 햇빛을 받으면 암벽이 진홍색으로 물들어 장관을 이룬다고 한다. 적벽강은 뜨거운 용암과 굳지 않은 퇴적물이 만나 만들어진 '후추를 뿌린 듯한 모양'의 페퍼라이트(Peperite)와 주상절리 등을 관찰할 수 있는 부안 국가지질공원의 핵심 명소라 할 수 있다. 적벽강은 변산마실길 3..
+                    - generic [ref=e632]:
+                      - generic [ref=e633]:
+                        - generic [ref=e634]: 좋아요
+                        - generic [ref=e635]: "42"
+                      - generic [ref=e636]:
+                        - generic [ref=e637]: 댓글
+                        - generic [ref=e638]: "54"
+                      - generic [ref=e639]: 1일 전
+                  - img "게시글 이미지" [ref=e642]
+            - generic [ref=e644]:
+              - generic [ref=e645]:
+                - generic: "현재 페이지 :"
+                - emphasis [ref=e646]: "1"
+                - generic [ref=e647]: / 7
+              - button "이전" [ref=e648] [cursor=pointer]:
+                - generic [ref=e649]: 이전
+              - button "다음" [ref=e650] [cursor=pointer]:
+                - generic [ref=e651]: 다음
+          - generic [ref=e652]:
+            - generic [ref=e653]:
+              - heading "FOCUS" [level=2] [ref=e654]
+              - strong [ref=e655]: J의 주말 계획 🚴🏻‍♂️
+              - paragraph [ref=e656]:
+                - text: 주말 나들이 갈만한 곳을 알아보세요.
+                - text: 진정한 J라면 월요일부터 주말 계획을 세워야 하니까요.
+            - generic [ref=e657]:
+              - generic [ref=e658]:
+                - link "블로그 이미지 tour of wind" [ref=e660] [cursor=pointer]:
+                  - /url: https://sunny38.tistory.com
+                  - img "블로그 이미지" [ref=e662]
+                  - generic [ref=e663]: tour of wind
+                - link "선물처럼 만나지는 풍경-지리산 일출 지리산의 은하수, 지리산에서의 월출.. 그리고 이제 일출을 만나러 부지런히천왕봉쪽으로 향합니다. 천왕봉 조금 못미쳐 만난 일출.. 선물처럼 만나지는 풍경지리산 일출입니다.(2026년 2월 15일) 천왕봉 봉우리 아래쪽의 기암들그 위로 뜨는 해를 봅니다. 이른 새벽, 별과 달과 너무 놀았던 탓에천왕봉까지 오르기에는 시간이 부족합니다 그럼에도 이 또한 즐거움입니다 아스라한 산 능선들 위로 높게 선 바위그 위로 아침 해가 뜹니다 맨 왼편 위쪽에 천왕봉을 오르는 난간이 바라보이는 곳에서 삼각대를 펴고 산능선들 위로 빛이 스며드는 시간 지리산 천왕봉을 올려 .. 좋아요 97 댓글 40 3일 전 게시글 이미지" [ref=e664] [cursor=pointer]:
+                  - /url: https://sunny38.tistory.com/11778595
+                  - generic [ref=e665]:
+                    - strong [ref=e666]: 선물처럼 만나지는 풍경-지리산 일출
+                    - paragraph [ref=e668]: 지리산의 은하수, 지리산에서의 월출.. 그리고 이제 일출을 만나러 부지런히천왕봉쪽으로 향합니다. 천왕봉 조금 못미쳐 만난 일출.. 선물처럼 만나지는 풍경지리산 일출입니다.(2026년 2월 15일) 천왕봉 봉우리 아래쪽의 기암들그 위로 뜨는 해를 봅니다. 이른 새벽, 별과 달과 너무 놀았던 탓에천왕봉까지 오르기에는 시간이 부족합니다 그럼에도 이 또한 즐거움입니다 아스라한 산 능선들 위로 높게 선 바위그 위로 아침 해가 뜹니다 맨 왼편 위쪽에 천왕봉을 오르는 난간이 바라보이는 곳에서 삼각대를 펴고 산능선들 위로 빛이 스며드는 시간 지리산 천왕봉을 올려 ..
+                    - generic [ref=e669]:
+                      - generic [ref=e670]:
+                        - generic [ref=e671]: 좋아요
+                        - generic [ref=e672]: "97"
+                      - generic [ref=e673]:
+                        - generic [ref=e674]: 댓글
+                        - generic [ref=e675]: "40"
+                      - generic [ref=e676]: 3일 전
+                  - img "게시글 이미지" [ref=e679]
+              - generic [ref=e680]:
+                - link "블로그 이미지 산생(山生)" [ref=e682] [cursor=pointer]:
+                  - /url: https://akekanfl.tistory.com
+                  - img "블로그 이미지" [ref=e684]
+                  - generic [ref=e685]: 산생(山生)
+                - link "구례수달생태공원 홍매화 절정 구례수달생태공원 홍매화 절정잠 깨어난 양지(陽地),빈 몸의 나목마다 싹이 움트고,차가운 겨울을 인고(忍苦)한,홍매화가 꽃망울을 터뜨렸다.섬진강 물줄기를 따라,구례 수달생태공원에도, 정다운 봄이 소리소문 없이, 살포시 내려앉았다홍매화는 꽃잎에 힘을 얻어,더 붉게 타오르고,꽃잎마다 벌들이 붕붕거린다,선홍빛으로 물든 꽃길을 걸으며,우리 심장도 뜨거워졌다.삼월에 막 피어난 청초하고 고결한 홍매화,지금 수달생태공원은붉게 물든 홍매화 꽃길이 장관이다. 2026.3.4. 구례 섬진강 수달생태공원에서... 오늘의 이모저모지리산과,물 맑은 섬진강을 품고 있는,구례는,봄이면 화엄사의 흑매,산동마을의 산수유,섬진강 삼백리 벚꽃길과,운조루, 사성암 등관광명소가 즐비하여,사계절 수많은 탐방객들이 찾는 곳이다.이곳에,천연기념물.. 좋아요 66 댓글 7 1일 전 게시글 이미지" [ref=e686] [cursor=pointer]:
+                  - /url: https://akekanfl.tistory.com/8708130
+                  - generic [ref=e687]:
+                    - strong [ref=e688]: 구례수달생태공원 홍매화 절정
+                    - paragraph [ref=e690]: 구례수달생태공원 홍매화 절정잠 깨어난 양지(陽地),빈 몸의 나목마다 싹이 움트고,차가운 겨울을 인고(忍苦)한,홍매화가 꽃망울을 터뜨렸다.섬진강 물줄기를 따라,구례 수달생태공원에도, 정다운 봄이 소리소문 없이, 살포시 내려앉았다홍매화는 꽃잎에 힘을 얻어,더 붉게 타오르고,꽃잎마다 벌들이 붕붕거린다,선홍빛으로 물든 꽃길을 걸으며,우리 심장도 뜨거워졌다.삼월에 막 피어난 청초하고 고결한 홍매화,지금 수달생태공원은붉게 물든 홍매화 꽃길이 장관이다. 2026.3.4. 구례 섬진강 수달생태공원에서... 오늘의 이모저모지리산과,물 맑은 섬진강을 품고 있는,구례는,봄이면 화엄사의 흑매,산동마을의 산수유,섬진강 삼백리 벚꽃길과,운조루, 사성암 등관광명소가 즐비하여,사계절 수많은 탐방객들이 찾는 곳이다.이곳에,천연기념물..
+                    - generic [ref=e691]:
+                      - generic [ref=e692]:
+                        - generic [ref=e693]: 좋아요
+                        - generic [ref=e694]: "66"
+                      - generic [ref=e695]:
+                        - generic [ref=e696]: 댓글
+                        - generic [ref=e697]: "7"
+                      - generic [ref=e698]: 1일 전
+                  - img "게시글 이미지" [ref=e701]
+              - generic [ref=e702]:
+                - link "블로그 이미지 Photo & Movie 행복나눔터" [ref=e704] [cursor=pointer]:
+                  - /url: https://kangdante.tistory.com
+                  - img "블로그 이미지" [ref=e706]
+                  - generic [ref=e707]: Photo & Movie 행복나눔터
+                - link "갯벌과 습지를 배경으로 한 생태명소, 부안 줄포만 노을빛정원 전북 부안군 줄포면 줄포리 및 우포리 일원에 위치한 줄포만 노을빛정원은 람사르 습지로 등록된 줄포만 갯벌을 배경으로 한 생태관광 명소이다. 줄포만 노을빛정원은 광활한 부지에 자연생태정원ㆍ야생화 단지ㆍ갯벌습지 일원(람사르 습지)탐방로ㆍ해의길 유원지ㆍ생태전시관 등이 조성되어 있으며, 2023년 10월에 전북특별자치도 제2호 지방정원으로 정식 등록되었다고 한다. 부안 노을빛정원의 옛 이름인 줄포만 갯벌생태공원의 본래 줄포저류지는 1996년에서 1999년까지 4년에 걸쳐 바닷물로부터 줄포시가지의 침수방지를 위해 방조제를 쌓아 만든 부지였다. 줄포만 갯벌생태공원은 줄포리 및 우포리 일대의 저지대 침수 피해를 막기 위해 1996년에 갯벌을 막아 약 67만㎡ 규모의 제방을 쌓았으며, 제방 안쪽에 담수 습지가 형성되.. 좋아요 51 댓글 55 15시간 전 게시글 이미지" [ref=e708] [cursor=pointer]:
+                  - /url: https://kangdante.tistory.com/3029
+                  - generic [ref=e709]:
+                    - strong [ref=e710]: 갯벌과 습지를 배경으로 한 생태명소, 부안 줄포만 노을빛정원
+                    - paragraph [ref=e712]: 전북 부안군 줄포면 줄포리 및 우포리 일원에 위치한 줄포만 노을빛정원은 람사르 습지로 등록된 줄포만 갯벌을 배경으로 한 생태관광 명소이다. 줄포만 노을빛정원은 광활한 부지에 자연생태정원ㆍ야생화 단지ㆍ갯벌습지 일원(람사르 습지)탐방로ㆍ해의길 유원지ㆍ생태전시관 등이 조성되어 있으며, 2023년 10월에 전북특별자치도 제2호 지방정원으로 정식 등록되었다고 한다. 부안 노을빛정원의 옛 이름인 줄포만 갯벌생태공원의 본래 줄포저류지는 1996년에서 1999년까지 4년에 걸쳐 바닷물로부터 줄포시가지의 침수방지를 위해 방조제를 쌓아 만든 부지였다. 줄포만 갯벌생태공원은 줄포리 및 우포리 일대의 저지대 침수 피해를 막기 위해 1996년에 갯벌을 막아 약 67만㎡ 규모의 제방을 쌓았으며, 제방 안쪽에 담수 습지가 형성되..
+                    - generic [ref=e713]:
+                      - generic [ref=e714]:
+                        - generic [ref=e715]: 좋아요
+                        - generic [ref=e716]: "51"
+                      - generic [ref=e717]:
+                        - generic [ref=e718]: 댓글
+                        - generic [ref=e719]: "55"
+                      - generic [ref=e720]: 15시간 전
+                  - img "게시글 이미지" [ref=e723]
+              - generic [ref=e724]:
+                - link "블로그 이미지 하늘하늘의 공간사랑" [ref=e726] [cursor=pointer]:
+                  - /url: https://csmsjy.tistory.com
+                  - img "블로그 이미지" [ref=e728]
+                  - generic [ref=e729]: 하늘하늘의 공간사랑
+                - link "봄마중 논산 우리춤 공연 동락 관람 2월의 끝날에 다녀온 논산.봄이 오는 시기에 봄마중 공연 관람하기..3월이 오면 봄기운이 확 달려옵니다.봄마중 공연에 우리 춤 이야기입니다. 일통가인연학회 공연 - 동락 공연은 총 7 가지가 진행되었는데 첫 번째 공연인 우리 춤을 올려봅니다. 사회자의 공연 취지 설명과 함께 동락 공연이 시작됩니다.오후 4시 주말입니다. 공연자는 권영심 님입니다.춤의 제목은 '입춤'입니다. 이름이 생소합니다.고운 한복 입고 홀로 무대에서 사뿐사뿐 발걸음을 옮기며 춤사위를 풀어놓습니다. 우리 모든 춤 움직임의 뼈대가 되는 기본춤이라고 합니다.이름하여 입춤이라 한다지요.여전에 권번의 춤 학습에서 중요시되던 춤이랍니다. 하얀 버선발이 눈에 들어오고 사뿐사뿐 옮기는 발걸음과팔을 벌려 하늘 거리는 춤이 아름.. 좋아요 22 댓글 28 2일 전 게시글 이미지" [ref=e730] [cursor=pointer]:
+                  - /url: https://csmsjy.tistory.com/7094400
+                  - generic [ref=e731]:
+                    - strong [ref=e732]: 봄마중 논산 우리춤 공연 동락 관람
+                    - paragraph [ref=e734]: 2월의 끝날에 다녀온 논산.봄이 오는 시기에 봄마중 공연 관람하기..3월이 오면 봄기운이 확 달려옵니다.봄마중 공연에 우리 춤 이야기입니다. 일통가인연학회 공연 - 동락 공연은 총 7 가지가 진행되었는데 첫 번째 공연인 우리 춤을 올려봅니다. 사회자의 공연 취지 설명과 함께 동락 공연이 시작됩니다.오후 4시 주말입니다. 공연자는 권영심 님입니다.춤의 제목은 '입춤'입니다. 이름이 생소합니다.고운 한복 입고 홀로 무대에서 사뿐사뿐 발걸음을 옮기며 춤사위를 풀어놓습니다. 우리 모든 춤 움직임의 뼈대가 되는 기본춤이라고 합니다.이름하여 입춤이라 한다지요.여전에 권번의 춤 학습에서 중요시되던 춤이랍니다. 하얀 버선발이 눈에 들어오고 사뿐사뿐 옮기는 발걸음과팔을 벌려 하늘 거리는 춤이 아름..
+                    - generic [ref=e735]:
+                      - generic [ref=e736]:
+                        - generic [ref=e737]: 좋아요
+                        - generic [ref=e738]: "22"
+                      - generic [ref=e739]:
+                        - generic [ref=e740]: 댓글
+                        - generic [ref=e741]: "28"
+                      - generic [ref=e742]: 2일 전
+                  - img "게시글 이미지" [ref=e745]
+              - generic [ref=e746]:
+                - link "블로그 이미지 삶의 기억 책장" [ref=e748] [cursor=pointer]:
+                  - /url: https://lifstory.tistory.com
+                  - img "블로그 이미지" [ref=e750]
+                  - generic [ref=e751]: 삶의 기억 책장
+                - link "춘천 1박2일 아이동반 가족여행 코스 (삼악산 케이블카 + 강뷰카페 + 박물관) 아이와 함께 다녀온 춘천 1박2일 가족여행 코스삼악산 케이블카 + 강뷰 카페 + 춘천박물관 미디어아트 + 닭갈비 + 쏘카 조합이 가장 효율적동선·예산·아이 체력까지 고려한 실전형 일정이라 그대로 따라가셔도 무리 없어요. 아이랑 어디 갈지 고민하다가 다녀온 춘천 가족여행.결론부터 말하면 “기차 + 쏘카” 조합이 신의 한 수였어요.서울에서 ITX 타고 이동 → 현지에서 쏘카 대여 → 주요 코스만 콕 집어서 다니니 아이도 덜 힘들고, 부모도 체력 세이브!🚠 삼악산 케이블카 (아이 만족도 최고) 춘천 오면 꼭 가볼 곳이 바로삼악산 호수케이블카. 의암호 위를 천천히 지나가는데 아이가 정말 좋아해요.“구름 위에 있는 느낌”이라면서 계속 창밖 보더라고요.✔ 소요시간 1~2시간✔ 오전 방문이 대기 적음✔ 강풍 .. 좋아요 5 댓글 1 6일 전 게시글 이미지" [ref=e752] [cursor=pointer]:
+                  - /url: https://lifstory.tistory.com/entry/%EC%B6%98%EC%B2%9C-1%EB%B0%952%EC%9D%BC-%EC%95%84%EC%9D%B4%EB%8F%99%EB%B0%98-%EA%B0%80%EC%A1%B1%EC%97%AC%ED%96%89-%EC%BD%94%EC%8A%A4-%EC%82%BC%EC%95%85%EC%82%B0-%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4-%EA%B0%95%EB%B7%B0%EC%B9%B4%ED%8E%98-%EB%B0%95%EB%AC%BC%EA%B4%80
+                  - generic [ref=e753]:
+                    - strong [ref=e754]: 춘천 1박2일 아이동반 가족여행 코스 (삼악산 케이블카 + 강뷰카페 + 박물관)
+                    - paragraph [ref=e756]: 아이와 함께 다녀온 춘천 1박2일 가족여행 코스삼악산 케이블카 + 강뷰 카페 + 춘천박물관 미디어아트 + 닭갈비 + 쏘카 조합이 가장 효율적동선·예산·아이 체력까지 고려한 실전형 일정이라 그대로 따라가셔도 무리 없어요. 아이랑 어디 갈지 고민하다가 다녀온 춘천 가족여행.결론부터 말하면 “기차 + 쏘카” 조합이 신의 한 수였어요.서울에서 ITX 타고 이동 → 현지에서 쏘카 대여 → 주요 코스만 콕 집어서 다니니 아이도 덜 힘들고, 부모도 체력 세이브!🚠 삼악산 케이블카 (아이 만족도 최고) 춘천 오면 꼭 가볼 곳이 바로삼악산 호수케이블카. 의암호 위를 천천히 지나가는데 아이가 정말 좋아해요.“구름 위에 있는 느낌”이라면서 계속 창밖 보더라고요.✔ 소요시간 1~2시간✔ 오전 방문이 대기 적음✔ 강풍 ..
+                    - generic [ref=e757]:
+                      - generic [ref=e758]:
+                        - generic [ref=e759]: 좋아요
+                        - generic [ref=e760]: "5"
+                      - generic [ref=e761]:
+                        - generic [ref=e762]: 댓글
+                        - generic [ref=e763]: "1"
+                      - generic [ref=e764]: 6일 전
+                  - img "게시글 이미지" [ref=e767]
+          - generic [ref=e768]:
+            - generic [ref=e769]:
+              - heading "FOCUS" [level=2] [ref=e770]
+              - strong [ref=e771]: 오후에는 커피 한 잔 ☕️
+              - paragraph [ref=e772]:
+                - text: 커피 한 잔의 여유를 아는 품격있는 당신.
+                - text: 달달이와도 함께 할 수 있는 공간을 소개합니다.
+            - generic [ref=e773]:
+              - generic [ref=e774]:
+                - link "블로그 이미지 신한국 황대장" [ref=e776] [cursor=pointer]:
+                  - /url: https://tecmo17.tistory.com
+                  - img "블로그 이미지" [ref=e778]
+                  - generic [ref=e779]: 신한국 황대장
+                - link "소래산 산행 마치고 다녀온 시흥 소전미술관-청화공간 풍경(2026년 2월 28일) 신한국 황대장입니다. 오늘 경칩날도 벌써 다 지나갔네요. 오후까지는 날씨가 맑았는데 저녁 되니까 많은 비가 지금까지 쏟아지고 있네요. 그럼 오늘은 지난 2월 마지막 날 소래산 산행 다녀온 뒤에 차례대로 다녀왔던 소전미술관과 청화공간 카페 사진들 올리겠습니다. 먼저 소전미술관은 3년 전에 다녀온 뒤로 오랜만에 가봤는데 원래 그냥 미술관이었었는데 이번에 가보니까 카페로 새롭게 리모델링을 했더라고요. 그래서인지 미술관 안에 사람들이 아주 바글바글했더라고요. 미술품 구경도 하고 카페 분위기도 즐기고 일석이조네요. 소전미술관 구경을 모두 마친 뒤에는 소래산 산행 마치고 나면 항상 들르는 청화공간 카페에도 가봤는데 이곳에도 역시나 사람들이 많이들 찾아왔더라고요. 이곳 청화공간 카페도 곳곳을 둘러보고 소금빵과 아이.. 좋아요 37 댓글 48 23시간 전 게시글 이미지" [ref=e780] [cursor=pointer]:
+                  - /url: https://tecmo17.tistory.com/2254
+                  - generic [ref=e781]:
+                    - strong [ref=e782]: 소래산 산행 마치고 다녀온 시흥 소전미술관-청화공간 풍경(2026년 2월 28일)
+                    - paragraph [ref=e784]: 신한국 황대장입니다. 오늘 경칩날도 벌써 다 지나갔네요. 오후까지는 날씨가 맑았는데 저녁 되니까 많은 비가 지금까지 쏟아지고 있네요. 그럼 오늘은 지난 2월 마지막 날 소래산 산행 다녀온 뒤에 차례대로 다녀왔던 소전미술관과 청화공간 카페 사진들 올리겠습니다. 먼저 소전미술관은 3년 전에 다녀온 뒤로 오랜만에 가봤는데 원래 그냥 미술관이었었는데 이번에 가보니까 카페로 새롭게 리모델링을 했더라고요. 그래서인지 미술관 안에 사람들이 아주 바글바글했더라고요. 미술품 구경도 하고 카페 분위기도 즐기고 일석이조네요. 소전미술관 구경을 모두 마친 뒤에는 소래산 산행 마치고 나면 항상 들르는 청화공간 카페에도 가봤는데 이곳에도 역시나 사람들이 많이들 찾아왔더라고요. 이곳 청화공간 카페도 곳곳을 둘러보고 소금빵과 아이..
+                    - generic [ref=e785]:
+                      - generic [ref=e786]:
+                        - generic [ref=e787]: 좋아요
+                        - generic [ref=e788]: "37"
+                      - generic [ref=e789]:
+                        - generic [ref=e790]: 댓글
+                        - generic [ref=e791]: "48"
+                      - generic [ref=e792]: 23시간 전
+                  - img "게시글 이미지" [ref=e795]
+              - generic [ref=e796]:
+                - link "블로그 이미지 머니슈머" [ref=e798] [cursor=pointer]:
+                  - /url: https://moneysumer.tistory.com
+                  - img "블로그 이미지" [ref=e800]
+                  - generic [ref=e801]: 머니슈머
+                - link "스타벅스 아침 메뉴 추천! 샌드위치부터 이색 디저트 '두쫀쿠'까지 완벽 정리 파주에 갔을 때 아침도 먹을 겸 음료도 먹을 겸해서 스타벅스 파주문산점에서 샌드위치와 음료를 마셨어요스타벅스 파주문산 DT점에 대해서는 포스팅을 쓴 적이 있어서 오늘은 그곳에서 먹었던 것만 소개하도록 할게요오트밀 브레드에 베이컨과 시저 치킨 샐러드, 로메인이 어우러진 이 샌드위치는 할인쿠폰이 있어서 구입한 건데,이 샌드위치를 먹었던 아들이 맛은 그저 그랬다고 하더라고요식빵에 새콤달콤한 그릭 소스를 바르고 고소한 에그 스프레드와 햄, 치즈에 로메인을 조합한에그 클럽 샌드위치는 제가 즐겨 먹는 샌드위치예요. 왜냐하면 맛있으니까요~😃바삭한 바게트 빵사이에 담백한 닭가슴살과 풍미 깊은 머쉬룸 소스를 버무린 버섯과 치즈가 들어간 샌드위치예요.매장에서 따뜻하게 데워주기 때문에 치즈가 쭉 늘어지는 즐거움을 느낄 .. 좋아요 14 댓글 11 6일 전 게시글 이미지" [ref=e802] [cursor=pointer]:
+                  - /url: https://moneysumer.tistory.com/477
+                  - generic [ref=e803]:
+                    - strong [ref=e804]: 스타벅스 아침 메뉴 추천! 샌드위치부터 이색 디저트 '두쫀쿠'까지 완벽 정리
+                    - paragraph [ref=e806]: 파주에 갔을 때 아침도 먹을 겸 음료도 먹을 겸해서 스타벅스 파주문산점에서 샌드위치와 음료를 마셨어요스타벅스 파주문산 DT점에 대해서는 포스팅을 쓴 적이 있어서 오늘은 그곳에서 먹었던 것만 소개하도록 할게요오트밀 브레드에 베이컨과 시저 치킨 샐러드, 로메인이 어우러진 이 샌드위치는 할인쿠폰이 있어서 구입한 건데,이 샌드위치를 먹었던 아들이 맛은 그저 그랬다고 하더라고요식빵에 새콤달콤한 그릭 소스를 바르고 고소한 에그 스프레드와 햄, 치즈에 로메인을 조합한에그 클럽 샌드위치는 제가 즐겨 먹는 샌드위치예요. 왜냐하면 맛있으니까요~😃바삭한 바게트 빵사이에 담백한 닭가슴살과 풍미 깊은 머쉬룸 소스를 버무린 버섯과 치즈가 들어간 샌드위치예요.매장에서 따뜻하게 데워주기 때문에 치즈가 쭉 늘어지는 즐거움을 느낄 ..
+                    - generic [ref=e807]:
+                      - generic [ref=e808]:
+                        - generic [ref=e809]: 좋아요
+                        - generic [ref=e810]: "14"
+                      - generic [ref=e811]:
+                        - generic [ref=e812]: 댓글
+                        - generic [ref=e813]: "11"
+                      - generic [ref=e814]: 6일 전
+                  - img "게시글 이미지" [ref=e817]
+              - generic [ref=e818]:
+                - link "블로그 이미지 go2hr" [ref=e820] [cursor=pointer]:
+                  - /url: https://go2hr.tistory.com
+                  - img "블로그 이미지" [ref=e822]
+                  - generic [ref=e823]: go2hr
+                - link "PRADO cafe 밴쿠버 커피맛집 안녕하세요이번 밴쿠버 일정은 정말이지 숨쉴새 없는? 일정이 너무 바빠서 블로그 성실함이 떨어지네요ㅠ날씨도 좋고오랜만에 오전 볼일을 보고난 후한숨 돌리기 위해당충전 타임!이곳은 던바라는 동네에 위치한 커피숍인데요당근케익이 맛난 곳으로 유명^^원두와 티를 판매하고 있고사이즈 맛 취향껏 구매가능!주문한 당근케익!당근케익은 홀케이크에서그자리에서 잘라서 주고제가 주문한 콜타도!진한 에스프레소의 맛이 진한하트를 올려 줬네요~~~열심히 찍고 있다보니런던포그티가 나왔네요~함께샷 찍어주고사람이 없어서 너무 좋았던더이상은 안되겠죠? 커피 식겠어요 ㅋㅋㅋ항공샷 한장 더 찍어주고정신없던 아침에 즐기는커피한잔의 여유!우리 모두 행복해져요~~~~~~ 좋아요 15 댓글 9 4일 전 게시글 이미지" [ref=e824] [cursor=pointer]:
+                  - /url: https://go2hr.tistory.com/180
+                  - generic [ref=e825]:
+                    - strong [ref=e826]: PRADO cafe 밴쿠버 커피맛집
+                    - paragraph [ref=e828]: 안녕하세요이번 밴쿠버 일정은 정말이지 숨쉴새 없는? 일정이 너무 바빠서 블로그 성실함이 떨어지네요ㅠ날씨도 좋고오랜만에 오전 볼일을 보고난 후한숨 돌리기 위해당충전 타임!이곳은 던바라는 동네에 위치한 커피숍인데요당근케익이 맛난 곳으로 유명^^원두와 티를 판매하고 있고사이즈 맛 취향껏 구매가능!주문한 당근케익!당근케익은 홀케이크에서그자리에서 잘라서 주고제가 주문한 콜타도!진한 에스프레소의 맛이 진한하트를 올려 줬네요~~~열심히 찍고 있다보니런던포그티가 나왔네요~함께샷 찍어주고사람이 없어서 너무 좋았던더이상은 안되겠죠? 커피 식겠어요 ㅋㅋㅋ항공샷 한장 더 찍어주고정신없던 아침에 즐기는커피한잔의 여유!우리 모두 행복해져요~~~~~~
+                    - generic [ref=e829]:
+                      - generic [ref=e830]:
+                        - generic [ref=e831]: 좋아요
+                        - generic [ref=e832]: "15"
+                      - generic [ref=e833]:
+                        - generic [ref=e834]: 댓글
+                        - generic [ref=e835]: "9"
+                      - generic [ref=e836]: 4일 전
+                  - img "게시글 이미지" [ref=e839]
+              - generic [ref=e840]:
+                - link "블로그 이미지 사진여행" [ref=e842] [cursor=pointer]:
+                  - /url: https://kbh6628.tistory.com
+                  - img "블로그 이미지" [ref=e844]
+                  - generic [ref=e845]: 사진여행
+                - 'link "서니구락부 카페 ''서니구락부(Sunny Club)''는 인천 개항장 거리(신포동)에서 아주 유명한 카페 겸 소품샵의 이름입니다.. 이름의 구성과 의미서니(Sunny): ''태양이 비치는'', ''화창한''이라는 뜻의 영어 단어로, 밝고 따뜻한 분위기를 의미합니다.구락부(俱樂部): 영단어 **''클럽(Club)''**을 일본식 한자 발음으로 표기한 것입니다. 개항기 시절 근대 단체나 사교 모임을 부르던 명칭이죠.종합하면: \"햇살이 내리쬐는 따뜻한 모임 장소\" 정도로 해석할 수 있습니다.이 카페가 위치한 인천 중구 개항장 거리는 구한말과 일제강점기의 근대 건축물이 많이 남아있는 곳입니다.당시의 레트로한 감성을 살리기 위해 현대적인 ''카페''나 ''클럽''이라는 단어 대신, 그 시절 쓰던 **''구락부''**라는 단어를 사용하여 이국적이면.. 좋아요 14 댓글 5 6일 전 게시글 이미지" [ref=e846] [cursor=pointer]':
+                  - /url: https://kbh6628.tistory.com/entry/%EC%84%9C%EB%8B%88%EA%B5%AC%EB%9D%BD%EB%B6%80-%EC%B9%B4%ED%8E%98
+                  - generic [ref=e847]:
+                    - strong [ref=e848]: 서니구락부 카페
+                    - paragraph [ref=e850]: "'서니구락부(Sunny Club)'는 인천 개항장 거리(신포동)에서 아주 유명한 카페 겸 소품샵의 이름입니다.. 이름의 구성과 의미서니(Sunny): '태양이 비치는', '화창한'이라는 뜻의 영어 단어로, 밝고 따뜻한 분위기를 의미합니다.구락부(俱樂部): 영단어 **'클럽(Club)'**을 일본식 한자 발음으로 표기한 것입니다. 개항기 시절 근대 단체나 사교 모임을 부르던 명칭이죠.종합하면: \"햇살이 내리쬐는 따뜻한 모임 장소\" 정도로 해석할 수 있습니다.이 카페가 위치한 인천 중구 개항장 거리는 구한말과 일제강점기의 근대 건축물이 많이 남아있는 곳입니다.당시의 레트로한 감성을 살리기 위해 현대적인 '카페'나 '클럽'이라는 단어 대신, 그 시절 쓰던 **'구락부'**라는 단어를 사용하여 이국적이면.."
+                    - generic [ref=e851]:
+                      - generic [ref=e852]:
+                        - generic [ref=e853]: 좋아요
+                        - generic [ref=e854]: "14"
+                      - generic [ref=e855]:
+                        - generic [ref=e856]: 댓글
+                        - generic [ref=e857]: "5"
+                      - generic [ref=e858]: 6일 전
+                  - img "게시글 이미지" [ref=e861]
+              - generic [ref=e862]:
+                - link "블로그 이미지 좀좀이의 여행" [ref=e864] [cursor=pointer]:
+                  - /url: https://zomzom.tistory.com
+                  - img "블로그 이미지" [ref=e866]
+                  - generic [ref=e867]: 좀좀이의 여행
+                - link "씨유 CU 편의점 디저트 말차 초코 두쫀볼 두바이 스타일 쫀득볼 이번에 먹어본 편의점 디저트는 CU 편의점 디저트 말차 초코 두쫀볼이에요. 이 디저트 정식 명칭은 디저트 말차 초코 두쫀볼 (두바이 스타일 쫀득볼)이에요. \"요즘 두쫀쿠 스타일 엄청 난리네?\" 라마단 시즌이 되었고, 이에 맞춰서 대기업들이 눈치 보다가 드디어 두쫀쿠 스타일 간식들을 출시하면서 졸지에 라마단 코리아가 되었어요. 하필 시기가 딱 맞물리면서 엄청 웃기게 되었어요. 지금까지 제가 라마단을 한두 번 경험해본 게 아니지만, 우리나라에서 이렇게 라마단과 유행이 절묘하게 딱 맞아떨어진 적은 단 한 번도 없었어요. 카이막 열풍일 때도 이렇게 맞아떨어지지는 않았거든요. 이런 일이 발생한 이유는 두쫀쿠 핵심 재료인 피스타치오와 카다이프 둘 다 전량 수입해야 하는데 둘 다 비싸기 때문이에요. 게다가 활용성도 .. 좋아요 14 댓글 4 2일 전 게시글 이미지" [ref=e868] [cursor=pointer]:
+                  - /url: https://zomzom.tistory.com/556447
+                  - generic [ref=e869]:
+                    - strong [ref=e870]: 씨유 CU 편의점 디저트 말차 초코 두쫀볼 두바이 스타일 쫀득볼
+                    - paragraph [ref=e872]: 이번에 먹어본 편의점 디저트는 CU 편의점 디저트 말차 초코 두쫀볼이에요. 이 디저트 정식 명칭은 디저트 말차 초코 두쫀볼 (두바이 스타일 쫀득볼)이에요. "요즘 두쫀쿠 스타일 엄청 난리네?" 라마단 시즌이 되었고, 이에 맞춰서 대기업들이 눈치 보다가 드디어 두쫀쿠 스타일 간식들을 출시하면서 졸지에 라마단 코리아가 되었어요. 하필 시기가 딱 맞물리면서 엄청 웃기게 되었어요. 지금까지 제가 라마단을 한두 번 경험해본 게 아니지만, 우리나라에서 이렇게 라마단과 유행이 절묘하게 딱 맞아떨어진 적은 단 한 번도 없었어요. 카이막 열풍일 때도 이렇게 맞아떨어지지는 않았거든요. 이런 일이 발생한 이유는 두쫀쿠 핵심 재료인 피스타치오와 카다이프 둘 다 전량 수입해야 하는데 둘 다 비싸기 때문이에요. 게다가 활용성도 ..
+                    - generic [ref=e873]:
+                      - generic [ref=e874]:
+                        - generic [ref=e875]: 좋아요
+                        - generic [ref=e876]: "14"
+                      - generic [ref=e877]:
+                        - generic [ref=e878]: 댓글
+                        - generic [ref=e879]: "4"
+                      - generic [ref=e880]: 2일 전
+                  - img "게시글 이미지" [ref=e883]
+        - generic [ref=e233]:
+          - generic [ref=e234]:
+            - heading "나의 티스토리" [level=2]
+            - generic [ref=e235]:
+              - link "블로그 이미지 테크타니 구독자 0명" [ref=e884] [cursor=pointer]:
+                - /url: https://dream-kwon.tistory.com
+                - img "블로그 이미지" [ref=e887]
+                - generic [ref=e888]:
+                  - strong [ref=e889]: 테크타니
+                  - generic [ref=e891]:
+                    - text: 구독자
+                    - generic [ref=e892]: 0명
+              - button "블로그 레이어 열기" [ref=e893] [cursor=pointer]:
+                - generic [ref=e894]: 블로그 레이어 열기
+            - generic [ref=e242]:
+              - link "글쓰기" [ref=e895] [cursor=pointer]:
+                - /url: https://dream-kwon.tistory.com/manage/newpost
+              - link "내 블로그" [ref=e896] [cursor=pointer]:
+                - /url: https://dream-kwon.tistory.com
+              - link "관리" [ref=e897] [cursor=pointer]:
+                - /url: https://dream-kwon.tistory.com/manage
+            - generic [ref=e244]:
+              - generic [ref=e898]:
+                - term [ref=e899]: 조회수
+                - definition [ref=e900]:
+                  - link "23회 조회수 바로가기" [ref=e901] [cursor=pointer]:
+                    - /url: https://dream-kwon.tistory.com/manage
+                    - generic [ref=e902]: 23회
+                    - generic [ref=e904]: 조회수 바로가기
+              - generic [ref=e905]:
+                - term [ref=e906]: 방문자
+                - definition [ref=e907]:
+                  - link "18명 방문통계 바로가기" [ref=e908] [cursor=pointer]:
+                    - /url: https://dream-kwon.tistory.com/manage
+                    - generic [ref=e909]: 18명
+                    - generic [ref=e911]: 방문통계 바로가기
+              - generic [ref=e912]:
+                - term [ref=e913]: 수익
+                - definition [ref=e914]:
+                  - button "Google Adsense 0 달러 수익 레이어 열기" [ref=e915] [cursor=pointer]:
+                    - img "Google Adsense" [ref=e917]
+                    - generic [ref=e918]: "0"
+                    - generic [ref=e919]: 달러
+                    - generic [ref=e921]: 수익 레이어 열기
+          - separator [ref=e281]
+          - generic [ref=e282]:
+            - generic [ref=e922]:
+              - heading "스토리 크리에이터 스토리 크리에이터" [level=2] [ref=e923]:
+                - generic [ref=e924]: 스토리 크리에이터
+                - img "스토리 크리에이터" [ref=e925]
+              - button "도움말보기" [expanded] [ref=e927] [cursor=pointer]:
+                - generic [ref=e928]: 도움말보기
+            - generic [ref=e929]:
+              - generic [ref=e930]:
+                - link "그란 이야기 맛집 분야 크리에이터 768명 구독" [ref=e932] [cursor=pointer]:
+                  - /url: https://taeranstory.tistory.com
+                  - strong [ref=e933]: 그란 이야기
+                  - generic [ref=e934]:
+                    - generic [ref=e936]: 맛집 분야 크리에이터
+                    - generic [ref=e937]: 768명 구독
+                - button "구독" [ref=e939] [cursor=pointer]:
+                  - generic [ref=e941]: 구독
+              - generic [ref=e942]:
+                - link "명도 롯데백화점 본점 미슐랭 우동 맛집 '현우동' 좋아요 2 댓글 3 2026.02.24 게시글 이미지" [ref=e943] [cursor=pointer]:
+                  - /url: https://taeranstory.tistory.com/735
+                  - generic [ref=e944]:
+                    - strong [ref=e945]: 명도 롯데백화점 본점 미슐랭 우동 맛집 '현우동'
+                    - generic [ref=e946]:
+                      - generic [ref=e947]:
+                        - generic [ref=e948]: 좋아요
+                        - generic [ref=e949]: "2"
+                      - generic [ref=e950]:
+                        - generic [ref=e951]: 댓글
+                        - generic [ref=e952]: "3"
+                      - generic [ref=e953]: 2026.02.24
+                  - img "게시글 이미지" [ref=e956]
+                - link "유퀴즈 짬뽕 맛집, 김포 띠디 방문 후기(주차/웨이팅/메뉴추천) 좋아요 12 댓글 16 2026.02.01 게시글 이미지" [ref=e957] [cursor=pointer]:
+                  - /url: https://taeranstory.tistory.com/732
+                  - generic [ref=e958]:
+                    - strong [ref=e959]: 유퀴즈 짬뽕 맛집, 김포 띠디 방문 후기(주차/웨이팅/메뉴추천)
+                    - generic [ref=e960]:
+                      - generic [ref=e961]:
+                        - generic [ref=e962]: 좋아요
+                        - generic [ref=e963]: "12"
+                      - generic [ref=e964]:
+                        - generic [ref=e965]: 댓글
+                        - generic [ref=e966]: "16"
+                      - generic [ref=e967]: 2026.02.01
+                  - img "게시글 이미지" [ref=e970]
+            - generic [ref=e971]:
+              - generic [ref=e972]:
+                - link "낭만할매 안단테의 삶...!!! 여행 분야 크리에이터 342명 구독" [ref=e974] [cursor=pointer]:
+                  - /url: https://bark58.tistory.com
+                  - strong [ref=e975]: 낭만할매 안단테의 삶...!!!
+                  - generic [ref=e976]:
+                    - generic [ref=e978]: 여행 분야 크리에이터
+                    - generic [ref=e979]: 342명 구독
+                - button "구독" [ref=e981] [cursor=pointer]:
+                  - generic [ref=e983]: 구독
+              - generic [ref=e984]:
+                - link "우리동네 만산홍엽 좋아요 76 댓글 0 2024.11.25 게시글 이미지" [ref=e985] [cursor=pointer]:
+                  - /url: https://bark58.tistory.com/15864437
+                  - generic [ref=e986]:
+                    - strong [ref=e987]: 우리동네 만산홍엽
+                    - generic [ref=e988]:
+                      - generic [ref=e989]:
+                        - generic [ref=e990]: 좋아요
+                        - generic [ref=e991]: "76"
+                      - generic [ref=e992]:
+                        - generic [ref=e993]: 댓글
+                        - generic [ref=e994]: "0"
+                      - generic [ref=e995]: 2024.11.25
+                  - img "게시글 이미지" [ref=e998]
+                - link "속리산 법주사 좋아요 72 댓글 115 2024.11.09 게시글 이미지" [ref=e999] [cursor=pointer]:
+                  - /url: https://bark58.tistory.com/15864421
+                  - generic [ref=e1000]:
+                    - strong [ref=e1001]: 속리산 법주사
+                    - generic [ref=e1002]:
+                      - generic [ref=e1003]:
+                        - generic [ref=e1004]: 좋아요
+                        - generic [ref=e1005]: "72"
+                      - generic [ref=e1006]:
+                        - generic [ref=e1007]: 댓글
+                        - generic [ref=e1008]: "115"
+                      - generic [ref=e1009]: 2024.11.09
+                  - img "게시글 이미지" [ref=e1012]
+            - generic [ref=e1014]:
+              - generic [ref=e1015]:
+                - generic: "현재 페이지 :"
+                - emphasis [ref=e1016]: "1"
+                - generic [ref=e1017]: / 16
+              - button "이전" [ref=e1018] [cursor=pointer]:
+                - generic [ref=e1019]: 이전
+              - button "다음" [ref=e1020] [cursor=pointer]:
+                - generic [ref=e1021]: 다음
+          - generic [ref=e1022]:
+            - heading "구독 급상승 구독 급상승" [level=2] [ref=e1023]:
+              - generic [ref=e1024]: 구독 급상승
+              - img "구독 급상승" [ref=e1025]
+            - generic [ref=e1026]:
+              - generic [ref=e1028]:
+                - generic [ref=e1029]:
+                  - generic [ref=e1030]: 1939명 구독
+                  - generic [ref=e1032]: 15명
+                - strong [ref=e1033]:
+                  - link "고요한 산사의 풍경소리" [ref=e1034] [cursor=pointer]:
+                    - /url: https://heysukim114.tistory.com
+                    - generic [ref=e1035]: 고요한 산사의 풍경소리
+                  - button "구독" [ref=e1037] [cursor=pointer]:
+                    - generic [ref=e1039]: 구독
+                - link "리빙·스타일 잔잔한 일상속에서 내 발 밑에 떨어진 행복줍기" [ref=e1040] [cursor=pointer]:
+                  - /url: https://heysukim114.tistory.com
+                  - generic [ref=e1041]: 리빙·스타일
+                  - text: 잔잔한 일상속에서 내 발 밑에 떨어진 행복줍기
+              - generic [ref=e1043]:
+                - generic [ref=e1044]:
+                  - link "냉파, 정월대보름 나물 활용 얼큰 육개장 만들기 (남은 보름나물 활용법)" [ref=e1046] [cursor=pointer]:
+                    - /url: https://heysukim114.tistory.com/297959
+                    - strong [ref=e1047]: 냉파, 정월대보름 나물 활용 얼큰 육개장 만들기 (남은 보름나물 활용법)
+                  - link "정월대보름 나물반찬 7가지 만들기/보름나물 왜 먹을까? 의미와 건강 이야기" [ref=e1050] [cursor=pointer]:
+                    - /url: https://heysukim114.tistory.com/297952
+                    - strong [ref=e1051]: 정월대보름 나물반찬 7가지 만들기/보름나물 왜 먹을까? 의미와 건강 이야기
+                - generic [ref=e1054]:
+                  - generic [ref=e1055]:
+                    - generic: "현재 페이지 :"
+                    - emphasis [ref=e1056]: "1"
+                    - generic [ref=e1057]: / 18
+                  - button "이전" [ref=e1058] [cursor=pointer]:
+                    - generic [ref=e1059]: 이전
+                  - button "다음" [ref=e1060] [cursor=pointer]:
+                    - generic [ref=e1061]: 다음
+          - generic [ref=e1062]:
+            - heading "티스토리 운영 Tip 티스토리 운영 Tip" [level=2] [ref=e1063]:
+              - generic [ref=e1064]: 티스토리 운영 Tip
+              - img "티스토리 운영 Tip" [ref=e1065]
+            - generic [ref=e1066]:
+              - link "행복을 안겨주는 공간 티스토리 로그인 및 가입하기 운영팁 이미지" [ref=e1068] [cursor=pointer]:
+                - /url: https://1sangsosick.tistory.com/305
+                - generic [ref=e1069]:
+                  - strong [ref=e1070]: 행복을 안겨주는 공간
+                  - strong [ref=e1071]: 티스토리 로그인 및 가입하기
+                  - img "운영팁 이미지" [ref=e1073]
+              - link "세상의 이모저모 카테고리 설정하기 운영팁 이미지" [ref=e1075] [cursor=pointer]:
+                - /url: https://blog.baobtree.com/entry/%ED%8B%B0%EC%8A%A4%ED%86%A0%EB%A6%AC-%EA%B4%80%EB%A6%AC%EC%9E%90-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95-%EB%B0%A9%EB%B2%95
+                - generic [ref=e1076]:
+                  - strong [ref=e1077]: 세상의 이모저모
+                  - strong [ref=e1078]: 카테고리 설정하기
+                  - img "운영팁 이미지" [ref=e1080]
+              - link "보안공부방 마크다운, HTML 모드로 작성하기 운영팁 이미지" [ref=e1082] [cursor=pointer]:
+                - /url: https://magn0lia.tistory.com/62
+                - generic [ref=e1083]:
+                  - strong [ref=e1084]: 보안공부방
+                  - strong [ref=e1085]: 마크다운, HTML 모드로 작성하기
+                  - img "운영팁 이미지" [ref=e1087]
+              - link "지속 가능한 배움 제작한 스킨 적용하기 운영팁 이미지" [ref=e1089] [cursor=pointer]:
+                - /url: https://lastingstudy.tistory.com/82
+                - generic [ref=e1090]:
+                  - strong [ref=e1091]: 지속 가능한 배움
+                  - strong [ref=e1092]: 제작한 스킨 적용하기
+                  - img "운영팁 이미지" [ref=e1094]
+            - generic [ref=e1096]:
+              - generic [ref=e1097]:
+                - generic: "현재 페이지 :"
+                - emphasis [ref=e1098]: "1"
+                - generic [ref=e1099]: / 2
+              - button "이전" [ref=e1100] [cursor=pointer]:
+                - generic [ref=e1101]: 이전
+              - button "다음" [ref=e1102] [cursor=pointer]:
+                - generic [ref=e1103]: 다음
+          - generic [ref=e311]:
+            - heading "스킨 스토어" [level=2] [ref=e312]:
+              - link "스킨 스토어" [ref=e313] [cursor=pointer]:
+                - /url: /skin
+                - generic [ref=e314]: 스킨 스토어
+            - generic [ref=e316]:
+              - img "Odyssey 스킨 보러가기" [ref=e317]
+              - link "보러가기" [ref=e318] [cursor=pointer]:
+                - /url: /skin/Odyssey
+                - generic [ref=e319]: 보러가기
+    - generic [ref=e321]:
+      - generic [ref=e322]:
+        - heading "서비스정보" [level=2]
+        - generic [ref=e323]:
+          - strong [ref=e324]: TISTORY
+          - paragraph [ref=e325]:
+            - generic [ref=e326]:
+              - text: 티스토리는 AXZ에서
+              - img "사랑" [ref=e327]
+              - text: 을 담아 만듭니다.
+            - text: © AXZ Corp.
+      - generic [ref=e328]:
+        - heading "문의목록" [level=2]
+        - generic [ref=e329]:
+          - generic [ref=e330]: 메뉴가 궁금할 땐
+          - list [ref=e331]:
+            - listitem [ref=e332]:
+              - link "홈" [ref=e333] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e334]:
+              - link "피드" [ref=e335] [cursor=pointer]:
+                - /url: /feed
+            - listitem [ref=e336]:
+              - link "스킨" [ref=e337] [cursor=pointer]:
+                - /url: /skin
+            - listitem [ref=e338]:
+              - link "포럼" [ref=e339] [cursor=pointer]:
+                - /url: /community/forum
+        - generic [ref=e340]:
+          - generic [ref=e341]: 사용하다 궁금할 땐
+          - list [ref=e342]:
+            - listitem [ref=e343]:
+              - link "스킨가이드" [ref=e344] [cursor=pointer]:
+                - /url: https://tistory.github.io/document-tistory-skin/
+            - listitem [ref=e345]:
+              - link "고객센터" [ref=e346] [cursor=pointer]:
+                - /url: https://cs.daum.net
+            - listitem [ref=e347]:
+              - link "공지사항" [ref=e348] [cursor=pointer]:
+                - /url: https://notice.tistory.com/
+        - generic [ref=e349]:
+          - generic [ref=e350]: 정책이 궁금할 땐
+          - list [ref=e351]:
+            - listitem [ref=e352]:
+              - link "이용약관" [ref=e353] [cursor=pointer]:
+                - /url: https://policy.daum.net/policy/info
+            - listitem [ref=e354]:
+              - link "이전 이용약관" [ref=e355] [cursor=pointer]:
+                - /url: /info/contract
+            - listitem [ref=e356]:
+              - link "운영정책" [ref=e357] [cursor=pointer]:
+                - /url: /info/policy
+            - listitem [ref=e358]:
+              - link "개인정보처리방침" [ref=e359] [cursor=pointer]:
+                - /url: https://policy.daum.net/policy/privacy
+                - emphasis [ref=e360]: 개인정보처리방침
+            - listitem [ref=e361]:
+              - link "청소년보호정책" [ref=e362] [cursor=pointer]:
+                - /url: https://policy.daum.net/policy/youthpolicy
+            - listitem [ref=e363]:
+              - link "Email 수집거부정책" [ref=e364] [cursor=pointer]:
+                - /url: /info/emailPolicy
+        - generic [ref=e365]:
+          - generic [ref=e366]: 도움이 필요할 땐
+          - list [ref=e367]:
+            - listitem [ref=e368]:
+              - link "권리침해신고" [ref=e369] [cursor=pointer]:
+                - /url: https://cs.daum.net/redbell/top.html
+            - listitem [ref=e370]:
+              - link "상거래 피해 구제신청" [ref=e371] [cursor=pointer]:
+                - /url: https://top.cafe.daum.net/_c21_/conflict
+  - alert [ref=e372]

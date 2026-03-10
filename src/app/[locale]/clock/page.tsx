@@ -44,7 +44,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
                 url: `${baseUrl}/og/clock.png`,
                 width: 1200,
                 height: 630,
-                alt: isKo ? '온라인 시계 - 실시간 세계시계 & 디지털 시계' : 'Online Clock - Real-time World Clock & Digital Clock',
+                alt: isKo ? '온라인 시계 - 세계시각 & 실시간 시계' : 'Online Clock - World Time & Real-Time Clock',
             }],
         },
         twitter: {
@@ -84,7 +84,7 @@ function generateBreadcrumbSchema(locale: string) {
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": isKo ? "온라인 시계" : "Online Clock",
+                "name": isKo ? "온라인 시계 - 세계시각" : "Online Clock - World Time",
                 "item": `${baseUrl}/${locale}/clock`
             }
         ]
@@ -95,12 +95,16 @@ function generateBreadcrumbSchema(locale: string) {
 function generateFaqSchema(locale: string) {
     const faqData = locale === 'ko' ? [
         {
-            question: "티켓팅할 때 이 시계를 써도 되나요?",
-            answer: "네, 이 온라인 시계는 초 단위까지 정확하게 시간을 표시합니다. 콘서트, 뮤지컬, 스포츠 경기 등 티켓팅 시 정확한 타이밍에 예매를 시작할 수 있습니다."
+            question: "어떤 도시의 시간을 확인할 수 있나요?",
+            answer: "서울, 도쿄, 뉴욕, 런던, 파리, 시드니 등 전 세계 70개 이상 주요 도시의 현재 시각을 확인할 수 있습니다. 검색으로 원하는 도시를 찾아 추가하세요."
         },
         {
             question: "세계 도시 시간은 몇 개까지 추가할 수 있나요?",
             answer: "70개 이상의 주요 도시를 지원하며, 원하는 만큼 추가하고 드래그 앤 드롭으로 순서를 변경할 수 있습니다. 자주 확인하는 도시를 상단에 배치해 보세요."
+        },
+        {
+            question: "시간이 정확한가요? 컴퓨터 시계와 다를 수 있나요?",
+            answer: "이 시계는 사용 중인 기기의 시스템 시간을 기준으로 표시합니다. 대부분의 기기는 자동으로 인터넷 시간 서버와 동기화되므로 높은 정확도를 제공합니다. 더욱 정밀한 서버 시간이 필요하시면 별도의 '서버 시간' 도구를 이용해 주세요."
         },
         {
             question: "설정이 저장되나요?",
@@ -111,8 +115,8 @@ function generateFaqSchema(locale: string) {
             answer: "네, 반응형 디자인으로 PC, 태블릿, 스마트폰 등 모든 기기에서 최적화된 화면으로 사용할 수 있습니다. 전체화면 모드도 지원합니다."
         },
         {
-            question: "시간이 정확한가요? 컴퓨터 시계와 다를 수 있나요?",
-            answer: "이 시계는 사용 중인 기기의 시스템 시간을 기준으로 표시합니다. 대부분의 기기는 자동으로 인터넷 시간 서버와 동기화되므로 높은 정확도를 제공합니다. 더욱 정밀한 서버 시간이 필요하시면 별도의 '서버 시간' 도구를 이용해 주세요."
+            question: "티켓팅할 때 이 시계를 써도 되나요?",
+            answer: "네, 이 온라인 시계는 초 단위까지 정확하게 시간을 표시합니다. 콘서트, 뮤지컬, 스포츠 경기 등 티켓팅 시 정확한 타이밍에 예매를 시작할 수 있습니다."
         },
         {
             question: "인터넷이 끊겨도 시계가 작동하나요?",
@@ -120,12 +124,16 @@ function generateFaqSchema(locale: string) {
         }
     ] : [
         {
-            question: "Can I use this clock for ticketing?",
-            answer: "Yes, this online clock displays time accurately to the second. You can start booking at the exact time for concerts, musicals, sports events, and more."
+            question: "Which cities can I check the time for?",
+            answer: "You can check the current time in 70+ major cities worldwide including Seoul, Tokyo, New York, London, Paris, and Sydney. Search and add any city you need."
         },
         {
             question: "How many world cities can I add?",
             answer: "We support over 70 major cities, and you can add as many as you want and reorder them with drag and drop. Place your frequently checked cities at the top."
+        },
+        {
+            question: "Is the time accurate? Could it differ from my computer clock?",
+            answer: "This clock uses your device's system time. Most devices automatically sync with internet time servers, providing high accuracy. If you need even more precise server time, please use our dedicated 'Server Time' tool."
         },
         {
             question: "Are my settings saved?",
@@ -136,8 +144,8 @@ function generateFaqSchema(locale: string) {
             answer: "Yes, with responsive design, it works optimally on all devices including PCs, tablets, and smartphones. Fullscreen mode is also supported."
         },
         {
-            question: "Is the time accurate? Could it differ from my computer clock?",
-            answer: "This clock uses your device's system time. Most devices automatically sync with internet time servers, providing high accuracy. If you need even more precise server time, please use our dedicated 'Server Time' tool."
+            question: "Can I use this clock for ticketing?",
+            answer: "Yes, this online clock displays time accurately to the second. You can start booking at the exact time for concerts, musicals, sports events, and more."
         },
         {
             question: "Does the clock work without internet?",
@@ -166,10 +174,10 @@ function generateHowToSchema(locale: string) {
     return {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        "name": isKo ? "온라인 시계 사용 방법" : "How to Use Online Clock",
+        "name": isKo ? "세계시계 사용 방법" : "How to Use World Clock",
         "description": isKo
-            ? "세계시계와 디지털 시계를 활용하는 방법"
-            : "How to use the world clock and digital clock",
+            ? "세계 시각 확인과 도시별 시간 비교 방법"
+            : "How to check world time and compare city times",
         "step": isKo ? [
             {
                 "@type": "HowToStep",
@@ -219,16 +227,16 @@ function generateHowToSchema(locale: string) {
 // WebApplication 구조화 데이터
 function generateWebAppSchema(locale: string, t: Awaited<ReturnType<typeof getTranslations>>) {
     const isKo = locale === 'ko';
-    const webappFeatureKeys = ['serverTime', 'ticketing', 'worldCities', 'theme', 'dragDrop', 'citySearch', 'responsive', 'fullscreen'] as const;
+    const webappFeatureKeys = ['worldCities', 'citySearch', 'ticketing', 'serverTime', 'theme', 'dragDrop', 'responsive', 'fullscreen'] as const;
     const features = webappFeatureKeys.map(key => t(`seo.webappFeatures.${key}`));
 
     return {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": isKo ? "온라인 시계 - 세계시계 & 디지털 시계" : "Online Clock - World Clock & Digital Clock",
+        "name": isKo ? "온라인 시계 - 세계시각 & 실시간 시계" : "Online Clock - World Time & Real-Time Clock",
         "description": isKo
-            ? "초단위 정밀 온라인 시계. 세계 70개 이상 도시 시간을 디지털 세그먼트 디스플레이로 확인."
-            : "Precise online clock with digital segment display. Supports 70+ world city times.",
+            ? "전 세계 70개 이상 도시의 현재 시각을 실시간으로 확인하는 온라인 세계시계. 시차 비교, 드래그 정렬, 디지털 세그먼트 디스플레이."
+            : "Online world clock to check current time in 70+ cities worldwide in real-time. Time zone comparison, drag-and-drop ordering, digital segment display.",
         "url": `${baseUrl}/${locale}/clock`,
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Any",
@@ -243,10 +251,10 @@ function generateWebAppSchema(locale: string, t: Awaited<ReturnType<typeof getTr
     };
 }
 
-const featureKeys = ['serverTime', 'exam', 'worldCities', 'timeDiff', 'theme', 'dragDrop', 'fontSize', 'fullscreen'] as const;
+const featureKeys = ['worldCities', 'timeDiff', 'dragDrop', 'serverTime', 'theme', 'fontSize', 'fullscreen', 'exam'] as const;
 const howToStepKeys = ['step1', 'step2', 'step3', 'step4'] as const;
-const useCaseKeys = ['ticketing', 'exam', 'trading', 'meeting', 'travel', 'deadline'] as const;
-const faqKeys = ['ticketing', 'cityCount', 'settings', 'mobile', 'accuracy', 'offline'] as const;
+const useCaseKeys = ['trading', 'meeting', 'travel', 'ticketing', 'exam', 'deadline'] as const;
+const faqKeys = ['worldTime', 'cityCount', 'accuracy', 'settings', 'mobile', 'ticketing', 'offline'] as const;
 const cityRegionKeys = ['asia', 'europe', 'americas', 'africa'] as const;
 
 export default async function ClockPage(props: { params: Promise<{ locale: string }> }) {
