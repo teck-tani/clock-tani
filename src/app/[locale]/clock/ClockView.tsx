@@ -763,10 +763,15 @@ export default function ClockView() {
   // Fullscreen change listener
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
+      const fs = !!document.fullscreenElement;
+      setIsFullscreen(fs);
+      document.body.classList.toggle('clock-fullscreen', fs);
     };
     document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.body.classList.remove('clock-fullscreen');
+    };
   }, []);
 
   // Listen for display mode changes from SettingsDropdown

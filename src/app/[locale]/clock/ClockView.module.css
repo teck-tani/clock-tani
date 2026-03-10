@@ -809,6 +809,10 @@
   display: none;
 }
 
+.worldClockContainer.fullscreen .relatedTools {
+  display: none;
+}
+
 /* ============================================
    Control Panel & Main Content
    ============================================ */

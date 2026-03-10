@@ -718,6 +718,13 @@ body[data-theme="light"] .digital-text {
 .btn-red:hover { background-color: #d63031; }
 
 /* ============================================
+   Fullscreen Mode
+   ============================================ */
+body.clock-fullscreen {
+    overflow: hidden;
+}
+
+/* ============================================
    New Header Styles (FOUC 방지)
    ============================================ */
 .new-header {
