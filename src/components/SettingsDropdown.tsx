@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Link, usePathname } from "@/navigation";
-import { FaTimes, FaSun, FaMoon, FaGlobe, FaClock } from "react-icons/fa";
+import { FaTimes, FaSun, FaMoon, FaGlobe, FaClock, FaUndo } from "react-icons/fa";
 
 interface SettingsDropdownProps {
   onClose: () => void;
@@ -144,6 +144,27 @@ export default function SettingsDropdown({ onClose }: SettingsDropdownProps) {
                 </button>
               </div>
             </>
+          )}
+
+          {/* 시계 초기화 (시계 페이지에서만 표시) */}
+          {isClockPage && (
+            <div className="settings-item">
+              <div className="settings-label">
+                <FaUndo />
+                <span>{t('settings.resetClock')}</span>
+              </div>
+              <button
+                className="settings-reset-btn"
+                onClick={() => {
+                  if (window.confirm(t('settings.resetConfirm'))) {
+                    localStorage.removeItem('worldClockState');
+                    window.location.reload();
+                  }
+                }}
+              >
+                {t('settings.resetClock')}
+              </button>
+            </div>
           )}
 
           {/* 언어 설정 */}

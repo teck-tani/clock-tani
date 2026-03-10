@@ -127,10 +127,21 @@ const i18n = {
 
 type Locale = 'ko' | 'en';
 
-const DEFAULT_MAIN: City = CITY_DATABASE.find(c => c.id === 'seoul')!;
-const DEFAULT_SUBS: City[] = ['tokyo', 'beijing', 'newyork', 'london'].map(
-  id => CITY_DATABASE.find(c => c.id === id)!
-);
+// Locale-based default clocks (extensible for future languages)
+const LOCALE_DEFAULTS: Record<string, { main: string; subs: string[] }> = {
+  ko: { main: 'seoul', subs: ['tokyo', 'beijing', 'newyork', 'london'] },
+  en: { main: 'newyork', subs: ['london', 'tokyo', 'seoul', 'sydney'] },
+  // Future examples:
+  // ja: { main: 'tokyo', subs: ['seoul', 'newyork', 'london', 'sydney'] },
+  // es: { main: 'madrid', subs: ['newyork', 'london', 'tokyo', 'seoul'] },
+};
+
+const getDefaultsForLocale = (locale: string) => {
+  const config = LOCALE_DEFAULTS[locale] || LOCALE_DEFAULTS['ko'];
+  const main = CITY_DATABASE.find(c => c.id === config.main)!;
+  const subs = config.subs.map(id => CITY_DATABASE.find(c => c.id === id)!).filter(Boolean);
+  return { main, subs };
+};
 
 // ============================================
 // Utility Functions
@@ -685,9 +696,11 @@ export default function ClockView() {
   const t = i18n[locale];
   const { theme } = useTheme();
 
+  const localeDefaults = useMemo(() => getDefaultsForLocale(locale), [locale]);
+
   const [state, setState] = useState<ClockState>(() => ({
-    mainClock: DEFAULT_MAIN,
-    subClocks: DEFAULT_SUBS,
+    mainClock: localeDefaults.main,
+    subClocks: localeDefaults.subs,
     fontSize: 50,
     displayMode: 'digital',
     timeFormat: '24h',
@@ -703,18 +716,19 @@ export default function ClockView() {
   // Load state from localStorage (only once)
   useEffect(() => {
     const saved = localStorage.getItem('worldClockState');
+    console.log('[ClockView init] locale:', locale, 'defaultMain:', localeDefaults.main.id, 'saved:', saved);
 
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        const mainClock = CITY_DATABASE.find(c => c.id === parsed.mainClockId) || DEFAULT_MAIN;
+        const mainClock = CITY_DATABASE.find(c => c.id === parsed.mainClockId) || localeDefaults.main;
         const subClocks = (parsed.subClockIds || [])
           .map((id: string) => CITY_DATABASE.find(c => c.id === id))
           .filter(Boolean) as City[];
 
         setState({
           mainClock,
-          subClocks: subClocks.length > 0 ? subClocks : DEFAULT_SUBS,
+          subClocks: subClocks.length > 0 ? subClocks : localeDefaults.subs,
           fontSize: parsed.fontSize || 50,
           displayMode: parsed.displayMode === 'analog' ? 'analog' : 'digital',
           timeFormat: parsed.timeFormat === '12h' ? '12h' : '24h',
@@ -724,7 +738,9 @@ export default function ClockView() {
       }
     }
 
-    isInitializedRef.current = true;
+    setTimeout(() => {
+      isInitializedRef.current = true;
+    }, 0);
   }, []);
 
   // Save state to localStorage

@@ -21,7 +21,9 @@
       "digitalMode": "Digital",
       "timeFormat": "Time Format",
       "24hMode": "24H",
-      "12hMode": "12H"
+      "12hMode": "12H",
+      "resetClock": "Reset Clock",
+      "resetConfirm": "Reset all clock settings?\n(Added cities, main clock, font size, etc.)"
     }
   },
   "Footer": {

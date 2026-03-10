@@ -2174,6 +2174,22 @@ body[data-theme="dark"] .mc-faq-item p {
     color: #0ea5e9;
 }
 
+.settings-reset-btn {
+    padding: 6px 12px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    color: #dc2626;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.settings-reset-btn:hover {
+    background: #fee2e2;
+    border-color: #f87171;
+}
+
 @media (max-width: 768px) {
     .settings-dropdown {
         top: 60px;

@@ -21,7 +21,9 @@
       "digitalMode": "디지털",
       "timeFormat": "시간 형식",
       "24hMode": "24시간",
-      "12hMode": "12시간"
+      "12hMode": "12시간",
+      "resetClock": "시계 초기화",
+      "resetConfirm": "모든 시계 설정을 초기화하시겠습니까?\n(추가한 도시, 메인 시계, 글꼴 크기 등)"
     }
   },
   "Footer": {
