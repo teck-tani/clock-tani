@@ -23,6 +23,12 @@ const PlusIcon = () => (
   </svg>
 );
 
+const CompressIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/>
+  </svg>
+);
+
 const MinusIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M5 12h14"/>
@@ -861,6 +867,15 @@ export default function ClockView() {
 
   return (
     <div className={`${styles.worldClockContainer} ${styles[theme]} ${isFullscreen ? styles.fullscreen : ''}`}>
+      {isFullscreen && (
+        <button
+          className={styles.exitFullscreenBtn}
+          onClick={() => document.exitFullscreen().catch(() => {})}
+          aria-label="전체화면 해제"
+        >
+          <CompressIcon />
+        </button>
+      )}
       {/* Main Content */}
       <div className={styles.mainContent}>
         {/* Main Clock with Zoom Controls */}
