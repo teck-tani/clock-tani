@@ -33,11 +33,11 @@
     "about": "About"
   },
   "Meta": {
-    "defaultTitle": "Online Clock | World Clock, Stopwatch, Timer, Alarm",
-    "defaultDescription": "Free online clock with world clock, stopwatch, timer, alarm, and D-Day countdown. Use conveniently on mobile and PC.",
-    "keywords": "online clock, world clock, stopwatch, timer, alarm, D-Day, digital clock, server time",
-    "ogTitle": "Online Clock | World Clock & Timer",
-    "ogDescription": "Free online clock with world clock, stopwatch, timer, alarm tools."
+    "defaultTitle": "Free Online Clock & Timer Tools - No Install | Clock-Tani",
+    "defaultDescription": "Free browser-based time tools: world clock, stopwatch with lap export, countdown timer, Pomodoro with ambient sounds, alarm, and D-Day counter. No install needed.",
+    "keywords": "free online clock tools no install, browser stopwatch with laps, countdown timer with alarm sound, pomodoro with ambient sounds, multiple alarms online, days until counter",
+    "ogTitle": "Free Online Clock & Timer Tools | Clock-Tani",
+    "ogDescription": "Free browser-based time tools: world clock, stopwatch, timer, Pomodoro, alarm, and D-Day counter. No install needed."
   },
   "Clock": {
     "Layout": {
@@ -49,11 +49,11 @@
     },
     "Main": {
       "meta": {
-        "title": "Online Clock - World Time & Real-Time Clock | Clock-Tani",
-        "description": "Check the current time in 70+ cities worldwide in real-time. Compare time zones, drag-and-drop city ordering, digital segment display. Free, no install needed!",
-        "keywords": "online clock, world time, world clock, time zone, city time, current time, real-time clock, digital clock, accurate time, time difference, international clock",
-        "ogTitle": "Online Clock - World Time & Real-Time Clock | Clock-Tani",
-        "ogDescription": "Check current time in Seoul, New York, London, Tokyo & 70+ cities at a glance. Time zone comparison, drag-and-drop, dark mode. Free online world clock."
+        "title": "Live World Clock - Compare Time Zones Side by Side",
+        "description": "Compare current time across 70+ cities side by side. Drag-and-drop city ordering, fullscreen digital display, dark mode. Free browser clock, no install needed.",
+        "keywords": "compare time zones side by side, multi city clock display, fullscreen digital clock, drag and drop world clock, live clock for multiple cities, browser world clock no install",
+        "ogTitle": "Live World Clock - Compare Time Zones Side by Side",
+        "ogDescription": "Compare current time in 70+ cities with drag-and-drop ordering. Fullscreen digital display, dark mode. Free in your browser."
       },
       "title": "Online Clock",
       "seo": {
@@ -216,11 +216,11 @@
     },
     "Stopwatch": {
       "meta": {
-        "title": "Online Stopwatch - Study & Workout Lap Timer",
-        "description": "Online stopwatch for study time tracking and workout lap recording. Millisecond precision, fullscreen mode for focus. Free on PC and mobile.",
-        "keywords": "online stopwatch, study stopwatch, workout stopwatch, lap time measurement, timer, time tracking, interval timer, study timer",
-        "ogTitle": "Online Stopwatch | Study & Workout Time Measurement",
-        "ogDescription": "Study time tracking, workout lap time measurement! Start efficient time management with millisecond precision stopwatch."
+        "title": "Lap Timer with Excel Export - Free Browser Stopwatch",
+        "description": "Record lap times with millisecond precision and export to Excel. Fullscreen focus mode, keyboard shortcuts, beep sounds. Free stopwatch in your browser.",
+        "keywords": "lap timer with excel export, stopwatch with lap recording, millisecond stopwatch browser, fullscreen stopwatch for study, stopwatch with sound alert, free lap timer no app",
+        "ogTitle": "Lap Timer with Excel Export - Free Browser Stopwatch",
+        "ogDescription": "Record lap times with millisecond precision and export to Excel. Fullscreen mode, keyboard shortcuts, beep sounds. No install needed."
       },
       "controls": {
         "start": "Start",
@@ -354,11 +354,11 @@
     },
     "Timer": {
       "meta": {
-        "title": "Online Timer & Pomodoro - Workout Tabata & Cooking Alarm",
-        "description": "Pomodoro timer, Tabata workout timer, interval training, and kitchen timer. Features 5 alarm sounds, vibration alerts, and Pomodoro technique support.",
-        "keywords": "online timer, pomodoro timer, tabata timer, workout timer, kitchen timer, cooking timer, interval timer, alarm setting, focus timer",
-        "ogTitle": "Online Timer & Pomodoro | Workout & Cooking Alarm",
-        "ogDescription": "Pomodoro focus timer, Tabata workout, 3-min noodle timer! 5 alarm sounds and vibration alerts."
+        "title": "Timer with Alarm Sound - Free Countdown in Browser",
+        "description": "Set a countdown timer with 5 alarm sounds and vibration alerts. Screen stays on while running. Quick presets for cooking and workouts. No app install needed.",
+        "keywords": "timer with alarm sound free, countdown timer that keeps screen on, browser timer with vibration alert, quick preset timer for cooking, free timer with loud alarm, countdown timer no app needed",
+        "ogTitle": "Timer with Alarm Sound - Free Countdown in Browser",
+        "ogDescription": "Countdown timer with 5 alarm sounds, vibration alerts, and screen wake lock. Quick presets for cooking and workouts. Free, no install."
       },
       "mode": {
         "timer": "Timer",
@@ -910,11 +910,11 @@
     },
     "Pomodoro": {
       "meta": {
-        "title": "Pomodoro Timer - Focus & Productivity Technique | Clock-Tani",
-        "description": "Boost productivity with Pomodoro: 25 min focus + 5 min break. Auto session switching, statistics, task list, and ambient sounds. Free online timer.",
-        "keywords": "pomodoro timer, pomodoro technique, focus timer, study timer, time management, productivity, 25 minute timer",
-        "ogTitle": "Pomodoro Timer | Focus & Productivity",
-        "ogDescription": "Boost productivity with 25 min focus + 5 min break cycles. Auto session switching and statistics included."
+        "title": "Pomodoro Timer with Ambient Sounds & Stats Tracker",
+        "description": "Focus with 25/5 Pomodoro cycles plus ambient background sounds. Auto session switching, productivity stats, and task tracking. Free, works in browser.",
+        "keywords": "pomodoro timer with ambient sounds, pomodoro with statistics tracker, auto switching pomodoro timer, pomodoro with task list free, focus timer with background sounds, pomodoro timer no sign up",
+        "ogTitle": "Pomodoro Timer with Ambient Sounds & Stats",
+        "ogDescription": "25/5 Pomodoro cycles with ambient sounds, auto session switching, and productivity statistics. Free browser tool, no sign up."
       },
       "seo": {
         "description": {
@@ -1014,11 +1014,11 @@
     },
     "Interval": {
       "meta": {
-        "title": "Interval Timer - Tabata & HIIT Training | Clock-Tani",
-        "description": "Free online interval timer optimized for Tabata (20s/10s/8 rounds), HIIT, and custom interval training. Set work/rest times and rounds freely.",
-        "keywords": "interval timer, tabata timer, HIIT timer, workout timer, interval training, tabata workout",
-        "ogTitle": "Interval Timer | Tabata & HIIT Training",
-        "ogDescription": "Free online interval timer for Tabata, HIIT, and custom training. Presets and custom settings available."
+        "title": "HIIT Interval Timer with Custom Rounds - Free Online",
+        "description": "Set custom work/rest intervals and rounds for HIIT, Tabata, and circuit training. Built-in presets, voice countdown, vibration alerts. Free, no app needed.",
+        "keywords": "HIIT interval timer custom rounds, tabata timer with voice countdown, interval timer with vibration alert, circuit training timer free, custom work rest timer online, interval timer with presets free",
+        "ogTitle": "HIIT Interval Timer with Custom Rounds",
+        "ogDescription": "Custom work/rest intervals and rounds for HIIT and Tabata. Voice countdown, vibration alerts, built-in presets. Free in your browser."
       },
       "seo": {
         "description": {
@@ -1118,11 +1118,11 @@
     },
     "MultiTimer": {
       "meta": {
-        "title": "Multi Timer - Run Multiple Timers | Clock-Tani",
-        "description": "Run up to 4 independent timers simultaneously. Manage cooking, workouts, tasks, and more with this free online multi timer.",
-        "keywords": "multi timer, multiple timers, simultaneous timers, cooking timer, parallel timers",
-        "ogTitle": "Multi Timer | Run Multiple Timers",
-        "ogDescription": "Run up to 4 timers simultaneously. Manage cooking, workouts, and tasks with independent timers."
+        "title": "Run Multiple Timers at Once - Free Multi Timer Online",
+        "description": "Run up to 4 independent countdown timers simultaneously. Perfect for cooking multiple dishes, classroom activities, or parallel task tracking. Free, no install.",
+        "keywords": "run multiple timers at once, simultaneous countdown timers free, cooking timer for multiple dishes, parallel timers online free, multi timer for classroom, run 4 timers at same time",
+        "ogTitle": "Run Multiple Timers at Once - Free Multi Timer",
+        "ogDescription": "Run up to 4 independent timers simultaneously. Great for cooking, classroom, or multi-task timing. Free browser tool."
       },
       "seo": {
         "description": {
@@ -1219,11 +1219,11 @@
   },
   "Alarm": {
     "meta": {
-      "title": "Online Alarm Clock - Free Web Alarm | teck-tani",
-      "description": "Free online alarm clock in your browser. 5 alarm sounds, quick presets, multiple alarms, and snooze function. Use on PC and mobile without installation.",
-      "keywords": "online alarm, alarm clock, web alarm, free alarm, set alarm, timer alarm, wake up alarm, reminder clock",
-      "ogTitle": "Online Alarm Clock - Free Web Alarm",
-      "ogDescription": "Free online alarm clock with 5 alarm sounds, multiple alarms, and snooze. Works in your browser."
+      "title": "Set Multiple Alarms Online - Free Web Alarm Clock",
+      "description": "Set multiple alarms with snooze in your browser. 5 alarm sounds, quick presets, labels for each alarm. Works on PC and mobile, no app install needed.",
+      "keywords": "set multiple alarms online free, web alarm clock with snooze, browser alarm clock no install, alarm clock with multiple sounds, free alarm clock for laptop, online alarm with labels",
+      "ogTitle": "Set Multiple Alarms Online - Free Web Alarm Clock",
+      "ogDescription": "Set multiple labeled alarms with snooze and 5 alarm sounds. Works on PC and mobile browsers. No install needed."
     },
     "title": "Online Alarm Clock",
     "currentTime": "Current Time",
@@ -1373,11 +1373,11 @@
   },
   "ServerTime": {
     "meta": {
-      "title": "Server Time & Ticketing Countdown | Clock-Tani",
-      "description": "Check server-synced precise time in milliseconds. Countdown timer for ticketing and course registration. Free to use on PC and mobile.",
-      "keywords": "server time, precise time, millisecond clock, ticketing timer, countdown, NTP time, accurate time, server clock",
-      "ogTitle": "Server Time / Ticketing Countdown",
-      "ogDescription": "Server-synced millisecond precision time with ticketing countdown. Free online tool."
+      "title": "Exact Server Time in Milliseconds - Sync & Countdown",
+      "description": "See NTP-synced server time with millisecond precision. Set countdown to an exact moment for ticket drops, product launches, or registration deadlines. Free tool.",
+      "keywords": "exact server time milliseconds, NTP synced clock online, countdown to exact time for tickets, precise time for ticket drops, millisecond accurate clock browser, server time sync tool free",
+      "ogTitle": "Exact Server Time in Milliseconds - Sync & Countdown",
+      "ogDescription": "NTP-synced server time with millisecond precision. Countdown to exact moments for ticket drops and launches. Free browser tool."
     },
     "client": {
       "title": "Server Time / Ticketing",
@@ -1515,11 +1515,11 @@
   },
   "DdayCounter": {
     "meta": {
-      "title": "D-day Countdown | Date Calculator - Track Days Remaining",
-      "description": "Track days remaining until important dates in real-time. Manage up to 20 events — exams, birthdays, anniversaries, travel, and deadlines with D-day countdown.",
-      "keywords": "D-day calculator, countdown timer, date calculator, D-day counter, anniversary calculator, days remaining",
-      "ogTitle": "D-day Countdown | Track Days Remaining",
-      "ogDescription": "Track days until exams, anniversaries, and travel dates in real-time. Free D-day countdown tool."
+      "title": "Days Until Counter - Track Multiple Date Countdowns",
+      "description": "Track days remaining until exams, birthdays, weddings, vacations, and deadlines. Manage up to 20 countdowns with categories and memos. Free, no sign up.",
+      "keywords": "days until counter for multiple events, countdown to multiple dates at once, track days remaining until exam, date countdown with categories, how many days until event tracker, free countdown tracker no sign up",
+      "ogTitle": "Days Until Counter - Track Multiple Date Countdowns",
+      "ogDescription": "Track days until exams, birthdays, weddings, and deadlines. Manage up to 20 countdowns with categories. Free, no sign up."
     },
     "client": {
       "title": "D-day Countdown",
