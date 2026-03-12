@@ -31,7 +31,10 @@
       "WebFetch(domain:mixkit.co)",
       "WebFetch(domain:pixabay.com)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:notificationsounds.com)"
+      "WebFetch(domain:notificationsounds.com)",
+      "mcp__plugin_playwright_playwright__browser_wait_for",
+      "mcp__plugin_playwright_playwright__browser_tabs",
+      "mcp__plugin_playwright_playwright__browser_press_key"
     ]
   }
 }
