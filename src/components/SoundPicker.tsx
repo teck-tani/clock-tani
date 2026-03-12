@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { SOUND_LIST, type SoundType, playMp3, stopAudio } from "./soundUtils";
+import { FaMobileAlt } from "react-icons/fa";
 import styles from "./soundPicker.module.css";
 
 interface SoundPickerProps {
@@ -28,7 +29,7 @@ export default function SoundPicker({
   const previewTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    setSupportsVibration("vibrate" in navigator);
+    setSupportsVibration("vibrate" in navigator && ("ontouchstart" in window || navigator.maxTouchPoints > 0));
   }, []);
 
   // Cleanup on unmount
@@ -101,17 +102,14 @@ export default function SoundPicker({
       {/* Vibration Toggle - mobile only */}
       {supportsVibration && (
         <div className={styles.vibrationRow}>
-          <span className={styles.vibrationLabel}>
-            {t("vibration")}
-          </span>
           <button
-            className={`${styles.vibrationToggle} ${vibration ? styles.vibrationToggleActive : ""}`}
+            className={`${styles.vibrationBtn} ${vibration ? styles.vibrationBtnActive : ""}`}
             onClick={() => onVibrationChange(!vibration)}
-            role="switch"
-            aria-checked={vibration}
-            aria-label={t("vibration")}
+            aria-pressed={vibration}
+            aria-label={`${t("vibration")}: ${vibration ? "ON" : "OFF"}`}
           >
-            <span className={styles.vibrationKnob} />
+            <FaMobileAlt />
+            <span>{t("vibration")}</span>
           </button>
         </div>
       )}

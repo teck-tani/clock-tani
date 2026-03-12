@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /c/tani/clock-tani/src/app/[locale]/)",
+      "Bash(wc -l /c/tani/clock-tani/src/app/[locale]/stopwatch/page.tsx /c/tani/clock-tani/src/app/[locale]/clock/page.tsx /c/tani/clock-tani/src/app/[locale]/timer/page.tsx /c/tani/clock-tani/src/app/[locale]/pomodoro/page.tsx /c/tani/clock-tani/src/app/[locale]/alarm/page.tsx /c/tani/clock-tani/src/app/[locale]/dday-counter/page.tsx /c/tani/clock-tani/src/app/[locale]/multi-timer/page.tsx)",
+      "Bash(head -n 500 /c/tani/clock-tani/src/app/[locale]/timer/TimerView.tsx)",
+      "Bash(npx next:*)",
+      "Bash(head -30 /c/tani/clock-tani/src/app/[locale]/page.tsx)",
+      "Bash(find /c/tani/clock-tani -name .eslintrc* -o -name eslint.config.*)",
+      "Bash(find /c/tani/clock-tani/src -path *timer* -type f)",
+      "Bash(find /c/tani/clock-tani -name *test* -o -name *spec*)",
+      "Bash(cp \"c:/tani/clock-tani/src/app/[locale]/alarm/ScrollWheelPicker.tsx\" \"c:/tani/clock-tani/src/components/ScrollWheelPicker.tsx\")",
+      "Bash(cp \"c:/tani/clock-tani/src/app/[locale]/alarm/scrollWheelPicker.module.css\" \"c:/tani/clock-tani/src/components/scrollWheelPicker.module.css\")",
+      "Bash(find /c/tani/clock-tani/src/app/[locale]/timer -type f -name \"*.tsx\" -o -name \"*.ts\")",
+      "Bash(npm run:*)"
+    ]
+  }
+}

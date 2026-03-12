@@ -269,6 +269,11 @@ export default function StopwatchView() {
         ? laps[slowestLapIndex].lapTime
         : 0;
 
+    const [supportsVibration, setSupportsVibration] = useState(false);
+    useEffect(() => {
+        setSupportsVibration("vibrate" in navigator && ("ontouchstart" in window || navigator.maxTouchPoints > 0));
+    }, []);
+
     const timeDisplay = formatMainTime(time);
 
     return (
@@ -302,15 +307,17 @@ export default function StopwatchView() {
                     {settings.soundEnabled ? <FaVolumeUp /> : <FaVolumeMute />}
                     <span>{t('lapSound')}</span>
                 </button>
-                <button
-                    className={`sw-setting-btn ${settings.vibrationEnabled ? 'active' : ''}`}
-                    onClick={toggleVibration}
-                    aria-label={`${t('vibration')}: ${settings.vibrationEnabled ? 'ON' : 'OFF'}`}
-                    aria-pressed={settings.vibrationEnabled}
-                >
-                    <FaMobileAlt />
-                    <span>{t('vibration')}</span>
-                </button>
+                {supportsVibration && (
+                    <button
+                        className={`sw-setting-btn sw-vibration-btn ${settings.vibrationEnabled ? 'active' : ''}`}
+                        onClick={toggleVibration}
+                        aria-label={`${t('vibration')}: ${settings.vibrationEnabled ? 'ON' : 'OFF'}`}
+                        aria-pressed={settings.vibrationEnabled}
+                    >
+                        <FaMobileAlt />
+                        <span>{t('vibration')}</span>
+                    </button>
+                )}
             </div>
 
             {/* 단축키 안내 */}

@@ -401,6 +401,17 @@ body[data-theme="dark"] .sw-setting-btn.active {
     color: #67e8f9;
 }
 
+/* 진동 버튼: 모바일에서만 표시 */
+.sw-vibration-btn {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sw-vibration-btn {
+        display: inline-flex;
+    }
+}
+
 /* Shortcuts */
 .sw-shortcuts {
     display: flex;
@@ -661,6 +672,7 @@ body[data-theme="dark"] .sw-stats-worst .sw-stats-value {
     gap: 8px;
     justify-content: center;
     margin-top: 12px;
+    margin-bottom: 16px;
 }
 
 .sw-btn-export {

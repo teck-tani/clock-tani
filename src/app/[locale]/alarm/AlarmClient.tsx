@@ -3,8 +3,8 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import styles from "./alarm.module.css";
-import ScrollWheelPicker from "./ScrollWheelPicker";
-import pickerStyles from "./scrollWheelPicker.module.css";
+import ScrollWheelPicker from "@/components/ScrollWheelPicker";
+import pickerStyles from "@/components/scrollWheelPicker.module.css";
 import { SOUND_LIST, type SoundType, playMp3, stopAudio } from "@/components/soundUtils";
 import SoundPicker from "@/components/SoundPicker";
 

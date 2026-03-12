@@ -4,18 +4,18 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { FaHourglassStart, FaCoffee, FaPlay, FaForward } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useWakeLock } from "./useWakeLock";
+// import { useWakeLock } from "./useWakeLock";
 import { recordPomoSession } from "./PomodoroStats";
 import { incrementTaskPomo } from "./PomodoroTasks";
 import dynamic from "next/dynamic";
 import styles from "./timer.module.css";
 import ShareButton from "@/components/ShareButton";
-import { type SoundType, migrateSoundType, playMp3, stopAudio } from "@/components/soundUtils";
-import SoundPicker from "@/components/SoundPicker";
+import ScrollWheelPicker from "@/components/ScrollWheelPicker";
+import pickerStyles from "@/components/scrollWheelPicker.module.css";
+import { playMp3, stopAudio } from "@/components/soundUtils";
 
 const PomodoroStats = dynamic(() => import("./PomodoroStats"), { ssr: false });
 const PomodoroTasks = dynamic(() => import("./PomodoroTasks"), { ssr: false });
-const AmbientPlayer = dynamic(() => import("./AmbientPlayer"), { ssr: false });
 type TimerMode = "timer" | "pomodoro" | "interval" | "multi";
 type PomodoroPhase = "work" | "break" | "longBreak";
 type IntervalPhase = "work" | "rest";
@@ -26,10 +26,8 @@ const PRESETS = [
 ];
 const POMO_DEFAULTS = { work: 25, break: 5, longBreak: 15, sessionsBeforeLong: 4 };
 const STORAGE_KEY = 'timer_state';
-const PRESETS_KEY = 'timer_user_presets';
 const ALARM_AUTO_STOP_SEC = 30;
-
-interface UserPreset { name: string; seconds: number; }
+const FIXED_SOUND = "early-sunrise" as const;
 interface MultiTimer { id: string; label: string; duration: number; timeLeft: number; isRunning: boolean; endTime: number; }
 
 // 각 탭별 독립 타이머 상태
@@ -54,7 +52,6 @@ function formatTime(seconds: number) {
 export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     const t = useTranslations('Clock.Timer');
     const { theme } = useTheme();
-    const wakeLock = useWakeLock();
 
     // Mode
     const [mode, setMode] = useState<TimerMode>(fixedMode ?? "timer");
@@ -75,10 +72,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     const [inputValues, setInputValues] = useState({ h: 0, m: 0, s: 0 });
 
     // Sound
-    const [selectedSound, setSelectedSound] = useState<SoundType>("soft-bells");
     const [vibrationOn, setVibrationOn] = useState(true);
-    const [volume, setVolume] = useState(80);
-    const [voiceCountdown, setVoiceCountdown] = useState(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const alarmIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -102,10 +96,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     // Multi-timer
     const [multiTimers, setMultiTimers] = useState<MultiTimer[]>([]);
 
-    // Presets
-    const [userPresets, setUserPresets] = useState<UserPreset[]>([]);
-    const [presetName, setPresetName] = useState("");
-
     // rAF
     const rafRef = useRef<number>(0);
 
@@ -125,9 +115,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
             if (raw) {
                 const s = JSON.parse(raw);
                 if (s.mode) setMode(s.mode);
-                if (s.selectedSound) setSelectedSound(migrateSoundType(s.selectedSound));
                 if (s.vibrationOn !== undefined) setVibrationOn(s.vibrationOn);
-                if (s.volume !== undefined) setVolume(s.volume);
                 if (s.pomoWork) setPomoWork(s.pomoWork);
                 if (s.pomoBreak) setPomoBreak(s.pomoBreak);
                 if (s.pomoLongBreak) setPomoLongBreak(s.pomoLongBreak);
@@ -181,8 +169,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                     }));
                 }
             }
-            const presets = localStorage.getItem(PRESETS_KEY);
-            if (presets) setUserPresets(JSON.parse(presets));
         } catch (e) {
             if (e instanceof DOMException && e.name === 'QuotaExceededError') {
                 console.warn('Timer: localStorage quota exceeded. Clearing old data.');
@@ -201,7 +187,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 saveable[m] = { ...mt, timeLeft: mt.isRunning ? mt.timeLeft : mt.timeLeft };
             }
             localStorage.setItem(STORAGE_KEY, JSON.stringify({
-                mode, selectedSound, vibrationOn, volume, voiceCountdown,
+                mode, vibrationOn,
                 pomoWork, pomoBreak, pomoLongBreak, pomoAutoStart,
                 pomoPhase, pomoSession, inputValues, modeTimers: saveable,
                 intervalWork, intervalRest, intervalRounds, intervalCurrentRound,
@@ -212,7 +198,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 console.warn('Timer: localStorage quota exceeded while saving.');
             }
         }
-    }, [mode, selectedSound, vibrationOn, volume, voiceCountdown, pomoWork, pomoBreak, pomoLongBreak,
+    }, [mode, vibrationOn, pomoWork, pomoBreak, pomoLongBreak,
         pomoAutoStart, modeTimers, pomoPhase, pomoSession, inputValues,
         intervalWork, intervalRest, intervalRounds, intervalCurrentRound, multiTimers]);
 
@@ -227,8 +213,8 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
 
     const playSound = useCallback(() => {
         stopSound();
-        audioRef.current = playMp3(selectedSound, volume / 100);
-    }, [selectedSound, stopSound, volume]);
+        audioRef.current = playMp3(FIXED_SOUND);
+    }, [stopSound]);
 
     const startAlarmLoop = useCallback(() => {
         playSound();
@@ -241,22 +227,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
             setShowAlarmModal(false); setAlarmSource(null); stopSound();
         }, ALARM_AUTO_STOP_SEC * 1000);
     }, [playSound, stopSound]);
-
-    // ===== Voice countdown =====
-    const voiceRef = useRef<boolean>(false);
-    useEffect(() => { voiceRef.current = voiceCountdown; }, [voiceCountdown]);
-
-    useEffect(() => {
-        if (isRunning && timeLeft <= 5 && timeLeft > 0 && voiceRef.current) {
-            try {
-                if ('speechSynthesis' in window) {
-                    const u = new SpeechSynthesisUtterance(String(timeLeft));
-                    u.rate = 1.2; u.volume = 0.8;
-                    window.speechSynthesis.speak(u);
-                }
-            } catch {}
-        }
-    }, [timeLeft, isRunning]);
 
     // ===== Unified rAF for ALL modes =====
     useEffect(() => {
@@ -380,9 +350,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
             setMultiTimers(prev => prev.map(timer => {
                 if (!timer.isRunning) return timer;
                 const remaining = Math.max(0, Math.ceil((timer.endTime - Date.now()) / 1000));
-                if (remaining !== timer.timeLeft && remaining <= 5 && remaining > 0 && voiceRef.current) {
-                    try { if ('speechSynthesis' in window) { const u = new SpeechSynthesisUtterance(String(remaining)); u.rate = 1.2; u.volume = 0.8; window.speechSynthesis.speak(u); } } catch {}
-                }
                 if (remaining === 0 && timer.timeLeft > 0) {
                     startAlarmLoop();
                     setAlarmSource('multi');
@@ -467,20 +434,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
         setIntervalPresetType(type);
         if (type === "tabata") { setIntervalWork(20); setIntervalRest(10); setIntervalRounds(8); }
         else if (type === "hiit") { setIntervalWork(40); setIntervalRest(20); setIntervalRounds(6); }
-    };
-
-    // User presets
-    const savePreset = () => {
-        const total = (inputValues.h * 3600) + (inputValues.m * 60) + inputValues.s;
-        if (total === 0 || !presetName.trim() || userPresets.length >= 10) return;
-        const newPresets = [...userPresets, { name: presetName.trim(), seconds: total }];
-        setUserPresets(newPresets); setPresetName("");
-        try { localStorage.setItem(PRESETS_KEY, JSON.stringify(newPresets)); } catch {}
-    };
-    const deletePreset = (idx: number) => {
-        const newPresets = userPresets.filter((_, i) => i !== idx);
-        setUserPresets(newPresets);
-        try { localStorage.setItem(PRESETS_KEY, JSON.stringify(newPresets)); } catch {}
     };
 
     const getShareText = () => {
@@ -700,33 +653,12 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                         <div className={styles.presetContainer}>
                                             {PRESETS.map(p => (<button key={p.label} onClick={() => handlePreset(p.seconds)} className={styles.presetBtn}>{p.label}</button>))}
                                         </div>
-                                        {/* User presets */}
-                                        {userPresets.length > 0 && (
-                                            <div className={styles.presetSavedSection}>
-                                                <div className={styles.presetSavedTitle}>{t('presets.saved')}</div>
-                                                <div className={styles.presetSavedList}>
-                                                    {userPresets.map((p, i) => (
-                                                        <div key={i} className={styles.presetSavedItem} onClick={() => handlePreset(p.seconds)}>
-                                                            {p.name} ({formatTime(p.seconds)})
-                                                            <button className={styles.presetDeleteBtn} onClick={e => { e.stopPropagation(); deletePreset(i); }}>✕</button>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        )}
-                                        <div className={styles.timeInputRow}>
-                                            <TimeInput value={inputValues.h} onChange={v => setInputValues({ ...inputValues, h: v })} label={t('labels.hour')} />
-                                            <span className={styles.timeSeparator}>:</span>
-                                            <TimeInput value={inputValues.m} onChange={v => setInputValues({ ...inputValues, m: v })} label={t('labels.minute')} max={59} />
-                                            <span className={styles.timeSeparator}>:</span>
-                                            <TimeInput value={inputValues.s} onChange={v => setInputValues({ ...inputValues, s: v })} label={t('labels.second')} max={59} />
-                                        </div>
-                                        {/* Save preset row */}
-                                        <div className={styles.presetSaveRow}>
-                                            <input type="text" value={presetName} onChange={e => setPresetName(e.target.value)}
-                                                placeholder={t('presets.name')} className={styles.presetNameInput}
-                                                onKeyDown={e => { if (e.key === 'Enter') savePreset(); }} />
-                                            <button onClick={savePreset} className={styles.presetSaveBtn}>{t('presets.save')}</button>
+                                        <div className={pickerStyles.timePickerRow}>
+                                            <ScrollWheelPicker value={inputValues.h} onChange={v => setInputValues({ ...inputValues, h: v })} min={0} max={23} label={t('labels.hour')} />
+                                            <span className={pickerStyles.timePickerSeparator}>:</span>
+                                            <ScrollWheelPicker value={inputValues.m} onChange={v => setInputValues({ ...inputValues, m: v })} min={0} max={59} label={t('labels.minute')} />
+                                            <span className={pickerStyles.timePickerSeparator}>:</span>
+                                            <ScrollWheelPicker value={inputValues.s} onChange={v => setInputValues({ ...inputValues, s: v })} min={0} max={59} label={t('labels.second')} />
                                         </div>
                                     </>
                                 )}
@@ -794,24 +726,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                     </>
                                 )}
 
-                                {/* Sound Settings */}
-                                <div className={styles.soundCard}>
-                                    <div className={styles.soundTitle}>{t('sounds.title')}</div>
-                                    <SoundPicker
-                                        sound={selectedSound}
-                                        onSoundChange={setSelectedSound}
-                                        vibration={vibrationOn}
-                                        onVibrationChange={setVibrationOn}
-                                        t={(key: string) => t(`sounds.picker.${key}`)}
-                                        volume={volume}
-                                    />
-                                    {/* Volume slider */}
-                                    <div className={styles.volumeRow}>
-                                        <span className={styles.volumeLabel}>{t('volume.label')}</span>
-                                        <input type="range" min={0} max={100} value={volume} onChange={e => setVolume(Number(e.target.value))} className={styles.volumeSlider} />
-                                        <span className={styles.volumeValue}>{volume}%</span>
-                                    </div>
-                                </div>
                             </>
                         ) : (
                             /* Progress Ring */
@@ -822,6 +736,9 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                         <circle cx="50" cy="50" r="45" className={styles.ringProgress} stroke={ringColor} strokeDasharray={`${progress * 283} 283`} />
                                     </svg>
                                     <div className={styles.ringTime} style={{ color: ringColor }}>{formatTime(timeLeft)}</div>
+                                    {duration > 0 && duration !== timeLeft && (
+                                        <div className={styles.ringDuration}>{formatTime(duration)}</div>
+                                    )}
                                 </div>
                                 {/* Extend buttons */}
                                 {isCountingDown && mode !== 'interval' && (
@@ -860,14 +777,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                             <ShareButton shareText={getShareText()} />
                         </>
                     )}
-                    <button onClick={() => setVoiceCountdown(prev => !prev)} className={`${styles.featureBtn} ${voiceCountdown ? styles.featureActive : ''}`}>
-                        🗣️ {t('voice.label')}
-                    </button>
-                    {wakeLock.supported && (
-                        <button onClick={wakeLock.toggle} className={`${styles.wakeLockBtn} ${wakeLock.isActive ? styles.wakeLockActive : ''}`}>
-                            {wakeLock.isActive ? '🔆' : '📱'} {wakeLock.isActive ? t('wakeLock.on') : t('wakeLock.off')}
-                        </button>
-                    )}
                 </div>
 
                 {/* Keyboard shortcuts */}
@@ -878,9 +787,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                         <span><kbd className={styles.kbd}>Esc</kbd> {t('modal.title')}</span>
                     </div>
                 )}
-
-                {/* Ambient Player */}
-                <AmbientPlayer mode={mode} />
 
                 {/* Pomodoro Stats & Tasks */}
                 {mode === 'pomodoro' && (
@@ -977,17 +883,4 @@ function TimerSeoSection({ mode }: { mode: string }) {
     );
 }
 
-// ===== TimeInput =====
-function TimeInput({ value, onChange, label, max }: { value: number; onChange: (v: number) => void; label: string; max?: number }) {
-    const [isFocused, setIsFocused] = useState(false);
-    return (
-        <div className={styles.inputWrapper}>
-            <input type="number" value={isFocused && value === 0 ? '' : value}
-                onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)}
-                onChange={e => { if (e.target.value === '') { onChange(0); return; } let val = parseInt(e.target.value); if (isNaN(val)) val = 0; if (val < 0) val = 0; if (max && val > max) val = max; onChange(val); }}
-                className={styles.timeInput} aria-label={label} />
-            <span className={styles.inputLabel}>{label}</span>
-        </div>
-    );
-}
 

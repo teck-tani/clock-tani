@@ -61,42 +61,33 @@
   height: 44px;
 }
 
-.vibrationToggle {
-  position: relative;
-  width: 48px;
-  height: 26px;
-  border: none;
-  border-radius: 13px;
-  background: #cbd5e1;
+.vibrationBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1px solid #d1d5db;
   cursor: pointer;
-  transition: background 0.3s;
-  padding: 0;
-  flex-shrink: 0;
+  background: #f3f4f6;
+  color: #6b7280;
+  transition: all 0.2s ease;
 }
 
-.vibrationToggleActive {
-  background: #6366f1;
+.vibrationBtn:hover {
+  border-color: #9ca3af;
 }
 
-.vibrationKnob {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #fff;
-  transition: transform 0.3s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+.vibrationBtnActive {
+  background: rgba(8, 145, 178, 0.1);
+  border-color: #0891b2;
+  color: #0891b2;
 }
 
-.vibrationToggleActive .vibrationKnob {
-  transform: translateX(22px);
-}
-
-.vibrationLabel {
-  font-size: 0.9rem;
-  color: #475569;
+.vibrationBtn svg {
+  font-size: 0.85rem;
 }
 
 /* ===== Dark Theme ===== */
@@ -123,6 +114,18 @@
   background: #1e1b4b;
 }
 
-:global(body[data-theme="dark"]) .vibrationLabel {
+:global(body[data-theme="dark"]) .vibrationBtn {
+  background: #1e293b;
+  border-color: #475569;
   color: #94a3b8;
+}
+
+:global(body[data-theme="dark"]) .vibrationBtn:hover {
+  border-color: #64748b;
+}
+
+:global(body[data-theme="dark"]) .vibrationBtnActive {
+  background: rgba(103, 232, 249, 0.1);
+  border-color: #67e8f9;
+  color: #67e8f9;
 }
