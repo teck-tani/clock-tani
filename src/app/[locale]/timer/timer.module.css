@@ -307,7 +307,7 @@
   fill: none;
   stroke-width: 7;
   stroke-linecap: round;
-  transition: stroke-dasharray 1s linear;
+  transition: stroke-dasharray 0.1s linear;
   /* filter 제거 - 사각형 글로우 방지 */
 }
 
