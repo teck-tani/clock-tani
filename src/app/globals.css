@@ -2777,7 +2777,7 @@ body {
 
 /* Contain paint for better performance */
 main {
-    contain: layout style paint;
+    contain: layout style;
 }
 
 /* ============================================

@@ -490,7 +490,8 @@
   line-height: 1.4;
 }
 
-/* === Alarm Modal === */
+/* === Countdown + Alarm Modal === */
+/* === Alarm Modal (완료 상태, 인라인) === */
 .alarmOverlay {
   position: fixed;
   top: 0;
@@ -1748,6 +1749,7 @@
   .presetUnit {
     font-size: 0.66rem;
   }
+
 }
 
 @media (max-width: 375px) {
@@ -1808,6 +1810,7 @@
     gap: 10px;
     font-size: 0.7rem;
   }
+
 }
 
 /* ===========================
