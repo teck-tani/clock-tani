@@ -64,6 +64,7 @@
   padding: var(--space-4xl) 30px;
   text-align: center;
   animation: cardEnter 0.3s ease-out;
+  background: linear-gradient(180deg, var(--color-bg-surface) 0%, var(--color-bg-base) 100%);
 }
 
 /* === Pomodoro Phase Indicator === */
@@ -114,6 +115,7 @@
   color: var(--color-primary);
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.18);
   transform: translateY(-2px);
+  background: linear-gradient(145deg, var(--color-bg-surface), var(--color-bg-muted));
 }
 
 .presetBtn:active {
@@ -284,6 +286,8 @@
   width: 240px;
   height: 240px;
   margin: 0 auto var(--space-2xl);
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+  border-radius: 50%;
 }
 
 .ringSvg {
@@ -301,9 +305,10 @@
 
 .ringProgress {
   fill: none;
-  stroke-width: 6;
+  stroke-width: 7;
   stroke-linecap: round;
   transition: stroke-dasharray 1s linear;
+  filter: drop-shadow(0 0 6px currentColor);
 }
 
 .ringTime {
@@ -315,6 +320,8 @@
   font-weight: 800;
   font-family: var(--font-mono-time);
   letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(102, 126, 234, 0.15);
+  font-variant-numeric: tabular-nums;
 }
 
 .ringDuration {
@@ -1232,6 +1239,10 @@
   border-color: rgba(51, 65, 85, 0.5);
 }
 
+:global(body[data-theme="dark"]) .mainCard {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.6) 100%);
+}
+
 :global(body[data-theme="dark"]) .resetBtn:hover {
   background: linear-gradient(135deg, #475569, #334155);
 }
@@ -1256,6 +1267,11 @@
 
 :global(body[data-theme="dark"]) .pomoTimelineMarker {
   border-top-color: #94a3b8;
+}
+
+@keyframes urgentPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
 /* === Responsive === */

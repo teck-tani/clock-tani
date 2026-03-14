@@ -25,6 +25,8 @@
   color: var(--color-text-primary);
   line-height: 1;
   letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+  font-variant-numeric: tabular-nums;
 }
 
 .dateDisplay {
@@ -272,7 +274,7 @@
 .presetBtn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
-  background: var(--color-primary-bg);
+  background: linear-gradient(145deg, var(--color-bg-surface), var(--color-bg-muted));
 }
 
 .presetBtn:active {
@@ -323,6 +325,11 @@
   transition: all var(--transition-base);
 }
 
+.alarmItem:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
 .alarmItemActive {
   border-color: #c7d2fe;
   background: var(--color-primary-bg);
@@ -345,6 +352,7 @@
   font-weight: 700;
   color: var(--color-text-primary);
   min-width: 90px;
+  font-variant-numeric: tabular-nums;
 }
 
 .alarmInfo {
@@ -477,6 +485,7 @@
   max-width: 400px;
   width: 90%;
   animation: modalIn 0.3s ease-out;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes modalIn {

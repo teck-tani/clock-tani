@@ -14,7 +14,7 @@
 }
 
 .sw-widget {
-    background: var(--color-bg-surface);
+    background: linear-gradient(180deg, var(--color-bg-surface) 0%, var(--color-bg-base) 100%);
     border-radius: var(--card-radius);
     box-shadow: var(--shadow-md);
     padding: var(--space-lg) var(--space-md);
@@ -246,6 +246,10 @@ body[data-theme="dark"] .sw-faq-section {
     align-items: baseline;
     justify-content: center;
     position: relative;
+    padding: var(--space-xl) var(--space-3xl);
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    border-radius: var(--radius-2xl);
+    text-shadow: 0 0 30px rgba(103, 232, 249, 0.1);
 }
 
 .sw-time-main {
@@ -379,6 +383,11 @@ body[data-theme="dark"] .sw-running-dot {
     transform: scale(0.96);
 }
 
+.sw-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
 /* Start / Resume */
 .sw-btn-start {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
@@ -416,9 +425,10 @@ body[data-theme="dark"] .sw-running-dot {
     max-width: 360px;
     margin: var(--space-lg) auto 0;
     padding: var(--space-md) var(--space-lg);
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    background: var(--color-bg-surface);
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border-default);
+    box-shadow: var(--shadow-sm);
 }
 
 .sw-stats-row {
@@ -513,6 +523,11 @@ body[data-theme="dark"] .sw-stats-worst .sw-stats-value {
     border-bottom: 1px solid var(--color-border-default);
     background: transparent;
     gap: var(--space-sm);
+    transition: background var(--transition-base);
+}
+
+.sw-lap-row:hover {
+    background: rgba(99, 102, 241, 0.03);
 }
 
 .sw-lap-row.sw-lap-fastest {
@@ -528,6 +543,14 @@ body[data-theme="dark"] .sw-stats-worst .sw-stats-value {
     color: var(--color-text-tertiary);
     font-size: var(--text-sm);
     min-width: 36px;
+    background: var(--color-bg-muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .sw-lap-time {
@@ -654,4 +677,17 @@ body[data-theme="dark"] .sw-btn-export {
 body[data-theme="dark"] .sw-btn-clear {
     background: transparent;
     color: #f87171;
+}
+
+body[data-theme="dark"] .sw-time-display {
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+    text-shadow: 0 0 30px rgba(103, 232, 249, 0.15);
+}
+
+body[data-theme="dark"] .sw-lap-row:hover {
+    background: rgba(129, 140, 248, 0.05);
+}
+
+body[data-theme="dark"] .sw-lap-number {
+    background: rgba(255, 255, 255, 0.05);
 }
