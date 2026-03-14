@@ -86,7 +86,7 @@
   background: var(--color-bg-surface-alt);
   border-radius: var(--radius-xl);
   padding: var(--space-lg);
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--color-border-default);
   position: relative;
   overflow: hidden;
   transition: border-color var(--transition-slow), box-shadow var(--transition-slow);
