@@ -1,4 +1,4 @@
-import TimerView from "../timer/TimerView";
+import MultiTimerView from "../timer/MultiTimerView";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from '@/navigation';
@@ -159,7 +159,7 @@ export default async function MultiTimerPage(props: { params: Promise<{ locale: 
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
 
-            <TimerView fixedMode="multi" />
+            <MultiTimerView />
 
             {/* SEO Content */}
             <article className="seo-article">

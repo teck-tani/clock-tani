@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { FaHourglassStart, FaCoffee, FaPlay, FaForward } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -14,7 +14,7 @@ import pickerStyles from "@/components/scrollWheelPicker.module.css";
 import { playMp3, stopAudio } from "@/components/soundUtils";
 
 const PomodoroStats = dynamic(() => import("./PomodoroStats"), { ssr: false });
-type TimerMode = "timer" | "pomodoro" | "interval" | "multi";
+type TimerMode = "timer" | "pomodoro" | "interval";
 type PomodoroPhase = "work" | "break" | "longBreak";
 type IntervalPhase = "work" | "rest";
 
@@ -30,7 +30,6 @@ const POMO_DEFAULTS = { work: 25, break: 5, longBreak: 15, sessionsBeforeLong: 4
 const STORAGE_KEY = 'timer_state';
 const ALARM_AUTO_STOP_SEC = 30;
 const FIXED_SOUND = "early-sunrise" as const;
-interface MultiTimer { id: string; label: string; duration: number; timeLeft: number; isRunning: boolean; endTime: number; }
 
 // 각 탭별 독립 타이머 상태
 interface ModeTimerState {
@@ -60,7 +59,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
 
     // 탭별 완전 독립 타이머 상태
     const [modeTimers, setModeTimers] = useState<Record<TimerMode, ModeTimerState>>({
-        timer: { ...DEFAULT_MT }, pomodoro: { ...DEFAULT_MT }, interval: { ...DEFAULT_MT }, multi: { ...DEFAULT_MT },
+        timer: { ...DEFAULT_MT }, pomodoro: { ...DEFAULT_MT }, interval: { ...DEFAULT_MT },
     });
     // 현재 탭의 타이머 상태 파생
     const { duration, timeLeft, isRunning, isSetting } = modeTimers[mode];
@@ -95,9 +94,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     const [intervalCurrentRound, setIntervalCurrentRound] = useState(1);
     const [intervalPresetType, setIntervalPresetType] = useState<"tabata" | "hiit" | "custom">("tabata");
 
-    // Multi-timer
-    const [multiTimers, setMultiTimers] = useState<MultiTimer[]>([]);
-
     // rAF
     const rafRef = useRef<number>(0);
 
@@ -129,17 +125,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 if (s.intervalRest) setIntervalRest(s.intervalRest);
                 if (s.intervalRounds) setIntervalRounds(s.intervalRounds);
                 if (s.intervalCurrentRound) setIntervalCurrentRound(s.intervalCurrentRound);
-                if (s.multiTimers && Array.isArray(s.multiTimers)) {
-                    const now = Date.now();
-                    setMultiTimers(s.multiTimers.map((t: MultiTimer) => {
-                        if (t.isRunning && t.endTime) {
-                            const remaining = Math.max(0, Math.ceil((t.endTime - now) / 1000));
-                            return remaining > 0 ? { ...t, timeLeft: remaining } : { ...t, timeLeft: 0, isRunning: false };
-                        }
-                        return t;
-                    }));
-                }
-
                 // 새 포맷: modeTimers 전체 복원
                 if (s.modeTimers) {
                     const now = Date.now();
@@ -184,7 +169,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
         try {
             // endTime은 실행 중인 모드만 저장
             const saveable: Record<string, ModeTimerState> = {};
-            for (const m of ['timer', 'pomodoro', 'interval', 'multi'] as TimerMode[]) {
+            for (const m of ['timer', 'pomodoro', 'interval'] as TimerMode[]) {
                 const mt = modeTimers[m];
                 saveable[m] = { ...mt, timeLeft: mt.isRunning ? mt.timeLeft : mt.timeLeft };
             }
@@ -193,7 +178,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 pomoWork, pomoBreak, pomoLongBreak, pomoAutoStart,
                 pomoPhase, pomoSession, inputValues, modeTimers: saveable,
                 intervalWork, intervalRest, intervalRounds, intervalCurrentRound,
-                multiTimers: multiTimers.map(t => ({ ...t })),
             }));
         } catch (e) {
             if (e instanceof DOMException && e.name === 'QuotaExceededError') {
@@ -202,7 +186,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
         }
     }, [mode, vibrationOn, pomoWork, pomoBreak, pomoLongBreak,
         pomoAutoStart, modeTimers, pomoPhase, pomoSession, inputValues,
-        intervalWork, intervalRest, intervalRounds, intervalCurrentRound, multiTimers]);
+        intervalWork, intervalRest, intervalRounds, intervalCurrentRound]);
 
     // ===== Sound =====
     const stopSound = useCallback(() => {
@@ -317,7 +301,21 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                     recordPomoSession(pomoWork);
                 }
 
-                // 알람 모달 표시
+                // 뽀모도로 자동시작: 알람 모달 없이 바로 다음 단계 전환
+                if (m === 'pomodoro' && pomoAutoStart) {
+                    playSoundOnly();
+                    if (vibrationOn && navigator.vibrate) navigator.vibrate([300]);
+                    try {
+                        if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+                            const body = pomoPhase === 'work' ? t('pomodoro.workDone') : t('pomodoro.breakDone');
+                            new Notification(t('modal.title'), { body, icon: '/icon.svg' });
+                        }
+                    } catch { /* 알림 실패 무시 */ }
+                    handlePomoNext();
+                    continue;
+                }
+
+                // 알람 모달 표시 (자동시작 OFF 또는 일반 타이머)
                 setAlarmSource(m);
                 setShowAlarmModal(true);
                 startAlarmLoop();
@@ -384,31 +382,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
             return () => modal.removeEventListener('keydown', handleTab);
         }
     }, [showAlarmModal]);
-
-    // ===== Multi-timer rAF =====
-    const multiRafRef = useRef<number>(0);
-    useEffect(() => {
-        const hasRunning = multiTimers.some(t => t.isRunning);
-        if (!hasRunning) { if (multiRafRef.current) cancelAnimationFrame(multiRafRef.current); return; }
-        const tickMulti = () => {
-            setMultiTimers(prev => prev.map(timer => {
-                if (!timer.isRunning) return timer;
-                const remaining = Math.max(0, Math.ceil((timer.endTime - Date.now()) / 1000));
-                if (remaining === 0 && timer.timeLeft > 0) {
-                    startAlarmLoop();
-                    setAlarmSource('multi');
-                    setShowAlarmModal(true);
-                    if (vibrationOn && navigator.vibrate) navigator.vibrate([300, 100, 300]);
-                    return { ...timer, timeLeft: 0, isRunning: false };
-                }
-                return { ...timer, timeLeft: remaining };
-            }));
-            multiRafRef.current = requestAnimationFrame(tickMulti);
-        };
-        multiRafRef.current = requestAnimationFrame(tickMulti);
-        return () => { if (multiRafRef.current) cancelAnimationFrame(multiRafRef.current); };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [multiTimers.map(t => t.isRunning).join(',')]);
 
     // ===== Handlers =====
     const handleStopAlarm = useCallback(() => {
@@ -548,30 +521,10 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
         if (h > 0 || m > 0 || s > 0) setInputValues({ h, m, s });
     }, []);
 
-    // Multi-timer handlers
-    const addMultiTimer = () => {
-        if (multiTimers.length >= 4) return;
-        setMultiTimers(prev => [...prev, {
-            id: Date.now().toString(36), label: `${t('multi.timer')} ${prev.length + 1}`,
-            duration: 300, timeLeft: 300, isRunning: false, endTime: 0,
-        }]);
-    };
-    const removeMultiTimer = (id: string) => setMultiTimers(prev => prev.filter(t => t.id !== id));
-    const startMultiTimer = (id: string) => {
-        setMultiTimers(prev => prev.map(timer => {
-            if (timer.id !== id || timer.timeLeft === 0) return timer;
-            return { ...timer, isRunning: true, endTime: Date.now() + timer.timeLeft * 1000 };
-        }));
-    };
-    const stopMultiTimer = (id: string) => setMultiTimers(prev => prev.map(timer => timer.id === id ? { ...timer, isRunning: false } : timer));
-    const resetMultiTimer = (id: string) => setMultiTimers(prev => prev.map(timer => timer.id === id ? { ...timer, timeLeft: timer.duration, isRunning: false } : timer));
-    const setMultiDuration = (id: string, dur: number) => setMultiTimers(prev => prev.map(timer => timer.id === id && !timer.isRunning ? { ...timer, duration: dur, timeLeft: dur } : timer));
-
     // Keyboard shortcuts
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
-            if (mode === 'multi') return;
             switch (e.code) {
                 case 'Space': e.preventDefault(); if (showAlarmModal) return;
                     if (isSetting) handleStart();
@@ -590,6 +543,23 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     const phaseColor = pomoPhase === 'work' ? '#ef4444' : pomoPhase === 'break' ? '#22c55e' : '#3b82f6';
     const phaseColorDark = pomoPhase === 'work' ? '#dc2626' : pomoPhase === 'break' ? '#16a34a' : '#2563eb';
     const ringColor = mode === 'pomodoro' ? phaseColor : mode === 'interval' ? (intervalPhase === 'work' ? '#f59e0b' : '#22c55e') : '#667eea';
+
+    // ===== Pomodoro Timeline =====
+    const pomoSegments = useMemo(() => {
+        const segs: { type: PomodoroPhase; session: number; sec: number; color: string }[] = [];
+        for (let s = 1; s <= 4; s++) {
+            segs.push({ type: 'work', session: s, sec: pomoWork * 60, color: '#ef4444' });
+            segs.push(s < 4
+                ? { type: 'break', session: 0, sec: pomoBreak * 60, color: '#22c55e' }
+                : { type: 'longBreak', session: 0, sec: pomoLongBreak * 60, color: '#3b82f6' });
+        }
+        return segs;
+    }, [pomoWork, pomoBreak, pomoLongBreak]);
+
+    const pomoSegmentIndex = pomoPhase === 'work' ? (pomoSession - 1) * 2
+        : pomoPhase === 'break' ? (pomoSession - 1) * 2 + 1 : 7;
+
+    const pomoTotalSec = (pomoWork * 4 + pomoBreak * 3 + pomoLongBreak) * 60;
     const isCountingDown = !isSetting && (isRunning || timeLeft > 0);
     const alarmMode = alarmSource ?? mode;
 
@@ -600,12 +570,12 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
             <div className={styles.container}>
                 {/* Mode Toggle */}
                 {!fixedMode && <div className={styles.modeToggle} role="tablist">
-                    {(['timer', 'pomodoro', 'interval', 'multi'] as TimerMode[]).map(m => (
+                    {(['timer', 'pomodoro', 'interval'] as TimerMode[]).map(m => (
                         <button key={m} role="tab" aria-selected={mode === m}
                             onClick={() => setMode(m)}
                             className={`${styles.modeBtn} ${mode === m ? styles.active : ''} ${mode === m ? (m === 'pomodoro' ? styles.pomoActive : m === 'interval' ? styles.timerActive : styles.timerActive) : ''}`}
                             style={mode === m && m === 'interval' ? { background: 'linear-gradient(135deg, #f59e0b, #d97706)' } : undefined}>
-                            {m === 'timer' ? t('mode.timer') : m === 'pomodoro' ? t('mode.pomodoro') : m === 'interval' ? t('interval.title') : t('multi.title')}
+                            {m === 'timer' ? t('mode.timer') : m === 'pomodoro' ? t('mode.pomodoro') : t('interval.title')}
                             {/* 다른 탭에서 타이머 실행 중일 때 남은 시간 표시 */}
                             {m !== mode && modeTimers[m].isRunning && (
                                 <span style={{ fontSize: '10px', marginLeft: '3px', opacity: 0.9 }}>({formatTime(modeTimers[m].timeLeft)})</span>
@@ -614,47 +584,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                     ))}
                 </div>}
 
-                {/* ===== MULTI-TIMER MODE ===== */}
-                {mode === 'multi' ? (
-                    <div className={styles.mainCard}>
-                        <div className={styles.multiContainer}>
-                            {multiTimers.map(timer => (
-                                <div key={timer.id} className={`${styles.multiCard} ${timer.isRunning ? styles.multiCardRunning : ''}`}>
-                                    <div className={styles.multiHeader}>
-                                        <span className={styles.multiLabel}>{timer.label}</span>
-                                        <button onClick={() => removeMultiTimer(timer.id)} className={styles.multiRemoveBtn}>✕</button>
-                                    </div>
-                                    {!timer.isRunning && timer.timeLeft === timer.duration ? (
-                                        <div className={styles.multiInputRow}>
-                                            <input type="number" className={styles.multiInput} value={Math.floor(timer.duration / 3600)}
-                                                onChange={e => { const h = Math.max(0, parseInt(e.target.value) || 0); setMultiDuration(timer.id, h * 3600 + Math.floor((timer.duration % 3600) / 60) * 60 + timer.duration % 60); }} />
-                                            <span className={styles.multiSep}>:</span>
-                                            <input type="number" className={styles.multiInput} value={Math.floor((timer.duration % 3600) / 60)}
-                                                onChange={e => { const m = Math.min(59, Math.max(0, parseInt(e.target.value) || 0)); setMultiDuration(timer.id, Math.floor(timer.duration / 3600) * 3600 + m * 60 + timer.duration % 60); }} />
-                                            <span className={styles.multiSep}>:</span>
-                                            <input type="number" className={styles.multiInput} value={timer.duration % 60}
-                                                onChange={e => { const s = Math.min(59, Math.max(0, parseInt(e.target.value) || 0)); setMultiDuration(timer.id, Math.floor(timer.duration / 3600) * 3600 + Math.floor((timer.duration % 3600) / 60) * 60 + s); }} />
-                                        </div>
-                                    ) : (
-                                        <div className={styles.multiTimeDisplay} style={{ color: timer.timeLeft === 0 ? '#ef4444' : timer.isRunning ? '#22c55e' : '#667eea' }}>
-                                            {formatTime(timer.timeLeft)}
-                                        </div>
-                                    )}
-                                    <div className={styles.multiControls}>
-                                        {!timer.isRunning && timer.timeLeft > 0 && <button onClick={() => startMultiTimer(timer.id)} className={`${styles.multiBtn} ${styles.multiBtnStart}`}><FaPlay style={{ fontSize: '0.7rem' }} /></button>}
-                                        {timer.isRunning && <button onClick={() => stopMultiTimer(timer.id)} className={`${styles.multiBtn} ${styles.multiBtnStop}`}>{t('controls.stop')}</button>}
-                                        <button onClick={() => resetMultiTimer(timer.id)} className={`${styles.multiBtn} ${styles.multiBtnReset}`}>{t('controls.reset')}</button>
-                                    </div>
-                                </div>
-                            ))}
-                            {multiTimers.length < 4 && (
-                                <button onClick={addMultiTimer} className={styles.multiAddBtn}>+ {t('multi.add')}</button>
-                            )}
-                            {multiTimers.length >= 4 && <div style={{ textAlign: 'center', color: '#94a3b8', fontSize: '0.8rem' }}>{t('multi.max')}</div>}
-                        </div>
-                    </div>
-                ) : (
-                    /* ===== SINGLE TIMER MODES (timer/pomodoro/interval) ===== */
+                {/* ===== SINGLE TIMER MODES (timer/pomodoro/interval) ===== */}
                     <div className={styles.mainCard}>
                         {/* Pomodoro Phase — 완료 상태에서는 숨김 */}
                         {mode === 'pomodoro' && !isSetting && !showAlarmModal && (
@@ -665,6 +595,67 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                 <div className={styles.sessionBadge}>{t('pomodoro.session')} {pomoSession}</div>
                             </div>
                         )}
+
+                        {/* Pomodoro Timeline — 전체 사이클 진행률 */}
+                        {mode === 'pomodoro' && !isSetting && !showAlarmModal && (() => {
+                            const elapsed = pomoSegments.slice(0, pomoSegmentIndex).reduce((s, seg) => s + seg.sec, 0)
+                                + (duration > 0 ? duration - timeLeft : 0);
+                            const markerPct = (elapsed / pomoTotalSec) * 100;
+                            return (
+                                <div className={styles.pomoTimeline}>
+                                    {/* 라벨 행 */}
+                                    <div className={styles.pomoTimelineLabels}>
+                                        {pomoSegments.map((seg, idx) => {
+                                            const isCompleted = idx < pomoSegmentIndex;
+                                            const isCurrent = idx === pomoSegmentIndex;
+                                            const widthPct = (seg.sec / pomoTotalSec) * 100;
+                                            const label = seg.type === 'work' ? `${t('pomodoro.work')}${seg.session}`
+                                                : seg.type === 'break' ? t('pomodoro.break')
+                                                : t('pomodoro.longBreak');
+                                            return (
+                                                <div key={idx}
+                                                    className={`${styles.pomoTimelineLabelItem} ${isCurrent ? styles.labelActive : ''} ${isCompleted ? styles.labelDone : ''}`}
+                                                    style={{ width: `${widthPct}%`, color: isCurrent ? seg.color : undefined }}
+                                                >
+                                                    {label}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                    {/* 마커 (바 위 삼각형) */}
+                                    <div style={{ position: 'relative' }}>
+                                        <div className={styles.pomoTimelineMarker} style={{ left: `${markerPct}%` }} />
+                                        {/* 바 */}
+                                        <div className={styles.pomoTimelineBar}>
+                                            {pomoSegments.map((seg, idx) => {
+                                                const isCompleted = idx < pomoSegmentIndex;
+                                                const isCurrent = idx === pomoSegmentIndex;
+                                                const segProgress = isCurrent ? progress : 0;
+                                                const widthPct = (seg.sec / pomoTotalSec) * 100;
+                                                // 미래 구간은 연한 배경, 완료/현재는 채워진 배경
+                                                const bgColor = isCompleted || isCurrent ? seg.color + '20' : seg.color + '12';
+                                                return (
+                                                    <div key={idx}
+                                                        className={`${styles.pomoTimelineSegment} ${isCompleted ? styles.pomoTimelineCompleted : ''} ${isCurrent ? styles.pomoTimelineCurrent : ''}`}
+                                                        style={{ width: `${widthPct}%`, background: bgColor }}
+                                                    >
+                                                        <div className={styles.pomoTimelineFill} style={{
+                                                            width: isCompleted ? '100%' : isCurrent ? `${segProgress * 100}%` : '0%',
+                                                            backgroundColor: seg.color,
+                                                            opacity: isCompleted ? 0.7 : 0.85,
+                                                        }} />
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                    {/* 경과/전체 시간 */}
+                                    <div className={styles.pomoTimelineTime}>
+                                        {formatTime(elapsed)} / {formatTime(pomoTotalSec)}
+                                    </div>
+                                </div>
+                            );
+                        })()}
 
                         {/* Interval Phase — 완료 상태에서는 숨김 */}
                         {mode === 'interval' && !isSetting && !showAlarmModal && (
@@ -721,10 +712,10 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                             <FaPlay /> {t('controls.restart')}
                                         </button>
                                     )}
-                                    <button onClick={handleStopAlarm} className={styles.alarmConfirmBtn} style={{
+                                    <button onClick={alarmMode === 'pomodoro' ? () => { handlePomoNext(); updateMode('pomodoro', { isRunning: false }); } : handleStopAlarm} className={styles.alarmConfirmBtn} style={{
                                         background: alarmMode === 'pomodoro' ? undefined : 'linear-gradient(135deg, #667eea, #764ba2)',
                                         color: alarmMode === 'pomodoro' ? undefined : 'white',
-                                    }}>{t('controls.confirm')}</button>
+                                    }}>{alarmMode === 'pomodoro' ? t('pomodoro.later') : t('controls.confirm')}</button>
                                 </div>
                             </div>
                         ) : isSetting ? (
@@ -864,7 +855,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                             </div>
                         )}
                     </div>
-                )}
 
                 {/* Feature buttons row */}
                 <div className={styles.featureRow}>
@@ -879,13 +869,11 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 </div>
 
                 {/* Keyboard shortcuts */}
-                {mode !== 'multi' && (
-                    <div className={styles.shortcutHint}>
-                        <span><kbd className={styles.kbd}>Space</kbd> {t('controls.start')}/{t('controls.stop')}</span>
-                        <span><kbd className={styles.kbd}>R</kbd> {t('controls.reset')}</span>
-                        <span><kbd className={styles.kbd}>Esc</kbd> {t('modal.title')}</span>
-                    </div>
-                )}
+                <div className={styles.shortcutHint}>
+                    <span><kbd className={styles.kbd}>Space</kbd> {t('controls.start')}/{t('controls.stop')}</span>
+                    <span><kbd className={styles.kbd}>R</kbd> {t('controls.reset')}</span>
+                    <span><kbd className={styles.kbd}>Esc</kbd> {t('modal.title')}</span>
+                </div>
 
                 {/* Pomodoro Stats */}
                 {mode === 'pomodoro' && <PomodoroStats />}

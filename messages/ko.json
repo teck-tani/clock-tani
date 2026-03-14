@@ -389,7 +389,8 @@
         "workDone": "집중 시간 완료!",
         "breakDone": "휴식 시간 완료!",
         "startBreak": "휴식 시작",
-        "startWork": "집중 시작"
+        "startWork": "집중 시작",
+        "later": "잠시 후"
       },
       "sounds": {
         "title": "알람음 & 설정",
@@ -458,11 +459,26 @@
         "completed": "운동 완료!"
       },
       "multi": {
-        "title": "멀티",
+        "title": "멀티 타이머",
         "add": "타이머 추가",
-        "max": "최대 4개까지 추가 가능",
+        "max": "최대 10개까지 추가 가능",
         "timer": "타이머",
-        "remove": "삭제"
+        "remove": "삭제",
+        "editLabel": "클릭하여 이름 변경",
+        "startAll": "모두 시작",
+        "stopAll": "모두 정지",
+        "resetAll": "모두 리셋",
+        "completed": "{label} 완료!",
+        "completedAt": "완료",
+        "templates": "템플릿",
+        "templateName": "템플릿 이름",
+        "saveTemplate": "저장",
+        "shortcutToggle": "시작/정지",
+        "builtinTemplate": {
+          "cooking": "요리 (파스타+소스)",
+          "laundry": "세탁 (세탁+건조)",
+          "workout": "운동 (세트+휴식)"
+        }
       },
       "stats": {
         "title": "포모도로 통계",

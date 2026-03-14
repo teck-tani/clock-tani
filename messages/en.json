@@ -389,7 +389,8 @@
         "workDone": "Focus time complete!",
         "breakDone": "Break time complete!",
         "startBreak": "Start Break",
-        "startWork": "Start Focus"
+        "startWork": "Start Focus",
+        "later": "Later"
       },
       "sounds": {
         "title": "Alarm Sound & Settings",
@@ -458,11 +459,26 @@
         "completed": "Workout Complete!"
       },
       "multi": {
-        "title": "Multi",
+        "title": "Multi Timer",
         "add": "Add Timer",
-        "max": "Max 4 timers allowed",
+        "max": "Max 10 timers allowed",
         "timer": "Timer",
-        "remove": "Remove"
+        "remove": "Remove",
+        "editLabel": "Click to rename",
+        "startAll": "Start All",
+        "stopAll": "Stop All",
+        "resetAll": "Reset All",
+        "completed": "{label} Complete!",
+        "completedAt": "Done",
+        "templates": "Templates",
+        "templateName": "Template name",
+        "saveTemplate": "Save",
+        "shortcutToggle": "Start/Stop",
+        "builtinTemplate": {
+          "cooking": "Cooking (Pasta+Sauce)",
+          "laundry": "Laundry (Wash+Dry)",
+          "workout": "Workout (Sets+Rest)"
+        }
       },
       "stats": {
         "title": "Pomodoro Stats",

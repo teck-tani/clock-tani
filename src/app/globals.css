@@ -1,5 +1,150 @@
 @import "tailwindcss";
 
+/* === 디자인 토큰 시스템 === */
+:root {
+  /* 배경 */
+  --color-bg-base: #f8fafc;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-alt: #f8f9fa;
+  --color-bg-muted: #f1f5f9;
+  --color-bg-inset: #e2e8f0;
+
+  /* 텍스트 */
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748b;
+  --color-text-muted: #94a3b8;
+
+  /* 테두리 */
+  --color-border-default: #e2e8f0;
+  --color-border-subtle: #f1f5f9;
+  --color-border-strong: #cbd5e1;
+
+  /* 액센트 */
+  --color-primary: #6366f1;
+  --color-primary-light: #818cf8;
+  --color-primary-bg: #eef2ff;
+  --color-primary-bg-subtle: rgba(99, 102, 241, 0.15);
+
+  /* 기능 색상 */
+  --color-success: #22c55e;
+  --color-success-dark: #16a34a;
+  --color-danger: #ef4444;
+  --color-danger-dark: #dc2626;
+  --color-warning: #f59e0b;
+  --color-info: #0ea5e9;
+
+  /* 테마 액센트 (라이트: 시안, 다크: 네온 그린) */
+  --color-accent: #0891b2;
+  --color-accent-light: #22d3ee;
+  --color-accent-bg: rgba(8, 145, 178, 0.1);
+
+  /* 그라디언트 */
+  --gradient-start: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  --gradient-stop: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+  --gradient-reset: linear-gradient(135deg, #e5e7eb, #d1d5db);
+  --gradient-primary: linear-gradient(135deg, #667eea, #764ba2);
+
+  /* 간격 */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+  --space-4xl: 40px;
+
+  /* 모서리 */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-pill: 9999px;
+
+  /* 그림자 */
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+
+  /* 타이포그래피 */
+  --font-mono-time: 'SF Mono', 'Fira Code', 'Roboto Mono', 'Courier New', monospace;
+  --text-2xs: 0.65rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.85rem;
+  --text-base: 0.95rem;
+  --text-md: 1rem;
+  --text-lg: 1.1rem;
+  --text-xl: 1.2rem;
+  --text-2xl: 1.4rem;
+
+  /* 전환 */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.3s ease;
+
+  /* 컴포넌트: 카드 */
+  --card-bg: var(--color-bg-surface);
+  --card-border: var(--color-border-default);
+  --card-radius: var(--radius-xl);
+  --card-padding: 24px;
+  --card-shadow: var(--shadow-lg);
+
+  /* 컴포넌트: 인풋 */
+  --input-height: 44px;
+  --input-height-lg: 60px;
+  --input-bg: var(--color-bg-surface-alt);
+  --input-border: var(--color-border-default);
+  --input-radius: var(--radius-md);
+  --input-focus-border: var(--color-primary);
+  --input-focus-shadow: 0 0 0 3px var(--color-primary-bg-subtle);
+
+  /* 컴포넌트: 버튼 */
+  --btn-radius: var(--radius-2xl);
+  --btn-padding: 15px 40px;
+  --btn-font-size: 1.08rem;
+  --btn-font-weight: 700;
+}
+
+body[data-theme="dark"] {
+  --color-bg-base: #0f172a;
+  --color-bg-surface: #1e293b;
+  --color-bg-surface-alt: #0f172a;
+  --color-bg-muted: #1e293b;
+  --color-bg-inset: #334155;
+
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #94a3b8;
+  --color-text-muted: #64748b;
+
+  --color-border-default: #334155;
+  --color-border-subtle: #1e293b;
+  --color-border-strong: #475569;
+
+  --color-primary: #818cf8;
+  --color-primary-light: #a5b4fc;
+  --color-primary-bg: #1e1b4b;
+  --color-primary-bg-subtle: rgba(129, 140, 248, 0.2);
+
+  --color-accent: #00ff88;
+  --color-accent-light: #4ade80;
+  --color-accent-bg: rgba(0, 255, 136, 0.1);
+
+  --gradient-reset: linear-gradient(135deg, #334155, #1e293b);
+
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: none;
+  --shadow-xl: none;
+
+  --card-shadow: none;
+}
 
 /* 기본 스타일 */
 * {
@@ -11,8 +156,8 @@
 body {
     /* font-family is handled by next/font in layout.tsx */
     line-height: 1.6;
-    background-color: #f8fafc;
-    color: #1e293b;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -34,13 +179,13 @@ h1 {
 .tool-card-new {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
-    background: #f8fafc;
-    border-radius: 10px;
+    gap: var(--space-md);
+    padding: var(--space-lg) var(--space-lg);
+    background: var(--color-bg-base);
+    border-radius: var(--radius-md);
     text-decoration: none;
-    color: #1e293b;
-    transition: all 0.2s ease;
+    color: var(--color-text-primary);
+    transition: all var(--transition-base);
     border: 1px solid transparent;
 }
 
@@ -61,11 +206,11 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #e2e8f0;
-    border-radius: 10px;
-    color: #64748b;
-    font-size: 1.1rem;
-    transition: all 0.2s ease;
+    background: var(--color-bg-inset);
+    border-radius: var(--radius-md);
+    color: var(--color-text-tertiary);
+    font-size: var(--text-lg);
+    transition: all var(--transition-base);
     flex-shrink: 0;
 }
 
@@ -85,7 +230,7 @@ h1 {
 
 .tool-card-desc {
     font-size: 0.8rem;
-    color: #64748b;
+    color: var(--color-text-tertiary);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -122,14 +267,14 @@ h1 {
 .hero-title {
     font-size: 2.2rem;
     font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 10px;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
     line-height: 1.3;
 }
 
 .hero-subtitle {
     font-size: 1.05rem;
-    color: #64748b;
+    color: var(--color-text-tertiary);
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.7;
@@ -142,22 +287,22 @@ h1 {
 }
 
 .tool-category {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-    border: 1px solid #e2e8f0;
+    background: var(--color-bg-surface);
+    border-radius: var(--card-radius);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-xs);
+    border: 1px solid var(--card-border);
 }
 
 .category-title {
-    font-size: 1rem;
+    font-size: var(--text-md);
     font-weight: 600;
-    color: #64748b;
-    margin-bottom: 16px;
-    padding-left: 4px;
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-xs);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-sm);
 }
 
 .category-title::before {
@@ -667,12 +812,12 @@ body[data-theme="light"] .timer-input {
 
 /* Shared Digital Style */
 .digital-text {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--font-mono-time);
     font-weight: bold;
     color: #00ff88;
     line-height: 1;
     font-variant-numeric: tabular-nums;
-    transition: color 0.3s ease;
+    transition: color var(--transition-slow);
 }
 
 body[data-theme="light"] .digital-text {
@@ -728,8 +873,8 @@ body.clock-fullscreen {
    New Header Styles (FOUC 방지)
    ============================================ */
 .new-header {
-    background: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-xs);
     padding: 0;
     width: 100%;
     position: sticky;
@@ -751,11 +896,11 @@ body.clock-fullscreen {
 .header-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--space-md);
     text-decoration: none;
-    color: #1e293b;
+    color: var(--color-text-primary);
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
 }
 
 .header-logo-icon {
@@ -776,19 +921,19 @@ body.clock-fullscreen {
     height: 40px;
     border: none;
     background: transparent;
-    color: #475569;
+    color: var(--color-text-secondary);
     font-size: 1.3rem;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
+    transition: all var(--transition-base);
 }
 
 .header-menu-btn:hover {
-    background: #f1f5f9;
-    color: #0ea5e9;
+    background: var(--color-bg-muted);
+    color: var(--color-info);
 }
 
 /* Header Center Title */
@@ -798,7 +943,7 @@ body.clock-fullscreen {
     transform: translateX(-50%);
     font-size: 1.45rem;
     font-weight: 700;
-    color: #1e293b;
+    color: var(--color-text-primary);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -830,11 +975,11 @@ body.clock-fullscreen {
     right: -300px;
     width: 300px;
     height: 100%;
-    background: white;
+    background: var(--color-bg-surface);
     z-index: 999;
-    transition: right 0.3s ease;
+    transition: right var(--transition-slow);
     overflow-y: auto;
-    padding: 20px 0;
+    padding: var(--space-xl) 0;
 }
 
 .mobile-menu.open {
@@ -845,20 +990,20 @@ body.clock-fullscreen {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px 20px;
-    border-bottom: 1px solid #e2e8f0;
-    margin-bottom: 10px;
+    padding: 0 var(--space-xl) var(--space-xl);
+    border-bottom: 1px solid var(--color-border-default);
+    margin-bottom: var(--space-md);
 }
 
 .mobile-menu-close {
     width: 36px;
     height: 36px;
     border: none;
-    background: #f1f5f9;
-    color: #475569;
-    font-size: 1.1rem;
+    background: var(--color-bg-muted);
+    color: var(--color-text-secondary);
+    font-size: var(--text-lg);
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -872,9 +1017,9 @@ body.clock-fullscreen {
 .mobile-menu-category-title {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
-    color: #94a3b8;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-md);
+    color: var(--color-text-muted);
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -883,12 +1028,12 @@ body.clock-fullscreen {
 
 .mobile-menu-category a {
     display: block;
-    padding: 12px 12px 12px 36px;
-    color: #475569;
+    padding: var(--space-md) var(--space-md) var(--space-md) 36px;
+    color: var(--color-text-secondary);
     text-decoration: none;
-    font-size: 0.95rem;
-    border-radius: 8px;
-    transition: all 0.15s;
+    font-size: var(--text-base);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
 }
 
 .mobile-menu-category a:hover {
@@ -965,11 +1110,11 @@ body.clock-fullscreen {
 }
 
 .feedback-modal {
-    background: white;
-    border-radius: 16px;
+    background: var(--color-bg-surface);
+    border-radius: var(--card-radius);
     width: 100%;
     max-width: 420px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-xl);
     overflow: hidden;
     animation: feedbackSlideUp 0.3s ease;
 }
@@ -989,15 +1134,15 @@ body.clock-fullscreen {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 20px;
-    border-bottom: 1px solid #e5e7eb;
+    padding: var(--space-lg) var(--space-xl);
+    border-bottom: 1px solid var(--color-border-default);
 }
 
 .feedback-header h3 {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
     font-weight: 600;
-    color: #1e293b;
+    color: var(--color-text-primary);
 }
 
 .feedback-close {
@@ -1038,13 +1183,13 @@ body.clock-fullscreen {
 .feedback-textarea {
     width: 100%;
     min-height: 100px;
-    padding: 12px 14px;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 10px;
+    padding: var(--space-md) var(--space-lg);
+    border: 1.5px solid var(--color-border-default);
+    border-radius: var(--input-radius);
     font-size: 15px;
     resize: vertical;
     font-family: inherit;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .feedback-textarea:focus {
@@ -1060,11 +1205,11 @@ body.clock-fullscreen {
 
 .feedback-email {
     width: 100%;
-    padding: 10px 14px;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 10px;
+    padding: var(--space-md) var(--space-lg);
+    border: 1.5px solid var(--color-border-default);
+    border-radius: var(--input-radius);
     font-size: 14px;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .feedback-email:focus {
@@ -3017,5 +3162,204 @@ body.dark-mode .homepage-feature-name {
 
 .footer-tools a:hover {
     color: #fff;
+}
+
+/* ============================================
+   Phase 3: 공통 UI 컴포넌트 스타일
+   ============================================ */
+
+/* 공유 버튼 - 시작 (초록 그라디언트) */
+.btn-action-primary {
+    background: var(--gradient-start);
+    color: white;
+    border: none;
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    font-size: var(--btn-font-size);
+    font-weight: var(--btn-font-weight);
+    cursor: pointer;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.btn-action-primary:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(17, 153, 142, 0.35);
+}
+
+.btn-action-primary:active {
+    transform: translateY(1px) scale(0.98);
+    transition-duration: 0.05s;
+}
+
+/* 공유 버튼 - 정지 (빨강 그라디언트) */
+.btn-action-danger {
+    background: var(--gradient-stop);
+    color: white;
+    border: none;
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    font-size: var(--btn-font-size);
+    font-weight: var(--btn-font-weight);
+    cursor: pointer;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.btn-action-danger:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(255, 65, 108, 0.35);
+}
+
+.btn-action-danger:active {
+    transform: translateY(1px) scale(0.98);
+    transition-duration: 0.05s;
+}
+
+/* 공유 버튼 - 리셋 (회색 그라디언트) */
+.btn-action-secondary {
+    background: var(--gradient-reset);
+    color: var(--color-text-secondary);
+    border: none;
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    font-size: var(--btn-font-size);
+    font-weight: var(--btn-font-weight);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.btn-action-secondary:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.95);
+}
+
+.btn-action-secondary:active {
+    transform: translateY(1px) scale(0.98);
+    transition-duration: 0.05s;
+}
+
+/* 공유 버튼 - 아웃라인 (프리셋, 기능 버튼) */
+.btn-outline {
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    border: 1.5px solid var(--color-border-default);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+}
+
+.btn-outline:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-outline:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-xs);
+}
+
+/* 공유 카드 - 메인 */
+.card-base {
+    background: var(--card-bg);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--card-border);
+    padding: var(--card-padding);
+}
+
+/* 공유 카드 - 내부 */
+.card-inner {
+    background: var(--color-bg-surface-alt);
+    border-radius: var(--radius-lg);
+    border: 1.5px solid var(--color-border-default);
+    padding: var(--space-lg);
+}
+
+/* 공유 인풋 */
+.input-base {
+    height: var(--input-height);
+    border: 2px solid var(--input-border);
+    border-radius: var(--input-radius);
+    background: var(--input-bg);
+    color: var(--color-text-primary);
+    font-size: var(--text-base);
+    padding: 0 var(--space-md);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    outline: none;
+}
+
+.input-base:focus {
+    border-color: var(--input-focus-border);
+    box-shadow: var(--input-focus-shadow);
+    background: var(--color-bg-surface);
+}
+
+/* ============================================
+   Phase 4: 마이크로 인터랙션 & 애니메이션
+   ============================================ */
+
+/* 등장 애니메이션 */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes cardEnter {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 실행 중 펄스 */
+@keyframes softPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.3); }
+    50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+}
+
+/* 공통 포커스 링 */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* 접근성: 모션 감소 */
+@media (prefers-reduced-motion: reduce) {
+    .btn-action-primary,
+    .btn-action-danger,
+    .btn-action-secondary,
+    .btn-outline,
+    .card-base {
+        transition: none;
+        animation: none;
+    }
 }
 

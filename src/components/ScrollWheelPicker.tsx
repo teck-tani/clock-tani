@@ -10,9 +10,11 @@ interface ScrollWheelPickerProps {
   max: number;
   label?: string;
   padZero?: boolean;
+  compact?: boolean;
 }
 
-const ITEM_HEIGHT = 56;
+const ITEM_HEIGHT_DEFAULT = 56;
+const ITEM_HEIGHT_COMPACT = 40;
 const VISIBLE_ITEMS = 3;
 
 export default function ScrollWheelPicker({
@@ -22,7 +24,9 @@ export default function ScrollWheelPicker({
   max,
   label,
   padZero = true,
+  compact = false,
 }: ScrollWheelPickerProps) {
+  const itemHeight = compact ? ITEM_HEIGHT_COMPACT : ITEM_HEIGHT_DEFAULT;
   const range = max - min + 1;
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -34,7 +38,6 @@ export default function ScrollWheelPicker({
   const lastVelocity = useRef(0);
   const lastMoveTime = useRef(0);
   const lastMoveY = useRef(0);
-  const animFrameRef = useRef<number>(0);
   const momentumRef = useRef<number>(0);
 
   const formatValue = useCallback(
@@ -104,7 +107,7 @@ export default function ScrollWheelPicker({
       lastMoveY.current = e.clientY;
 
       const deltaY = e.clientY - dragStartY.current;
-      const steps = Math.round(-deltaY / ITEM_HEIGHT);
+      const steps = Math.round(-deltaY / itemHeight);
       const newValue = wrapValue(dragStartValue.current + steps);
       if (newValue !== value) {
         onChange(newValue);
@@ -114,7 +117,7 @@ export default function ScrollWheelPicker({
         }
       }
     },
-    [isDragging, value, onChange, wrapValue]
+    [isDragging, value, onChange, wrapValue, itemHeight]
   );
 
   const handlePointerUp = useCallback(
@@ -138,7 +141,7 @@ export default function ScrollWheelPicker({
           if (Math.abs(currentVelocity) < 0.01) return;
 
           const step = currentVelocity * 16;
-          if (Math.abs(step) >= ITEM_HEIGHT * 0.3) {
+          if (Math.abs(step) >= itemHeight * 0.3) {
             const direction = step > 0 ? -1 : 1;
             currentValue = wrapValue(currentValue + direction);
             onChange(currentValue);
@@ -152,7 +155,7 @@ export default function ScrollWheelPicker({
         momentumRef.current = requestAnimationFrame(animate);
       }
     },
-    [isDragging, value, onChange, wrapValue]
+    [isDragging, value, onChange, wrapValue, itemHeight]
   );
 
   // Mouse wheel handler
@@ -251,10 +254,10 @@ export default function ScrollWheelPicker({
   const halfVisible = Math.floor(VISIBLE_ITEMS / 2);
 
   return (
-    <div className={styles.pickerWrapper}>
+    <div className={`${styles.pickerWrapper} ${compact ? styles.pickerWrapperCompact : ""}`}>
       {label && <span className={styles.pickerLabel}>{label}</span>}
       <div
-        className={`${styles.pickerContainer} ${isDragging ? styles.dragging : ""}`}
+        className={`${styles.pickerContainer} ${compact ? styles.pickerContainerCompact : ""} ${isDragging ? styles.dragging : ""}`}
         ref={containerRef}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -269,7 +272,7 @@ export default function ScrollWheelPicker({
         aria-valuemax={max}
         aria-label={label}
         style={{
-          height: ITEM_HEIGHT * VISIBLE_ITEMS,
+          height: itemHeight * VISIBLE_ITEMS,
           touchAction: "none",
         }}
       >
@@ -281,8 +284,8 @@ export default function ScrollWheelPicker({
         <div
           className={styles.selectionHighlight}
           style={{
-            top: ITEM_HEIGHT * halfVisible,
-            height: ITEM_HEIGHT,
+            top: itemHeight * halfVisible,
+            height: itemHeight,
           }}
         />
 
@@ -299,7 +302,7 @@ export default function ScrollWheelPicker({
                 key={`${item.value}-${item.offset}`}
                 className={`${styles.pickerItem} ${isSelected ? styles.pickerItemSelected : ""}`}
                 style={{
-                  height: ITEM_HEIGHT,
+                  height: itemHeight,
                   opacity,
                   transform: `scale(${scale})`,
                 }}

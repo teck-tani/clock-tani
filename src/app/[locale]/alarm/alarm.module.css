@@ -1,55 +1,55 @@
 .container {
   max-width: 700px;
   margin: 0 auto;
-  padding: 20px;
+  padding: var(--space-xl);
 }
 
 /* ===== Current Time ===== */
 .timeSection {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: var(--space-3xl);
 }
 
 .timeLabel {
   font-size: 0.85rem;
-  color: #64748b;
-  margin-bottom: 8px;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-sm);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .timeDisplay {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono-time);
   font-size: clamp(3rem, 12vw, 5rem);
   font-weight: 700;
-  color: #0f172a;
+  color: var(--color-text-primary);
   line-height: 1;
   letter-spacing: 2px;
 }
 
 .dateDisplay {
   font-size: 0.95rem;
-  color: #64748b;
-  margin-top: 8px;
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-sm);
 }
 
 /* ===== Set Alarm Form ===== */
 .setAlarmSection {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 24px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .sectionTitle {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 20px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xl);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 .sectionIcon {
@@ -58,9 +58,9 @@
 
 .formRow {
   display: flex;
-  gap: 12px;
+  gap: var(--space-md);
   align-items: flex-end;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-lg);
   flex-wrap: wrap;
 }
 
@@ -68,132 +68,114 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-md);
 }
 
 .inputGroup {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--space-xs);
 }
 
 .inputLabel {
   font-size: 0.75rem;
-  color: #64748b;
+  color: var(--color-text-tertiary);
   font-weight: 500;
   text-transform: uppercase;
 }
 
 .timeInput {
+  composes: input-base from global;
   width: 80px;
   height: 52px;
-  border: 2px solid #e2e8f0;
   border-radius: 12px;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
-  font-family: 'Courier New', monospace;
-  color: #1e293b;
-  background: #f8fafc;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  outline: none;
+  font-family: var(--font-mono-time);
 }
 
 .timeInput:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
-  background: #fff;
+  border-color: var(--input-focus-border);
+  box-shadow: var(--input-focus-shadow);
+  background: var(--color-bg-surface);
 }
 
 .timeSeparator {
   font-size: 2rem;
   font-weight: 700;
-  color: #94a3b8;
-  padding-bottom: 4px;
+  color: var(--color-text-muted);
+  padding-bottom: var(--space-xs);
 }
 
 .labelInput {
+  composes: input-base from global;
   flex: 1;
   min-width: 120px;
-  height: 44px;
   line-height: 44px;
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 0 12px;
   font-size: 0.9rem;
-  color: #1e293b;
-  background: #f8fafc;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  outline: none;
 }
 
 .labelInput:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
-  background: #fff;
+  border-color: var(--input-focus-border);
+  box-shadow: var(--input-focus-shadow);
+  background: var(--color-bg-surface);
 }
 
 /* Sound Selector */
 .soundRow {
   display: flex;
-  gap: 8px;
+  gap: var(--space-sm);
   align-items: center;
 }
 
 .soundSelect {
+  composes: input-base from global;
   flex: 1;
   min-width: 0;
-  height: 44px;
   line-height: 44px;
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 0 12px;
   font-size: 0.9rem;
-  color: #1e293b;
-  background: #f8fafc;
   cursor: pointer;
-  outline: none;
-  transition: border-color 0.2s;
 }
 
 .soundSelect:focus {
-  border-color: #6366f1;
+  border-color: var(--input-focus-border);
 }
 
 .previewBtn {
   width: 44px;
   height: 44px;
   flex-shrink: 0;
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
-  background: #f8fafc;
-  color: #475569;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--input-radius);
+  background: var(--color-bg-base);
+  color: var(--color-text-secondary);
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .previewBtn:hover {
-  border-color: #6366f1;
-  color: #6366f1;
-  background: #eef2ff;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
 }
 
 .previewBtnActive {
-  border-color: #ef4444;
-  color: #ef4444;
+  border-color: var(--color-danger);
+  color: var(--color-danger);
   background: #fef2f2;
 }
 
 /* Vibration Toggle */
 .vibrationRow {
   display: flex;
-  gap: 12px;
+  gap: var(--space-md);
   align-items: center;
-  height: 44px;
+  height: var(--input-height);
 }
 
 .vibrationToggle {
@@ -202,15 +184,15 @@
   height: 26px;
   border: none;
   border-radius: 13px;
-  background: #cbd5e1;
+  background: var(--color-border-strong);
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background var(--transition-slow);
   padding: 0;
   flex-shrink: 0;
 }
 
 .vibrationToggleActive {
-  background: #6366f1;
+  background: var(--color-primary);
 }
 
 .vibrationKnob {
@@ -220,8 +202,8 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #fff;
-  transition: transform 0.3s;
+  background: var(--color-bg-surface);
+  transition: transform var(--transition-slow);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -231,26 +213,19 @@
 
 .vibrationLabel {
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--color-text-secondary);
 }
 
 
 /* Add Alarm Button */
 .addAlarmBtn {
+  composes: btn-action-primary from global;
   width: 100%;
   height: 48px;
-  border: none;
   border-radius: 12px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: #fff;
+  background: linear-gradient(135deg, var(--color-primary), #8b5cf6);
   font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  transition: all var(--transition-base);
 }
 
 .addAlarmBtn:hover {
@@ -264,12 +239,12 @@
 
 /* ===== Quick Presets ===== */
 .presetsSection {
-  margin-bottom: 24px;
+  margin-bottom: var(--space-2xl);
 }
 
 .presetsTitle {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--color-text-tertiary);
   font-weight: 500;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -278,27 +253,26 @@
 
 .presetsGrid {
   display: flex;
-  gap: 8px;
+  gap: var(--space-sm);
   flex-wrap: wrap;
 }
 
 .presetBtn {
-  padding: 10px 20px;
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
-  background: #fff;
-  color: #475569;
+  composes: btn-outline from global;
+  padding: 10px var(--space-xl);
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
   font-size: 0.9rem;
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
   white-space: nowrap;
 }
 
 .presetBtn:hover {
-  border-color: #6366f1;
-  color: #6366f1;
-  background: #eef2ff;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
 }
 
 .presetBtn:active {
@@ -308,15 +282,15 @@
 .presetBtn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
-  border-color: #e2e8f0;
-  color: #94a3b8;
-  background: #f1f5f9;
+  border-color: var(--color-border-default);
+  color: var(--color-text-muted);
+  background: var(--color-bg-muted);
 }
 
 .presetBtn:disabled:hover {
-  border-color: #e2e8f0;
-  color: #94a3b8;
-  background: #f1f5f9;
+  border-color: var(--color-border-default);
+  color: var(--color-text-muted);
+  background: var(--color-bg-muted);
 }
 
 .presetBtn:disabled:active {
@@ -325,33 +299,33 @@
 
 /* ===== Alarm List ===== */
 .alarmsSection {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 24px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .alarmList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-md);
 }
 
 .alarmItem {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px;
-  border: 1px solid #e2e8f0;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border-default);
   border-radius: 12px;
-  background: #f8fafc;
-  transition: all 0.2s;
+  background: var(--color-bg-base);
+  transition: all var(--transition-base);
 }
 
 .alarmItemActive {
   border-color: #c7d2fe;
-  background: #eef2ff;
+  background: var(--color-primary-bg);
 }
 
 .alarmItemRinging {
@@ -366,10 +340,10 @@
 }
 
 .alarmTime {
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono-time);
   font-size: 1.8rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--color-text-primary);
   min-width: 90px;
 }
 
@@ -380,7 +354,7 @@
 
 .alarmLabel {
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--color-text-secondary);
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
@@ -389,7 +363,7 @@
 
 .alarmRemaining {
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: var(--color-text-muted);
   margin-top: 2px;
 }
 
@@ -403,7 +377,7 @@
 .alarmActions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 .toggleBtn {
@@ -412,14 +386,14 @@
   height: 26px;
   border: none;
   border-radius: 13px;
-  background: #cbd5e1;
+  background: var(--color-border-strong);
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background var(--transition-slow);
   padding: 0;
 }
 
 .toggleBtnActive {
-  background: #6366f1;
+  background: var(--color-primary);
 }
 
 .toggleKnob {
@@ -429,8 +403,8 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #fff;
-  transition: transform 0.3s;
+  background: var(--color-bg-surface);
+  transition: transform var(--transition-slow);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -444,36 +418,36 @@
   border: none;
   border-radius: 8px;
   background: transparent;
-  color: #94a3b8;
+  color: var(--color-text-muted);
   font-size: 1.2rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 .deleteBtn:hover {
   background: #fef2f2;
-  color: #ef4444;
+  color: var(--color-danger);
 }
 
 .emptyState {
   text-align: center;
-  padding: 40px 20px;
-  color: #94a3b8;
+  padding: var(--space-4xl) var(--space-xl);
+  color: var(--color-text-muted);
 }
 
 .emptyIcon {
   font-size: 3rem;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-md);
 }
 
 .emptyText {
   font-size: 1rem;
   font-weight: 500;
-  color: #64748b;
-  margin-bottom: 4px;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-xs);
 }
 
 .emptyDesc {
@@ -496,9 +470,9 @@
 }
 
 .modalContent {
-  background: #fff;
+  background: var(--color-bg-surface);
   border-radius: 24px;
-  padding: 40px;
+  padding: var(--space-4xl);
   text-align: center;
   max-width: 400px;
   width: 90%;
@@ -512,7 +486,7 @@
 
 .modalIcon {
   font-size: 4rem;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-lg);
   animation: bellSwing 0.5s ease-in-out infinite alternate;
 }
 
@@ -522,43 +496,40 @@
 }
 
 .modalTime {
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono-time);
   font-size: 3rem;
   font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 8px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
 }
 
 .modalLabel {
   font-size: 1.1rem;
-  color: #64748b;
-  margin-bottom: 24px;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-2xl);
 }
 
 .modalMessage {
   font-size: 1rem;
-  color: #ef4444;
+  color: var(--color-danger);
   font-weight: 600;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-2xl);
 }
 
 .modalActions {
   display: flex;
-  gap: 12px;
+  gap: var(--space-md);
   flex-direction: column;
 }
 
 .dismissBtn {
+  composes: btn-action-danger from global;
   width: 100%;
   height: 52px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: #fff;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-danger), var(--color-danger-dark));
   font-size: 1.05rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 .dismissBtn:hover {
@@ -567,34 +538,33 @@
 }
 
 .snoozeBtn {
+  composes: btn-outline from global;
   width: 100%;
   height: 48px;
-  border: 2px solid #e2e8f0;
-  border-radius: 14px;
-  background: #fff;
-  color: #475569;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
   font-size: 0.95rem;
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 .snoozeBtn:hover {
-  border-color: #6366f1;
-  color: #6366f1;
-  background: #eef2ff;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
 }
 
 /* ===== Notification Banner ===== */
 .notificationBanner {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-md);
   padding: 14px 18px;
   background: #fffbeb;
   border: 1px solid #fde68a;
   border-radius: 12px;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-2xl);
   flex-wrap: wrap;
 }
 
@@ -606,7 +576,7 @@
 }
 
 .notificationBtn {
-  padding: 8px 16px;
+  padding: var(--space-sm) var(--space-lg);
   border: none;
   border-radius: 8px;
   background: #f59e0b;
@@ -614,7 +584,7 @@
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background var(--transition-base);
   white-space: nowrap;
 }
 
@@ -632,105 +602,30 @@
 }
 
 /* ===== Dark Theme ===== */
-:global(body[data-theme="dark"]) .timeDisplay {
-  color: #f1f5f9;
-}
-
-:global(body[data-theme="dark"]) .timeLabel,
-:global(body[data-theme="dark"]) .dateDisplay {
-  color: #94a3b8;
-}
-
-:global(body[data-theme="dark"]) .setAlarmSection,
-:global(body[data-theme="dark"]) .alarmsSection {
-  background: #1e293b;
-  border-color: #334155;
-}
-
-:global(body[data-theme="dark"]) .sectionTitle {
-  color: #e2e8f0;
-}
-
-:global(body[data-theme="dark"]) .timeInput,
-:global(body[data-theme="dark"]) .labelInput,
-:global(body[data-theme="dark"]) .soundSelect {
-  background: #0f172a;
-  border-color: #334155;
-  color: #e2e8f0;
-}
-
-:global(body[data-theme="dark"]) .timeInput:focus,
-:global(body[data-theme="dark"]) .labelInput:focus,
-:global(body[data-theme="dark"]) .soundSelect:focus {
-  border-color: #818cf8;
-  background: #1e293b;
-}
-
-:global(body[data-theme="dark"]) .timeSeparator {
-  color: #64748b;
-}
-
-:global(body[data-theme="dark"]) .presetBtn {
-  background: #0f172a;
-  border-color: #334155;
-  color: #94a3b8;
-}
-
-:global(body[data-theme="dark"]) .presetBtn:hover {
-  border-color: #818cf8;
-  color: #818cf8;
-  background: #1e1b4b;
-}
-
-:global(body[data-theme="dark"]) .presetBtn:disabled {
-  opacity: 0.3;
-  background: #0f172a;
-  border-color: #1e293b;
-  color: #475569;
-}
-
-:global(body[data-theme="dark"]) .presetBtn:disabled:hover {
-  border-color: #1e293b;
-  color: #475569;
-  background: #0f172a;
-}
-
-:global(body[data-theme="dark"]) .previewBtn {
-  background: #0f172a;
-  border-color: #334155;
-  color: #94a3b8;
-}
-
-:global(body[data-theme="dark"]) .previewBtn:hover {
-  border-color: #818cf8;
-  color: #818cf8;
-  background: #1e1b4b;
-}
-
-:global(body[data-theme="dark"]) .alarmItem {
-  background: #0f172a;
-  border-color: #334155;
-}
+/* 대부분의 다크 테마 오버라이드는 CSS 커스텀 프로퍼티로 자동 처리됨 */
 
 :global(body[data-theme="dark"]) .alarmItemActive {
   background: #1e1b4b;
   border-color: #4338ca;
 }
 
-:global(body[data-theme="dark"]) .alarmTime {
-  color: #e2e8f0;
+:global(body[data-theme="dark"]) .alarmItemRinging {
+  border-color: #fca5a5;
+  background: #450a0a;
 }
 
-:global(body[data-theme="dark"]) .alarmLabel {
-  color: #94a3b8;
+:global(body[data-theme="dark"]) .presetBtn:hover {
+  background: #1e1b4b;
 }
 
-:global(body[data-theme="dark"]) .alarmRemaining {
-  color: #64748b;
+:global(body[data-theme="dark"]) .previewBtn:hover {
+  background: #1e1b4b;
 }
 
-:global(body[data-theme="dark"]) .deleteBtn {
-  color: #64748b;
+:global(body[data-theme="dark"]) .previewBtnActive {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+  background: #450a0a;
 }
 
 :global(body[data-theme="dark"]) .deleteBtn:hover {
@@ -738,35 +633,7 @@
   color: #f87171;
 }
 
-:global(body[data-theme="dark"]) .emptyText {
-  color: #94a3b8;
-}
-
-:global(body[data-theme="dark"]) .emptyDesc {
-  color: #64748b;
-}
-
-:global(body[data-theme="dark"]) .modalContent {
-  background: #1e293b;
-}
-
-:global(body[data-theme="dark"]) .modalTime {
-  color: #f1f5f9;
-}
-
-:global(body[data-theme="dark"]) .modalLabel {
-  color: #94a3b8;
-}
-
-:global(body[data-theme="dark"]) .snoozeBtn {
-  background: #0f172a;
-  border-color: #334155;
-  color: #94a3b8;
-}
-
 :global(body[data-theme="dark"]) .snoozeBtn:hover {
-  border-color: #818cf8;
-  color: #818cf8;
   background: #1e1b4b;
 }
 
@@ -779,20 +646,14 @@
   color: #fbbf24;
 }
 
-:global(body[data-theme="dark"]) .presetsTitle,
-:global(body[data-theme="dark"]) .inputLabel {
-  color: #94a3b8;
+:global(body[data-theme="dark"]) .presetBtn:disabled {
+  opacity: 0.3;
 }
-
-:global(body[data-theme="dark"]) .vibrationLabel {
-  color: #94a3b8;
-}
-
 
 /* ===== Responsive ===== */
 @media (max-width: 640px) {
   .container {
-    padding: 16px;
+    padding: var(--space-lg);
   }
 
   .setAlarmSection,
