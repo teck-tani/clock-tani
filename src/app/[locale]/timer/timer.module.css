@@ -98,28 +98,65 @@
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 36px;
+  margin-bottom: 8px;
 }
 
 .presetBtn {
-  padding: 9px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 18px;
   border: 1.5px solid #e2e8f0;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-  color: #555;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  color: #475569;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .presetBtn:hover {
-  border-color: #667eea;
-  color: #667eea;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(102, 126, 234, 0.04));
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
-  transform: translateY(-1px);
+  border-color: #818cf8;
+  color: #6366f1;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.18);
+  transform: translateY(-2px);
+}
+
+.presetBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(99, 102, 241, 0.12);
+}
+
+.presetPlus {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-right: 1px;
+  transition: color 0.2s;
+}
+
+.presetBtn:hover .presetPlus {
+  color: #818cf8;
+}
+
+.presetAmount {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.presetUnit {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-left: 1px;
+  transition: color 0.2s;
+}
+
+.presetBtn:hover .presetUnit {
+  color: #818cf8;
 }
 
 /* === Time Input === */
@@ -548,6 +585,25 @@
 }
 
 .alarmNextBtn:hover {
+  transform: translateY(-1px);
+}
+
+.alarmRestartBtn {
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  transition: transform 0.15s;
+}
+
+.alarmRestartBtn:hover {
   transform: translateY(-1px);
 }
 
@@ -1383,7 +1439,7 @@
 
 :global(body[data-theme="dark"]) .presetBtn {
   border-color: #334155;
-  background: linear-gradient(135deg, #1e293b, #0f172a);
+  background: linear-gradient(145deg, #1e293b, #0f172a);
   color: #94a3b8;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
@@ -1391,8 +1447,21 @@
 :global(body[data-theme="dark"]) .presetBtn:hover {
   border-color: #818cf8;
   color: #818cf8;
-  background: linear-gradient(135deg, rgba(129, 140, 248, 0.12), rgba(129, 140, 248, 0.06));
-  box-shadow: 0 2px 8px rgba(129, 140, 248, 0.2);
+  box-shadow: 0 4px 12px rgba(129, 140, 248, 0.2);
+}
+
+:global(body[data-theme="dark"]) .presetPlus,
+:global(body[data-theme="dark"]) .presetUnit {
+  color: #64748b;
+}
+
+:global(body[data-theme="dark"]) .presetBtn:hover .presetPlus,
+:global(body[data-theme="dark"]) .presetBtn:hover .presetUnit {
+  color: #a5b4fc;
+}
+
+:global(body[data-theme="dark"]) .presetAmount {
+  color: #cbd5e1;
 }
 
 :global(body[data-theme="dark"]) .timeSeparator {
@@ -1663,8 +1732,21 @@
   }
 
   .presetBtn {
-    padding: 7px 14px;
+    padding: 7px 12px;
     font-size: 0.82rem;
+    border-radius: 12px;
+  }
+
+  .presetAmount {
+    font-size: 0.95rem;
+  }
+
+  .presetPlus {
+    font-size: 0.72rem;
+  }
+
+  .presetUnit {
+    font-size: 0.66rem;
   }
 }
 
@@ -1704,8 +1786,22 @@
   }
 
   .presetBtn {
-    padding: 6px 11px;
+    padding: 6px 10px;
     font-size: 0.78rem;
+    border-radius: 10px;
+    gap: 1px;
+  }
+
+  .presetAmount {
+    font-size: 0.88rem;
+  }
+
+  .presetPlus {
+    font-size: 0.68rem;
+  }
+
+  .presetUnit {
+    font-size: 0.62rem;
   }
 
   .shortcutHint {

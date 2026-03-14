@@ -1,4 +1,4 @@
-const CACHE_NAME = 'clock-tani-v1';
+const CACHE_NAME = 'clock-tani-v3';
 const STATIC_ASSETS = [
   '/ko/clock',
   '/manifest.json',
@@ -48,17 +48,16 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Static assets: cache-first
+  // Static assets: network-first (캐시 문제 방지)
   event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) return cached;
-      return fetch(request).then((response) => {
+    fetch(request)
+      .then((response) => {
         if (response.ok) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
         }
         return response;
-      });
-    })
+      })
+      .catch(() => caches.match(request))
   );
 });

@@ -369,6 +369,7 @@
         "continue": "Resume",
         "stop": "Stop",
         "reset": "Reset",
+        "restart": "Restart",
         "confirm": "OK"
       },
       "labels": {

@@ -369,6 +369,7 @@
         "continue": "계속",
         "stop": "중지",
         "reset": "재설정",
+        "restart": "다시시작",
         "confirm": "확인"
       },
       "labels": {

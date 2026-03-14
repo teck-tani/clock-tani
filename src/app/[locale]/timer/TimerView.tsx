@@ -21,9 +21,13 @@ type PomodoroPhase = "work" | "break" | "longBreak";
 type IntervalPhase = "work" | "rest";
 
 const PRESETS = [
-    { label: '1m', seconds: 60 }, { label: '3m', seconds: 180 }, { label: '5m', seconds: 300 },
-    { label: '10m', seconds: 600 }, { label: '15m', seconds: 900 }, { label: '30m', seconds: 1800 }, { label: '1h', seconds: 3600 },
-];
+    { sec: 1, unit: 'second', amount: 1 },
+    { sec: 5, unit: 'second', amount: 5 },
+    { sec: 60, unit: 'minute', amount: 1 },
+    { sec: 300, unit: 'minute', amount: 5 },
+    { sec: 3600, unit: 'hour', amount: 1 },
+    { sec: 18000, unit: 'hour', amount: 5 },
+] as const;
 const POMO_DEFAULTS = { work: 25, break: 5, longBreak: 15, sessionsBeforeLong: 4 };
 const STORAGE_KEY = 'timer_state';
 const ALARM_AUTO_STOP_SEC = 30;
@@ -211,14 +215,17 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
         if (alarmCountdownRef.current) { clearInterval(alarmCountdownRef.current); alarmCountdownRef.current = null; }
     }, []);
 
-    const playSound = useCallback(() => {
-        stopSound();
+    // 소리만 재생 (카운트다운/타이머는 건드리지 않음)
+    const playSoundOnly = useCallback(() => {
+        stopAudio(audioRef.current);
         audioRef.current = playMp3(FIXED_SOUND);
-    }, [stopSound]);
+    }, []);
 
     const startAlarmLoop = useCallback(() => {
-        playSound();
-        alarmIntervalRef.current = setInterval(playSound, 4000);
+        // 이전 알람 타이머 정리 후 새로 시작
+        stopSound();
+        playSoundOnly();
+        alarmIntervalRef.current = setInterval(playSoundOnly, 4000);
         setAlarmCountdown(ALARM_AUTO_STOP_SEC);
         alarmCountdownRef.current = setInterval(() => {
             setAlarmCountdown(prev => prev <= 1 ? 0 : prev - 1);
@@ -226,9 +233,56 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
         alarmAutoStopRef.current = setTimeout(() => {
             setShowAlarmModal(false); setAlarmSource(null); stopSound();
         }, ALARM_AUTO_STOP_SEC * 1000);
-    }, [playSound, stopSound]);
+    }, [playSoundOnly, stopSound]);
 
-    // ===== Unified rAF for ALL modes =====
+    // ===== 타이머 완료 처리 함수 (rAF tick 안에서 직접 호출) =====
+    const handleTimerComplete = useCallback((m: TimerMode) => {
+        updateMode(m, { timeLeft: 0, isRunning: false });
+
+        if (m === 'interval') {
+            if (intervalPhase === 'work') {
+                setIntervalPhase('rest');
+                updateMode('interval', { duration: intervalRest, timeLeft: intervalRest, isRunning: true, isSetting: false, endTime: Date.now() + intervalRest * 1000 });
+            } else {
+                if (intervalCurrentRound >= intervalRounds) {
+                    setAlarmSource('interval');
+                    setShowAlarmModal(true);
+                    startAlarmLoop();
+                    if (vibrationOn && navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 500]);
+                } else {
+                    setIntervalPhase('work');
+                    setIntervalCurrentRound(prev => prev + 1);
+                    updateMode('interval', { duration: intervalWork, timeLeft: intervalWork, isRunning: true, isSetting: false, endTime: Date.now() + intervalWork * 1000 });
+                }
+            }
+            return;
+        }
+
+        if (m === 'pomodoro' && pomoPhase === 'work') {
+            recordPomoSession(pomoWork);
+            if (activeTaskId) incrementTaskPomo(activeTaskId);
+        }
+
+        setAlarmSource(m);
+        setShowAlarmModal(true);
+        startAlarmLoop();
+        if (vibrationOn && navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 500]);
+        if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+            const body = m === 'pomodoro'
+                ? (pomoPhase === 'work' ? t('pomodoro.workDone') : t('pomodoro.breakDone'))
+                : t('controls.confirm');
+            new Notification(t('modal.title'), { body, icon: '/icon.svg' });
+        }
+    }, [updateMode, intervalPhase, intervalRest, intervalCurrentRound, intervalRounds,
+        intervalWork, pomoPhase, pomoWork, activeTaskId, startAlarmLoop, vibrationOn, t]);
+
+    // ===== rAF tick + endTime 기반 완료 감지 (useEffect 의존 제거) =====
+    const handleTimerCompleteRef = useRef(handleTimerComplete);
+    handleTimerCompleteRef.current = handleTimerComplete;
+    // modeTimers를 ref로 유지하여 rAF 안에서 최신 상태 읽기
+    const modeTimersRef = useRef(modeTimers);
+    modeTimersRef.current = modeTimers;
+
     useEffect(() => {
         const anyRunning = modeTimers.timer.isRunning || modeTimers.pomodoro.isRunning || modeTimers.interval.isRunning;
         if (!anyRunning) {
@@ -237,6 +291,18 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
         }
         const tick = () => {
             const now = Date.now();
+            const current = modeTimersRef.current;
+
+            // endTime 기반으로 완료 감지 — React state 타이밍에 의존하지 않음
+            for (const m of ['timer', 'pomodoro', 'interval'] as TimerMode[]) {
+                if (current[m].isRunning && current[m].endTime > 0 && now >= current[m].endTime) {
+                    // 타이머 완료 — 직접 알람 처리 후 rAF 중단
+                    handleTimerCompleteRef.current(m);
+                    return;
+                }
+            }
+
+            // 일반 tick — timeLeft 업데이트
             setModeTimers(prev => {
                 let changed = false;
                 const next = { ...prev };
@@ -257,55 +323,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
         return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
     }, [modeTimers.timer.isRunning, modeTimers.pomodoro.isRunning, modeTimers.interval.isRunning]);
 
-    // ===== Alarm trigger for ALL modes =====
-    useEffect(() => {
-        for (const m of ['timer', 'pomodoro', 'interval'] as TimerMode[]) {
-            const mt = modeTimers[m];
-            if (mt.timeLeft === 0 && mt.isRunning) {
-                updateMode(m, { isRunning: false });
-
-                if (m === 'interval') {
-                    // Interval auto-next (work↔rest)
-                    if (intervalPhase === 'work') {
-                        setIntervalPhase('rest');
-                        updateMode('interval', { duration: intervalRest, timeLeft: intervalRest, isRunning: true, isSetting: false, endTime: Date.now() + intervalRest * 1000 });
-                    } else {
-                        if (intervalCurrentRound >= intervalRounds) {
-                            setAlarmSource('interval');
-                            setShowAlarmModal(true);
-                            startAlarmLoop();
-                            if (vibrationOn && navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 500]);
-                        } else {
-                            setIntervalPhase('work');
-                            setIntervalCurrentRound(prev => prev + 1);
-                            updateMode('interval', { duration: intervalWork, timeLeft: intervalWork, isRunning: true, isSetting: false, endTime: Date.now() + intervalWork * 1000 });
-                        }
-                    }
-                    continue;
-                }
-
-                if (m === 'pomodoro' && pomoPhase === 'work') {
-                    recordPomoSession(pomoWork);
-                    if (activeTaskId) incrementTaskPomo(activeTaskId);
-                }
-
-                setAlarmSource(m);
-                setShowAlarmModal(true);
-                startAlarmLoop();
-                if (vibrationOn && navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 500]);
-                if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
-                    const body = m === 'pomodoro'
-                        ? (pomoPhase === 'work' ? t('pomodoro.workDone') : t('pomodoro.breakDone'))
-                        : t('controls.confirm');
-                    new Notification(t('modal.title'), { body, icon: '/icon.svg' });
-                }
-            }
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [modeTimers.timer.timeLeft, modeTimers.timer.isRunning,
-        modeTimers.pomodoro.timeLeft, modeTimers.pomodoro.isRunning,
-        modeTimers.interval.timeLeft, modeTimers.interval.isRunning]);
-
     // Tab title — 실행 중인 모드 중 현재 탭 우선 표시
     useEffect(() => {
         const running = (['timer', 'pomodoro', 'interval'] as TimerMode[]).filter(m => modeTimers[m].isRunning || (!modeTimers[m].isSetting && modeTimers[m].timeLeft > 0));
@@ -324,17 +341,27 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
         if (typeof Notification !== 'undefined' && Notification.permission === 'default') Notification.requestPermission();
     }, []);
 
+    // 모달 열릴 때 body 스크롤 잠금
+    useEffect(() => {
+        if (showAlarmModal) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [showAlarmModal]);
+
     // Focus trap
     useEffect(() => {
         if (showAlarmModal && alarmModalRef.current) {
             const modal = alarmModalRef.current;
             const focusable = modal.querySelectorAll<HTMLElement>('button');
-            if (focusable.length > 0) focusable[0].focus();
+            if (focusable.length > 0) focusable[0].focus({ preventScroll: true });
             const handleTab = (e: KeyboardEvent) => {
                 if (e.key !== 'Tab' || focusable.length === 0) return;
                 const first = focusable[0]; const last = focusable[focusable.length - 1];
-                if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
-                else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+                if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus({ preventScroll: true }); } }
+                else { if (document.activeElement === last) { e.preventDefault(); first.focus({ preventScroll: true }); } }
             };
             modal.addEventListener('keydown', handleTab);
             return () => modal.removeEventListener('keydown', handleTab);
@@ -369,6 +396,23 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     // ===== Handlers =====
     const handleStopAlarm = useCallback(() => { setShowAlarmModal(false); setAlarmSource(null); stopSound(); }, [stopSound]);
 
+    // 이전 세팅으로 다시 시작
+    const handleRestartAlarm = useCallback(() => {
+        const src = alarmSource ?? mode;
+        const mt = modeTimers[src as keyof typeof modeTimers];
+        if (!mt) return;
+        stopSound();
+        setShowAlarmModal(false);
+        setAlarmSource(null);
+        const dur = mt.duration;
+        if (dur > 0) {
+            updateMode(src as TimerMode, {
+                duration: dur, timeLeft: dur, isSetting: false, isRunning: true,
+                endTime: Date.now() + dur * 1000,
+            });
+        }
+    }, [alarmSource, mode, modeTimers, stopSound, updateMode]);
+
     const startTimer = useCallback((seconds: number, timerMode?: TimerMode) => {
         const m = timerMode ?? mode;
         updateMode(m, {
@@ -378,8 +422,14 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     }, [mode, updateMode]);
 
     const handlePreset = (seconds: number) => {
-        const h = Math.floor(seconds / 3600); const m = Math.floor((seconds % 3600) / 60); const s = seconds % 60;
-        setInputValues({ h, m, s }); startTimer(seconds);
+        // 현재 입력값에 누적하여 더하기
+        const currentTotal = (inputValues.h * 3600) + (inputValues.m * 60) + inputValues.s + seconds;
+        // 최대 23:59:59로 제한
+        const clamped = Math.min(currentTotal, 86399);
+        const h = Math.floor(clamped / 3600);
+        const m = Math.floor((clamped % 3600) / 60);
+        const s = clamped % 60;
+        setInputValues({ h, m, s });
     };
 
     const handleStart = () => {
@@ -553,6 +603,11 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                     <FaForward /> {pomoPhase === 'work' ? t('pomodoro.startBreak') : t('pomodoro.startWork')}
                                 </button>
                             )}
+                            {alarmMode !== 'pomodoro' && (
+                                <button onClick={handleRestartAlarm} className={styles.alarmRestartBtn}>
+                                    <FaPlay /> {t('controls.restart')}
+                                </button>
+                            )}
                             <button onClick={handleStopAlarm} className={styles.alarmConfirmBtn} style={{
                                 background: alarmMode === 'pomodoro' ? undefined : 'linear-gradient(135deg, #667eea, #764ba2)',
                                 color: alarmMode === 'pomodoro' ? undefined : 'white',
@@ -651,7 +706,16 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                 {mode === 'timer' && (
                                     <>
                                         <div className={styles.presetContainer}>
-                                            {PRESETS.map(p => (<button key={p.label} onClick={() => handlePreset(p.seconds)} className={styles.presetBtn}>{p.label}</button>))}
+                                            {PRESETS.filter(p => p.unit !== 'hour').map(p => {
+                                                const unitLabel = p.unit === 'second' ? t('labels.second') : t('labels.minute');
+                                                return (<button key={p.sec} onClick={() => handlePreset(p.sec)} className={styles.presetBtn}><span className={styles.presetPlus}>+</span><span className={styles.presetAmount}>{p.amount}</span><span className={styles.presetUnit}>{unitLabel}</span></button>);
+                                            })}
+                                        </div>
+                                        <div className={styles.presetContainer}>
+                                            {PRESETS.filter(p => p.unit === 'hour').map(p => {
+                                                const unitLabel = t('labels.hour');
+                                                return (<button key={p.sec} onClick={() => handlePreset(p.sec)} className={styles.presetBtn}><span className={styles.presetPlus}>+</span><span className={styles.presetAmount}>{p.amount}</span><span className={styles.presetUnit}>{unitLabel}</span></button>);
+                                            })}
                                         </div>
                                         <div className={pickerStyles.timePickerRow}>
                                             <ScrollWheelPicker value={inputValues.h} onChange={v => setInputValues({ ...inputValues, h: v })} min={0} max={23} label={t('labels.hour')} />
@@ -740,13 +804,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                         <div className={styles.ringDuration}>{formatTime(duration)}</div>
                                     )}
                                 </div>
-                                {/* Extend buttons */}
-                                {isCountingDown && mode !== 'interval' && (
-                                    <div className={styles.extendRow}>
-                                        <button onClick={() => handleExtend(60)} className={styles.extendBtn}>{t('extend.plus1')}</button>
-                                        <button onClick={() => handleExtend(300)} className={styles.extendBtn}>{t('extend.plus5')}</button>
-                                    </div>
-                                )}
+                                {/* Extend buttons 제거 — 타이머 실행 중 시간 추가 불필요 */}
                             </>
                         )}
 
