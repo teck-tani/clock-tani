@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 import { useTheme } from "@/contexts/ThemeContext";
 // import { useWakeLock } from "./useWakeLock";
 import { recordPomoSession } from "./PomodoroStats";
-import { incrementTaskPomo } from "./PomodoroTasks";
 import dynamic from "next/dynamic";
 import styles from "./timer.module.css";
 import ShareButton from "@/components/ShareButton";
@@ -15,7 +14,6 @@ import pickerStyles from "@/components/scrollWheelPicker.module.css";
 import { playMp3, stopAudio } from "@/components/soundUtils";
 
 const PomodoroStats = dynamic(() => import("./PomodoroStats"), { ssr: false });
-const PomodoroTasks = dynamic(() => import("./PomodoroTasks"), { ssr: false });
 type TimerMode = "timer" | "pomodoro" | "interval" | "multi";
 type PomodoroPhase = "work" | "break" | "longBreak";
 type IntervalPhase = "work" | "rest";
@@ -88,7 +86,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     const [pomoPhase, setPomoPhase] = useState<PomodoroPhase>("work");
     const [pomoSession, setPomoSession] = useState(1);
     const [pomoAutoStart, setPomoAutoStart] = useState(true);
-    const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
 
     // Interval
     const [intervalWork, setIntervalWork] = useState(20);
@@ -318,7 +315,6 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 // 뽀모도로: 작업 세션 기록
                 if (m === 'pomodoro' && pomoPhase === 'work') {
                     recordPomoSession(pomoWork);
-                    if (activeTaskId) incrementTaskPomo(activeTaskId);
                 }
 
                 // 알람 모달 표시
@@ -879,13 +875,8 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                     </div>
                 )}
 
-                {/* Pomodoro Stats & Tasks */}
-                {mode === 'pomodoro' && (
-                    <>
-                        <PomodoroTasks activeTaskId={activeTaskId} onSelectTask={setActiveTaskId} />
-                        <PomodoroStats />
-                    </>
-                )}
+                {/* Pomodoro Stats */}
+                {mode === 'pomodoro' && <PomodoroStats />}
             </div>
 
             {/* SEO Content Section - mode별 다른 콘텐츠 */}

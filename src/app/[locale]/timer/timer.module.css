@@ -1173,179 +1173,6 @@
   cursor: pointer;
 }
 
-/* === Pomodoro Tasks === */
-.tasksCard {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  margin-top: 12px;
-}
-
-.tasksTitle {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 12px;
-}
-
-.tasksAddRow {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.tasksInput {
-  flex: 1;
-  min-width: 0;
-  padding: 8px 12px;
-  border: 1.5px solid #e5e7eb;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  outline: none;
-  background: #f8f9fa;
-  color: #333;
-}
-
-.tasksInput:focus {
-  border-color: #ef4444;
-}
-
-.tasksPomoInput {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  flex-shrink: 0;
-}
-
-.tasksPomoBtn {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: none;
-  background: #e5e7eb;
-  color: #555;
-  cursor: pointer;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tasksPomoValue {
-  font-size: 0.85rem;
-  font-weight: 600;
-  min-width: 16px;
-  text-align: center;
-  color: #ef4444;
-}
-
-.tasksAddBtn {
-  padding: 8px 14px;
-  background: #ef4444;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.tasksList {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.taskItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.taskItem:hover {
-  background: #f8f9fa;
-}
-
-.taskActive {
-  background: rgba(239, 68, 68, 0.06);
-  border: 1px solid #fca5a544;
-}
-
-.taskDone {
-  opacity: 0.5;
-}
-
-.taskCheckbox {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  color: #94a3b8;
-  padding: 0;
-  width: 24px;
-}
-
-.taskContent {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-}
-
-.taskText {
-  font-size: 0.85rem;
-  color: #333;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.taskTextDone {
-  text-decoration: line-through;
-  color: #94a3b8;
-}
-
-.taskPomoBadge {
-  font-size: 0.7rem;
-  color: #ef4444;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.taskDeleteBtn {
-  background: none;
-  border: none;
-  color: #d1d5db;
-  cursor: pointer;
-  font-size: 0.75rem;
-  padding: 2px 4px;
-}
-
-.taskDeleteBtn:hover {
-  color: #ef4444;
-}
-
-.tasksClearBtn {
-  display: block;
-  margin: 8px auto 0;
-  padding: 5px 16px;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background: transparent;
-  color: #94a3b8;
-  font-size: 0.72rem;
-  cursor: pointer;
-}
-
 /* === Ambient Player === */
 .ambientCard {
   background: white;
@@ -1679,14 +1506,12 @@
 }
 
 :global(body[data-theme="dark"]) .statsCard,
-:global(body[data-theme="dark"]) .tasksCard,
 :global(body[data-theme="dark"]) .ambientCard {
   background: #1e293b;
   box-shadow: none;
 }
 
-:global(body[data-theme="dark"]) .statsTitle,
-:global(body[data-theme="dark"]) .tasksTitle {
+:global(body[data-theme="dark"]) .statsTitle {
   color: #e2e8f0;
 }
 
@@ -1700,25 +1525,6 @@
 }
 
 :global(body[data-theme="dark"]) .statsBarTrack {
-  background: #334155;
-}
-
-:global(body[data-theme="dark"]) .tasksInput {
-  background: #0f172a;
-  border-color: #334155;
-  color: #e2e8f0;
-}
-
-:global(body[data-theme="dark"]) .tasksPomoBtn {
-  background: #334155;
-  color: #e2e8f0;
-}
-
-:global(body[data-theme="dark"]) .taskText {
-  color: #e2e8f0;
-}
-
-:global(body[data-theme="dark"]) .taskItem:hover {
   background: #334155;
 }
 
