@@ -294,7 +294,7 @@
   width: 100%;
   height: 100%;
   transform: rotate(-90deg);
-  filter: drop-shadow(0 2px 8px rgba(102, 126, 234, 0.15));
+  /* filter 제거 - SVG에 drop-shadow 적용 시 사각형 글로우 발생 */
 }
 
 .ringBg {
@@ -308,7 +308,7 @@
   stroke-width: 7;
   stroke-linecap: round;
   transition: stroke-dasharray 1s linear;
-  filter: drop-shadow(0 0 6px currentColor);
+  /* filter 제거 - 사각형 글로우 방지 */
 }
 
 .ringTime {
@@ -1247,9 +1247,7 @@
   background: linear-gradient(135deg, #475569, #334155);
 }
 
-:global(body[data-theme="dark"]) .ringSvg {
-  filter: drop-shadow(0 2px 8px rgba(129, 140, 248, 0.1));
-}
+/* 다크모드 ringSvg filter 제거 - 사각형 글로우 방지 */
 
 :global(body[data-theme="dark"]) .extendBtn:hover {
   background: linear-gradient(135deg, rgba(129, 140, 248, 0.12), rgba(129, 140, 248, 0.06));
