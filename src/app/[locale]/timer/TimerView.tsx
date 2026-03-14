@@ -757,16 +757,19 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                     <div style={{ marginBottom: '20px' }}>
                                         <div className={styles.pomoGrid}>
                                             {([
-                                                { label: t('pomodoro.work'), value: pomoWork, setter: setPomoWork, color: '#ef4444', icon: '🔴' },
-                                                { label: t('pomodoro.break'), value: pomoBreak, setter: setPomoBreak, color: '#22c55e', icon: '🟢' },
-                                                { label: t('pomodoro.longBreak'), value: pomoLongBreak, setter: setPomoLongBreak, color: '#3b82f6', icon: '🔵' },
+                                                { label: t('pomodoro.work'), value: pomoWork, setter: setPomoWork, color: '#ef4444', icon: '🔴', min: 1, max: 60 },
+                                                { label: t('pomodoro.break'), value: pomoBreak, setter: setPomoBreak, color: '#22c55e', icon: '🟢', min: 1, max: 30 },
+                                                { label: t('pomodoro.longBreak'), value: pomoLongBreak, setter: setPomoLongBreak, color: '#3b82f6', icon: '🔵', min: 1, max: 30 },
                                             ] as const).map(item => (
                                                 <div key={item.label} className={styles.pomoCard}>
                                                     <div className={styles.pomoLabel}>{item.icon} {item.label}</div>
                                                     <div className={styles.pomoAdjustRow}>
-                                                        <button onClick={() => item.setter(Math.max(1, item.value - 5))} className={styles.pomoAdjustBtn}>−</button>
-                                                        <span className={styles.pomoValue} style={{ color: item.color }}>{item.value}</span>
-                                                        <button onClick={() => item.setter(Math.min(90, item.value + 5))} className={styles.pomoAdjustBtn}>+</button>
+                                                        <button onClick={() => item.setter(Math.max(item.min, item.value - 5))} className={styles.pomoAdjustBtn}>−</button>
+                                                        <input type="number" className={styles.pomoValue} style={{ color: item.color }}
+                                                            value={item.value} onChange={e => { const v = e.target.value.slice(0, 2); item.setter(parseInt(v) || 0); }}
+                                                            onBlur={e => item.setter(Math.max(item.min, Math.min(item.max, parseInt(e.target.value) || item.min)))}
+                                                            min={item.min} max={item.max} />
+                                                        <button onClick={() => item.setter(Math.min(item.max, item.value + 5))} className={styles.pomoAdjustBtn}>+</button>
                                                     </div>
                                                     <div className={styles.pomoUnit}>{t('labels.minute')}</div>
                                                 </div>
@@ -793,23 +796,32 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                                 <div className={styles.intervalCardLabel}>💪 {t('interval.work')} (s)</div>
                                                 <div className={styles.pomoAdjustRow}>
                                                     <button onClick={() => setIntervalWork(Math.max(5, intervalWork - 5))} className={styles.pomoAdjustBtn}>−</button>
-                                                    <span className={styles.intervalCardValue} style={{ color: '#f59e0b' }}>{intervalWork}</span>
-                                                    <button onClick={() => setIntervalWork(Math.min(300, intervalWork + 5))} className={styles.pomoAdjustBtn}>+</button>
+                                                    <input type="number" className={styles.intervalCardValue} style={{ color: '#f59e0b' }}
+                                                        value={intervalWork} onChange={e => { const v = e.target.value.slice(0, 2); setIntervalWork(parseInt(v) || 0); }}
+                                                        onBlur={e => setIntervalWork(Math.max(5, Math.min(99, parseInt(e.target.value) || 5)))}
+                                                        min={5} max={99} />
+                                                    <button onClick={() => setIntervalWork(Math.min(99, intervalWork + 5))} className={styles.pomoAdjustBtn}>+</button>
                                                 </div>
                                             </div>
                                             <div className={styles.intervalCard}>
                                                 <div className={styles.intervalCardLabel}>😮‍💨 {t('interval.rest')} (s)</div>
                                                 <div className={styles.pomoAdjustRow}>
                                                     <button onClick={() => setIntervalRest(Math.max(5, intervalRest - 5))} className={styles.pomoAdjustBtn}>−</button>
-                                                    <span className={styles.intervalCardValue} style={{ color: '#22c55e' }}>{intervalRest}</span>
-                                                    <button onClick={() => setIntervalRest(Math.min(120, intervalRest + 5))} className={styles.pomoAdjustBtn}>+</button>
+                                                    <input type="number" className={styles.intervalCardValue} style={{ color: '#22c55e' }}
+                                                        value={intervalRest} onChange={e => { const v = e.target.value.slice(0, 2); setIntervalRest(parseInt(v) || 0); }}
+                                                        onBlur={e => setIntervalRest(Math.max(5, Math.min(99, parseInt(e.target.value) || 5)))}
+                                                        min={5} max={99} />
+                                                    <button onClick={() => setIntervalRest(Math.min(99, intervalRest + 5))} className={styles.pomoAdjustBtn}>+</button>
                                                 </div>
                                             </div>
                                             <div className={styles.intervalCard}>
                                                 <div className={styles.intervalCardLabel}>🔄 {t('interval.rounds')}</div>
                                                 <div className={styles.pomoAdjustRow}>
                                                     <button onClick={() => setIntervalRounds(Math.max(1, intervalRounds - 1))} className={styles.pomoAdjustBtn}>−</button>
-                                                    <span className={styles.intervalCardValue} style={{ color: '#667eea' }}>{intervalRounds}</span>
+                                                    <input type="number" className={styles.intervalCardValue} style={{ color: '#667eea' }}
+                                                        value={intervalRounds} onChange={e => { const v = e.target.value.slice(0, 2); setIntervalRounds(parseInt(v) || 0); }}
+                                                        onBlur={e => setIntervalRounds(Math.max(1, Math.min(20, parseInt(e.target.value) || 1)))}
+                                                        min={1} max={20} />
                                                     <button onClick={() => setIntervalRounds(Math.min(20, intervalRounds + 1))} className={styles.pomoAdjustBtn}>+</button>
                                                 </div>
                                             </div>
