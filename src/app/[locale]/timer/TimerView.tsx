@@ -217,7 +217,8 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
         }, ALARM_AUTO_STOP_SEC * 1000);
     }, [playSoundOnly, stopSound]);
 
-    // ===== rAF — 화면 표시 전용 (timeLeft 업데이트) =====
+    // ===== rAF — 화면 표시 전용 (timeLeft 업데이트 + 프로그레스 링 부드러운 애니메이션) =====
+    const ringProgressRef = useRef<SVGCircleElement>(null);
     useEffect(() => {
         const anyRunning = modeTimers.timer.isRunning || modeTimers.pomodoro.isRunning || modeTimers.interval.isRunning;
         if (!anyRunning) {
@@ -238,13 +239,24 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                         }
                     }
                 }
+
+                // 프로그레스 링 부드러운 업데이트 (밀리초 기반, DOM 직접 조작)
+                const mt = next[mode] || prev[mode];
+                if (mt.isRunning && mt.endTime > 0 && mt.duration > 0) {
+                    const elapsed = now - (mt.endTime - mt.duration * 1000);
+                    const p = Math.min(1, Math.max(0, elapsed / (mt.duration * 1000)));
+                    if (ringProgressRef.current) {
+                        ringProgressRef.current.setAttribute('stroke-dasharray', `${p * 283} 283`);
+                    }
+                }
+
                 return changed ? next : prev;
             });
             rafRef.current = requestAnimationFrame(tick);
         };
         rafRef.current = requestAnimationFrame(tick);
         return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
-    }, [modeTimers.timer.isRunning, modeTimers.pomodoro.isRunning, modeTimers.interval.isRunning]);
+    }, [modeTimers.timer.isRunning, modeTimers.pomodoro.isRunning, modeTimers.interval.isRunning, mode]);
 
     // ===== setInterval 기반 완료 감지 (rAF와 독립적, 백그라운드 탭에서도 동작) =====
     const completionCheckRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -827,7 +839,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                 <div className={styles.ringContainer} role="timer" aria-live="polite" aria-label={formatTime(timeLeft)}>
                                     <svg viewBox="0 0 100 100" className={styles.ringSvg}>
                                         <circle cx="50" cy="50" r="45" className={styles.ringBg} />
-                                        <circle cx="50" cy="50" r="45" className={styles.ringProgress} stroke={ringColor} strokeDasharray={`${progress * 283} 283`} />
+                                        <circle ref={ringProgressRef} cx="50" cy="50" r="45" className={styles.ringProgress} stroke={ringColor} strokeDasharray={`${progress * 283} 283`} />
                                     </svg>
                                     <div className={styles.ringTime} style={{ color: ringColor }}>{formatTime(timeLeft)}</div>
                                     {duration > 0 && duration !== timeLeft && (

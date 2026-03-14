@@ -307,7 +307,7 @@
   fill: none;
   stroke-width: 7;
   stroke-linecap: round;
-  transition: stroke-dasharray 0.1s linear;
+  /* transition 제거 - rAF가 매 프레임 직접 업데이트 */
   /* filter 제거 - 사각형 글로우 방지 */
 }
 
