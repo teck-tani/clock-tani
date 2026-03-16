@@ -85,7 +85,8 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={locale}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://flagcdn.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
