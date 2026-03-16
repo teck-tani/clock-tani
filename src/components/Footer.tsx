@@ -21,6 +21,10 @@ export default function Footer() {
                     <Link href="/terms" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('terms')}</Link>
                     <span style={{ color: '#555' }}>|</span>
                     <Link href="/about" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('about')}</Link>
+                    <span style={{ color: '#555' }}>|</span>
+                    <Link href="/faq" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('faq')}</Link>
+                    <span style={{ color: '#555' }}>|</span>
+                    <Link href="/guides" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('guides')}</Link>
                 </div>
                 <p>{t('copyright', { year: new Date().getFullYear() })}</p>
             </div>
