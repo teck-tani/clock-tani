@@ -465,12 +465,21 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     };
 
     const handleReset = useCallback(() => {
+        const lastDuration = modeTimers[mode].duration;
         updateMode(mode, { ...DEFAULT_MT });
-        setInputValues({ h: 0, m: 0, s: 0 });
+        // 기본 타이머: 마지막 세팅값 복원 / 포모도로·인터벌: 0으로 초기화
+        if (mode === 'timer' && lastDuration > 0) {
+            const h = Math.floor(lastDuration / 3600);
+            const m = Math.floor((lastDuration % 3600) / 60);
+            const s = lastDuration % 60;
+            setInputValues({ h, m, s });
+        } else {
+            setInputValues({ h: 0, m: 0, s: 0 });
+        }
         if (showAlarmModal && alarmSource === mode) { setShowAlarmModal(false); setAlarmSource(null); stopSound(); }
         if (mode === 'pomodoro') { setPomoPhase('work'); setPomoSession(1); }
         if (mode === 'interval') { setIntervalPhase('work'); setIntervalCurrentRound(1); }
-    }, [stopSound, mode, updateMode, showAlarmModal, alarmSource]);
+    }, [stopSound, mode, updateMode, showAlarmModal, alarmSource, modeTimers]);
 
     // Extend (+1m, +5m)
     const handleExtend = (extraSec: number) => {
