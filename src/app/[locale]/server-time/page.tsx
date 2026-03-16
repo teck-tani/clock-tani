@@ -44,6 +44,8 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             card: "summary_large_image",
             title: t("ogTitle"),
             description: t("ogDescription"),
+            site: "@teck_tani",
+            creator: "@teck_tani",
         },
         robots: {
             index: true,

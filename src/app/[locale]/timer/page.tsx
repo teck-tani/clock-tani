@@ -43,7 +43,8 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             card: 'summary_large_image',
             title: t('ogTitle'),
             description: t('ogDescription'),
-            images: ["/og-image.png"],
+            site: '@teck_tani',
+            creator: '@teck_tani',
         },
         robots: {
             index: true,

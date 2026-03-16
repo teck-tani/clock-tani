@@ -23,6 +23,9 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
     return {
         title: t('meta.title'),
         description: t('meta.description'),
+        keywords: isKo
+            ? '시간 관리 가이드, 포모도로, 타바타, 시차 계산, D-Day, 생산성, 알람 팁'
+            : 'time management guide, pomodoro, tabata, time zone, D-Day, productivity, alarm tips',
         alternates: {
             canonical: url,
             languages: { 'ko': `${baseUrl}/ko/guides`, 'en': `${baseUrl}/en/guides` },

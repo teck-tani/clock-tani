@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import { locales } from '@/navigation';
@@ -12,6 +13,41 @@ export const dynamic = 'force-static';
 export const revalidate = false;
 
 const baseUrl = 'https://clock-tani.com';
+
+// 홈페이지 메타데이터
+export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await props.params;
+  const t = await getTranslations({ locale, namespace: 'Meta' });
+  const isKo = locale === 'ko';
+  const url = `${baseUrl}/${locale}`;
+
+  return {
+    title: t('defaultTitle'),
+    description: t('defaultDescription'),
+    keywords: t('keywords'),
+    alternates: {
+      canonical: url,
+      languages: { 'ko': `${baseUrl}/ko`, 'en': `${baseUrl}/en` },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      url,
+      siteName: 'Clock-Tani',
+      type: 'website',
+      locale: isKo ? 'ko_KR' : 'en_US',
+      alternateLocale: isKo ? 'en_US' : 'ko_KR',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      site: '@teck_tani',
+      creator: '@teck_tani',
+    },
+    robots: { index: true, follow: true },
+  };
+}
 
 const featureKeys = ['pwa', 'darkMode', 'responsive', 'multilang', 'free', 'fast'] as const;
 const featureIcons: Record<string, string> = {

@@ -20,6 +20,9 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
     return {
         title: t('title'),
         description: t('description'),
+        keywords: isKo
+            ? '이용약관, 서비스 약관, Clock-Tani'
+            : 'terms of service, terms and conditions, Clock-Tani',
         alternates: {
             canonical: url,
             languages: { 'ko': `${baseUrl}/ko/terms`, 'en': `${baseUrl}/en/terms` },

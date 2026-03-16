@@ -20,6 +20,9 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
     return {
         title: t('title'),
         description: t('description'),
+        keywords: isKo
+            ? 'FAQ, 자주 묻는 질문, Clock-Tani, 온라인 시계, 타이머, 스톱워치, 사용법'
+            : 'FAQ, frequently asked questions, Clock-Tani, online clock, timer, stopwatch, how to use',
         alternates: {
             canonical: url,
             languages: { 'ko': `${baseUrl}/ko/faq`, 'en': `${baseUrl}/en/faq` },
