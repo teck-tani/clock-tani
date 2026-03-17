@@ -61,36 +61,8 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
 }
 
 // ===== JSON-LD Schemas =====
-function generateFaqSchema(locale: string) {
-    const faqData =
-        locale === 'ko'
-            ? [
-                  { question: "포모도로 기법이란 무엇인가요?", answer: "1980년대 프란체스코 시릴로가 개발한 시간 관리법입니다. 25분 집중 + 5분 휴식을 1뽀모도로로 하고, 4뽀모도로 후 15~30분 긴 휴식을 취합니다. 짧은 집중과 규칙적인 휴식으로 피로 없이 높은 생산성을 유지할 수 있습니다." },
-                  { question: "포모도로 집중 시간을 25분이 아닌 다른 시간으로 변경할 수 있나요?", answer: "네, 집중 시간 옆의 ± 버튼을 눌러 1분부터 90분까지 5분 단위로 자유롭게 조절할 수 있습니다. 휴식 시간도 마찬가지입니다. 자신에게 맞는 최적의 시간을 찾아보세요." },
-                  { question: "포모도로 통계는 어떻게 확인하나요?", answer: "세션을 완료할 때마다 자동으로 통계가 기록됩니다. 오늘 완료한 포모도로 수, 총 집중 시간 등을 확인할 수 있어 자신의 생산성을 객관적으로 파악할 수 있습니다." },
-                  { question: "탭을 닫으면 타이머가 멈추나요?", answer: "네, 브라우저 탭을 완전히 닫으면 타이머가 멈춥니다. 하지만 다른 탭을 사용하거나 화면을 잠가도 탭이 열려있다면 타이머는 계속 작동합니다." },
-                  { question: "배경음(빗소리, 카페 소음 등)을 사용할 수 있나요?", answer: "네, 6가지 배경음(빗소리, 카페, 백색소음, 모닥불, 파도, 숲)을 제공합니다. 집중할 때 적절한 배경음은 외부 소음을 차단하고 몰입도를 높여줍니다." },
-                  { question: "이 서비스는 무료인가요?", answer: "네, 포모도로 타이머는 완전히 무료이며 회원가입이나 설치가 필요하지 않습니다. 브라우저에서 바로 사용할 수 있습니다." },
-              ]
-            : [
-                  { question: "What is the Pomodoro Technique?", answer: "Developed by Francesco Cirillo in the 1980s. One 'pomodoro' is 25 minutes of focus + 5 minutes of break. After 4 pomodoros, take a 15-30 minute long break. Short focus periods with regular breaks maintain high productivity without fatigue." },
-                  { question: "Can I change the focus time from 25 minutes?", answer: "Yes, use the ± buttons next to the focus time to adjust from 1 to 90 minutes in 5-minute increments. Break times are adjustable too. Find the optimal duration that works for you." },
-                  { question: "How do I check my Pomodoro statistics?", answer: "Statistics are automatically recorded each time you complete a session. You can check the number of pomodoros completed today and total focus time to objectively track your productivity." },
-                  { question: "Does the timer stop if I close the tab?", answer: "Yes, completely closing the browser tab stops the timer. However, using other tabs or locking the screen while keeping the tab open will not affect the timer." },
-                  { question: "Can I use ambient sounds (rain, cafe noise, etc.)?", answer: "Yes, we offer 6 ambient sounds: Rain, Cafe, White Noise, Fireplace, Ocean Waves, and Forest. Appropriate background sounds help block external noise and boost focus." },
-                  { question: "Is this service free?", answer: "Yes, the Pomodoro Timer is completely free with no registration or installation required. Use it directly in your browser." },
-              ];
-
-    return {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: faqData.map((item) => ({
-            "@type": "Question",
-            name: item.question,
-            acceptedAnswer: { "@type": "Answer", text: item.answer },
-        })),
-    };
-}
+// FAQ 스키마는 번역 파일(seo.faq.list)에서 가져와 생성
+const faqKeyList = ["q1", "q2", "q3", "q4"] as const;
 
 function generateHowToSchema(locale: string) {
     const isKo = locale === 'ko';
@@ -144,7 +116,7 @@ function generateWebAppSchema(locale: string) {
 const featureKeys = ["autoSwitch", "customTime", "statistics", "ambientSound", "taskList"] as const;
 const howtoStepKeys = ["step1", "step2", "step3", "step4"] as const;
 const usecaseKeys = ["study", "coding", "reading", "exam"] as const;
-const faqKeys = ["whatIs", "changeTime", "statistics", "tabClose", "ambientSound", "free"] as const;
+const faqKeys = ["q1", "q2", "q3", "q4"] as const;
 
 import RelatedTools from "@/components/RelatedTools";
 
@@ -153,7 +125,16 @@ export default async function PomodoroPage(props: { params: Promise<{ locale: st
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'Clock.Pomodoro' });
 
-    const faqSchema = generateFaqSchema(locale);
+    // FAQ 스키마를 번역 파일에서 생성 (중복 방지)
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqKeyList.map((key) => ({
+            "@type": "Question",
+            name: t(`seo.faq.list.${key}.q`),
+            acceptedAnswer: { "@type": "Answer", text: t(`seo.faq.list.${key}.a`) },
+        })),
+    };
     const howToSchema = generateHowToSchema(locale);
     const webAppSchema = generateWebAppSchema(locale);
 

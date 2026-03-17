@@ -63,3 +63,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Korean comments in code
 - Commit messages in Korean
 - Path alias: `@/*` maps to `src/*`
+
+## Contact
+
+- 이메일: admin@teck-tani.com

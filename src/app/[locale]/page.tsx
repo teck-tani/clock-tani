@@ -81,7 +81,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     description: t('description'),
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'kweon82tani@gmail.com',
+      email: 'admin@teck-tani.com',
       contactType: 'customer support',
     },
     sameAs: [],

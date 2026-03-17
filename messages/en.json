@@ -335,8 +335,8 @@
               "a": "Lap records are automatically saved in your browser's local storage. You can access previous records when returning with the same browser. However, clearing browser data will also delete records."
             },
             "mobile": {
-              "q": "Can I use it on mobile devices?",
-              "a": "Yes, with responsive design it works optimally on smartphones, tablets, and PCs."
+              "q": "Can I use other apps while the stopwatch is running?",
+              "a": "As long as the browser tab remains open, the stopwatch keeps running even while you use other apps. Just be careful not to close the tab entirely, as that will stop the measurement. On mobile, simply keep the browser in the background."
             },
             "maxTime": {
               "q": "What's the maximum measurement time?",
@@ -751,20 +751,20 @@
             "title": "FAQ",
             "list": {
               "q1": {
-                "q": "What is the Pomodoro Technique?",
-                "a": "Developed by Francesco Cirillo in the 1980s. One 'pomodoro' is 25 min focus + 5 min break. After 4 pomodoros, take a 15-30 min long break. Short focus periods with regular breaks maintain high productivity without fatigue."
+                "q": "Does the timer stop if I close the tab or browser?",
+                "a": "Yes, closing the browser tab completely stops the timer. However, switching to other tabs or locking the screen won't affect it as long as the tab remains open. Wake Lock is also supported to prevent screen dimming."
               },
               "q2": {
-                "q": "Can I change the focus time from 25 minutes?",
-                "a": "Yes, use the ± buttons next to the focus time to adjust from 1 to 90 minutes in 5-minute increments. Break times are adjustable too."
+                "q": "Can I use it on mobile?",
+                "a": "Yes, it works directly in smartphone and tablet browsers. You can add it to your home screen (PWA) for an app-like experience — no installation needed. Vibration alerts are also supported on mobile devices."
               },
               "q3": {
-                "q": "Where are statistics saved?",
-                "a": "All statistics are stored in your browser's local storage. Records are kept for the last 90 days and can be viewed anytime in the same browser."
+                "q": "How long is statistics data retained?",
+                "a": "Session records from the last 90 days are automatically saved in your browser's local storage. You can analyze your focus patterns with daily and weekly graphs. Data persists unless you clear your browser data."
               },
               "q4": {
-                "q": "What is the auto-start feature?",
-                "a": "When the 'Auto Start' checkbox is enabled, break starts automatically after focus ends, and the next focus starts automatically after break ends. No need to press buttons — your flow stays uninterrupted."
+                "q": "Do I need to sign up or pay?",
+                "a": "No. The Pomodoro Timer is completely free — no registration, login, or payment required. Use it directly in your browser. All data is stored only in your browser, so there are no privacy concerns."
               }
             }
           }
@@ -1120,12 +1120,12 @@
               "a": "Yes, press the pause button at any time during work or rest. Resume to continue from where you stopped."
             },
             "mobile": {
-              "q": "Does it work on mobile devices?",
-              "a": "Yes, it works perfectly on smartphones and tablets with responsive design that adapts to any screen size."
+              "q": "How can I use the interval timer beyond workouts?",
+              "a": "Study sessions (focus/rest cycles), cooking (timing each step), presentation practice, and more. Freely adjust work/rest times and rounds to fit any scenario."
             },
             "free": {
-              "q": "Is this service free?",
-              "a": "Yes, the Interval Timer is completely free with no registration or installation required."
+              "q": "Can I see the current and remaining rounds during interval?",
+              "a": "Yes, the screen shows current/total rounds, remaining time, and work/rest status in real time."
             }
           }
         },
@@ -1220,12 +1220,12 @@
               "a": "Yes, all timer settings are automatically saved in your browser's localStorage and persist between visits on the same device."
             },
             "mobile": {
-              "q": "Does it work on mobile devices?",
-              "a": "Yes, it works perfectly on smartphones and tablets with responsive design that adapts to any screen size."
+              "q": "When is the multi-timer useful?",
+              "a": "Cooking (multiple dishes), exam prep (time per subject), work (meetings, tasks, breaks simultaneously), and any situation where you need to time multiple activities at once."
             },
             "free": {
-              "q": "Is this service free?",
-              "a": "Yes, Multi Timer is completely free with no registration or installation required."
+              "q": "Can I label each timer?",
+              "a": "Yes, you can set a name for each timer to organize them like 'Pasta', 'Sauce', 'Bread'."
             }
           }
         },
@@ -1371,16 +1371,16 @@
             "a": "Yes, you can set up to 10 alarms simultaneously. Each alarm can have different times, sounds, and labels for various purposes."
           },
           "mobile": {
-            "q": "Does it work on mobile devices?",
-            "a": "Yes, it works perfectly on smartphones and tablets with mobile browsers. The responsive design adapts to any screen size. Note that some mobile browsers may limit alarms in power-saving mode."
+            "q": "What should I do if the alarm doesn't ring?",
+            "a": "Check your browser and system volume. Some browsers only play audio after user interaction (a click). Try clicking the page first, then set your alarm."
           },
           "save": {
             "q": "Are alarm settings saved?",
             "a": "Yes, all alarm settings are automatically saved in your browser's localStorage. When you revisit on the same device and browser, your previously set alarms will be preserved."
           },
           "free": {
-            "q": "Is this service free?",
-            "a": "Yes, the online alarm clock is completely free with no registration or installation required. Ads may be displayed, but all features are available without any restrictions."
+            "q": "Can I set alarms to repeat daily?",
+            "a": "Currently only one-time alarms are supported. For daily alarms, keep the browser tab open and re-set the alarm each time. Recurring alarm support is planned for a future update."
           }
         }
       },
@@ -1513,12 +1513,12 @@
             "a": "No, closing the browser tab resets the countdown. It works normally while the tab is open."
           },
           "mobile": {
-            "q": "Does it work on mobile devices?",
-            "a": "Yes, with responsive design it works perfectly on smartphones and tablets."
+            "q": "Can I check the difference between server time and my computer time?",
+            "a": "Yes, the server time page shows the real-time offset between NTP server time and your computer clock. Useful for ticketing or any task requiring precise timing."
           },
           "free": {
-            "q": "Is this service free?",
-            "a": "Yes, completely free with no registration or installation required."
+            "q": "Can I use server time with an unstable internet connection?",
+            "a": "After initial sync with the server, time is calculated locally, so brief connection issues have little impact. However, extended offline periods may cause drift, so refreshing the page is recommended."
           },
           "sync": {
             "q": "How does time sync work?",
@@ -1730,12 +1730,12 @@
             "a": "Yes, all D-day events are automatically saved in your browser's localStorage. They persist between visits on the same device and browser."
           },
           "mobile": {
-            "q": "Does it work on mobile devices?",
-            "a": "Yes, with responsive design it works perfectly on smartphones and tablets."
+            "q": "Can I share a D-Day with others?",
+            "a": "Yes, use the share button on each D-Day entry to copy a link or share via social media. Recipients can view the countdown directly in their browser."
           },
           "free": {
-            "q": "Is this service free?",
-            "a": "Yes, completely free with no registration or installation required."
+            "q": "Can I still view past D-Days?",
+            "a": "Yes, past dates are displayed as 'D+N days' so you can continue tracking them. Useful for seeing how long ago an anniversary or event occurred."
           },
           "past": {
             "q": "Can I see past D-days?",
@@ -1801,7 +1801,7 @@
       "contact": {
         "title": "8. Contact",
         "content": "For privacy-related inquiries, please contact us at the email below.",
-        "email": "kweon82tani@gmail.com"
+        "email": "admin@teck-tani.com"
       }
     }
   },
@@ -1851,7 +1851,7 @@
       "contact": {
         "title": "7. Contact",
         "content": "For questions about these terms, please contact us at the email below.",
-        "email": "kweon82tani@gmail.com"
+        "email": "admin@teck-tani.com"
       }
     }
   },
@@ -1982,7 +1982,7 @@
       "title": "Contact",
       "content": "For inquiries, bug reports, or suggestions, please email us below.",
       "additionalInfo": "We typically respond within 1-2 business days. Feature suggestions and improvement requests are always welcome.",
-      "email": "kweon82tani@gmail.com"
+      "email": "admin@teck-tani.com"
     }
   },
   "Index": {
@@ -2128,7 +2128,7 @@
         },
         {
           "q": "How can I suggest features or report bugs?",
-          "a": "Please send an email to kweon82tani@gmail.com and we'll review your feedback."
+          "a": "Please send an email to admin@teck-tani.com and we'll review your feedback."
         }
       ]
     }
@@ -2167,12 +2167,8 @@
         "title": "Online Clock",
         "items": [
           {
-            "q": "How do I add cities to the world clock?",
-            "a": "On the clock page, press the 'Add City' button to search and add your desired city. Added cities are saved automatically."
-          },
-          {
-            "q": "Can I switch between analog and digital clocks?",
-            "a": "Yes, you can switch the clock mode to analog or digital in settings."
+            "q": "Is the online clock more accurate than my computer clock?",
+            "a": "The online clock displays time based on your browser's system time. For more precise timing, use the Server Time page, which syncs with NTP servers for accurate time regardless of your local clock settings."
           }
         ]
       },
@@ -2180,12 +2176,8 @@
         "title": "Stopwatch",
         "items": [
           {
-            "q": "How do I use lap recording?",
-            "a": "Press the 'Lap' button while the stopwatch is running to save a record at the current time. Recorded lap data can be exported."
-          },
-          {
-            "q": "Does the stopwatch work in the background?",
-            "a": "Yes, the stopwatch continues running even when you switch to another tab or app."
+            "q": "Can I use stopwatch lap records in Excel or other programs?",
+            "a": "Yes, you can export lap records in CSV format. CSV files can be opened directly in Excel, Google Sheets, and other spreadsheet apps for analysis."
           }
         ]
       },
@@ -2193,12 +2185,8 @@
         "title": "Timer",
         "items": [
           {
-            "q": "How do I set timer presets?",
-            "a": "Save frequently used times as presets, then start a timer with a single tap."
-          },
-          {
-            "q": "Can I keep the screen on during timer use?",
-            "a": "Yes, using the Wake Lock API, the screen stays on automatically while the timer is running."
+            "q": "What's the difference between Timer, Pomodoro, Interval, and Multi-Timer?",
+            "a": "The basic Timer is a general-purpose countdown tool. Pomodoro auto-cycles 25min focus/5min break sessions. Interval Timer is for workout routines with repeating rounds. Multi-Timer lets you run multiple timers simultaneously."
           }
         ]
       },
@@ -2206,12 +2194,8 @@
         "title": "Pomodoro",
         "items": [
           {
-            "q": "What is the Pomodoro technique?",
-            "a": "It's a time management method of working for 25 minutes then taking a 5-minute break. After 4 cycles, you take a longer 15-30 minute break."
-          },
-          {
-            "q": "Can I change the focus and break durations?",
-            "a": "Yes, you can customize the focus time, short break, and long break durations in settings."
+            "q": "How is the Pomodoro technique different from a regular timer?",
+            "a": "A regular timer simply counts down, but Pomodoro automatically cycles through 'focus → break → focus' and tracks session statistics. It's a scientifically proven time management method that prevents focus fatigue during long work sessions."
           }
         ]
       },
@@ -2219,12 +2203,8 @@
         "title": "Alarm",
         "items": [
           {
-            "q": "Can I set multiple alarms at once?",
-            "a": "Yes, you can set multiple alarms simultaneously with different times and sounds for each."
-          },
-          {
-            "q": "Will alarms work if I close the browser?",
-            "a": "No, alarms only work while the browser is open. Please keep the browser tab open until your alarm time."
+            "q": "Can I receive vibration-only alerts instead of sound?",
+            "a": "Yes, you can turn off sound and enable vibration only in alarm settings. Vibration works on mobile devices with touchscreen support. This is useful in quiet environments."
           }
         ]
       },
@@ -2232,12 +2212,8 @@
         "title": "Server Time",
         "items": [
           {
-            "q": "How is the server time synchronized?",
-            "a": "It synchronizes with NTP (Network Time Protocol) servers to display accurate time regardless of your computer's clock."
-          },
-          {
-            "q": "How do I use it for ticketing?",
-            "a": "Set the ticketing start time on the server time page to see a countdown based on accurate server time."
+            "q": "How do I use the Server Time page for ticketing?",
+            "a": "Set the ticketing start time and you'll see an accurate countdown based on NTP server time. You can also check the real-time offset from your computer's clock, helping you click at precisely the right moment."
           }
         ]
       },
@@ -2245,12 +2221,8 @@
         "title": "D-Day Counter",
         "items": [
           {
-            "q": "Can I register multiple D-Days?",
-            "a": "Yes, you can register and manage multiple D-Days for exams, anniversaries, events, and more."
-          },
-          {
-            "q": "Where is D-Day data stored?",
-            "a": "All D-Day data is stored in your browser's localStorage. Be aware that clearing browser data may also delete this information."
+            "q": "Can I add D-Day events to my calendar?",
+            "a": "Yes, each D-Day entry can be exported as an ICS file. Import the file into Google Calendar, Apple Calendar, or other calendar apps to receive reminders."
           }
         ]
       }
