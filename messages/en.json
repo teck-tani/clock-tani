@@ -36,7 +36,7 @@
   },
   "Meta": {
     "defaultTitle": "Free Online Clock & Timer Tools - No Install | Clock-Tani",
-    "defaultDescription": "Free browser-based time tools: world clock, stopwatch with lap export, countdown timer, Pomodoro with ambient sounds, alarm, and D-Day counter. No install needed.",
+    "defaultDescription": "Free browser-based time tools: world clock, stopwatch with lap export, countdown timer, Pomodoro, alarm, and D-Day counter. No install needed.",
     "keywords": "free online clock tools no install, browser stopwatch with laps, countdown timer with alarm sound, pomodoro with ambient sounds, multiple alarms online, days until counter",
     "ogTitle": "Free Online Clock & Timer Tools | Clock-Tani",
     "ogDescription": "Free browser-based time tools: world clock, stopwatch, timer, Pomodoro, alarm, and D-Day counter. No install needed."
@@ -1393,7 +1393,7 @@
   "ServerTime": {
     "meta": {
       "title": "Exact Server Time in Milliseconds - Sync & Countdown",
-      "description": "See NTP-synced server time with millisecond precision. Set countdown to an exact moment for ticket drops, product launches, or registration deadlines. Free tool.",
+      "description": "NTP-synced server time with millisecond precision. Set countdown for ticket drops, product launches, or registration deadlines. Free, no install needed.",
       "keywords": "exact server time milliseconds, NTP synced clock online, countdown to exact time for tickets, precise time for ticket drops, millisecond accurate clock browser, server time sync tool free",
       "ogTitle": "Exact Server Time in Milliseconds - Sync & Countdown",
       "ogDescription": "NTP-synced server time with millisecond precision. Countdown to exact moments for ticket drops and launches. Free browser tool."

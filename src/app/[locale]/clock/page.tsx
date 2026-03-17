@@ -28,6 +28,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
         alternates: {
             canonical: url,
             languages: {
+                'x-default': `${baseUrl}/ko/clock`,
                 'ko': `${baseUrl}/ko/clock`,
                 'en': `${baseUrl}/en/clock`,
             },
@@ -296,9 +297,9 @@ export default async function ClockPage(props: { params: Promise<{ locale: strin
                 <article className={styles.seoArticle}>
                     {/* 1. 정의 — 이 도구가 무엇인지 */}
                     <section className={styles.seoBlock}>
-                        <h2 className={`${styles.seoHeading} ${styles.seoHeadingCyan}`}>
+                        <h1 className={`${styles.seoHeading} ${styles.seoHeadingCyan}`}>
                             {t('seo.description.title')}
-                        </h2>
+                        </h1>
                         <p className={styles.seoText}>{t('seo.description.p1')}</p>
                         <div className={styles.seoFeatureBox}>
                             <ul className={styles.seoFeatureList}>

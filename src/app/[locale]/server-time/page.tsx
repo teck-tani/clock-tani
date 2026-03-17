@@ -27,6 +27,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
         alternates: {
             canonical: url,
             languages: {
+                'x-default': `${baseUrl}/ko/server-time`,
                 ko: `${baseUrl}/ko/server-time`,
                 en: `${baseUrl}/en/server-time`,
             },
@@ -175,7 +176,7 @@ export default async function ServerTimePage(props: { params: Promise<{ locale: 
             <article className="seo-article">
                 {/* 1. Tool Description */}
                 <section className="seo-section">
-                    <h2 className="seo-section-title">{t("seo.description.title")}</h2>
+                    <h1 className="seo-section-title">{t("seo.description.title")}</h1>
                     <p className="seo-text">{t("seo.description.p1")}</p>
                     <p className="seo-text">{t("seo.description.p2")}</p>
                 </section>

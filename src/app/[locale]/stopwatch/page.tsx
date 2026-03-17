@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         alternates: {
             canonical: url,
             languages: {
+                'x-default': `${baseUrl}/ko/stopwatch`,
                 'ko': `${baseUrl}/ko/stopwatch`,
                 'en': `${baseUrl}/en/stopwatch`,
             },
@@ -246,9 +247,9 @@ export default async function StopwatchPage({ params }: { params: Promise<{ loca
                 <article className="sw-article">
                     {/* 스톱워치란? */}
                     <section className="sw-section">
-                        <h2 className="sw-section-heading sw-heading-cyan">
+                        <h1 className="sw-section-heading sw-heading-cyan">
                             {t('seo.description.title')}
-                        </h2>
+                        </h1>
                         <p className="sw-text">
                             {t('seo.description.p1')}
                         </p>

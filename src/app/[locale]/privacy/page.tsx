@@ -25,7 +25,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             : 'privacy policy, personal data, Clock-Tani, cookie policy',
         alternates: {
             canonical: url,
-            languages: { 'ko': `${baseUrl}/ko/privacy`, 'en': `${baseUrl}/en/privacy` },
+            languages: { 'x-default': `${baseUrl}/ko/privacy`, 'ko': `${baseUrl}/ko/privacy`, 'en': `${baseUrl}/en/privacy` },
         },
         openGraph: {
             title: t('title'),

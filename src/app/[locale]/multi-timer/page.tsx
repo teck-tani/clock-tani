@@ -26,6 +26,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
         alternates: {
             canonical: url,
             languages: {
+                'x-default': `${baseUrl}/ko/multi-timer`,
                 'ko': `${baseUrl}/ko/multi-timer`,
                 'en': `${baseUrl}/en/multi-timer`,
             },
@@ -166,7 +167,7 @@ export default async function MultiTimerPage(props: { params: Promise<{ locale: 
             {/* SEO Content */}
             <article className="seo-article">
                 <section className="seo-section">
-                    <h2 className="seo-section-title">{t("seo.description.title")}</h2>
+                    <h1 className="seo-section-title">{t("seo.description.title")}</h1>
                     <p className="seo-text">{t("seo.description.p1")}</p>
                     <p className="seo-text">{t("seo.description.p2")}</p>
                 </section>

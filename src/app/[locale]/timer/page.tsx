@@ -25,6 +25,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
         alternates: {
             canonical: `${baseUrl}/${locale}/timer`,
             languages: {
+                'x-default': `${baseUrl}/ko/timer`,
                 'ko': `${baseUrl}/ko/timer`,
                 'en': `${baseUrl}/en/timer`,
             },
@@ -37,7 +38,6 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             type: 'website',
             locale: locale === 'ko' ? 'ko_KR' : 'en_US',
             alternateLocale: locale === 'ko' ? 'en_US' : 'ko_KR',
-            images: ["/og-image.png"],
         },
         twitter: {
             card: 'summary_large_image',
@@ -263,7 +263,7 @@ export default async function TimerPage(props: { params: Promise<{ locale: strin
             {/* SEO Content */}
             <article className="seo-article">
                 <section className="seo-section">
-                    <h2 className="seo-section-title">{t("seo.description.title")}</h2>
+                    <h1 className="seo-section-title">{t("seo.description.title")}</h1>
                     <p className="seo-text">{t("seo.description.p1")}</p>
                     <p className="seo-text">{t("seo.description.p2")}</p>
                 </section>

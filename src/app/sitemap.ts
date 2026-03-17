@@ -37,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 priority: page.priority,
                 alternates: {
                     languages: {
+                        'x-default': `${baseUrl}/ko${page.path}`,
                         ko: `${baseUrl}/ko${page.path}`,
                         en: `${baseUrl}/en${page.path}`,
                     },
@@ -55,6 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 priority: 0.6,
                 alternates: {
                     languages: {
+                        'x-default': `${baseUrl}/ko/guides/${guide.slug}`,
                         ko: `${baseUrl}/ko/guides/${guide.slug}`,
                         en: `${baseUrl}/en/guides/${guide.slug}`,
                     },
