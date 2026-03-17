@@ -7,21 +7,21 @@ const locales = ['ko', 'en'];
 // lastModified: 해당 페이지 코드가 실제로 변경된 날짜 (배포 시점이 아님)
 // 페이지를 수정하면 해당 날짜도 함께 업데이트할 것
 const pages = [
-    { path: '', priority: 1.0, changeFrequency: 'daily' as const, lastModified: '2026-03-16' },
+    { path: '', priority: 1.0, changeFrequency: 'daily' as const, lastModified: '2026-03-17' },
     { path: '/clock', priority: 1.0, changeFrequency: 'daily' as const, lastModified: '2026-03-10' },
-    { path: '/stopwatch', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-03-09' },
-    { path: '/timer', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-03-09' },
-    { path: '/pomodoro', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-03-09' },
-    { path: '/interval', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-03-09' },
-    { path: '/multi-timer', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-03-09' },
-    { path: '/alarm', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-03-09' },
-    { path: '/server-time', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-03-08' },
-    { path: '/dday-counter', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-03-09' },
-    { path: '/faq', priority: 0.5, changeFrequency: 'monthly' as const, lastModified: '2026-03-16' },
-    { path: '/guides', priority: 0.6, changeFrequency: 'weekly' as const, lastModified: '2026-03-16' },
-    { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-03-05' },
-    { path: '/terms', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-03-05' },
-    { path: '/about', priority: 0.4, changeFrequency: 'yearly' as const, lastModified: '2026-03-16' },
+    { path: '/stopwatch', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-03-17' },
+    { path: '/timer', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-03-17' },
+    { path: '/pomodoro', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-03-17' },
+    { path: '/interval', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-03-17' },
+    { path: '/multi-timer', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-03-17' },
+    { path: '/alarm', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-03-17' },
+    { path: '/server-time', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-03-17' },
+    { path: '/dday-counter', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-03-17' },
+    { path: '/faq', priority: 0.5, changeFrequency: 'monthly' as const, lastModified: '2026-03-17' },
+    { path: '/guides', priority: 0.6, changeFrequency: 'weekly' as const, lastModified: '2026-03-17' },
+    { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-03-17' },
+    { path: '/terms', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-03-17' },
+    { path: '/about', priority: 0.4, changeFrequency: 'yearly' as const, lastModified: '2026-03-17' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
