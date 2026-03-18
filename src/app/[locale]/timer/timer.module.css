@@ -1274,6 +1274,14 @@
 
 /* === Responsive === */
 @media (max-width: 640px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .mainCard {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
   .presetContainer {
     gap: var(--space-sm);
   }
@@ -1296,15 +1304,75 @@
     font-size: 0.66rem;
   }
 
+  /* 인터벌 그리드 모바일 최적화 */
+  .intervalGrid {
+    gap: 6px;
+  }
+
+  .intervalCard {
+    padding: var(--space-sm) var(--space-xs);
+  }
+
+  .intervalCardLabel {
+    font-size: 0.68rem;
+  }
+
+  .intervalCardValue {
+    font-size: 1rem;
+    width: 36px;
+  }
+
+  .intervalPresetBtn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  /* 포모도로 그리드 모바일 최적화 */
+  .pomoCard {
+    padding: var(--space-sm) var(--space-xs);
+  }
+
+  .pomoLabel {
+    font-size: 0.68rem;
+  }
+
+  .pomoValue {
+    font-size: 1.1rem;
+    width: 36px;
+  }
+
+  .pomoAdjustBtn {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+  }
+
 }
 
 @media (max-width: 375px) {
   .mainCard {
-    padding: var(--space-xl) var(--space-lg);
+    padding: var(--space-xl) var(--space-md);
   }
 
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  /* 인터벌/포모도로 그리드: 초소형 화면에서 2칼럼으로 변경 */
+  .intervalGrid,
   .pomoGrid {
-    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .intervalCardValue {
+    width: 32px;
+    font-size: 0.95rem;
+  }
+
+  .pomoValue {
+    width: 32px;
+    font-size: 1rem;
   }
 
   .timeInput {
