@@ -120,7 +120,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
             const raw = localStorage.getItem(STORAGE_KEY);
             if (raw) {
                 const s = JSON.parse(raw);
-                if (s.mode) setMode(s.mode);
+                if (s.mode && !fixedMode) setMode(s.mode);
                 if (s.vibrationOn !== undefined) setVibrationOn(s.vibrationOn);
                 if (s.pomoWork) setPomoWork(s.pomoWork);
                 if (s.pomoBreak) setPomoBreak(s.pomoBreak);

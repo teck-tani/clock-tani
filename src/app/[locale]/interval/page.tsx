@@ -164,7 +164,7 @@ export default async function IntervalPage(props: { params: Promise<{ locale: st
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
 
-            <TimerView fixedMode="interval" />
+            <TimerView key="interval" fixedMode="interval" />
 
             {/* SEO Content */}
             <article className="seo-article">

@@ -258,7 +258,7 @@ export default async function TimerPage(props: { params: Promise<{ locale: strin
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
 
-            <TimerView fixedMode="timer" />
+            <TimerView key="timer" fixedMode="timer" />
 
             {/* SEO Content */}
             <article className="seo-article">

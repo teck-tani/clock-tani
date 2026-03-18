@@ -145,7 +145,7 @@ export default async function PomodoroPage(props: { params: Promise<{ locale: st
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
 
-            <TimerView fixedMode="pomodoro" />
+            <TimerView key="pomodoro" fixedMode="pomodoro" />
 
             {/* SEO Content */}
             <article className="seo-article">
