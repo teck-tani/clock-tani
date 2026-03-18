@@ -60,6 +60,11 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     // Mode
     const [mode, setMode] = useState<TimerMode>(fixedMode ?? "timer");
 
+    // fixedMode prop 변경 시 mode 상태 동기화 (페이지 간 네비게이션)
+    useEffect(() => {
+        if (fixedMode) setMode(fixedMode);
+    }, [fixedMode]);
+
     // 탭별 완전 독립 타이머 상태
     const [modeTimers, setModeTimers] = useState<Record<TimerMode, ModeTimerState>>({
         timer: { ...DEFAULT_MT }, pomodoro: { ...DEFAULT_MT }, interval: { ...DEFAULT_MT },
