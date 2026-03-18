@@ -54,6 +54,9 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
     const t = useTranslations('Clock.Timer');
     const { theme } = useTheme();
 
+    // localStorage 로드 완료 플래그 (로드 전에 save가 기본값으로 덮어쓰는 것 방지)
+    const [isLoaded, setIsLoaded] = useState(false);
+
     // Mode
     const [mode, setMode] = useState<TimerMode>(fixedMode ?? "timer");
 
@@ -162,10 +165,12 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 try { localStorage.removeItem(STORAGE_KEY); } catch {}
             }
         }
+        setIsLoaded(true);
     }, []);
 
     // ===== Save on change =====
     useEffect(() => {
+        if (!isLoaded) return;
         try {
             // endTime은 실행 중인 모드만 저장
             const saveable: Record<string, ModeTimerState> = {};
@@ -184,7 +189,7 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 console.warn('Timer: localStorage quota exceeded while saving.');
             }
         }
-    }, [mode, vibrationOn, pomoWork, pomoBreak, pomoLongBreak,
+    }, [isLoaded, mode, vibrationOn, pomoWork, pomoBreak, pomoLongBreak,
         pomoAutoStart, modeTimers, pomoPhase, pomoSession, inputValues,
         intervalWork, intervalRest, intervalRounds, intervalCurrentRound]);
 
@@ -900,8 +905,8 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                 {mode === 'pomodoro' && <PomodoroStats />}
             </div>
 
-            {/* SEO Content Section - mode별 다른 콘텐츠 */}
-            <TimerSeoSection mode={mode} />
+            {/* SEO Content Section - fixedMode가 없을 때만 (개별 페이지는 자체 SEO 섹션 사용) */}
+            {!fixedMode && <TimerSeoSection mode={mode} />}
         </div>
     );
 }

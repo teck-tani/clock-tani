@@ -63,7 +63,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
 
 // ===== JSON-LD Schemas =====
 // FAQ 스키마는 번역 파일(seo.faq.list)에서 가져와 생성
-const faqKeyList = ["q1", "q2", "q3", "q4"] as const;
+const faqKeyList = ["whatIs", "changeTime", "statistics", "tabClose", "ambientSound", "free"] as const;
 
 function generateHowToSchema(locale: string) {
     const isKo = locale === 'ko';
@@ -117,7 +117,7 @@ function generateWebAppSchema(locale: string) {
 const featureKeys = ["autoSwitch", "customTime", "statistics", "ambientSound", "taskList"] as const;
 const howtoStepKeys = ["step1", "step2", "step3", "step4"] as const;
 const usecaseKeys = ["study", "coding", "reading", "exam"] as const;
-const faqKeys = ["q1", "q2", "q3", "q4"] as const;
+const faqKeys = ["whatIs", "changeTime", "statistics", "tabClose", "ambientSound", "free"] as const;
 
 import RelatedTools from "@/components/RelatedTools";
 

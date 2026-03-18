@@ -224,15 +224,15 @@
 }
 
 .pomoAdjustBtn {
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: none;
   flex-shrink: 0;
   background: #e5e7eb;
   color: var(--color-text-primary);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -244,9 +244,9 @@
 }
 
 .pomoValue {
-  font-size: 1.3rem;
+  font-size: 2.6rem;
   font-weight: 700;
-  width: 42px;
+  width: 80px;
   text-align: center;
   border: none;
   background: transparent;
@@ -869,9 +869,9 @@
 }
 
 .intervalCardValue {
-  font-size: 1.2rem;
+  font-size: 2.4rem;
   font-weight: 700;
-  width: 42px;
+  width: 80px;
   text-align: center;
   border: none;
   background: transparent;
@@ -1318,8 +1318,8 @@
   }
 
   .intervalCardValue {
-    font-size: 1rem;
-    width: 36px;
+    font-size: 1.8rem;
+    width: 60px;
   }
 
   .intervalPresetBtn {
@@ -1337,14 +1337,14 @@
   }
 
   .pomoValue {
-    font-size: 1.1rem;
-    width: 36px;
+    font-size: 1.8rem;
+    width: 60px;
   }
 
   .pomoAdjustBtn {
-    width: 24px;
-    height: 24px;
-    font-size: 0.8rem;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
   }
 
 }
@@ -1366,13 +1366,13 @@
   }
 
   .intervalCardValue {
-    width: 32px;
-    font-size: 0.95rem;
+    width: 60px;
+    font-size: 1.8rem;
   }
 
   .pomoValue {
-    width: 32px;
-    font-size: 1rem;
+    width: 60px;
+    font-size: 1.8rem;
   }
 
   .timeInput {
