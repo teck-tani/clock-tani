@@ -32,10 +32,11 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
     const url = `${baseUrl}/${locale}/guides/${slug}`;
 
     const title = t(`titles.${guide.titleKey}`);
+    const metaTitle = `${title} | Clock-Tani`;
     const description = t(`descriptions.${guide.descKey}`);
 
     return {
-        title,
+        title: metaTitle,
         description,
         alternates: {
             canonical: url,
@@ -45,7 +46,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             },
         },
         openGraph: {
-            title,
+            title: metaTitle,
             description,
             url,
             siteName: 'Clock-Tani',
@@ -57,7 +58,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
         },
         twitter: {
             card: 'summary',
-            title,
+            title: metaTitle,
             description,
             site: '@teck_tani',
             creator: '@teck_tani',
