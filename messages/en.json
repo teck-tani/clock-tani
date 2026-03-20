@@ -2136,7 +2136,7 @@
   "FAQ": {
     "meta": {
       "title": "Frequently Asked Questions (FAQ) | Clock-Tani",
-      "description": "Find answers to frequently asked questions about Clock-Tani's online clock, timer, stopwatch, alarm, and other time tools."
+      "description": "Find answers to frequently asked questions about Clock-Tani's 9 free online time tools — clock, timer, stopwatch, Pomodoro, alarm, D-Day counter, and more. Organized by category: general usage, technical details, and privacy."
     },
     "title": "Frequently Asked Questions (FAQ)",
     "subtitle": "Find answers to your questions about using Clock-Tani.",
@@ -2277,7 +2277,7 @@
   "Guides": {
     "meta": {
       "title": "Time Management Guides | Clock-Tani",
-      "description": "Practical guides on the Pomodoro Technique, Tabata workouts, time zone calculations, D-Day countdowns, and more."
+      "description": "7 practical guides to boost productivity: Pomodoro Technique, Tabata HIIT workouts, time zone calculations, D-Day countdowns, alarm tips, and more. Each guide pairs with a free Clock-Tani tool you can try instantly."
     },
     "listTitle": "Time Management Guides",
     "listDescription": "A collection of practical guides to boost your productivity and make better use of your time. Each guide pairs with a Clock-Tani tool.",
@@ -2296,13 +2296,13 @@
       "alarmTips": "Tips for Setting Effective Alarms"
     },
     "descriptions": {
-      "pomodoroDesc": "Learn the history, scientific basis, and practical tips for the Pomodoro Technique, developed by Francesco Cirillo in the 1980s.",
-      "tabataDesc": "Discover the science behind Dr. Izumi Tabata's high-intensity interval training protocol and how to use an interval timer for it.",
-      "timezoneDesc": "Everything about time zones — from UTC and GMT basics to daylight saving time and tips for scheduling international meetings.",
-      "ddayDesc": "Explore creative uses for D-Day countdowns: exam prep, anniversaries, project deadlines, travel planning, and more.",
-      "timeManagementDesc": "Compare five proven time management methods: Pomodoro, Time Blocking, Eat the Frog, the 2-Minute Rule, and Parkinson's Law.",
-      "onlineVsDeviceDesc": "A technical comparison of device clock accuracy, NTP synchronization, and why online server time matters for ticketing and exams.",
-      "alarmTipsDesc": "Science-backed tips for setting alarms based on sleep cycles, progressive alarm sounds, and morning routines."
+      "pomodoroDesc": "Learn the history and scientific basis of the Pomodoro Technique by Francesco Cirillo — 25-minute focus sessions with 5-minute breaks. Step-by-step guide with practical tips you can try instantly using Clock-Tani's free Pomodoro timer.",
+      "tabataDesc": "Discover the science behind Dr. Izumi Tabata's high-intensity interval training protocol — 20 seconds on, 10 seconds off, 8 rounds. Learn how to use an interval timer for Tabata, HIIT, and circuit training workouts.",
+      "timezoneDesc": "Everything about time zones: UTC and GMT basics, daylight saving time (DST) rules, international meeting scheduling tips, and major city time differences. Essential for global business and travel planning.",
+      "ddayDesc": "Creative ways to use D-Day countdowns for exam prep, anniversaries, project deadlines, travel departures, and goal tracking. Manage up to 20 events simultaneously with Clock-Tani's free D-Day counter.",
+      "timeManagementDesc": "Compare five proven time management methods — Pomodoro, Time Blocking, Eat the Frog, the 2-Minute Rule, and Parkinson's Law. Understand each technique's strengths and find the best fit for your workflow.",
+      "onlineVsDeviceDesc": "A technical comparison of PC and smartphone clock accuracy, NTP server synchronization, and millisecond-precise online clocks. Learn why server time matters for ticket drops, class registration, and time-critical events.",
+      "alarmTipsDesc": "Science-backed tips for effective alarm settings: sleep cycle timing (90-minute intervals), progressive alarm sounds, smart snooze strategies, and morning routines. Wake up refreshed with better alarm habits."
     },
     "articles": {
       "pomodoro-technique-guide": {
