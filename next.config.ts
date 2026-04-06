@@ -16,13 +16,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['react-icons', 'korean-lunar-calendar'],
   },
-  redirects: async () => [
-    {
-      source: '/',
-      destination: '/ko',
-      permanent: true, // 301 영구 리다이렉트 (Google canonical 충돌 해결)
-    },
-  ],
+  // `/` → `/ko` 리다이렉트는 middleware.ts에서 rewrite로 처리 (3XX 체인 방지)
   poweredByHeader: false,
   compress: true,
   headers: async () => [
