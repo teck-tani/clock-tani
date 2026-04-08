@@ -1,5 +1,6 @@
 import DdayCounterClient from "./DdayCounterClient";
 import RelatedTools from "@/components/RelatedTools";
+import RelatedGuides from "@/components/RelatedGuides";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from "@/navigation";
@@ -149,6 +150,8 @@ function generateWebAppSchema(locale: string) {
 }
 
 // ===== Page Component =====
+const uniqueContentKeys = ['lunarCalendar', 'koreanAnniversary'] as const;
+
 export default async function DdayCounterPage(props: { params: Promise<{ locale: string }> }) {
     const { locale } = await props.params;
     setRequestLocale(locale);
@@ -229,6 +232,19 @@ export default async function DdayCounterPage(props: { params: Promise<{ locale:
                     ))}
                 </section>
 
+                {/* 고유 콘텐츠 섹션 */}
+                {uniqueContentKeys.map((key) => (
+                    <section key={key} className="seo-section">
+                        <h2 className="seo-section-title">
+                            {t(`seo.uniqueContent.${key}.title`)}
+                        </h2>
+                        <div
+                            className="seo-text"
+                            dangerouslySetInnerHTML={{ __html: t(`seo.uniqueContent.${key}.content`).replace(/\n/g, '<br/>') }}
+                        />
+                    </section>
+                ))}
+
                 {/* 6. Privacy Notice */}
                 <section className="seo-section">
                     <h2 className="seo-section-title">{t("seo.privacy.title")}</h2>
@@ -237,6 +253,7 @@ export default async function DdayCounterPage(props: { params: Promise<{ locale:
             </article>
 
             <RelatedTools currentHref="/dday-counter" />
+            <RelatedGuides currentToolHref="/dday-counter" />
         </>
     );
 }

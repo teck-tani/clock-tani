@@ -24,12 +24,16 @@ export default function Footer() {
                         </Link>
                     ))}
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 8, fontSize: '0.85rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 8, fontSize: '0.85rem', flexWrap: 'wrap' }}>
                     <Link href="/privacy" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('privacy')}</Link>
                     <span style={{ color: '#555' }}>|</span>
                     <Link href="/terms" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('terms')}</Link>
                     <span style={{ color: '#555' }}>|</span>
+                    <Link href="/cookie-policy" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('cookiePolicy')}</Link>
+                    <span style={{ color: '#555' }}>|</span>
                     <Link href="/about" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('about')}</Link>
+                    <span style={{ color: '#555' }}>|</span>
+                    <Link href="/contact" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('contact')}</Link>
                     <span style={{ color: '#555' }}>|</span>
                     <Link href="/faq" style={{ color: '#999', textDecoration: 'none' }} prefetch={false}>{t('faq')}</Link>
                     <span style={{ color: '#555' }}>|</span>

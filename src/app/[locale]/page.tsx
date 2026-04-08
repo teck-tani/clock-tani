@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { locales } from '@/navigation';
 import { Link } from '@/navigation';
 import { ALL_TOOLS } from '@/config/tools';
+import { ALL_GUIDES } from '@/config/guides';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -64,6 +65,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'Homepage' });
   const tTools = await getTranslations({ locale, namespace: 'Index.tools' });
+  const tGuides = await getTranslations({ locale, namespace: 'Guides' });
 
   // 도구 비교 가이드 데이터
   const comparisonItems = t.raw('comparison.items') as { tool: string; bestFor: string; desc: string }[];
@@ -188,6 +190,41 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </Link>
             );
           })}
+        </div>
+      </section>
+
+      {/* 최신 가이드 섹션 */}
+      <section className="homepage-content-section">
+        <h2 className="homepage-section-title">{t('latestGuides.title')}</h2>
+        <p className="homepage-section-subtitle">{t('latestGuides.subtitle')}</p>
+        <div className="homepage-comparison-grid">
+          {ALL_GUIDES.slice(0, 6).map((guide) => (
+            <Link
+              key={guide.slug}
+              href={`/guides/${guide.slug}`}
+              className="homepage-comparison-card"
+              prefetch={false}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <div className="homepage-comparison-header">
+                <span className="homepage-comparison-tool">{tGuides(`titles.${guide.titleKey}`)}</span>
+              </div>
+              <p className="homepage-comparison-desc">{tGuides(`descriptions.${guide.descKey}`)}</p>
+            </Link>
+          ))}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: 16 }}>
+          <Link
+            href="/guides"
+            style={{
+              color: '#0891b2',
+              textDecoration: 'none',
+              fontWeight: 600,
+              fontSize: '0.95rem',
+            }}
+          >
+            {t('latestGuides.viewAll')} &rarr;
+          </Link>
         </div>
       </section>
 

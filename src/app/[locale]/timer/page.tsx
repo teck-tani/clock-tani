@@ -1,5 +1,6 @@
 import TimerView from "./TimerView";
 import RelatedTools from "@/components/RelatedTools";
+import RelatedGuides from "@/components/RelatedGuides";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from '@/navigation';
@@ -242,6 +243,7 @@ const featureKeys = ["multiMode", "alarmSounds", "ambientSounds", "presets", "wa
 const howtoStepKeys = ["step1", "step2", "step3", "step4"] as const;
 const usecaseKeys = ["cooking", "study", "exercise", "work"] as const;
 const faqKeys = ["noSound", "noodles", "pomodoro", "pomodoroCustom", "tabata", "hiitDiff", "multiMax"] as const;
+const uniqueContentKeys = ['comparison', 'cooking'] as const;
 
 export default async function TimerPage(props: { params: Promise<{ locale: string }> }) {
     const { locale } = await props.params;
@@ -311,6 +313,19 @@ export default async function TimerPage(props: { params: Promise<{ locale: strin
                     ))}
                 </section>
 
+                {/* 고유 콘텐츠 섹션 */}
+                {uniqueContentKeys.map((key) => (
+                    <section key={key} className="seo-section">
+                        <h2 className="seo-section-title">
+                            {t(`seo.uniqueContent.${key}.title`)}
+                        </h2>
+                        <div
+                            className="seo-text"
+                            dangerouslySetInnerHTML={{ __html: t(`seo.uniqueContent.${key}.content`).replace(/\n/g, '<br/>') }}
+                        />
+                    </section>
+                ))}
+
                 <section className="seo-section">
                     <h2 className="seo-section-title">{t("seo.privacy.title")}</h2>
                     <p className="seo-text">{t("seo.privacy.text")}</p>
@@ -318,6 +333,7 @@ export default async function TimerPage(props: { params: Promise<{ locale: strin
             </article>
 
             <RelatedTools currentHref="/timer" />
+            <RelatedGuides currentToolHref="/timer" />
         </>
     );
 }

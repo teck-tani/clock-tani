@@ -1,5 +1,6 @@
 import StopwatchWrapper from "./StopwatchWrapper";
 import RelatedTools from "@/components/RelatedTools";
+import RelatedGuides from "@/components/RelatedGuides";
 import "./stopwatch.css";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -213,6 +214,7 @@ export default async function StopwatchPage({ params }: { params: Promise<{ loca
     const howToStepKeys = ['step1', 'step2', 'step3', 'step4'] as const;
     const useCaseKeys = ['study', 'fitness', 'gaming', 'cooking', 'work', 'exam'] as const;
     const faqKeys = ['diff', 'save', 'mobile', 'maxTime', 'export'] as const;
+    const uniqueContentKeys = ['accuracy', 'sports'] as const;
 
     return (
         <>
@@ -311,6 +313,19 @@ export default async function StopwatchPage({ params }: { params: Promise<{ loca
                         ))}
                     </section>
 
+                    {/* 고유 콘텐츠 섹션 */}
+                    {uniqueContentKeys.map((key) => (
+                        <section key={key} className="sw-section">
+                            <h2 className="sw-section-heading sw-heading-cyan">
+                                {t(`seo.uniqueContent.${key}.title`)}
+                            </h2>
+                            <div
+                                className="sw-text"
+                                dangerouslySetInnerHTML={{ __html: t(`seo.uniqueContent.${key}.content`).replace(/\n/g, '<br/>') }}
+                            />
+                        </section>
+                    ))}
+
                     {/* 개인정보 안내 */}
                     <section className="sw-section">
                         <h2 className="sw-section-heading sw-heading-cyan">
@@ -323,6 +338,7 @@ export default async function StopwatchPage({ params }: { params: Promise<{ loca
                 </article>
 
                 <RelatedTools currentHref="/stopwatch" />
+                <RelatedGuides currentToolHref="/stopwatch" />
             </div>
         </>
     );

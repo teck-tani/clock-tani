@@ -146,6 +146,9 @@ const usecaseKeys = ["cooking", "laundry", "study", "work"] as const;
 const faqKeys = ["maxTimers", "alarmSound", "save", "mobile", "free"] as const;
 
 import RelatedTools from "@/components/RelatedTools";
+import RelatedGuides from "@/components/RelatedGuides";
+
+const uniqueContentKeys = ['parallelCooking', 'projectManagement'] as const;
 
 export default async function MultiTimerPage(props: { params: Promise<{ locale: string }> }) {
     const { locale } = await props.params;
@@ -215,6 +218,19 @@ export default async function MultiTimerPage(props: { params: Promise<{ locale: 
                     ))}
                 </section>
 
+                {/* 고유 콘텐츠 섹션 */}
+                {uniqueContentKeys.map((key) => (
+                    <section key={key} className="seo-section">
+                        <h2 className="seo-section-title">
+                            {t(`seo.uniqueContent.${key}.title`)}
+                        </h2>
+                        <div
+                            className="seo-text"
+                            dangerouslySetInnerHTML={{ __html: t(`seo.uniqueContent.${key}.content`).replace(/\n/g, '<br/>') }}
+                        />
+                    </section>
+                ))}
+
                 <section className="seo-section">
                     <h2 className="seo-section-title">{t("seo.privacy.title")}</h2>
                     <p className="seo-text">{t("seo.privacy.text")}</p>
@@ -222,6 +238,7 @@ export default async function MultiTimerPage(props: { params: Promise<{ locale: 
             </article>
 
             <RelatedTools currentHref="/multi-timer" />
+            <RelatedGuides currentToolHref="/multi-timer" />
         </>
     );
 }

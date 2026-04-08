@@ -120,6 +120,9 @@ const usecaseKeys = ["study", "coding", "reading", "exam"] as const;
 const faqKeys = ["whatIs", "changeTime", "statistics", "tabClose", "ambientSound", "free"] as const;
 
 import RelatedTools from "@/components/RelatedTools";
+import RelatedGuides from "@/components/RelatedGuides";
+
+const uniqueContentKeys = ['research', 'byProfession'] as const;
 
 export default async function PomodoroPage(props: { params: Promise<{ locale: string }> }) {
     const { locale } = await props.params;
@@ -198,6 +201,19 @@ export default async function PomodoroPage(props: { params: Promise<{ locale: st
                     ))}
                 </section>
 
+                {/* 고유 콘텐츠 섹션 */}
+                {uniqueContentKeys.map((key) => (
+                    <section key={key} className="seo-section">
+                        <h2 className="seo-section-title">
+                            {t(`seo.uniqueContent.${key}.title`)}
+                        </h2>
+                        <div
+                            className="seo-text"
+                            dangerouslySetInnerHTML={{ __html: t(`seo.uniqueContent.${key}.content`).replace(/\n/g, '<br/>') }}
+                        />
+                    </section>
+                ))}
+
                 <section className="seo-section">
                     <h2 className="seo-section-title">{t("seo.privacy.title")}</h2>
                     <p className="seo-text">{t("seo.privacy.text")}</p>
@@ -205,6 +221,7 @@ export default async function PomodoroPage(props: { params: Promise<{ locale: st
             </article>
 
             <RelatedTools currentHref="/pomodoro" />
+            <RelatedGuides currentToolHref="/pomodoro" />
         </>
     );
 }

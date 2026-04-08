@@ -1,5 +1,6 @@
 import ClockView from "./ClockView";
 import RelatedTools from "@/components/RelatedTools";
+import RelatedGuides from "@/components/RelatedGuides";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from '@/navigation';
@@ -41,12 +42,6 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             type: 'website',
             locale: isKo ? 'ko_KR' : 'en_US',
             alternateLocale: isKo ? 'en_US' : 'ko_KR',
-            images: [{
-                url: `${baseUrl}/og/clock.png`,
-                width: 1200,
-                height: 630,
-                alt: isKo ? '온라인 시계 - 세계시각 & 실시간 시계' : 'Online Clock - World Time & Real-Time Clock',
-            }],
         },
         twitter: {
             card: 'summary_large_image',
@@ -257,6 +252,7 @@ const howToStepKeys = ['step1', 'step2', 'step3', 'step4'] as const;
 const useCaseKeys = ['trading', 'meeting', 'travel', 'ticketing', 'exam', 'deadline'] as const;
 const faqKeys = ['worldTime', 'cityCount', 'accuracy', 'settings', 'mobile', 'ticketing', 'offline'] as const;
 const cityRegionKeys = ['asia', 'europe', 'americas', 'africa'] as const;
+const uniqueContentKeys = ['timezone', 'history'] as const;
 
 export default async function ClockPage(props: { params: Promise<{ locale: string }> }) {
     const { locale } = await props.params;
@@ -383,7 +379,20 @@ export default async function ClockPage(props: { params: Promise<{ locale: strin
                         ))}
                     </section>
 
-                    {/* 7. 개인정보 안내 */}
+                    {/* 고유 콘텐츠 섹션 */}
+                    {uniqueContentKeys.map((key) => (
+                        <section key={key} className={styles.seoBlock}>
+                            <h2 className={`${styles.seoHeading} ${styles.seoHeadingCyan}`}>
+                                {t(`seo.uniqueContent.${key}.title`)}
+                            </h2>
+                            <div
+                                className={styles.seoText}
+                                dangerouslySetInnerHTML={{ __html: t(`seo.uniqueContent.${key}.content`).replace(/\n/g, '<br/>') }}
+                            />
+                        </section>
+                    ))}
+
+                    {/* 개인정보 안내 */}
                     <section className={styles.seoBlock}>
                         <h2 className={`${styles.seoHeading} ${styles.seoHeadingCyan}`}>
                             {t('seo.privacy.title')}
@@ -394,6 +403,7 @@ export default async function ClockPage(props: { params: Promise<{ locale: strin
             </section>
 
             <RelatedTools currentHref="/clock" />
+            <RelatedGuides currentToolHref="/clock" />
         </div>
     );
 }

@@ -22,6 +22,8 @@ const pages = [
     { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-03-17' },
     { path: '/terms', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-03-17' },
     { path: '/about', priority: 0.4, changeFrequency: 'yearly' as const, lastModified: '2026-03-17' },
+    { path: '/contact', priority: 0.4, changeFrequency: 'yearly' as const, lastModified: '2026-04-08' },
+    { path: '/cookie-policy', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-04-08' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

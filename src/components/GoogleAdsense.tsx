@@ -2,11 +2,23 @@
 
 import Script from "next/script";
 import { useEffect, useState } from "react";
+import { getCookieConsent } from "./CookieConsent";
 
 export default function GoogleAdsense() {
     const [loadAds, setLoadAds] = useState(false);
 
     useEffect(() => {
+        // 쿠키 동의가 없으면 AdSense 로드하지 않음
+        if (getCookieConsent() !== "accepted") {
+            const onConsentChange = () => {
+                if (getCookieConsent() === "accepted") {
+                    setLoadAds(true);
+                }
+            };
+            window.addEventListener("cookieConsentChanged", onConsentChange);
+            return () => window.removeEventListener("cookieConsentChanged", onConsentChange);
+        }
+
         const handleInteraction = () => {
             setLoadAds(true);
         };
