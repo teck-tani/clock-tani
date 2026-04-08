@@ -28,7 +28,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             : 'time management guide, pomodoro, tabata, time zone, D-Day, productivity, alarm tips',
         alternates: {
             canonical: url,
-            languages: { 'ko': `${baseUrl}/ko/guides`, 'en': `${baseUrl}/en/guides` },
+            languages: { 'x-default': `${baseUrl}/ko/guides`, 'ko': `${baseUrl}/ko/guides`, 'en': `${baseUrl}/en/guides` },
         },
         openGraph: {
             title: t('meta.title'),

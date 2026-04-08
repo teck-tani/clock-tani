@@ -86,7 +86,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       email: 'admin@teck-tani.com',
       contactType: 'customer support',
     },
-    sameAs: [],
+    sameAs: [
+      'https://twitter.com/teck_tani',
+    ],
   };
 
   // WebSite JSON-LD 스키마

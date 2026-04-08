@@ -25,7 +25,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             : 'FAQ, frequently asked questions, Clock-Tani, online clock, timer, stopwatch, how to use',
         alternates: {
             canonical: url,
-            languages: { 'ko': `${baseUrl}/ko/faq`, 'en': `${baseUrl}/en/faq` },
+            languages: { 'x-default': `${baseUrl}/ko/faq`, 'ko': `${baseUrl}/ko/faq`, 'en': `${baseUrl}/en/faq` },
         },
         openGraph: {
             title: t('title'),

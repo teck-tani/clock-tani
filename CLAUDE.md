@@ -98,12 +98,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 | 기능 | 문서 | 비고 |
 |------|------|------|
-| 가이드 | [docs/features/guides.md](docs/features/guides.md) | 7개 가이드, config 기반 |
+| 가이드 | [docs/features/guides.md](docs/features/guides.md) | 20개 가이드, config 기반 |
 | 테마 | [docs/features/theme.md](docs/features/theme.md) | 라이트/다크, ThemeContext |
 | 사운드 | [docs/features/sound-system.md](docs/features/sound-system.md) | SoundPicker, 15종 MP3 |
 | PWA | [docs/features/pwa.md](docs/features/pwa.md) | SW, Wake Lock, 매니페스트 |
 | SEO | [docs/features/seo.md](docs/features/seo.md) | OG 이미지, JSON-LD, 사이트맵 |
 | 국제화 | [docs/features/i18n.md](docs/features/i18n.md) | ko/en, next-intl |
+
+### SEO/검색 가이드라인
+
+| 문서 | 비고 |
+|------|------|
+| [docs/google-search-console-guidelines.md](docs/google-search-console-guidelines.md) | Google 공식 SEO 가이드라인 종합 (E-E-A-T, 스팸정책, 구조화데이터, 페이지경험 등) |
+
+**모든 작업 시 이 문서를 참고하여 Google 정책을 준수할 것.** 특히:
+- 새 페이지/콘텐츠 추가 시: 메타데이터, canonical, hreflang, sitemap, 구조화 데이터 확인
+- 콘텐츠 작성 시: E-E-A-T 원칙 준수, 독창적이고 사용자에게 유용한 내용
+- 광고 추가 시: 콘텐츠 접근을 방해하지 않는지 확인
+- 페이지 삭제/URL 변경 시: 301 리디렉션 설정
 
 ## Contact
 

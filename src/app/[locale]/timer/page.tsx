@@ -35,7 +35,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             title: t('ogTitle'),
             description: t('ogDescription'),
             url: `${baseUrl}/${locale}/timer`,
-            siteName: 'Clock Tani',
+            siteName: 'Clock-Tani',
             type: 'website',
             locale: locale === 'ko' ? 'ko_KR' : 'en_US',
             alternateLocale: locale === 'ko' ? 'en_US' : 'ko_KR',

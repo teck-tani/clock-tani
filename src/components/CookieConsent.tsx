@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 const CONSENT_KEY = "cookieConsent";
 
@@ -15,6 +15,7 @@ export function getCookieConsent(): ConsentState {
 
 export default function CookieConsent() {
     const t = useTranslations("CookieConsent");
+    const locale = useLocale();
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -67,7 +68,7 @@ export default function CookieConsent() {
             <p style={{ flex: "1 1 400px", margin: 0 }}>
                 {t("description")}{" "}
                 <a
-                    href="/ko/cookie-policy"
+                    href={`/${locale}/cookie-policy`}
                     style={{ color: "#22d3ee", textDecoration: "underline" }}
                 >
                     {t("learnMore")}
