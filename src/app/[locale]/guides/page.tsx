@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from '@/navigation';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { ALL_GUIDES } from '@/config/guides';
 import { ALL_TOOLS } from '@/config/tools';
 
@@ -70,42 +70,49 @@ export default async function GuidesListPage(props: { params: Promise<{ locale: 
                     const toolLabel = tool ? toolT(tool.labelKey) : '';
 
                     return (
-                        <Link
+                        <div
                             key={guide.slug}
-                            href={`/${locale}/guides/${guide.slug}`}
                             style={{
-                                display: 'block',
                                 padding: '20px 24px',
                                 borderRadius: 12,
                                 border: '1px solid var(--card-border, #e5e7eb)',
                                 background: 'var(--card-bg, #f9fafb)',
-                                textDecoration: 'none',
-                                color: 'inherit',
                                 transition: 'box-shadow 0.2s, border-color 0.2s',
                             }}
                         >
-                            <h2 style={{ fontSize: '1.15rem', marginBottom: 8, color: 'var(--text-primary, #111)' }}>
-                                {t(`titles.${guide.titleKey}`)}
+                            <h2 style={{ fontSize: '1.15rem', marginBottom: 8 }}>
+                                <Link
+                                    href={`/guides/${guide.slug}`}
+                                    style={{ color: 'var(--text-primary, #111)', textDecoration: 'none' }}
+                                    prefetch={false}
+                                >
+                                    {t(`titles.${guide.titleKey}`)}
+                                </Link>
                             </h2>
                             <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary, #666)', marginBottom: 12, lineHeight: 1.6 }}>
                                 {t(`descriptions.${guide.descKey}`)}
                             </p>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: '0.82rem', color: '#999' }}>
                                 <span>{t('publishedAt')}: {guide.date}</span>
-                                {toolLabel && (
-                                    <span style={{
-                                        padding: '2px 10px',
-                                        borderRadius: 20,
-                                        background: 'var(--badge-bg, #e0f2fe)',
-                                        color: 'var(--badge-text, #0891b2)',
-                                        fontSize: '0.78rem',
-                                        fontWeight: 500,
-                                    }}>
+                                {tool && (
+                                    <Link
+                                        href={tool.href}
+                                        style={{
+                                            padding: '2px 10px',
+                                            borderRadius: 20,
+                                            background: 'var(--badge-bg, #e0f2fe)',
+                                            color: 'var(--badge-text, #0891b2)',
+                                            fontSize: '0.78rem',
+                                            fontWeight: 500,
+                                            textDecoration: 'none',
+                                        }}
+                                        prefetch={false}
+                                    >
                                         {t('relatedTool')}: {toolLabel}
-                                    </span>
+                                    </Link>
                                 )}
                             </div>
-                        </Link>
+                        </div>
                     );
                 })}
             </div>

@@ -1,10 +1,12 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
 import { ALL_TOOLS } from '@/config/tools';
+import { ALL_GUIDES } from '@/config/guides';
 
 export default function Footer() {
     const t = useTranslations('Footer');
     const tTools = useTranslations('Index.tools');
+    const tGuides = useTranslations('Guides.titles');
     return (
         <footer>
             <div className="container">
@@ -12,6 +14,13 @@ export default function Footer() {
                     {ALL_TOOLS.map((tool) => (
                         <Link key={tool.href} href={tool.href} prefetch={false}>
                             {tTools(tool.labelKey)}
+                        </Link>
+                    ))}
+                </div>
+                <div className="footer-tools" style={{ marginTop: 4 }}>
+                    {ALL_GUIDES.map((guide) => (
+                        <Link key={guide.slug} href={`/guides/${guide.slug}`} prefetch={false}>
+                            {tGuides(guide.titleKey)}
                         </Link>
                     ))}
                 </div>

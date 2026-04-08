@@ -56,17 +56,17 @@ export function getAllToolHrefs(): string[] {
     return ['', ...ALL_TOOLS.map(t => t.href)];
 }
 
-// 각 페이지별 관련 도구 매핑
+// 각 페이지별 관련 도구 매핑 (내부 링크 강화: 도구당 5개)
 export const RELATED_TOOLS: Record<string, string[]> = {
-    '/clock': ['/timer', '/pomodoro', '/dday-counter'],
-    '/stopwatch': ['/timer', '/pomodoro'],
-    '/timer': ['/pomodoro', '/interval', '/multi-timer'],
-    '/pomodoro': ['/timer', '/multi-timer'],
-    '/interval': ['/multi-timer', '/timer'],
-    '/multi-timer': ['/timer', '/pomodoro'],
-    '/alarm': ['/timer', '/server-time'],
-    '/server-time': ['/clock', '/alarm'],
-    '/dday-counter': ['/alarm', '/clock'],
+    '/clock':        ['/stopwatch', '/timer', '/server-time', '/alarm', '/dday-counter'],
+    '/stopwatch':    ['/timer', '/clock', '/pomodoro', '/interval', '/alarm'],
+    '/timer':        ['/pomodoro', '/interval', '/multi-timer', '/stopwatch', '/alarm'],
+    '/pomodoro':     ['/timer', '/interval', '/multi-timer', '/stopwatch', '/alarm'],
+    '/interval':     ['/timer', '/pomodoro', '/multi-timer', '/stopwatch', '/alarm'],
+    '/multi-timer':  ['/timer', '/pomodoro', '/interval', '/alarm', '/stopwatch'],
+    '/alarm':        ['/timer', '/server-time', '/clock', '/dday-counter', '/pomodoro'],
+    '/server-time':  ['/clock', '/alarm', '/dday-counter', '/stopwatch', '/timer'],
+    '/dday-counter': ['/alarm', '/clock', '/server-time', '/timer', '/pomodoro'],
 };
 
 export function getRelatedTools(href: string): ToolDef[] {

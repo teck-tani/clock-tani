@@ -176,15 +176,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <h2 className="homepage-section-title">{t('comparison.title')}</h2>
         <p className="homepage-section-subtitle">{t('comparison.subtitle')}</p>
         <div className="homepage-comparison-grid">
-          {comparisonItems.map((item, i) => (
-            <div key={i} className="homepage-comparison-card">
-              <div className="homepage-comparison-header">
-                <span className="homepage-comparison-tool">{item.tool}</span>
-                <span className="homepage-comparison-badge">{item.bestFor}</span>
-              </div>
-              <p className="homepage-comparison-desc">{item.desc}</p>
-            </div>
-          ))}
+          {comparisonItems.map((item, i) => {
+            const tool = ALL_TOOLS[i];
+            return (
+              <Link key={i} href={tool?.href || '/'} className="homepage-comparison-card" prefetch={false} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <div className="homepage-comparison-header">
+                  <span className="homepage-comparison-tool">{item.tool}</span>
+                  <span className="homepage-comparison-badge">{item.bestFor}</span>
+                </div>
+                <p className="homepage-comparison-desc">{item.desc}</p>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
