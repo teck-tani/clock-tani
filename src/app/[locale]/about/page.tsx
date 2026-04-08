@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from '@/navigation';
+import Breadcrumb from "@/components/Breadcrumb";
 
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
@@ -80,6 +81,8 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
             />
+
+            <Breadcrumb items={[{ label: t('title') }]} />
 
             <h1 style={{ fontSize: '1.8rem', marginBottom: 16 }}>{t('title')}</h1>
             <p style={{ marginBottom: 32, fontSize: '1.05rem' }}>{t('description')}</p>

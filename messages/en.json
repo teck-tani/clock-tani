@@ -64,6 +64,7 @@
         "title": "Online Clock - World Time & Real-Time Clock",
         "desc": "Check the current time in 70+ major cities worldwide in real-time. Compare time zones between Seoul, New York, London, Tokyo, and more. Drag and drop to arrange your favorite cities. A sleek online world clock with digital segment display.",
         "ariaLabel": "Page description",
+        "topDesc": "Check current time in 70+ cities worldwide in real-time.",
         "description": {
           "title": "World Time at Your Fingertips",
           "p1": "An online world clock that displays the current time in 70+ major cities worldwide in real-time. With an elegant digital segment design, check time at a glance and compare time zones across cities. Perfect for international meetings, overseas trading, travel planning, ticketing, and any situation requiring precise timing."
@@ -261,6 +262,7 @@
         "title": "Online Stopwatch - Study & Workout Time Measurement",
         "desc": "This stopwatch measures up to milliseconds accuracy and can be used for study time tracking, workout lap time measurement, and work time management. Supports fullscreen mode for better focus. Works perfectly on both PC and mobile.",
         "shortDesc": "A free online stopwatch with millisecond precision timing.",
+        "topDesc": "Free online stopwatch with millisecond precision and lap recording.",
         "description": {
           "title": "What is a Stopwatch?",
           "p1": "A stopwatch is a time measurement tool that precisely measures elapsed time. It can measure time down to milliseconds (1/100th of a second) from the moment you press start until you stop. Unlike a timer that counts down from a set time to zero, a stopwatch starts from zero and measures time indefinitely."
@@ -374,7 +376,8 @@
             "content": "Different sports require different levels of timing precision, governed by their international federations.\n\n<strong>Track & Field (World Athletics):</strong> Times are recorded to 1/100th of a second using Fully Automatic Timing (FAT) systems with photo-finish cameras. A false start is detected by sensors measuring reaction times under 0.100 seconds.\n\n<strong>Swimming (World Aquatics):</strong> Touchpads at the pool wall record times to 1/100th of a second. The pads require only 1.5-2.5 kg of pressure to register, ensuring fair timing regardless of how hard a swimmer finishes.\n\n<strong>Formula 1 (FIA):</strong> Lap times are measured to 1/1000th of a second using transponders embedded in each car. Sector times help teams analyze performance across different segments of the circuit.\n\n<strong>Marathon:</strong> Chip timing with RFID transponders measures net time (from crossing the start line) rather than gun time, accurate to about 1/10th of a second."
           }
         }
-      }
+      },
+      "title": "Stopwatch"
     },
     "Timer": {
       "meta": {
@@ -538,6 +541,7 @@
         "title": "Online Timer & Pomodoro - Workout & Cooking Alarm",
         "desc": "Use the Pomodoro technique with 25-min focus / 5-min break cycles, or set Tabata workout and kitchen timers. Features 5 alarm sounds (Classic/Digital/Chime/Bird/School Bell) and vibration alerts.",
         "ariaLabel": "Page description",
+        "topDesc": "Set a countdown and get alerted when time's up. Free online timer.",
         "description": {
           "title": "What is an Online Timer?",
           "p1": "An online timer is a free countdown timer you can use directly in your web browser. Set hours, minutes, and seconds freely, and get an alarm when the countdown ends. Use it as a cooking timer, study timer, workout timer, and more.",
@@ -957,7 +961,8 @@
             }
           }
         }
-      }
+      },
+      "title": "Timer"
     },
     "Pomodoro": {
       "meta": {
@@ -968,6 +973,7 @@
         "ogDescription": "25/5 Pomodoro cycles with ambient sounds, auto session switching, and productivity statistics. Free browser tool, no sign up."
       },
       "seo": {
+        "topDesc": "A dedicated Pomodoro timer with 25-minute focus and 5-minute break cycles.",
         "description": {
           "title": "What is the Pomodoro Technique?",
           "p1": "The Pomodoro Technique is a time management methodology developed by Francesco Cirillo in Italy in the 1980s. It involves focusing on a single task for 25 minutes, followed by a 5-minute break, and taking a 15-30 minute long break after 4 cycles.",
@@ -1071,7 +1077,8 @@
             "content": "Different professionals adapt the Pomodoro Technique to fit their unique workflows:\n\n<strong>Software Developers:</strong> Often extend focus sessions to 45-50 minutes because entering a programming \"flow state\" takes 10-15 minutes. Breaks are used for code review or stretching, not context-switching.\n\n<strong>Writers & Content Creators:</strong> The classic 25/5 split works well for drafting. Many writers use the first pomodoro for outlining, middle sessions for writing, and the final session for editing.\n\n<strong>Students:</strong> Shorter 20-minute sessions can be more effective for memorization-heavy subjects. Use breaks for active recall — quiz yourself on what you just studied rather than checking your phone.\n\n<strong>Designers:</strong> Creative work often requires longer uninterrupted periods. A modified 40/10 split allows deeper exploration of ideas while still preventing fatigue.\n\n<strong>Remote Workers:</strong> Pomodoro sessions create structure in a home environment. Tracking completed pomodoros provides tangible evidence of productivity, which helps combat the isolation and uncertainty of remote work."
           }
         }
-      }
+      },
+      "title": "Pomodoro"
     },
     "Interval": {
       "meta": {
@@ -1082,6 +1089,7 @@
         "ogDescription": "Custom work/rest intervals and rounds for HIIT and Tabata. Voice countdown, vibration alerts, built-in presets. Free in your browser."
       },
       "seo": {
+        "topDesc": "Tabata, HIIT, and custom interval timer with auto-repeat rounds.",
         "description": {
           "title": "What is an Interval Timer?",
           "p1": "An interval timer is a timer optimized for interval training that alternates between exercise and rest periods. It supports various workout protocols including Tabata (20s work/10s rest/8 rounds) and HIIT (High-Intensity Interval Training).",
@@ -1185,7 +1193,8 @@
             "content": "Several well-established interval protocols serve different training goals:\n\n<strong>Tabata (20s work / 10s rest / 8 rounds = 4 min):</strong> Developed by Dr. Izumi Tabata in 1996. Performed at 170% of VO2max. Proven to improve both aerobic and anaerobic capacity simultaneously. Extremely demanding — true Tabata intensity means complete exhaustion by round 7-8.\n\n<strong>EMOM (Every Minute On the Minute):</strong> Perform a set number of reps at the start of each minute; rest for the remainder. Self-regulating — faster reps earn more rest. Popular in CrossFit for strength-endurance work. Typical duration: 10-20 minutes.\n\n<strong>AMRAP (As Many Rounds As Possible):</strong> Complete as many rounds of a circuit as possible within a fixed time (usually 10-20 min). Great for tracking progress over time since the workout stays constant.\n\n<strong>Little Method (60s work / 75s rest / 8-12 rounds):</strong> Developed by researchers at McMaster University. Work at ~95% max heart rate. The longer rest allows near-complete recovery, enabling consistently high intensity. Total session: 18-27 minutes. Ideal for intermediate athletes building toward more intense protocols."
           }
         }
-      }
+      },
+      "title": "Interval Timer"
     },
     "MultiTimer": {
       "meta": {
@@ -1196,6 +1205,7 @@
         "ogDescription": "Run up to 4 independent timers simultaneously. Great for cooking, classroom, or multi-task timing. Free browser tool."
       },
       "seo": {
+        "topDesc": "Run up to 4 independent timers simultaneously with individual controls.",
         "description": {
           "title": "What is Multi Timer?",
           "p1": "Multi Timer is an online tool that lets you run up to 4 independent timers simultaneously. Each timer can be set, started, stopped, and reset individually, allowing you to manage multiple tasks at once.",
@@ -1295,7 +1305,8 @@
             "content": "Beyond cooking, running multiple timers simultaneously is a powerful productivity technique for work environments.\n\n<strong>Timeboxing:</strong> Assign a fixed time block to each task and move on when the timer rings, regardless of completion. This prevents perfectionism and ensures all tasks get attention. Set Timer 1 for \"Email\" (15 min), Timer 2 for \"Report\" (30 min), and Timer 3 for \"Planning\" (20 min).\n\n<strong>Meeting Management:</strong> In workshops or retrospectives, set separate timers for each agenda item — 10 min for brainstorming, 15 min for discussion, 5 min for action items. Visible countdown timers keep participants focused and respectful of time.\n\n<strong>Sprint Planning:</strong> Agile teams can use multi-timers during estimation sessions. Set a discussion timer per user story (3-5 min) to prevent rabbit-holing, plus an overall session timer (60 min) to keep the meeting on track.\n\n<strong>Classroom Activities:</strong> Teachers running group work can time different stations or activities simultaneously, providing clear transitions without constantly watching the clock."
           }
         }
-      }
+      },
+      "title": "Multi Timer"
     }
   },
   "Alarm": {
@@ -1357,6 +1368,7 @@
     "notificationPermission": "Allow notifications to receive alarms even when the tab is inactive.",
     "allowNotification": "Allow Notifications",
     "seo": {
+      "topDesc": "Set alarms with sound and vibration alerts. Free online alarm clock.",
       "description": {
         "title": "What is an Online Alarm Clock?",
         "p1": "An online alarm clock is a free alarm service that works directly in your web browser without any app installation. You can easily set and manage alarms on any device with an internet connection — PC, laptop, tablet, or smartphone.",
@@ -1513,6 +1525,7 @@
       }
     },
     "seo": {
+      "topDesc": "Check precise current time synced with NTP time servers.",
       "description": {
         "title": "What is Server Time / Ticketing Countdown?",
         "p1": "Server Time is a free online tool that syncs with worldtimeapi.org to provide precise current time in milliseconds (ms). It compensates for network latency to show more accurate time than your computer clock.",
@@ -1612,7 +1625,8 @@
           "content": "Every computer contains a <strong>real-time clock (RTC)</strong> powered by a small quartz crystal oscillator and a coin-cell battery. This crystal vibrates at 32,768 Hz, but its frequency is not perfectly stable — it drifts.\n\nThe primary cause of drift is <strong>temperature variation</strong>. Quartz crystals have a parabolic frequency-temperature curve, with optimal accuracy near 25°C (77°F). Deviations of just 10°C can cause drift of several seconds per day. A typical PC clock drifts by <strong>0.5 to 2 seconds per day</strong>, which accumulates to minutes per month without correction.\n\nOther factors include crystal aging (frequency shifts slightly over years), manufacturing tolerances (each crystal is slightly different), and voltage fluctuations from the battery. Laptop clocks tend to drift more than desktops because of greater temperature swings during use.\n\nThis is why automatic time synchronization matters. Without NTP correction, a computer running for 6 months could drift by <strong>3-6 minutes</strong> — enough to miss a ticketing window or misalign log timestamps in distributed systems. Modern operating systems sync every few hours to keep drift under one second."
         }
       }
-    }
+    },
+    "title": "Server Time"
   },
   "DdayCounter": {
     "meta": {
@@ -1740,6 +1754,7 @@
       }
     },
     "seo": {
+      "topDesc": "Automatically count days until your important dates with D-Day counter.",
       "description": {
         "title": "What is D-day Countdown?",
         "p1": "D-day Countdown is an online tool that lets you track the days remaining until important dates in real-time. Register events like exams, birthdays, anniversaries, travel dates, and project deadlines to manage your D-days at a glance.",
@@ -1839,7 +1854,8 @@
           "content": "Korea has a rich culture of celebrating date-based milestones, many of which are unique to Korean tradition.\n\n<strong>100 Days (백일, baegil):</strong> Counting 100 days after a baby's birth is one of Korea's oldest traditions. Historically, infant mortality was high, so surviving to day 100 was a genuine milestone. Families celebrate with rice cakes (백설기) and red bean cakes (수수팥떡). Couples also celebrate 100-day relationship anniversaries.\n\n<strong>First Birthday (돌, dol):</strong> An elaborate celebration where the baby is dressed in traditional hanbok and participates in \"doljabi\" — grabbing objects that symbolically predict their future. A stethoscope suggests a doctor, a thread represents longevity, and money indicates wealth.\n\n<strong>60th Birthday (환갑, hwangap):</strong> Marks the completion of one full cycle of the 60-year Chinese zodiac system (combining 10 heavenly stems and 12 earthly branches). Traditionally a grand celebration with a large feast, though as life expectancy has increased, many Koreans now treat the 70th birthday (칠순, chilsun) as the bigger milestone.\n\n<strong>Other milestones:</strong> Wedding anniversaries follow Western conventions, but Koreans also track monthly \"14th\" events throughout the year — from Valentine's Day (Feb 14) and White Day (Mar 14) to lesser-known ones like Rose Day (May 14) and Wine Day (Oct 14)."
         }
       }
-    }
+    },
+    "title": "D-Day Counter"
   },
   "Privacy": {
     "meta": {
@@ -2095,6 +2111,11 @@
   },
   "RelatedGuides": {
     "title": "Related Guides"
+  },
+  "Breadcrumb": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "guides": "Guides"
   },
   "Homepage": {
     "title": "Tani DevTool - Online Time Tools",
@@ -3135,19 +3156,43 @@
     "inquiryTypes": {
       "title": "Inquiry Types",
       "items": [
-        { "name": "Bug Reports", "desc": "Report any errors or bugs you encounter while using the service." },
-        { "name": "Feature Suggestions", "desc": "Suggest new features or improvements you'd like to see." },
-        { "name": "General Inquiries", "desc": "Ask general questions about using the service." },
-        { "name": "Partnership & Collaboration", "desc": "Contact us to discuss business partnerships or content collaborations." }
+        {
+          "name": "Bug Reports",
+          "desc": "Report any errors or bugs you encounter while using the service."
+        },
+        {
+          "name": "Feature Suggestions",
+          "desc": "Suggest new features or improvements you'd like to see."
+        },
+        {
+          "name": "General Inquiries",
+          "desc": "Ask general questions about using the service."
+        },
+        {
+          "name": "Partnership & Collaboration",
+          "desc": "Contact us to discuss business partnerships or content collaborations."
+        }
       ]
     },
     "info": {
       "title": "Service Information",
       "items": [
-        { "label": "Service", "value": "Clock-Tani" },
-        { "label": "Operator", "value": "Teck-Tani" },
-        { "label": "Email", "value": "admin@teck-tani.com" },
-        { "label": "Region", "value": "South Korea" }
+        {
+          "label": "Service",
+          "value": "Clock-Tani"
+        },
+        {
+          "label": "Operator",
+          "value": "Teck-Tani"
+        },
+        {
+          "label": "Email",
+          "value": "admin@teck-tani.com"
+        },
+        {
+          "label": "Region",
+          "value": "South Korea"
+        }
       ]
     },
     "links": {

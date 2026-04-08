@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from '@/navigation';
 import Link from 'next/link';
-import { ALL_GUIDES, findGuideBySlug } from '@/config/guides';
+import { ALL_GUIDES, findGuideBySlug, getRelatedGuides } from '@/config/guides';
 import { ALL_TOOLS } from '@/config/tools';
 import { notFound } from 'next/navigation';
+import Breadcrumb from "@/components/Breadcrumb";
 
 // 모든 locale × slug 조합 생성
 export function generateStaticParams() {
@@ -104,6 +105,7 @@ export default async function GuideArticlePage(props: { params: Promise<{ locale
 
     const t = await getTranslations({ locale, namespace: 'Guides' });
     const toolT = await getTranslations({ locale, namespace: 'Index.tools' });
+    const tBreadcrumb = await getTranslations({ locale, namespace: 'Breadcrumb' });
 
     const title = t(`titles.${guide.titleKey}`);
     const description = t(`descriptions.${guide.descKey}`);
@@ -116,6 +118,9 @@ export default async function GuideArticlePage(props: { params: Promise<{ locale
         conclusion: string;
     };
 
+    // 관련 가이드
+    const relatedGuides = getRelatedGuides(slug);
+
     // 관련 도구 정보
     const tool = ALL_TOOLS.find(tool => tool.href === guide.relatedTool);
     const toolLabel = tool ? toolT(tool.labelKey) : '';
@@ -126,6 +131,8 @@ export default async function GuideArticlePage(props: { params: Promise<{ locale
         <>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
             <article style={{ maxWidth: 800, margin: '0 auto', padding: '40px 20px', lineHeight: 1.9 }}>
+                <Breadcrumb items={[{ label: tBreadcrumb('guides'), href: '/guides' }, { label: articleData.title }]} />
+
                 {/* 목록으로 돌아가기 */}
                 <Link
                     href={`/${locale}/guides`}
@@ -180,6 +187,20 @@ export default async function GuideArticlePage(props: { params: Promise<{ locale
                     <h2 style={{ fontSize: '1.15rem', marginBottom: 8 }}>{locale === 'ko' ? '마무리' : 'Conclusion'}</h2>
                     <p style={{ fontSize: '0.98rem', color: 'var(--text-secondary, #444)' }}>{articleData.conclusion}</p>
                 </section>
+
+                {/* 관련 가이드 */}
+                {relatedGuides.length > 0 && (
+                    <section style={{ marginBottom: 32 }}>
+                        <h2 style={{ fontSize: '1.15rem', marginBottom: 12 }}>{locale === 'ko' ? '함께 읽으면 좋은 가이드' : 'Recommended Guides'}</h2>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 12 }}>
+                            {relatedGuides.map((g) => (
+                                <Link key={g.slug} href={`/${locale}/guides/${g.slug}`} style={{ display: 'block', padding: '12px 14px', borderRadius: 8, border: '1px solid var(--card-border, #e5e7eb)', background: 'var(--card-bg, #f9fafb)', textDecoration: 'none', color: 'inherit' }}>
+                                    <strong style={{ fontSize: '0.88rem', color: 'var(--text-primary, #222)' }}>{t(`titles.${g.titleKey}`)}</strong>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
                 {/* 관련 도구 CTA */}
                 {tool && (

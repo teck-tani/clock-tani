@@ -33,3 +33,15 @@ export const ALL_GUIDES: GuideDef[] = [
 export function findGuideBySlug(slug: string): GuideDef | undefined {
     return ALL_GUIDES.find(g => g.slug === slug);
 }
+
+/** 같은 관련 도구를 공유하는 다른 가이드를 최대 3개 반환 */
+export function getRelatedGuides(currentSlug: string): GuideDef[] {
+    const current = findGuideBySlug(currentSlug);
+    if (!current) return [];
+
+    // 같은 relatedTool 가이드 우선, 부족하면 다른 가이드에서 보충
+    const sameTool = ALL_GUIDES.filter(g => g.slug !== currentSlug && g.relatedTool === current.relatedTool);
+    const otherGuides = ALL_GUIDES.filter(g => g.slug !== currentSlug && g.relatedTool !== current.relatedTool);
+
+    return [...sameTool, ...otherGuides].slice(0, 3);
+}

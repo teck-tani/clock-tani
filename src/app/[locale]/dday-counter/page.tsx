@@ -1,4 +1,5 @@
 import DdayCounterClient from "./DdayCounterClient";
+import Breadcrumb from "@/components/Breadcrumb";
 import RelatedTools from "@/components/RelatedTools";
 import RelatedGuides from "@/components/RelatedGuides";
 import { Metadata } from "next";
@@ -172,15 +173,16 @@ export default async function DdayCounterPage(props: { params: Promise<{ locale:
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
 
-            
+            <Breadcrumb items={[{ label: t('title') }]} />
+
+
             <DdayCounterClient />
-            
 
             {/* SEO Content */}
             <article className="seo-article">
                 {/* 1. Tool Description */}
                 <section className="seo-section">
-                    <h1 className="seo-section-title">{t("seo.description.title")}</h1>
+                    <h2 className="seo-section-title">{t("seo.description.title")}</h2>
                     <p className="seo-text">{t("seo.description.p1")}</p>
                     <p className="seo-text">{t("seo.description.p2")}</p>
                 </section>
@@ -240,7 +242,7 @@ export default async function DdayCounterPage(props: { params: Promise<{ locale:
                         </h2>
                         <div
                             className="seo-text"
-                            dangerouslySetInnerHTML={{ __html: t(`seo.uniqueContent.${key}.content`).replace(/\n/g, '<br/>') }}
+                            dangerouslySetInnerHTML={{ __html: String(t.raw(`seo.uniqueContent.${key}.content`)).replace(/\n/g, '<br/>') }}
                         />
                     </section>
                 ))}

@@ -1,4 +1,5 @@
 import ClockView from "./ClockView";
+import Breadcrumb from "@/components/Breadcrumb";
 import RelatedTools from "@/components/RelatedTools";
 import RelatedGuides from "@/components/RelatedGuides";
 import { Metadata } from "next";
@@ -284,7 +285,9 @@ export default async function ClockPage(props: { params: Promise<{ locale: strin
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
             />
 
-            
+            <Breadcrumb items={[{ label: t('title') }]} />
+
+
             <ClockView />
             
 
@@ -293,9 +296,9 @@ export default async function ClockPage(props: { params: Promise<{ locale: strin
                 <article className={styles.seoArticle}>
                     {/* 1. 정의 — 이 도구가 무엇인지 */}
                     <section className={styles.seoBlock}>
-                        <h1 className={`${styles.seoHeading} ${styles.seoHeadingCyan}`}>
+                        <h2 className={`${styles.seoHeading} ${styles.seoHeadingCyan}`}>
                             {t('seo.description.title')}
-                        </h1>
+                        </h2>
                         <p className={styles.seoText}>{t('seo.description.p1')}</p>
                         <div className={styles.seoFeatureBox}>
                             <ul className={styles.seoFeatureList}>
@@ -387,7 +390,7 @@ export default async function ClockPage(props: { params: Promise<{ locale: strin
                             </h2>
                             <div
                                 className={styles.seoText}
-                                dangerouslySetInnerHTML={{ __html: t(`seo.uniqueContent.${key}.content`).replace(/\n/g, '<br/>') }}
+                                dangerouslySetInnerHTML={{ __html: String(t.raw(`seo.uniqueContent.${key}.content`)).replace(/\n/g, '<br/>') }}
                             />
                         </section>
                     ))}

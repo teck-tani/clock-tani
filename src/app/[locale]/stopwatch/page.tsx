@@ -1,4 +1,5 @@
 import StopwatchWrapper from "./StopwatchWrapper";
+import Breadcrumb from "@/components/Breadcrumb";
 import RelatedTools from "@/components/RelatedTools";
 import RelatedGuides from "@/components/RelatedGuides";
 import "./stopwatch.css";
@@ -232,6 +233,9 @@ export default async function StopwatchPage({ params }: { params: Promise<{ loca
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
             />
 
+            <Breadcrumb items={[{ label: t('title') }]} />
+
+
             <div className="container sw-page">
                 {/* 스톱워치 컴포넌트 */}
                 <div className="sw-widget">
@@ -249,9 +253,9 @@ export default async function StopwatchPage({ params }: { params: Promise<{ loca
                 <article className="sw-article">
                     {/* 스톱워치란? */}
                     <section className="sw-section">
-                        <h1 className="sw-section-heading sw-heading-cyan">
+                        <h2 className="sw-section-heading sw-heading-cyan">
                             {t('seo.description.title')}
-                        </h1>
+                        </h2>
                         <p className="sw-text">
                             {t('seo.description.p1')}
                         </p>
@@ -321,7 +325,7 @@ export default async function StopwatchPage({ params }: { params: Promise<{ loca
                             </h2>
                             <div
                                 className="sw-text"
-                                dangerouslySetInnerHTML={{ __html: t(`seo.uniqueContent.${key}.content`).replace(/\n/g, '<br/>') }}
+                                dangerouslySetInnerHTML={{ __html: String(t.raw(`seo.uniqueContent.${key}.content`)).replace(/\n/g, '<br/>') }}
                             />
                         </section>
                     ))}

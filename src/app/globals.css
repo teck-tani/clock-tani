@@ -943,6 +943,7 @@ body.clock-fullscreen {
     transform: translateX(-50%);
     font-size: 1.45rem;
     font-weight: 700;
+    margin: 0;
     color: var(--color-text-primary);
     white-space: nowrap;
     overflow: hidden;

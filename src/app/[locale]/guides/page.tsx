@@ -4,6 +4,7 @@ import { locales } from '@/navigation';
 import { Link } from '@/navigation';
 import { ALL_GUIDES } from '@/config/guides';
 import { ALL_TOOLS } from '@/config/tools';
+import Breadcrumb from "@/components/Breadcrumb";
 
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
@@ -60,6 +61,8 @@ export default async function GuidesListPage(props: { params: Promise<{ locale: 
 
     return (
         <div style={{ maxWidth: 800, margin: '0 auto', padding: '40px 20px', lineHeight: 1.8 }}>
+            <Breadcrumb items={[{ label: locale === 'ko' ? '가이드' : 'Guides' }]} />
+
             <h1 style={{ fontSize: '1.8rem', marginBottom: 8 }}>{t('listTitle')}</h1>
             <p style={{ marginBottom: 32, fontSize: '1.05rem', color: '#666' }}>{t('listDescription')}</p>
 

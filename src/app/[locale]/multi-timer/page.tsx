@@ -1,4 +1,5 @@
 import MultiTimerView from "../timer/MultiTimerView";
+import Breadcrumb from "@/components/Breadcrumb";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from '@/navigation';
@@ -165,12 +166,15 @@ export default async function MultiTimerPage(props: { params: Promise<{ locale: 
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
 
+            <Breadcrumb items={[{ label: t('title') }]} />
+
+
             <MultiTimerView />
 
             {/* SEO Content */}
             <article className="seo-article">
                 <section className="seo-section">
-                    <h1 className="seo-section-title">{t("seo.description.title")}</h1>
+                    <h2 className="seo-section-title">{t("seo.description.title")}</h2>
                     <p className="seo-text">{t("seo.description.p1")}</p>
                     <p className="seo-text">{t("seo.description.p2")}</p>
                 </section>
@@ -226,7 +230,7 @@ export default async function MultiTimerPage(props: { params: Promise<{ locale: 
                         </h2>
                         <div
                             className="seo-text"
-                            dangerouslySetInnerHTML={{ __html: t(`seo.uniqueContent.${key}.content`).replace(/\n/g, '<br/>') }}
+                            dangerouslySetInnerHTML={{ __html: String(t.raw(`seo.uniqueContent.${key}.content`)).replace(/\n/g, '<br/>') }}
                         />
                     </section>
                 ))}

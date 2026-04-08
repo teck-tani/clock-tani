@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales } from '@/navigation';
+import Breadcrumb from "@/components/Breadcrumb";
 
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
@@ -57,6 +58,8 @@ export default async function CookiePolicyPage(props: { params: Promise<{ locale
 
     return (
         <div style={{ maxWidth: 800, margin: '0 auto', padding: '40px 20px', lineHeight: 1.8 }}>
+            <Breadcrumb items={[{ label: t('title') }]} />
+
             <h1 style={{ fontSize: '1.8rem', marginBottom: 8 }}>{t('title')}</h1>
             <p style={{ color: '#888', marginBottom: 24, fontSize: '0.9rem' }}>{t('lastUpdated')}</p>
             <p style={{ marginBottom: 32 }}>{t('intro')}</p>
