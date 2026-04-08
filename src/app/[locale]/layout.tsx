@@ -118,8 +118,8 @@ export default async function LocaleLayout({ children, params }: { children: Rea
               <div id="footer-container"><Footer /></div>
               <LazyFeedbackButton />
           </ThemeProvider>
+          <LazyCookieConsent />
         </NextIntlClientProvider>
-        <LazyCookieConsent />
         <LazyGTM />
         <GoogleAdsense />
         <PWARegister />
