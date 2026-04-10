@@ -7,23 +7,23 @@ const locales = ['ko', 'en'];
 // lastModified: 해당 페이지 코드가 실제로 변경된 날짜 (배포 시점이 아님)
 // 페이지를 수정하면 해당 날짜도 함께 업데이트할 것
 const pages = [
-    { path: '', priority: 1.0, changeFrequency: 'daily' as const, lastModified: '2026-04-08' },
-    { path: '/clock', priority: 1.0, changeFrequency: 'daily' as const, lastModified: '2026-04-08' },
-    { path: '/stopwatch', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-04-08' },
-    { path: '/timer', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-04-08' },
-    { path: '/pomodoro', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-04-08' },
-    { path: '/interval', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-04-08' },
-    { path: '/multi-timer', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-04-08' },
-    { path: '/alarm', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-04-08' },
-    { path: '/server-time', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-04-08' },
-    { path: '/dday-counter', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-04-08' },
-    { path: '/faq', priority: 0.5, changeFrequency: 'monthly' as const, lastModified: '2026-04-08' },
-    { path: '/guides', priority: 0.6, changeFrequency: 'weekly' as const, lastModified: '2026-04-08' },
+    { path: '', priority: 1.0, changeFrequency: 'daily' as const, lastModified: '2026-04-10' },
+    { path: '/clock', priority: 1.0, changeFrequency: 'daily' as const, lastModified: '2026-04-10' },
+    { path: '/stopwatch', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-04-10' },
+    { path: '/timer', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-04-10' },
+    { path: '/pomodoro', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-04-10' },
+    { path: '/interval', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-04-10' },
+    { path: '/multi-timer', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-04-10' },
+    { path: '/alarm', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-04-10' },
+    { path: '/server-time', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-04-10' },
+    { path: '/dday-counter', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-04-10' },
+    { path: '/faq', priority: 0.5, changeFrequency: 'monthly' as const, lastModified: '2026-04-10' },
+    { path: '/guides', priority: 0.6, changeFrequency: 'weekly' as const, lastModified: '2026-04-10' },
     { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-03-17' },
     { path: '/terms', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-03-17' },
     { path: '/about', priority: 0.4, changeFrequency: 'yearly' as const, lastModified: '2026-03-17' },
-    { path: '/contact', priority: 0.4, changeFrequency: 'yearly' as const, lastModified: '2026-04-08' },
-    { path: '/cookie-policy', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-04-08' },
+    { path: '/contact', priority: 0.4, changeFrequency: 'yearly' as const, lastModified: '2026-04-10' },
+    { path: '/cookie-policy', priority: 0.3, changeFrequency: 'yearly' as const, lastModified: '2026-04-10' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

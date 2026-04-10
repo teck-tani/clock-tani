@@ -53,7 +53,7 @@ const FlagImage: React.FC<FlagImageProps> = React.memo(({ countryCode, size = 20
       srcSet={`https://flagcdn.com/w80/${code}.png 2x`}
       width={size}
       height={Math.round(size * 0.75)}
-      alt={countryCode}
+      alt={`${countryCode} flag`}
       style={{ borderRadius: 2, objectFit: 'cover' }}
       loading="lazy"
     />

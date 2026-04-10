@@ -28,7 +28,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
     keywords: t('keywords'),
     alternates: {
       canonical: url,
-      languages: { 'ko': `${baseUrl}/ko`, 'en': `${baseUrl}/en` },
+      languages: { 'x-default': `${baseUrl}/ko`, 'ko': `${baseUrl}/ko`, 'en': `${baseUrl}/en` },
     },
     openGraph: {
       title: t('ogTitle'),

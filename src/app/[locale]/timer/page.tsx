@@ -62,6 +62,19 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
     };
 }
 
+// BreadcrumbList 구조화 데이터 생성
+function generateBreadcrumbSchema(locale: string) {
+    const isKo = locale === 'ko';
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": isKo ? "홈" : "Home", "item": `${baseUrl}/${locale}` },
+            { "@type": "ListItem", "position": 2, "name": isKo ? "온라인 타이머" : "Online Timer", "item": `${baseUrl}/${locale}/timer` }
+        ]
+    };
+}
+
 // FAQ 구조화 데이터 생성 (모든 모드의 핵심 FAQ 통합)
 function generateFaqSchema(locale: string) {
     const faqData = locale === 'ko' ? [
@@ -251,12 +264,14 @@ export default async function TimerPage(props: { params: Promise<{ locale: strin
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'Clock.Timer' });
 
+    const breadcrumbSchema = generateBreadcrumbSchema(locale);
     const faqSchema = generateFaqSchema(locale);
     const howToSchema = generateHowToSchema(locale);
     const webAppSchema = generateWebAppSchema(locale);
 
     return (
         <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />

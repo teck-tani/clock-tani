@@ -59,8 +59,28 @@ export default async function GuidesListPage(props: { params: Promise<{ locale: 
     // 도구 라벨 번역
     const toolT = await getTranslations({ locale, namespace: 'Index.tools' });
 
+    // CollectionPage + ItemList JSON-LD
+    const collectionSchema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": t('meta.title'),
+        "description": t('meta.description'),
+        "url": `${baseUrl}/${locale}/guides`,
+        "inLanguage": locale === 'ko' ? 'ko-KR' : 'en-US',
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": ALL_GUIDES.map((guide, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": t(`titles.${guide.titleKey}`),
+                "url": `${baseUrl}/${locale}/guides/${guide.slug}`,
+            })),
+        },
+    };
+
     return (
         <div style={{ maxWidth: 800, margin: '0 auto', padding: '40px 20px', lineHeight: 1.8 }}>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
             <Breadcrumb items={[{ label: locale === 'ko' ? '가이드' : 'Guides' }]} />
 
             <h1 style={{ fontSize: '1.8rem', marginBottom: 8 }}>{t('listTitle')}</h1>

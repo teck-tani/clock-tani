@@ -63,6 +63,19 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
 }
 
 // ===== JSON-LD Schemas =====
+
+function generateBreadcrumbSchema(locale: string) {
+    const isKo = locale === 'ko';
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": isKo ? "홈" : "Home", "item": `${baseUrl}/${locale}` },
+            { "@type": "ListItem", "position": 2, "name": isKo ? "멀티 타이머" : "Multi Timer", "item": `${baseUrl}/${locale}/multi-timer` }
+        ]
+    };
+}
+
 function generateFaqSchema(locale: string) {
     const faqData =
         locale === 'ko'
@@ -156,12 +169,14 @@ export default async function MultiTimerPage(props: { params: Promise<{ locale: 
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'Clock.MultiTimer' });
 
+    const breadcrumbSchema = generateBreadcrumbSchema(locale);
     const faqSchema = generateFaqSchema(locale);
     const howToSchema = generateHowToSchema(locale);
     const webAppSchema = generateWebAppSchema(locale);
 
     return (
         <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />

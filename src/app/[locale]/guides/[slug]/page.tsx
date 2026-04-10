@@ -59,7 +59,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
             modifiedTime: guide.lastModified,
         },
         twitter: {
-            card: 'summary',
+            card: 'summary_large_image',
             title: metaTitle,
             description,
             site: '@teck_tani',

@@ -524,13 +524,13 @@ export default function MultiTimerView() {
                     {timers.length > 1 && (
                         <div className={styles.bulkControls}>
                             <button onClick={startAll} className={`${styles.bulkBtn} ${styles.bulkBtnStart}`}>
-                                <FaPlay style={{ fontSize: '0.6rem' }} /> {mt('startAll')}
+                                <FaPlay aria-hidden="true" style={{ fontSize: '0.6rem' }} /> {mt('startAll')}
                             </button>
                             <button onClick={stopAll} className={`${styles.bulkBtn} ${styles.bulkBtnStop}`}>
-                                <FaPause style={{ fontSize: '0.6rem' }} /> {mt('stopAll')}
+                                <FaPause aria-hidden="true" style={{ fontSize: '0.6rem' }} /> {mt('stopAll')}
                             </button>
                             <button onClick={resetAll} className={`${styles.bulkBtn} ${styles.bulkBtnReset}`}>
-                                <FaRedo style={{ fontSize: '0.55rem' }} /> {mt('resetAll')}
+                                <FaRedo aria-hidden="true" style={{ fontSize: '0.55rem' }} /> {mt('resetAll')}
                             </button>
                         </div>
                     )}
@@ -665,18 +665,18 @@ export default function MultiTimerView() {
                                     <div className={styles.controls}>
                                         {!timer.isRunning && timer.timeLeft > 0 && (
                                             <button onClick={() => startTimer(timer.id)} className={`${styles.btn} ${styles.btnStart}`}>
-                                                <FaPlay style={{ fontSize: '0.65rem' }} />
+                                                <FaPlay aria-hidden="true" style={{ fontSize: '0.65rem' }} />
                                                 {isSetting ? t('controls.start') : t('controls.continue')}
                                             </button>
                                         )}
                                         {timer.isRunning && (
                                             <button onClick={() => stopTimer(timer.id)} className={`${styles.btn} ${styles.btnStop}`}>
-                                                <FaPause style={{ fontSize: '0.65rem' }} />
+                                                <FaPause aria-hidden="true" style={{ fontSize: '0.65rem' }} />
                                                 {t('controls.stop')}
                                             </button>
                                         )}
                                         <button onClick={() => resetTimer(timer.id)} className={`${styles.btn} ${styles.btnReset}`}>
-                                            <FaRedo style={{ fontSize: '0.55rem' }} />
+                                            <FaRedo aria-hidden="true" style={{ fontSize: '0.55rem' }} />
                                             {t('controls.reset')}
                                         </button>
                                     </div>

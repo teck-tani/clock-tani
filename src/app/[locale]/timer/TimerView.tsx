@@ -735,12 +735,12 @@ export default function TimerView({ fixedMode }: { fixedMode?: TimerMode }) {
                                         <button onClick={handlePomoNext} className={styles.alarmNextBtn} style={{
                                             background: `linear-gradient(135deg, ${phaseColor}, ${pomoPhase === 'work' ? '#16a34a' : '#ef4444'})`,
                                         }}>
-                                            <FaForward /> {pomoPhase === 'work' ? t('pomodoro.startBreak') : t('pomodoro.startWork')}
+                                            <FaForward aria-hidden="true" /> {pomoPhase === 'work' ? t('pomodoro.startBreak') : t('pomodoro.startWork')}
                                         </button>
                                     )}
                                     {alarmMode !== 'pomodoro' && (
                                         <button onClick={handleRestartAlarm} className={styles.alarmRestartBtn}>
-                                            <FaPlay /> {t('controls.restart')}
+                                            <FaPlay aria-hidden="true" /> {t('controls.restart')}
                                         </button>
                                     )}
                                     <button onClick={alarmMode === 'pomodoro' ? () => { handlePomoNext(); updateMode('pomodoro', { isRunning: false }); } : handleStopAlarm} className={styles.alarmConfirmBtn} style={{
