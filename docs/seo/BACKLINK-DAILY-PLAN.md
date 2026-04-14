@@ -41,15 +41,17 @@
 
 ---
 
-## Day 1 (월) — GitHub README 강화
+## Day 1 (월) — GitHub README 강화 ✅ **완료 (2026-04-14)**
 
 **작업량**: 2개 작업 · **예상 시간**: 60분
 
-### 1. GitHub 프로젝트 README 업데이트 (30분)
+### 1. GitHub 프로젝트 README 업데이트 (30분) ✅
 
-- [ ] **플랫폼**: https://github.com/dckwon/clock-tani (본인 리포)
-- [ ] 작업: README.md 상단에 사이트 링크 + 스크린샷 + 뱃지 추가
-- 📝 **완료 URL**: `_____`
+- [x] **플랫폼**: https://github.com/dckwon/clock-tani (본인 리포)
+- [x] 작업: README.md 상단에 사이트 링크 + 뱃지 5개 + 영어 소개 + 스크린샷 4개 추가
+- [x] LICENSE 파일 추가 (All Rights Reserved)
+- [x] 리포 Public 전환
+- 📝 **완료 URL**: https://github.com/dckwon/clock-tani
 
 **템플릿:**
 ```markdown
@@ -78,14 +80,15 @@
 - PWA
 ```
 
-### 2. GitHub Topics 추가 (15분)
+### 2. GitHub Topics 추가 (15분) ✅ **완료 (2026-04-14)**
 
-- [ ] 리포 설정 → About 섹션 옆 ⚙️ → Topics에 추가:
-  `clock`, `timer`, `stopwatch`, `pomodoro`, `nextjs`, `pwa`, `productivity-tools`, `online-timer`, `world-clock`
+- [x] 리포 설정 → About 섹션 옆 ⚙️ → Topics에 추가:
+  `clock`, `timer`, `stopwatch`, `pomodoro`, `nextjs`, `pwa`, `productivity-tools`, `online-timer`, `world-clock` 등
 
-### 3. package.json의 homepage 필드 확인 (15분)
+### 3. package.json의 homepage 필드 확인 (15분) ✅ **완료 (2026-04-14)**
 
-- [ ] `"homepage": "https://clock-tani.com"` 설정되어 있는지 확인
+- [x] `"homepage": "https://clock-tani.com"` 추가
+- [x] description, repository, bugs, keywords, author, license 필드 보강
 
 ---
 
@@ -269,7 +272,7 @@ Free online time tools → clock-tani.com
 - [ ] `site:clock-tani.com` 검색해서 색인 페이지 수 확인
 
 **Week 1 체크리스트:**
-- [ ] GitHub README 강화
+- [x] GitHub README 강화 ✅ (2026-04-14)
 - [ ] AlternativeTo, SaaSHub 등록
 - [ ] ProductHunt Upcoming
 - [ ] 구글 비즈니스 프로필
@@ -923,8 +926,15 @@ Would love feedback on UX and what tools you'd want added!
 매일 작업 후 여기에 한 줄씩 기록하세요.
 
 ```
-[Day 1] 2026-XX-XX - GitHub README 업데이트 완료. URL: _____
-[Day 2] 2026-XX-XX - AlternativeTo 등록 완료. 승인 대기 중.
+[Day 1] 2026-04-14 ✅ GitHub 리포 Public 전환 완료
+         - README 뱃지 5개 추가 (Live Demo, License, Next.js, TypeScript, PWA)
+         - 영어 소개 섹션 추가
+         - 스크린샷 4개 추가 (clock, pomodoro, interval, dday)
+         - LICENSE 파일 추가 (All Rights Reserved)
+         - URL: https://github.com/dckwon/clock-tani
+         - GitHub Topics 20개 추가 완료
+         - package.json 메타데이터 보강 (homepage, description, keywords 등)
+[Day 2] 2026-XX-XX - AlternativeTo 등록 예정
 [Day 3] 2026-XX-XX - ...
 ```
 

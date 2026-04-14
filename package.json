@@ -2,6 +2,33 @@
   "name": "clock-tani",
   "version": "0.1.0",
   "private": true,
+  "description": "Clock-Tani — 무료 온라인 시계, 타이머, 스톱워치, 포모도로, 알람, D-Day 카운트다운. 9가지 시간 관리 도구를 하나의 PWA로 제공합니다.",
+  "homepage": "https://clock-tani.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dckwon/clock-tani.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dckwon/clock-tani/issues"
+  },
+  "keywords": [
+    "clock",
+    "timer",
+    "stopwatch",
+    "pomodoro",
+    "alarm",
+    "countdown",
+    "dday",
+    "world-clock",
+    "interval-timer",
+    "tabata",
+    "hiit",
+    "productivity",
+    "nextjs",
+    "pwa"
+  ],
+  "author": "dckwon <admin@teck-tani.com>",
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
