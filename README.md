@@ -1,6 +1,14 @@
-# Clock-Tani - 무료 온라인 시계, 타이머 & 생산성 도구
+# 🕐 Clock-Tani — 무료 온라인 시계, 타이머 & 생산성 도구
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-clock--tani.com-0891b2?style=for-the-badge&logo=vercel)](https://clock-tani.com)
+[![License](https://img.shields.io/badge/license-All_Rights_Reserved-red?style=for-the-badge)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
+[![PWA](https://img.shields.io/badge/PWA-ready-5A0FC8?style=for-the-badge&logo=pwa)](https://clock-tani.com)
 
 **[Clock-Tani](https://clock-tani.com/)**는 설치 없이 브라우저에서 바로 사용할 수 있는 무료 온라인 시간 관리 웹앱입니다. PWA를 지원하여 오프라인에서도 사용 가능합니다.
+
+> 🌐 **English**: Clock-Tani is a free online suite of 9 time management tools including World Clock, Timer, Stopwatch, Pomodoro, Interval Timer (Tabata/HIIT), Multi-Timer, Alarm, Server Time, and D-Day Counter. No installation required — works in any browser. Try it at **[clock-tani.com/en](https://clock-tani.com/en)**.
 
 ## 주요 기능
 
@@ -71,6 +79,19 @@ npm run dev
 - 이용약관: [https://clock-tani.com/ko/terms](https://clock-tani.com/ko/terms)
 - 소개: [https://clock-tani.com/ko/about](https://clock-tani.com/ko/about)
 
-## 라이선스
+## 문의 / Contact
 
-All rights reserved.
+- 📧 Email: [admin@teck-tani.com](mailto:admin@teck-tani.com)
+- 🌐 Website: [clock-tani.com](https://clock-tani.com)
+
+## 라이선스 / License
+
+© 2026 Clock-Tani. **All Rights Reserved.**
+
+이 저장소는 포트폴리오 및 학습 목적으로 공개되어 있습니다.
+소스 코드의 복사, 재배포, 상업적 이용은 사전 서면 동의 없이 금지됩니다.
+자세한 내용은 [LICENSE](LICENSE) 파일을 참고하세요.
+
+This repository is published for portfolio and educational purposes only.
+Copying, redistribution, or commercial use of the source code without prior
+written permission is prohibited. See [LICENSE](LICENSE) for details.
