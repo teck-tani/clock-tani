@@ -16,13 +16,13 @@
   <tr>
     <td align="center">
       <a href="https://clock-tani.com/ko/clock">
-        <img src="https://clock-tani.com/ko/clock/opengraph-image" alt="World Clock" width="400"/>
+        <img src="public/screenshots/clock.png" alt="World Clock" width="400"/>
       </a>
       <br/><sub><b>🌍 세계시계 / World Clock</b></sub>
     </td>
     <td align="center">
       <a href="https://clock-tani.com/ko/pomodoro">
-        <img src="https://clock-tani.com/ko/pomodoro/opengraph-image" alt="Pomodoro Timer" width="400"/>
+        <img src="public/screenshots/pomodoro.png" alt="Pomodoro Timer" width="400"/>
       </a>
       <br/><sub><b>🍅 포모도로 / Pomodoro</b></sub>
     </td>
@@ -30,13 +30,13 @@
   <tr>
     <td align="center">
       <a href="https://clock-tani.com/ko/interval">
-        <img src="https://clock-tani.com/ko/interval/opengraph-image" alt="Interval Timer" width="400"/>
+        <img src="public/screenshots/interval.png" alt="Interval Timer" width="400"/>
       </a>
       <br/><sub><b>💪 인터벌 타이머 / Interval (Tabata/HIIT)</b></sub>
     </td>
     <td align="center">
       <a href="https://clock-tani.com/ko/dday-counter">
-        <img src="https://clock-tani.com/ko/dday-counter/opengraph-image" alt="D-Day Counter" width="400"/>
+        <img src="public/screenshots/dday.png" alt="D-Day Counter" width="400"/>
       </a>
       <br/><sub><b>📅 D-Day 카운트다운 / D-Day Counter</b></sub>
     </td>

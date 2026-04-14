@@ -42,8 +42,8 @@ yarn-error.log*
 # playwright-mcp
 .playwright-mcp/
 
-# screenshots
-screenshots/
+# screenshots (로컬 작업용만 제외, public/screenshots는 README용으로 포함)
+/screenshots/
 
 # typescript
 *.tsbuildinfo
