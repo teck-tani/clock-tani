@@ -10,6 +10,39 @@
 
 > 🌐 **English**: Clock-Tani is a free online suite of 9 time management tools including World Clock, Timer, Stopwatch, Pomodoro, Interval Timer (Tabata/HIIT), Multi-Timer, Alarm, Server Time, and D-Day Counter. No installation required — works in any browser. Try it at **[clock-tani.com/en](https://clock-tani.com/en)**.
 
+## 📸 미리보기 / Preview
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://clock-tani.com/ko/clock">
+        <img src="https://clock-tani.com/ko/clock/opengraph-image" alt="World Clock" width="400"/>
+      </a>
+      <br/><sub><b>🌍 세계시계 / World Clock</b></sub>
+    </td>
+    <td align="center">
+      <a href="https://clock-tani.com/ko/pomodoro">
+        <img src="https://clock-tani.com/ko/pomodoro/opengraph-image" alt="Pomodoro Timer" width="400"/>
+      </a>
+      <br/><sub><b>🍅 포모도로 / Pomodoro</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://clock-tani.com/ko/interval">
+        <img src="https://clock-tani.com/ko/interval/opengraph-image" alt="Interval Timer" width="400"/>
+      </a>
+      <br/><sub><b>💪 인터벌 타이머 / Interval (Tabata/HIIT)</b></sub>
+    </td>
+    <td align="center">
+      <a href="https://clock-tani.com/ko/dday-counter">
+        <img src="https://clock-tani.com/ko/dday-counter/opengraph-image" alt="D-Day Counter" width="400"/>
+      </a>
+      <br/><sub><b>📅 D-Day 카운트다운 / D-Day Counter</b></sub>
+    </td>
+  </tr>
+</table>
+
 ## 주요 기능
 
 ### [온라인 세계시계](https://clock-tani.com/ko/clock)
