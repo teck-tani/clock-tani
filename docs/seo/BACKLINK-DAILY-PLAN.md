@@ -96,10 +96,26 @@
 
 **작업량**: 2개 작업 · **예상 시간**: 60분
 
-### 1. AlternativeTo 등록 (35분)
+### 1. AlternativeTo 등록 (35분) ⚠️ **계정 7일 대기 필요** ⏸️ 보류 (2026-04-15)
 
-- [ ] **플랫폼**: https://alternativeto.net/submit-software/
-- [ ] 계정 생성 → Software 등록
+> **⚠️ 중요**: AlternativeTo는 스팸 방지를 위해 **계정 생성 후 7일 이상**이 지나야 새 앱 등록이 가능합니다.
+> 오늘은 **계정만 먼저 생성**해두고, **7일 후(2026-04-22 이후)** 다시 돌아와 Submit 진행하세요.
+
+#### 오늘 할 것 (5분): 계정만 생성
+- [ ] https://alternativeto.net 접속
+- [ ] 우측 상단 **"Sign Up"** (Google/Facebook 소셜 로그인 권장 - 빠름)
+- [ ] 프로필에 `https://clock-tani.com` 링크 추가 (프로필 편집 시)
+- 📝 **계정 생성일**: `_____` (7일 후 submit 가능)
+- ⏸️ **보류 사유 (2026-04-15)**: GitHub OAuth 진입까지 갔으나 hCaptcha + Username/Email 결정 필요해서 사용자 판단으로 보류. 다음 진행 시 Username 선정 → 이메일 입력 → 캡차 통과만 하면 됨.
+
+#### 7일 후 할 것 (30분): 앱 등록
+- [ ] 로그인 후 **우측 상단 사용자 아이콘 클릭** → **"Suggest new application"** 선택
+- [ ] 4단계 양식 작성:
+  1. 프로젝트 목적 설명
+  2. 외부 스토어 데이터 가져오기 (웹앱이므로 **Skip**)
+  3. 메인 데이터 입력 (아래 템플릿 참고)
+  4. Alternatives 제안 (time.is, pomofocus.io 등)
+- [ ] Submit 후 **2일~1주** 승인 대기
 - 📝 **완료 URL**: `_____`
 
 **등록 정보 템플릿 (영어):**
@@ -131,11 +147,25 @@ Features:
 - Free forever
 ```
 
-### 2. SaaSHub 등록 (25분)
+### 2. SaaSHub 등록 (25분) ✅ **완료 (2026-04-15)**
 
-- [ ] **플랫폼**: https://www.saashub.com/submit
-- [ ] AlternativeTo 내용 재활용하여 등록
-- 📝 **완료 URL**: `_____`
+- [x] **플랫폼**: https://www.saashub.com/submit
+- [x] AlternativeTo 내용 재활용하여 등록
+- 📝 **완료 URL**: https://www.saashub.com/clock-tani
+- 📝 **관리 페이지**: https://www.saashub.com/manage/clock-tani
+- 📝 **상태**: ACTIVE (Verified) — 녹색 인증 배지 3개월 유지
+- 🎁 **보너스**: 1개월 무료 프리미엄 노출 (홈피드 2번째, "Visit Website" 녹색 버튼)
+
+**완료 세부 내역**:
+- Categories: Productivity, Time Tracking, Online Timer, Web App, Time Management, Task Management, Alarm Clock, Online Clock
+- Competitors: Time.is, Pomofocus, Online Stopwatch + alternative 등록 7개 (Pomofocus, Timer and Stopwatch, Pomodoro Timer Online, The Interval Timer, Online Alarm Clock, Alarm Clock Tab, Tick Clock Online)
+- Description: 영문 상세 설명 + 9개 도구 + 기술 스택 명시
+- Logo: icon-512x512.svg → PNG 변환 업로드
+- Screenshots: 4장 (Clock, Pomodoro, Interval, D-Day)
+- Pricing: Free
+- GitHub URL: https://github.com/teck-tani/clock-tani (Open Source: Yes)
+- HQ: South Korea
+- Email 인증 + 도메인 Verify 완료
 
 ---
 
@@ -143,23 +173,34 @@ Features:
 
 **작업량**: 3개 작업 · **예상 시간**: 60분
 
-### 1. ProductHunt Maker 프로필 생성 (20분)
+### 1. ProductHunt Maker 프로필 생성 (20분) 🟡 **부분 완료 (2026-04-15)**
 
-- [ ] **플랫폼**: https://www.producthunt.com
-- [ ] 계정 생성 → Maker 프로필에 clock-tani.com 링크
+- [x] **플랫폼**: https://www.producthunt.com
+- [x] 계정 생성 (@tani7) → Maker 프로필 headline + about 작성 완료
+- 📝 **프로필 URL**: https://www.producthunt.com/@tani7
+- 📝 **계정 이메일**: kweon82tani@gmail.com
+- ⚠️ ProductHunt 프로필에는 직접 website 필드가 없음. about 텍스트에 clock-tani.com 링크 포함시킴.
+
+### 2. ProductHunt "Upcoming" 등록 (20분) ⏸️ **보류 (2026-04-15) — Day 25 정식 런칭과 통합 권장**
+
+- [x] Submission draft 시작 (https://www.producthunt.com/posts/new/submission)
+- [x] 입력 완료: Name (Clock-Tani), URL, Tagline ("9 free online time tools — clock, timer, alarm, pomodoro" / 56자), Description (영문 333자), Open Source 체크, Productivity 태그
+- [ ] **남은 작업** (Day 25 정식 런칭 시 한꺼번에):
+  - [ ] GitHub URL 추가 ("+ Add more links" → 소스코드 repo: https://github.com/teck-tani/clock-tani)
+  - [ ] First comment 작성 (런칭 시 동시 게시될 코멘트)
+  - [ ] Images and media 업로드 (로고 + 갤러리 이미지)
+  - [ ] Makers 정보
+  - [ ] Extras (가격 정보 등)
+  - [ ] Launch checklist 통과 후 정식 launch
 - 📝 **완료 URL**: `_____`
+- 💡 **판단 이유**: ProductHunt는 draft만 저장해도 백링크가 발생하지 않음. 정식 launch해야 효과 있어 Day 25 (4/22 이후)에 한 번에 처리하는 것이 효율적.
 
-### 2. ProductHunt "Upcoming" 등록 (20분)
-
-- [ ] "Launch your product" → "Upcoming" 페이지 생성
-- 📝 **완료 URL**: `_____`
-- ⚠️ 정식 런칭은 Week 4 (Day 25)에 진행
-
-### 3. 구글 비즈니스 프로필 (20분)
+### 3. 구글 비즈니스 프로필 (20분) ⏸️ **보류 (2026-04-15)**
 
 - [ ] **플랫폼**: https://business.google.com
 - [ ] 온라인 서비스(web-based)로 등록
 - 📝 **완료 URL**: `_____`
+- ⚠️ **주의**: 온라인 전용 서비스는 등록 거절 가능성 높음 (오프라인 사업장 필요할 수 있음). 시도 전에 자격 확인 필요.
 
 ---
 
@@ -934,8 +975,20 @@ Would love feedback on UX and what tools you'd want added!
          - URL: https://github.com/dckwon/clock-tani
          - GitHub Topics 20개 추가 완료
          - package.json 메타데이터 보강 (homepage, description, keywords 등)
-[Day 2] 2026-XX-XX - AlternativeTo 등록 예정
-[Day 3] 2026-XX-XX - ...
+[Day 2] 2026-04-15 ✅ SaaSHub 등록 + Verify 완료 (ACTIVE 상태)
+         - 공개 페이지: https://www.saashub.com/clock-tani
+         - 8개 카테고리 + 7개 제품에 alternative로 등록
+         - 1개월 무료 프리미엄 노출 보너스 획득
+         - GitHub URL, Logo, Screenshots 4장, Description 모두 입력
+         - 도메인 Verify 완료 → 녹색 인증 배지 (3개월)
+         - ⏸️ AlternativeTo: GitHub OAuth 진입 후 보류 (Username/캡차 결정 필요)
+[Day 3] 2026-04-15 🟡 ProductHunt 부분 진행
+         - Maker 프로필 생성 완료: https://www.producthunt.com/@tani7
+         - Submission draft 시작 (Name, URL, Tagline 56자, Description 333자, Productivity 태그, Open Source 체크)
+         - ⏸️ Submission 나머지 (GitHub URL, 이미지, Makers, First comment 등)는 Day 25 정식 런칭과 통합 처리 권장
+         - ⏸️ 구글 비즈니스 프로필: 온라인 전용 서비스 등록 가능 여부 확인 후 진행
+         - → 다음 작업: Day 4 (소셜미디어 프로필 최적화) 또는 Day 25 (ProductHunt 정식 런칭)
+[Day 4] 2026-XX-XX - ...
 ```
 
 ---
