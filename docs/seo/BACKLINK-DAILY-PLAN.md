@@ -210,11 +210,18 @@ Features:
 
 각 소셜 계정의 **Bio/Website 필드에 `https://clock-tani.com` 추가** + 대표 포스팅 1개.
 
-### 1. Twitter/X (@teck_tani) (15분)
+### 1. Twitter/X (@story79073) (15분) ✅ **완료 (2026-04-16)**
 
-- [ ] 프로필 bio 업데이트 + 웹사이트 링크
-- [ ] 고정 트윗 1개 작성
-- 📝 **완료 URL**: `_____`
+- [x] 프로필 bio 업데이트 + 웹사이트 링크
+- [x] 고정 트윗 1개 작성
+- 📝 **프로필 URL**: https://x.com/story79073
+- 📝 **고정 트윗 URL**: https://x.com/story79073/status/2044576232130703407
+- **Display name**: Clock-Tani
+- **Bio**: 🕐 Maker of Clock-Tani | 무료 온라인 시계·타이머·포모도로·알람·D-Day / Free online time tools → clock-tani.com
+- **Location**: South Korea
+- **Website**: https://clock-tani.com
+- ⚠️ 새 계정이라 "Unlock more on X" 제한 걸림. 타임라인 활동하며 자연스럽게 풀어야 함.
+- ℹ️ 실제 핸들은 `@story79073` (신규 계정 생성 시 자동 할당). `@teck_tani`는 추후 변경 고려 가능.
 
 **Bio 템플릿:**
 ```
@@ -235,50 +242,64 @@ Free online time tools → clock-tani.com
 👉 https://clock-tani.com
 ```
 
-### 2. 인스타그램 (15분)
+### 2. 인스타그램 (@tecktani) (15분) ✅ **완료 (2026-04-16)**
 
-- [ ] 프로필 bio에 링크
-- [ ] 첫 포스팅 (도구 스크린샷 1장)
-- 📝 **완료 URL**: `_____`
+- [x] 프로필 bio에 링크 (clock-tani.com은 소개에 포함)
+- [x] 첫 포스팅 (도구 스크린샷 4장 - Clock, Pomodoro, Interval, D-Day)
+- [x] 프라이버시 설정: "프로필에 계정 추천 표시" 해제 → 지인에게 노출 차단
+- 📝 **프로필 URL**: https://www.instagram.com/tecktani/
+- 📝 **첫 게시물 URL**: https://www.instagram.com/p/DXLHD9XkkAN/ (캐러셀 4장: 시계/포모도로/인터벌/D-Day)
+- **Bio**: 🕐 무료 온라인 시간 도구 / 시계·타이머·포모도로·알람·D-Day / 👉 clock-tani.com
+- **해시태그**: #무료온라인시계 #타이머 #포모도로 #스톱워치 #알람시계 #디데이 #세계시계 #시간관리 #생산성 #clocktani 외 15개
+- ⚠️ **중요**: 웹사이트 링크 필드 수정은 **모바일 앱 전용**. Bio에 clock-tani.com 텍스트 포함으로 해결.
+- ⚠️ **모바일 앱 설치 시 반드시 "연락처 접근" 거부** (지인 발견 차단 유지)
 
-### 3. 페이스북 페이지 (15분)
+### 3. 페이스북 페이지 (15분) ✅ **완료 (2026-04-16)**
 
-- [ ] 비즈니스 페이지 생성
-- [ ] "정보" 섹션에 웹사이트 URL
-- 📝 **완료 URL**: `_____`
+- [x] 비즈니스 페이지 생성
+- [x] "정보" 섹션에 웹사이트 URL
+- 📝 **완료 URL**: https://www.facebook.com/profile.php?id=61568706142195
+- **페이지명**: Clock-Tani
+- **카테고리**: 소프트웨어
+- **웹사이트**: https://clock-tani.com (dofollow 백링크 ✅)
+- **이메일**: admin@teck-tani.com
+- **소개**: 무료 온라인 시간 도구 모음 - 시계, 타이머, 포모도로, 스톱워치, 알람, D-Day 카운터 등 9가지 도구를 설치 없이 브라우저에서 바로 사용하세요.
+- **프로필 사진**: Clock-Tani 로고 업로드 완료
 
-### 4. 링크드인 프로필 업데이트 (15분)
+### 4. 링크드인 프로필 업데이트 (15분) ✅ **완료 (2026-04-16)**
 
-- [ ] 현재 경력/프로젝트에 Clock-Tani 추가
-- [ ] 웹사이트 링크 포함
-- 📝 **완료 URL**: `_____`
+- [x] 프로필 연락처 정보에 웹사이트 링크 추가
+- 📝 **웹사이트 링크**: https://clock-tani.com 추가 완료
 
 ---
 
-## Day 5 (금) — 핀터레스트 핀 생성
+## Day 5 (금) — 핀터레스트 핀 생성 ✅ **완료 (2026-04-16)**
 
 **작업량**: 1개 집중 작업 · **예상 시간**: 60분
 
 ### 핀터레스트 핀 9개 생성 (Dofollow!)
 
-- [ ] **플랫폼**: https://www.pinterest.com
-- [ ] 계정 생성 또는 로그인 → 비즈니스 계정으로 전환
-- [ ] 웹사이트 "확인(verify)" — 메타 태그 발급 (이미 layout.tsx에 추가 가능)
-- [ ] 9개 도구별 핀 생성 (각 도구 OG 이미지 재활용)
+- [x] **플랫폼**: https://www.pinterest.com
+- [x] 계정 생성 및 로그인 완료 (@kweon82tani)
+- [ ] 비즈니스 계정 전환 (추후)
+- [ ] 웹사이트 "확인(verify)" — 메타 태그 발급 (추후)
+- [x] 9개 도구별 핀 생성 완료
 
-| # | 도구 | 핀 제목 | 링크 |
-|---|------|--------|------|
-| 1 | 시계 | 정확한 세계시계 70개 도시 | clock-tani.com/ko/clock |
-| 2 | 스톱워치 | 무료 온라인 스톱워치 | clock-tani.com/ko/stopwatch |
-| 3 | 타이머 | 온라인 타이머 모음 | clock-tani.com/ko/timer |
-| 4 | 포모도로 | 포모도로 타이머 - 집중력 UP | clock-tani.com/ko/pomodoro |
-| 5 | 인터벌 | 타바타/HIIT 인터벌 타이머 | clock-tani.com/ko/interval |
-| 6 | 멀티 타이머 | 여러 개 동시에 멀티 타이머 | clock-tani.com/ko/multi-timer |
-| 7 | 알람 | 브라우저 온라인 알람 시계 | clock-tani.com/ko/alarm |
-| 8 | 서버시간 | 티켓팅 서버시간 동기화 | clock-tani.com/ko/server-time |
-| 9 | D-Day | D-Day 카운트다운 무료 | clock-tani.com/ko/dday-counter |
+| # | 도구 | 핀 제목 | 링크 | 상태 |
+|---|------|--------|------|------|
+| 1 | 시계 | 정확한 세계시계 70개 도시 - 무료 온라인 시계 | clock-tani.com/ko/clock | ✅ |
+| 2 | 포모도로 | 포모도로 타이머 - 집중력 UP 무료 온라인 | clock-tani.com/ko/pomodoro | ✅ |
+| 3 | 인터벌 | 타바타/HIIT 인터벌 타이머 - 무료 온라인 | clock-tani.com/ko/interval | ✅ |
+| 4 | D-Day | D-Day 카운트다운 무료 - 음력 지원 | clock-tani.com/ko/dday-counter | ✅ |
+| 5 | 스톱워치 | 무료 온라인 스톱워치 - 랩 타임 기록 | clock-tani.com/ko/stopwatch | ✅ |
+| 6 | 타이머 | 온라인 타이머 - 무료 카운트다운 | clock-tani.com/ko/timer | ✅ |
+| 7 | 멀티 타이머 | 멀티 타이머 - 여러개 동시 실행 | clock-tani.com/ko/multi-timer | ✅ |
+| 8 | 알람 | 브라우저 온라인 알람 시계 - 무료 | clock-tani.com/ko/alarm | ✅ |
+| 9 | 서버시간 | 티켓팅 서버시간 동기화 - NTP 정확한 시간 | clock-tani.com/ko/server-time | ✅ |
 
-📝 **완료 URL**: `_____`
+- 📝 **프로필 URL**: https://kr.pinterest.com/kweon82tani/
+- 💡 **이미지 소스**: 5~9번은 Next.js OG 이미지(`opengraph-image.tsx`)를 `curl http://localhost:3000/ko/{tool}/opengraph-image`로 다운로드하여 `public/screenshots/`에 저장 후 사용
+- ⚠️ 새 계정이라 프로필 피드 반영에 시간 걸림 (Pinterest 스팸 방지). 개별 핀 URL은 정상 작동.
 
 ---
 
@@ -988,7 +1009,23 @@ Would love feedback on UX and what tools you'd want added!
          - ⏸️ Submission 나머지 (GitHub URL, 이미지, Makers, First comment 등)는 Day 25 정식 런칭과 통합 처리 권장
          - ⏸️ 구글 비즈니스 프로필: 온라인 전용 서비스 등록 가능 여부 확인 후 진행
          - → 다음 작업: Day 4 (소셜미디어 프로필 최적화) 또는 Day 25 (ProductHunt 정식 런칭)
-[Day 4] 2026-XX-XX - ...
+[Day 4] 2026-04-16 🟡 Twitter/X + Instagram 완료 (2/4)
+         - Twitter/X: @story79073 프로필 설정 + 고정 트윗 완료
+           · 프로필: https://x.com/story79073
+           · 고정 트윗: https://x.com/story79073/status/2044576232130703407
+         - Instagram: @tecktani 프로필 + 첫 게시물 4장 완료
+           · 프로필: https://www.instagram.com/tecktani/
+           · 첫 게시물 (캐러셀 4장): https://www.instagram.com/p/DXLHD9XkkAN/
+           · 프라이버시: "계정 추천 표시" OFF (지인 발견 차단)
+         - Facebook 페이지 생성 완료 (dofollow 백링크!)
+           · 페이지: https://www.facebook.com/profile.php?id=61568706142195
+         - LinkedIn: 프로필 연락처에 clock-tani.com 웹사이트 추가 완료
+[Day 5] 2026-04-16 ✅ Pinterest 핀 9개 모두 게시 완료
+         - 프로필: https://kr.pinterest.com/kweon82tani/
+         - 9개 도구 모두 핀 생성 (시계, 포모도로, 인터벌, D-Day, 스톱워치, 타이머, 멀티타이머, 알람, 서버시간)
+         - 이미지 소스: Next.js OG 이미지 재활용 (curl로 opengraph-image 엔드포인트 다운로드)
+         - ⏸️ 비즈니스 전환 + 웹사이트 인증: 추후
+[Day 6] 2026-XX-XX - ...
 ```
 
 ---
